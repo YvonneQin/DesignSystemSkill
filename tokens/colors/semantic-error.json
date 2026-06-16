@@ -1,0 +1,46 @@
+{
+  "$description": "Ant Design error color tokens — Brand/Error → Base/red",
+  "palette": "red",
+  "tokens": {
+    "colorError": {
+      "light": { "ref": "Base/red/6" },
+      "dark": { "ref": "Base/red/6" }
+    },
+    "colorErrorBg": {
+      "light": { "ref": "Base/red/1" },
+      "dark": { "ref": "Base/red/1" }
+    },
+    "colorErrorBgHover": {
+      "light": { "ref": "Base/red/2" },
+      "dark": { "ref": "Base/red/2" }
+    },
+    "colorErrorBorder": {
+      "light": { "ref": "Base/red/3" },
+      "dark": { "ref": "Base/red/3" }
+    },
+    "colorErrorBorderHover": {
+      "light": { "ref": "Base/red/4" },
+      "dark": { "ref": "Base/red/4" }
+    },
+    "colorErrorHover": {
+      "light": { "ref": "Base/red/5" },
+      "dark": { "ref": "Base/red/7" }
+    },
+    "colorErrorActive": {
+      "light": { "ref": "Base/red/7" },
+      "dark": { "ref": "Base/red/5" }
+    },
+    "colorErrorTextHover": {
+      "light": { "ref": "Base/red/8" },
+      "dark": { "ref": "Base/red/8" }
+    },
+    "colorErrorText": {
+      "light": { "ref": "Base/red/9" },
+      "dark": { "ref": "Base/red/9" }
+    },
+    "colorErrorTextActive": {
+      "light": { "ref": "Base/red/10" },
+      "dark": { "ref": "Base/red/10" }
+    }
+  }
+}

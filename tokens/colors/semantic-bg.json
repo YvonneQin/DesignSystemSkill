@@ -1,0 +1,39 @@
+{
+  "$description": "Ant Design background color tokens — Neutral/Bg",
+  "base": {
+    "colorBgBase": {
+      "light": { "value": "#FFFFFF" },
+      "dark": { "value": "#141414" }
+    },
+    "colorBgContainer": {
+      "light": { "ref": "colorBgBase" },
+      "dark": { "value": "#141414" }
+    },
+    "colorBgElevated": {
+      "light": { "ref": "colorBgBase" },
+      "dark": { "value": "#1F1F1F" }
+    },
+    "colorBgLayout": {
+      "light": { "value": "#F5F5F5" },
+      "dark": { "ref": "colorBgBase" }
+    },
+    "colorBgMask": {
+      "light": { "value": "rgba(0, 0, 0, 0.45)" },
+      "dark": { "value": "rgba(0, 0, 0, 0.45)" }
+    },
+    "colorBgSpotlight": {
+      "light": { "value": "rgba(0, 0, 0, 0.85)" },
+      "dark": { "value": "#424242" }
+    },
+    "colorTransparent": {
+      "light": { "value": "transparent" },
+      "dark": { "value": "transparent" }
+    }
+  },
+  "semantic": {
+    "colorBgContainerDisabled": { "ref": "Neutral/Fill/colorFillTertiary" },
+    "colorBgTextActive": { "ref": "Neutral/Fill/colorFill" },
+    "colorBgTextHover": { "ref": "Neutral/Fill/colorFillSecondary" },
+    "colorBorderBg": { "ref": "colorBgContainer" }
+  }
+}

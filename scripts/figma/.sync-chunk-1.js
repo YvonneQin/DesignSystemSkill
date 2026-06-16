@@ -1,0 +1,30 @@
+function hexToRgba(hex) {
+  let h = String(hex).replace('#', '');
+  if (h.length === 8) {
+    return { r: parseInt(h.slice(0,2),16)/255, g: parseInt(h.slice(2,4),16)/255, b: parseInt(h.slice(4,6),16)/255, a: parseInt(h.slice(6,8),16)/255 };
+  }
+  return { r: parseInt(h.slice(0,2),16)/255, g: parseInt(h.slice(2,4),16)/255, b: parseInt(h.slice(4,6),16)/255, a: 1 };
+}
+const DATA = {"gray":{"1":{"light":"#fcfcfc","dark":"#111111"},"2":{"light":"#f9f9f9","dark":"#191919"},"3":{"light":"#f0f0f0","dark":"#222222"},"4":{"light":"#e8e8e8","dark":"#2a2a2a"},"5":{"light":"#e0e0e0","dark":"#313131"},"6":{"light":"#d9d9d9","dark":"#3a3a3a"},"7":{"light":"#cecece","dark":"#484848"},"8":{"light":"#bbbbbb","dark":"#606060"},"9":{"light":"#8d8d8d","dark":"#6e6e6e"},"10":{"light":"#838383","dark":"#7b7b7b"}},"mauve":{"1":{"light":"#fdfcfd","dark":"#121113"},"2":{"light":"#faf9fb","dark":"#1a191b"},"3":{"light":"#f2eff3","dark":"#232225"},"4":{"light":"#eae7ec","dark":"#2b292d"},"5":{"light":"#e3dfe6","dark":"#323035"},"6":{"light":"#dbd8e0","dark":"#3c393f"},"7":{"light":"#d0cdd7","dark":"#49474e"},"8":{"light":"#bcbac7","dark":"#625f69"},"9":{"light":"#8e8c99","dark":"#6f6d78"},"10":{"light":"#84828e","dark":"#7c7a85"}},"slate":{"1":{"light":"#fcfcfd","dark":"#111113"},"2":{"light":"#f9f9fb","dark":"#18191b"},"3":{"light":"#f0f0f3","dark":"#212225"},"4":{"light":"#e8e8ec","dark":"#272a2d"},"5":{"light":"#e0e1e6","dark":"#2e3135"},"6":{"light":"#d9d9e0","dark":"#363a3f"},"7":{"light":"#cdced6","dark":"#43484e"},"8":{"light":"#b9bbc6","dark":"#5a6169"},"9":{"light":"#8b8d98","dark":"#696e77"},"10":{"light":"#80838d","dark":"#777b84"}},"sage":{"1":{"light":"#fbfdfc","dark":"#101211"},"2":{"light":"#f7f9f8","dark":"#171918"},"3":{"light":"#eeeeff","dark":"#202221"},"4":{"light":"#e6e9e8","dark":"#272a29"},"5":{"light":"#dfe2e0","dark":"#2e3130"},"6":{"light":"#d7dad9","dark":"#373b39"},"7":{"light":"#cbcfcd","dark":"#444947"},"8":{"light":"#b8bcba","dark":"#5b625f"},"9":{"light":"#868e8b","dark":"#63706b"},"10":{"light":"#7c8481","dark":"#adb5b2"}},"olive":{"1":{"light":"#fcfdfc","dark":"#111210"},"2":{"light":"#f8faf8","dark":"#181917"},"3":{"light":"#eff1ef","dark":"#212220"},"4":{"light":"#e7e9e7","dark":"#282a27"},"5":{"light":"#dfe2df","dark":"#2f312e"},"6":{"light":"#d7dad7","dark":"#383a36"},"7":{"light":"#cccfcc","dark":"#454843"},"8":{"light":"#b9bcb8","dark":"#5c625b"},"9":{"light":"#898e87","dark":"#687066"},"10":{"light":"#7f847d","dark":"#767d74"}},"sand":{"1":{"light":"#fdfdfc","dark":"#111110"},"2":{"light":"#f9f9f8","dark":"#191918"},"3":{"light":"#f1f0ef","dark":"#222221"},"4":{"light":"#e9e8e6","dark":"#2a2a28"},"5":{"light":"#e2e1de","dark":"#31312e"},"6":{"light":"#dad9d6","dark":"#3b3a37"},"7":{"light":"#cfceca","dark":"#494844"},"8":{"light":"#bcbbb5","dark":"#62605b"},"9":{"light":"#8d8d86","dark":"#6f6d66"},"10":{"light":"#82827c","dark":"#7c7b74"}},"tomato":{"1":{"light":"#fffcfc","dark":"#181111"},"2":{"light":"#fff8f7","dark":"#1f1513"},"3":{"light":"#feebe7","dark":"#391714"},"4":{"light":"#ffdcd3","dark":"#4e1511"},"5":{"light":"#ffcdc2","dark":"#5e1c16"},"6":{"light":"#fdbdaf","dark":"#6e2920"},"7":{"light":"#f5a898","dark":"#853a2d"},"8":{"light":"#ec8e7b","dark":"#ac4d39"},"9":{"light":"#e54d2e","dark":"#e54d2e"},"10":{"light":"#dd4425","dark":"#ec6142"}},"red":{"1":{"light":"#fffcfc","dark":"#191111"},"2":{"light":"#fff7f7","dark":"#201314"},"3":{"light":"#feebec","dark":"#3b1219"},"4":{"light":"#ffdbdc","dark":"#500f1c"},"5":{"light":"#ffcdce","dark":"#611623"},"6":{"light":"#fdbdbe","dark":"#72232d"},"7":{"light":"#f4a9aa","dark":"#8c333a"},"8":{"light":"#eb8e90","dark":"#b54548"},"9":{"light":"#e5484d","dark":"#e5484d"},"10":{"light":"#dc3e42","dark":"#ec5d5e"}},"ruby":{"1":{"light":"#fffcfd","dark":"#191113"},"2":{"light":"#fff7f8","dark":"#1e1517"},"3":{"light":"#feeaed","dark":"#3a141e"},"4":{"light":"#ffdce1","dark":"#4e1325"},"5":{"light":"#ffced6","dark":"#5e1a2e"},"6":{"light":"#f8bfc8","dark":"#6f2539"},"7":{"light":"#efacb8","dark":"#883447"},"8":{"light":"#e592a3","dark":"#b3445a"},"9":{"light":"#e54666","dark":"#e54666"},"10":{"light":"#dc3b5d","dark":"#ec5a72"}},"crimson":{"1":{"light":"#fffcfd","dark":"#191114"},"2":{"light":"#fef7f9","dark":"#201318"},"3":{"light":"#ffe9f0","dark":"#381525"},"4":{"light":"#fedce7","dark":"#4d122f"},"5":{"light":"#facedd","dark":"#5c1839"},"6":{"light":"#f3bed1","dark":"#6d2545"},"7":{"light":"#eaacc3","dark":"#873356"},"8":{"light":"#e093b2","dark":"#b0436e"},"9":{"light":"#e93d82","dark":"#e93d82"},"10":{"light":"#df3478","dark":"#ee518a"}},"pink":{"1":{"light":"#fffcfe","dark":"#191117"},"2":{"light":"#fef7fb","dark":"#21121d"},"3":{"light":"#fee9f5","dark":"#37172f"},"4":{"light":"#fbdcef","dark":"#4b143d"},"5":{"light":"#f6cee7","dark":"#591c47"},"6":{"light":"#efbfdd","dark":"#692955"},"7":{"light":"#e7acd0","dark":"#833869"},"8":{"light":"#dd93c2","dark":"#a84885"},"9":{"light":"#d6409f","dark":"#d6409f"},"10":{"light":"#cf3897","dark":"#de51a8"}}};
+const collections = await figma.variables.getLocalVariableCollectionsAsync();
+const modeColl = collections.find(c => c.name === 'Mode');
+const lightId = modeColl.modes.find(m => m.name === 'Light').modeId;
+const darkId = modeColl.modes.find(m => m.name === 'Dark').modeId;
+const vars = await figma.variables.getLocalVariablesAsync();
+const existingBase = vars.filter(v => v.name.startsWith('Base/'));
+let removed = 0;
+for (const v of existingBase) { v.remove(); removed++; }
+let created = 0;
+for (const [palette, steps] of Object.entries(DATA)) {
+  for (const [step, colors] of Object.entries(steps)) {
+    const name = 'Base/' + palette + '/' + step;
+    const v = figma.variables.createVariable(name, modeColl, 'COLOR');
+    v.scopes = [];
+    v.description = 'Radix base palette (10-step)';
+    v.setVariableCodeSyntax('WEB', 'var(--' + palette + '-' + step + ')');
+    v.setValueForMode(lightId, hexToRgba(colors.light));
+    v.setValueForMode(darkId, hexToRgba(colors.dark));
+    created++;
+  }
+}
+return { chunk: 1, removed, created, palettes: Object.keys(DATA).length };

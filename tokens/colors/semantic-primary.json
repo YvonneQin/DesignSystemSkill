@@ -1,0 +1,46 @@
+{
+  "$description": "Ant Design primary (brand) color tokens — Brand/Primary → Base/indigo",
+  "palette": "indigo",
+  "tokens": {
+    "colorPrimary": {
+      "light": { "ref": "Base/indigo/6" },
+      "dark": { "ref": "Base/indigo/6" }
+    },
+    "colorPrimaryBg": {
+      "light": { "ref": "Base/indigo/1" },
+      "dark": { "ref": "Base/indigo/1" }
+    },
+    "colorPrimaryBgHover": {
+      "light": { "ref": "Base/indigo/2" },
+      "dark": { "ref": "Base/indigo/2" }
+    },
+    "colorPrimaryBorder": {
+      "light": { "ref": "Base/indigo/3" },
+      "dark": { "ref": "Base/indigo/3" }
+    },
+    "colorPrimaryBorderHover": {
+      "light": { "ref": "Base/indigo/4" },
+      "dark": { "ref": "Base/indigo/4" }
+    },
+    "colorPrimaryHover": {
+      "light": { "ref": "Base/indigo/5" },
+      "dark": { "ref": "Base/indigo/7" }
+    },
+    "colorPrimaryActive": {
+      "light": { "ref": "Base/indigo/7" },
+      "dark": { "ref": "Base/indigo/5" }
+    },
+    "colorPrimaryTextHover": {
+      "light": { "ref": "Base/indigo/8" },
+      "dark": { "ref": "Base/indigo/8" }
+    },
+    "colorPrimaryText": {
+      "light": { "ref": "Base/indigo/9" },
+      "dark": { "ref": "Base/indigo/9" }
+    },
+    "colorPrimaryTextActive": {
+      "light": { "ref": "Base/indigo/10" },
+      "dark": { "ref": "Base/indigo/10" }
+    }
+  }
+}

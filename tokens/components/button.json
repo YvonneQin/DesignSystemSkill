@@ -1,0 +1,715 @@
+{
+  "$description": "Ant Design Button component spec — sourced from Ant Design System for Figma",
+  "$source": {
+    "figma": {
+      "fileKey": "L3k9dxCWyCjhm5G5V22A13",
+      "componentSetNodeId": "784:2294",
+      "url": "https://www.figma.com/design/L3k9dxCWyCjhm5G5V22A13/Ant-Design-System-for-Figma--Free-version---Community-?node-id=784-2294"
+    },
+    "docs": "https://ant.design/components/button/"
+  },
+
+  "component": "Button",
+  "variantCount": 1152,
+
+  "anatomy": {
+    "layers": [
+      { "name": "container", "role": "background, border, shadow, padding, radius" },
+      { "name": "content", "role": "horizontal flex row, icon + label" },
+      { "name": "icon", "role": "optional 16×16 icon" },
+      { "name": "label", "role": "button text, default \"Button\"" }
+    ]
+  },
+
+  "variants": {
+    "type": {
+      "values": ["primary", "secondary", "default", "dashed", "text", "link"],
+      "antd": "type",
+      "default": "default"
+    },
+    "size": {
+      "values": ["large", "default", "small"],
+      "antd": "size",
+      "default": "default"
+    },
+    "state": {
+      "values": ["default", "hover", "focused", "pressed", "disabled"],
+      "antd": "interactive state (not a prop)"
+    },
+    "content": {
+      "values": ["basic", "iconOnly"],
+      "antd": "icon + children"
+    },
+    "ghost": {
+      "values": [false, true],
+      "antd": "ghost",
+      "default": false
+    },
+    "danger": {
+      "values": [false, true],
+      "antd": "danger",
+      "default": false
+    },
+    "shape": {
+      "values": ["default", "round"],
+      "antd": "shape",
+      "default": "default"
+    }
+  },
+
+  "naming": {
+    "figma": "Type={Type}, Size={Size}, State={State}, Content={Content}, Ghost={Ghost}, Danger={Danger}, Shape={Shape}",
+    "example": "Type=Primary, Size=Default, State=Hover, Content=Basic, Ghost=False, Danger=False, Shape=Default"
+  },
+
+  "layout": {
+    "iconSize": { "ref": "iconSize/iconSizeMd16", "value": 16 },
+    "iconTextGap": { "ref": "margin/marginXs8", "value": 8 },
+    "lineWidth": { "ref": "Border/border-width", "value": 1 },
+    "contentAlign": { "value": "center", "mapped": false, "reason": "layout enum, not a design token" }
+  },
+
+  "sizes": {
+    "small": {
+      "controlHeight": { "ref": "controlHeight/controlHeightSm24", "value": 24 },
+      "iconOnlySize": { "ref": "controlHeight/controlHeightSm24", "value": 24 },
+      "paddingInline": { "ref": "padding/paddingXs8", "value": 8, "antdValue": 7, "mapping": "nearest" },
+      "borderRadius": { "ref": "radius/roundedSm4", "value": 4 },
+      "typography": { "ref": "EN/Paragraph 14_h20_Regular" },
+      "basicMinWidth": { "value": 58, "mapped": false, "reason": "Ant Design layout constant" }
+    },
+    "default": {
+      "controlHeight": { "ref": "controlHeight/controlHeightMd32", "value": 32 },
+      "iconOnlySize": { "ref": "controlHeight/controlHeightMd32", "value": 32 },
+      "paddingInline": { "ref": "padding/padding16", "value": 16, "antdValue": 15, "mapping": "nearest" },
+      "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
+      "typography": { "ref": "EN/Paragraph 14_h20_Regular" },
+      "basicMinWidth": { "value": 74, "mapped": false, "reason": "Ant Design layout constant" }
+    },
+    "large": {
+      "controlHeight": { "ref": "controlHeight/controlHeightLg40", "value": 40 },
+      "iconOnlySize": { "ref": "controlHeight/controlHeightLg40", "value": 40 },
+      "paddingInline": { "ref": "padding/padding16", "value": 16, "antdValue": 15, "mapping": "nearest" },
+      "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
+      "typography": { "ref": "EN/H6 16_h24_Regular" },
+      "basicMinWidth": { "value": 81, "mapped": false, "reason": "Ant Design layout constant" }
+    }
+  },
+
+  "typography": {
+    "baseNormal": {
+      "ref": "EN/Paragraph 14_h20_Regular",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": 400,
+      "fontSize": 14,
+      "lineHeight": 20,
+      "letterSpacing": 0,
+      "antdLineHeight": 22
+    },
+    "lgNormal": {
+      "ref": "EN/H6 16_h24_Regular",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": 400,
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0
+    }
+  },
+
+  "shape": {
+    "default": {
+      "borderRadius": "from sizes[size].borderRadius"
+    },
+    "round": {
+      "borderRadius": { "ref": "radius/roundedFull999", "value": 9999 }
+    }
+  },
+
+  "effects": {
+    "primaryShadow": {
+      "ref": "Component/Button/primaryShadow",
+      "type": "DROP_SHADOW",
+      "offset": { "x": 0, "y": 2 },
+      "radius": 0,
+      "spread": 0,
+      "color": "rgba(5, 145, 255, 0.1)",
+      "appliesTo": ["primary"]
+    },
+    "secondaryShadow": {
+      "ref": "Component/Button/secondaryShadow",
+      "type": "DROP_SHADOW",
+      "offset": { "x": 0, "y": 2 },
+      "radius": 0,
+      "spread": 0,
+      "color": "rgba(0, 0, 0, 0.08)",
+      "appliesTo": ["secondary"]
+    },
+    "defaultShadow": {
+      "ref": "Component/Button/defaultShadow",
+      "type": "DROP_SHADOW",
+      "offset": { "x": 0, "y": 2 },
+      "radius": 0,
+      "spread": 0,
+      "color": "rgba(0, 0, 0, 0.02)",
+      "appliesTo": ["default", "dashed"]
+    },
+    "dangerShadow": {
+      "ref": "Component/Button/dangerShadow",
+      "type": "DROP_SHADOW",
+      "offset": { "x": 0, "y": 2 },
+      "radius": 0,
+      "spread": 0,
+      "color": "rgba(255, 38, 6, 0.06)",
+      "appliesTo": ["primaryDanger"]
+    }
+  },
+
+  "styles": {
+    "primary": {
+      "danger": false,
+      "ghost": false,
+      "states": {
+        "default": {
+          "background": "Brand/Primary/colorPrimary",
+          "border": "Brand/Primary/colorPrimary",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "shadow": "Component/Button/primaryShadow"
+        },
+        "hover": {
+          "background": "Brand/Primary/colorPrimaryHover",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "shadow": "Component/Button/primaryShadow"
+        },
+        "focused": {
+          "background": "Brand/Primary/colorPrimaryHover",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "shadow": "Component/Button/primaryShadow"
+        },
+        "pressed": {
+          "background": "Brand/Primary/colorPrimaryActive",
+          "border": "Brand/Primary/colorPrimaryActive",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "shadow": "Component/Button/primaryShadow"
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    },
+
+    "secondary": {
+      "danger": false,
+      "ghost": false,
+      "states": {
+        "default": {
+          "background": "Brand/Secondary/colorSecondary",
+          "border": "Brand/Secondary/colorSecondary",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "shadow": "Component/Button/secondaryShadow"
+        },
+        "hover": {
+          "background": "Brand/Secondary/colorSecondaryHover",
+          "border": "Brand/Secondary/colorSecondaryHover",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "shadow": "Component/Button/secondaryShadow"
+        },
+        "focused": {
+          "background": "Brand/Secondary/colorSecondaryHover",
+          "border": "Brand/Secondary/colorSecondaryHover",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "shadow": "Component/Button/secondaryShadow"
+        },
+        "pressed": {
+          "background": "Brand/Secondary/colorSecondaryActive",
+          "border": "Brand/Secondary/colorSecondaryActive",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "shadow": "Component/Button/secondaryShadow"
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    },
+
+    "secondaryDanger": {
+      "danger": true,
+      "ghost": false,
+      "states": {
+        "default": {
+          "background": "Brand/Error/colorError",
+          "border": "Brand/Error/colorError",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "shadow": "Component/Button/dangerShadow"
+        },
+        "hover": {
+          "background": "Brand/Error/colorErrorHover",
+          "border": "Brand/Error/colorErrorHover",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "shadow": "Component/Button/dangerShadow"
+        },
+        "focused": {
+          "background": "Brand/Error/colorErrorHover",
+          "border": "Brand/Error/colorErrorHover",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "shadow": "Component/Button/dangerShadow"
+        },
+        "pressed": {
+          "background": "Brand/Error/colorErrorActive",
+          "border": "Brand/Error/colorErrorActive",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "shadow": "Component/Button/dangerShadow"
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    },
+
+    "secondaryGhost": {
+      "danger": false,
+      "ghost": true,
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Brand/Secondary/colorSecondary",
+          "text": "Brand/Secondary/colorSecondary",
+          "shadow": null
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Brand/Secondary/colorSecondaryHover",
+          "text": "Brand/Secondary/colorSecondaryHover",
+          "shadow": null
+        },
+        "focused": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Brand/Secondary/colorSecondaryHover",
+          "text": "Brand/Secondary/colorSecondaryHover",
+          "shadow": null
+        },
+        "pressed": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Brand/Secondary/colorSecondaryActive",
+          "text": "Brand/Secondary/colorSecondaryActive",
+          "shadow": null
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    },
+
+    "primaryDanger": {
+      "danger": true,
+      "ghost": false,
+      "states": {
+        "default": {
+          "background": "Brand/Error/colorError",
+          "border": "Brand/Error/colorError",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "shadow": "Component/Button/dangerShadow"
+        },
+        "hover": {
+          "background": "Brand/Error/colorErrorHover",
+          "border": "Brand/Error/colorErrorHover",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "shadow": "Component/Button/dangerShadow"
+        },
+        "focused": {
+          "background": "Brand/Error/colorErrorHover",
+          "border": "Brand/Error/colorErrorHover",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "shadow": "Component/Button/dangerShadow"
+        },
+        "pressed": {
+          "background": "Brand/Error/colorErrorActive",
+          "border": "Brand/Error/colorErrorActive",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "shadow": "Component/Button/dangerShadow"
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    },
+
+    "defaultDanger": {
+      "danger": true,
+      "ghost": false,
+      "borderStyle": "solid",
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Error/colorError",
+          "text": "Brand/Error/colorError",
+          "shadow": "Component/Button/defaultShadow"
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Error/colorErrorHover",
+          "text": "Brand/Error/colorError",
+          "shadow": "Component/Button/defaultShadow"
+        },
+        "focused": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Error/colorErrorHover",
+          "text": "Brand/Error/colorError",
+          "shadow": "Component/Button/defaultShadow"
+        },
+        "pressed": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Error/colorErrorActive",
+          "text": "Brand/Error/colorError",
+          "shadow": "Component/Button/defaultShadow"
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    },
+
+    "primaryGhost": {
+      "danger": false,
+      "ghost": true,
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Brand/Primary/colorPrimary",
+          "text": "Brand/Primary/colorPrimary",
+          "shadow": null
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "text": "Brand/Primary/colorPrimaryHover",
+          "shadow": null
+        },
+        "focused": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "text": "Brand/Primary/colorPrimaryHover",
+          "shadow": null
+        },
+        "pressed": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Brand/Primary/colorPrimaryActive",
+          "text": "Brand/Primary/colorPrimaryActive",
+          "shadow": null
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    },
+
+    "default": {
+      "danger": false,
+      "ghost": false,
+      "borderStyle": "solid",
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorText",
+          "shadow": "Component/Button/defaultShadow"
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "text": "Brand/Primary/colorPrimaryHover",
+          "shadow": "Component/Button/defaultShadow"
+        },
+        "focused": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "text": "Brand/Primary/colorPrimaryHover",
+          "shadow": "Component/Button/defaultShadow"
+        },
+        "pressed": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryActive",
+          "text": "Brand/Primary/colorPrimaryActive",
+          "shadow": "Component/Button/defaultShadow"
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    },
+
+    "dashed": {
+      "extends": "default",
+      "borderStyle": "dashed"
+    },
+
+    "dashedDanger": {
+      "extends": "defaultDanger",
+      "borderStyle": "dashed"
+    },
+
+    "text": {
+      "danger": false,
+      "ghost": false,
+      "borderStyle": "none",
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Neutral/Bg/colorTransparent",
+          "text": "Neutral/Text/colorText",
+          "shadow": null
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgTextHover",
+          "border": "Neutral/Bg/colorTransparent",
+          "text": "Neutral/Text/colorText",
+          "shadow": null
+        },
+        "focused": {
+          "background": "Neutral/Bg/colorBgTextHover",
+          "border": "Neutral/Bg/colorTransparent",
+          "text": "Neutral/Text/colorText",
+          "shadow": null
+        },
+        "pressed": {
+          "background": "Neutral/Bg/colorBgTextActive",
+          "border": "Neutral/Bg/colorTransparent",
+          "text": "Neutral/Text/colorText",
+          "shadow": null
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Neutral/Bg/colorTransparent",
+          "text": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    },
+
+    "link": {
+      "danger": false,
+      "ghost": false,
+      "borderStyle": "none",
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Neutral/Bg/colorTransparent",
+          "text": "Brand/Link/colorLink",
+          "shadow": null
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Neutral/Bg/colorTransparent",
+          "text": "Brand/Link/colorLinkHover",
+          "shadow": null
+        },
+        "focused": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Neutral/Bg/colorTransparent",
+          "text": "Brand/Link/colorLinkHover",
+          "shadow": null
+        },
+        "pressed": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Neutral/Bg/colorTransparent",
+          "text": "Brand/Link/colorLinkActive",
+          "shadow": null
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Neutral/Bg/colorTransparent",
+          "text": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    },
+
+    "textDanger": {
+      "danger": true,
+      "ghost": false,
+      "borderStyle": "none",
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Neutral/Bg/colorTransparent",
+          "text": "Brand/Error/colorError",
+          "shadow": null
+        },
+        "hover": {
+          "background": "Brand/Error/colorErrorBg",
+          "border": "Neutral/Bg/colorTransparent",
+          "text": "Brand/Error/colorErrorHover",
+          "shadow": null
+        },
+        "focused": {
+          "background": "Brand/Error/colorErrorBg",
+          "border": "Neutral/Bg/colorTransparent",
+          "text": "Brand/Error/colorErrorHover",
+          "shadow": null
+        },
+        "pressed": {
+          "background": "Brand/Error/colorErrorBg",
+          "border": "Neutral/Bg/colorTransparent",
+          "text": "Brand/Error/colorErrorActive",
+          "shadow": null
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": "Neutral/Bg/colorTransparent",
+          "text": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    }
+  },
+
+  "styleResolution": {
+    "rules": [
+      "if type=primary && danger → primaryDanger",
+      "if type=default && danger → defaultDanger",
+      "if type=dashed && danger → dashedDanger",
+      "if type=primary && ghost → primaryGhost",
+      "if type=secondary && danger → secondaryDanger",
+      "if type=secondary && ghost → secondaryGhost",
+      "if type=text && danger → textDanger",
+      "if type=dashed → default styles + borderStyle=dashed",
+      "else → styles[type]"
+    ]
+  },
+
+  "antd": {
+    "import": "import { Button } from 'antd';",
+    "notes": {
+      "secondary": "Custom type — not in Ant Design API. Map to a themed solid button using Brand/Secondary tokens (Base/black)."
+    },
+    "examples": {
+      "primary": "<Button type=\"primary\">Button</Button>",
+      "secondary": "<Button type=\"secondary\">Button</Button>",
+      "default": "<Button>Button</Button>",
+      "dashed": "<Button type=\"dashed\">Button</Button>",
+      "text": "<Button type=\"text\">Button</Button>",
+      "link": "<Button type=\"link\">Button</Button>",
+      "large": "<Button size=\"large\">Button</Button>",
+      "small": "<Button size=\"small\">Button</Button>",
+      "round": "<Button type=\"primary\" shape=\"round\">Button</Button>",
+      "ghost": "<Button type=\"primary\" ghost>Button</Button>",
+      "secondaryGhost": "<Button type=\"secondary\" ghost>Button</Button>",
+      "danger": "<Button type=\"primary\" danger>Button</Button>",
+      "secondaryDanger": "<Button type=\"secondary\" danger>Button</Button>",
+      "iconOnly": "<Button type=\"primary\" icon={<SearchOutlined />} />"
+    }
+  },
+
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "componentSets": {
+      "*Button*": "Primary + Default + Dashed + Text + Link (Ghost=False, Danger=False) — do NOT duplicate as Button/Primary",
+      "Button/Secondary": "Secondary palette — same matrix, Type column uses Secondary instead of Primary",
+      "Button/Danger": "Danger=True variants — separate set for red theme"
+    },
+    "figmaImplemented": {
+      "ghost": false,
+      "note": "primaryGhost / secondaryGhost defined in styles but not built in Figma yet"
+    },
+    "variantLayout": "Ant Design matrix inside component set — State blocks (columns) → Type sub-columns → Size rows; no page-level text labels.",
+    "borderRadius": {
+      "small": "radius/roundedSm4 (4) — Shape=Default only",
+      "default": "radius/roundedLg8 (8) — Shape=Default only",
+      "large": "radius/roundedLg8 (8) — Shape=Default only",
+      "round": "radius/roundedFull999 (999) — all sizes when Shape=Round"
+    }
+  },
+
+  "mappingCoverage": {
+    "mapped": {
+      "colors": "Brand/* + Neutral/* (all style background/border/text)",
+      "radius": "radius/rounded*",
+      "padding": "padding/* (nearest-value)",
+      "margin": "margin/marginXs8",
+      "controlHeight": "controlHeight/controlHeight*",
+      "iconSize": "iconSize/iconSizeMd16",
+      "borderWidth": "Border/border-width",
+      "typography": "EN/Paragraph 14_h20_Regular, EN/H6 16_h24_Regular",
+      "effects": "Component/Button/{primaryShadow,secondaryShadow,defaultShadow,dangerShadow}",
+      "transparent": "Neutral/Bg/colorTransparent"
+    },
+    "gaps": [
+      {
+        "field": "sizes.*.basicMinWidth",
+        "values": [58, 74, 81],
+        "reason": "Ant Design component layout constants — no foundation scale",
+        "action": "keep as component spec values or add Button/minWidth* tokens later"
+      },
+      {
+        "field": "layout.contentAlign",
+        "value": "center",
+        "reason": "CSS layout enum, not a variable",
+        "action": "hardcode in component"
+      },
+      {
+        "field": "styles.*.borderStyle",
+        "values": ["solid", "dashed", "none"],
+        "reason": "stroke style enum, not a variable",
+        "action": "hardcode per type"
+      },
+      {
+        "field": "typography.baseNormal.antdLineHeight",
+        "value": 22,
+        "foundation": 20,
+        "reason": "EN Paragraph uses 14/20; Ant Design Button uses 14/22",
+        "action": "accept Font style or add Button-specific text style"
+      },
+      {
+        "field": "figmaSync.controlHeight",
+        "reason": "JSON defined; not yet synced to Vision Token in Figma",
+        "action": "run sync script or create variables in Design-System-Test"
+      },
+      {
+        "field": "figmaSync.iconSize",
+        "reason": "JSON defined; not yet synced to Vision Token in Figma",
+        "action": "create iconSize/* variables in Figma"
+      },
+      {
+        "field": "figmaSync.effects",
+        "reason": "Effect styles are Figma local styles, not variables",
+        "action": "create Component/Button/* effect styles in your file (copy from Ant Design reference)"
+      },
+      {
+        "field": "figmaSync.colorTransparent",
+        "reason": "Added to semantic-bg.json; needs Figma variable",
+        "action": "add Neutral/Bg/colorTransparent to ColorMode"
+      },
+      {
+        "field": "styles missing combos",
+        "reason": "default+danger, ghost+danger for non-primary types not in styles block",
+        "action": "extend styles or derive via styleResolution rules"
+      }
+    ]
+  }
+}

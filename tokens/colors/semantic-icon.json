@@ -1,0 +1,7 @@
+{
+  "$description": "Ant Design icon color tokens — Neutral/Icon",
+  "semantic": {
+    "colorIcon": { "ref": "Neutral/Text/colorTextTertiary" },
+    "colorIconHover": { "ref": "Neutral/Text/colorText" }
+  }
+}

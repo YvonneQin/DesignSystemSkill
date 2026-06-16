@@ -1,0 +1,43 @@
+{
+  "$description": "Tailwind-style refs in mode.json → Figma Base names.",
+  "light": {
+    "white": "Base/white/1",
+    "black.5": "Base/black/5",
+    "neutral.50": "Base/gray/1",
+    "neutral.100": "Base/gray/3",
+    "neutral.200": "Base/gray/4",
+    "neutral.500": "Base/gray/10",
+    "neutral.900": "Base/gray/12",
+    "neutral.950": "Base/gray/12",
+    "red.600": "Base/red/9",
+    "blue.8": "Base/blue/8",
+    "blue.9": "Base/blue/9",
+    "blue.10": "Base/blue/10",
+    "blue.11": "Base/blue/11",
+    "blue.12": "Base/blue/12"
+  },
+  "dark": {
+    "white": "Base/white/1",
+    "black.5": "Base/black/5",
+    "neutral.50": "Base/gray/12",
+    "neutral.100": "Base/gray/3",
+    "neutral.200": "Base/gray/11",
+    "neutral.400": "Base/gray/9",
+    "neutral.500": "Base/gray/10",
+    "neutral.700": "Base/gray/8",
+    "neutral.800": "Base/gray/3",
+    "neutral.900": "Base/gray/2",
+    "neutral.950": "Base/gray/1",
+    "red.400": "Base/red/11",
+    "blue.8": "Base/blue/8",
+    "blue.9": "Base/blue/9",
+    "blue.10": "Base/blue/10",
+    "blue.11": "Base/blue/11",
+    "blue.12": "Base/blue/12"
+  },
+  "semanticOverrides": {
+    "semantic-background": { "light": "Base/gray/11", "dark": "Base/gray/3" },
+    "semantic-border": { "light": "Base/gray/9", "dark": "Base/gray/7" }
+  },
+  "semanticNaming": "Neutral/{token}"
+}

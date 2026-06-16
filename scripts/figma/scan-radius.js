@@ -8,7 +8,7 @@
 
 // ---------------------------- CONFIG ----------------------------------------
 const ROOT_NODE_ID = null; // e.g. '115962:128337' — null = selection or page
-const TOKEN_PREFIX = "Radius/"; // variable name prefix for radius tokens
+const TOKEN_PREFIX = "radius/"; // variable name prefix for radius tokens
 const COLLECTION_NAME = "Vision Token"; // null = any collection
 // ----------------------------------------------------------------------------
 

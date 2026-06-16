@@ -1,0 +1,45 @@
+{
+  "$description": "Ant Design info color tokens — Brand/Info → Brand/Primary aliases",
+  "tokens": {
+    "colorInfo": {
+      "light": { "ref": "Brand/Primary/colorPrimary" },
+      "dark": { "ref": "Brand/Primary/colorPrimary" }
+    },
+    "colorInfoBg": {
+      "light": { "ref": "Brand/Primary/colorPrimaryBg" },
+      "dark": { "ref": "Brand/Primary/colorPrimaryBg" }
+    },
+    "colorInfoBgHover": {
+      "light": { "ref": "Brand/Primary/colorPrimaryBgHover" },
+      "dark": { "ref": "Brand/Primary/colorPrimaryBgHover" }
+    },
+    "colorInfoBorder": {
+      "light": { "ref": "Brand/Primary/colorPrimaryBorder" },
+      "dark": { "ref": "Brand/Primary/colorPrimaryBorder" }
+    },
+    "colorInfoBorderHover": {
+      "light": { "ref": "Brand/Primary/colorPrimaryBorderHover" },
+      "dark": { "ref": "Brand/Primary/colorPrimaryHover" }
+    },
+    "colorInfoHover": {
+      "light": { "ref": "Brand/Primary/colorPrimaryHover" },
+      "dark": { "ref": "Brand/Primary/colorPrimaryHover" }
+    },
+    "colorInfoActive": {
+      "light": { "ref": "Brand/Primary/colorPrimaryActive" },
+      "dark": { "ref": "Brand/Primary/colorPrimaryActive" }
+    },
+    "colorInfoTextHover": {
+      "light": { "ref": "Brand/Primary/colorPrimaryTextHover" },
+      "dark": { "ref": "Brand/Primary/colorPrimaryTextHover" }
+    },
+    "colorInfoText": {
+      "light": { "ref": "Brand/Primary/colorPrimaryText" },
+      "dark": { "ref": "Brand/Primary/colorPrimaryText" }
+    },
+    "colorInfoTextActive": {
+      "light": { "ref": "Brand/Primary/colorPrimaryTextActive" },
+      "dark": { "ref": "Brand/Primary/colorPrimaryTextActive" }
+    }
+  }
+}

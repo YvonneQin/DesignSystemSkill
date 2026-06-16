@@ -1,0 +1,46 @@
+{
+  "$description": "Ant Design warning color tokens — Brand/Warning → Base/gold",
+  "palette": "gold",
+  "tokens": {
+    "colorWarning": {
+      "light": { "ref": "Base/gold/6" },
+      "dark": { "ref": "Base/gold/6" }
+    },
+    "colorWarningBg": {
+      "light": { "ref": "Base/gold/1" },
+      "dark": { "ref": "Base/gold/1" }
+    },
+    "colorWarningBgHover": {
+      "light": { "ref": "Base/gold/2" },
+      "dark": { "ref": "Base/gold/2" }
+    },
+    "colorWarningBorder": {
+      "light": { "ref": "Base/gold/3" },
+      "dark": { "ref": "Base/gold/3" }
+    },
+    "colorWarningBorderHover": {
+      "light": { "ref": "Base/gold/4" },
+      "dark": { "ref": "Base/gold/4" }
+    },
+    "colorWarningHover": {
+      "light": { "ref": "Base/gold/5" },
+      "dark": { "ref": "Base/gold/7" }
+    },
+    "colorWarningActive": {
+      "light": { "ref": "Base/gold/7" },
+      "dark": { "ref": "Base/gold/5" }
+    },
+    "colorWarningTextHover": {
+      "light": { "ref": "Base/gold/8" },
+      "dark": { "ref": "Base/gold/8" }
+    },
+    "colorWarningText": {
+      "light": { "ref": "Base/gold/9" },
+      "dark": { "ref": "Base/gold/9" }
+    },
+    "colorWarningTextActive": {
+      "light": { "ref": "Base/gold/10" },
+      "dark": { "ref": "Base/gold/10" }
+    }
+  }
+}

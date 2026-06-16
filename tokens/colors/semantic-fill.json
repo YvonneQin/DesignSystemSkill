@@ -1,0 +1,26 @@
+{
+  "$description": "Ant Design fill color tokens — Neutral/Fill",
+  "base": {
+    "colorFill": {
+      "light": { "value": "rgba(0, 0, 0, 0.15)" },
+      "dark": { "value": "rgba(255, 255, 255, 0.18)" }
+    },
+    "colorFillSecondary": {
+      "light": { "value": "rgba(0, 0, 0, 0.06)" },
+      "dark": { "value": "rgba(255, 255, 255, 0.12)" }
+    },
+    "colorFillTertiary": {
+      "light": { "value": "rgba(0, 0, 0, 0.04)" },
+      "dark": { "value": "rgba(255, 255, 255, 0.08)" }
+    },
+    "colorFillQuaternary": {
+      "light": { "value": "rgba(0, 0, 0, 0.02)" },
+      "dark": { "value": "rgba(255, 255, 255, 0.04)" }
+    }
+  },
+  "semantic": {
+    "colorFillContent": { "ref": "colorFillSecondary" },
+    "colorFillContentHover": { "ref": "colorFill" },
+    "colorFillAlter": { "ref": "colorFillQuaternary" }
+  }
+}

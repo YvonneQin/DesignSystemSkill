@@ -1,0 +1,63 @@
+{
+  "$description": "Effect styles — sourced from Ant Design System for Figma",
+  "$source": {
+    "figma": {
+      "fileKey": "L3k9dxCWyCjhm5G5V22A13",
+      "url": "https://www.figma.com/design/L3k9dxCWyCjhm5G5V22A13/Ant-Design-System-for-Figma--Free-version---Community-"
+    }
+  },
+  "global": {
+    "boxShadow": {
+      "ref": "boxShadow",
+      "effects": [
+        { "type": "DROP_SHADOW", "offset": { "x": 0, "y": 2 }, "radius": 4, "spread": 0, "color": "rgba(0, 0, 0, 0.02)" },
+        { "type": "DROP_SHADOW", "offset": { "x": 0, "y": 1 }, "radius": 6, "spread": -1, "color": "rgba(0, 0, 0, 0.02)" },
+        { "type": "DROP_SHADOW", "offset": { "x": 0, "y": 1 }, "radius": 2, "spread": 0, "color": "rgba(0, 0, 0, 0.03)" }
+      ]
+    },
+    "boxShadowSecondary": {
+      "ref": "boxShadowSecondary",
+      "effects": [
+        { "type": "DROP_SHADOW", "offset": { "x": 0, "y": 9 }, "radius": 28, "spread": 8, "color": "rgba(0, 0, 0, 0.05)" },
+        { "type": "DROP_SHADOW", "offset": { "x": 0, "y": 3 }, "radius": 6, "spread": -4, "color": "rgba(0, 0, 0, 0.12)" },
+        { "type": "DROP_SHADOW", "offset": { "x": 0, "y": 6 }, "radius": 16, "spread": 0, "color": "rgba(0, 0, 0, 0.08)" }
+      ]
+    },
+    "boxShadowTertiary": {
+      "ref": "boxShadowTertiary",
+      "effects": [
+        { "type": "DROP_SHADOW", "offset": { "x": 0, "y": 2 }, "radius": 4, "spread": 0, "color": "rgba(0, 0, 0, 0.02)" },
+        { "type": "DROP_SHADOW", "offset": { "x": 0, "y": 1 }, "radius": 6, "spread": -1, "color": "rgba(0, 0, 0, 0.02)" },
+        { "type": "DROP_SHADOW", "offset": { "x": 0, "y": 1 }, "radius": 2, "spread": 0, "color": "rgba(0, 0, 0, 0.03)" }
+      ]
+    }
+  },
+  "component": {
+    "Button": {
+      "primaryShadow": {
+        "ref": "Component/Button/primaryShadow",
+        "effects": [
+          { "type": "DROP_SHADOW", "offset": { "x": 0, "y": 2 }, "radius": 0, "spread": 0, "color": "rgba(5, 145, 255, 0.1)" }
+        ]
+      },
+      "secondaryShadow": {
+        "ref": "Component/Button/secondaryShadow",
+        "effects": [
+          { "type": "DROP_SHADOW", "offset": { "x": 0, "y": 2 }, "radius": 0, "spread": 0, "color": "rgba(0, 0, 0, 0.08)" }
+        ]
+      },
+      "defaultShadow": {
+        "ref": "Component/Button/defaultShadow",
+        "effects": [
+          { "type": "DROP_SHADOW", "offset": { "x": 0, "y": 2 }, "radius": 0, "spread": 0, "color": "rgba(0, 0, 0, 0.02)" }
+        ]
+      },
+      "dangerShadow": {
+        "ref": "Component/Button/dangerShadow",
+        "effects": [
+          { "type": "DROP_SHADOW", "offset": { "x": 0, "y": 2 }, "radius": 0, "spread": 0, "color": "rgba(255, 38, 6, 0.06)" }
+        ]
+      }
+    }
+  }
+}

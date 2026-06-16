@@ -1,0 +1,17 @@
+{
+  "$description": "Ant Design border color tokens — Neutral/Border",
+  "tokens": {
+    "colorBorder": {
+      "light": { "value": "#D9D9D9" },
+      "dark": { "value": "#424242" }
+    },
+    "colorBorderSecondary": {
+      "light": { "value": "#F0F0F0" },
+      "dark": { "value": "#303030" }
+    },
+    "colorSplit": {
+      "light": { "value": "rgba(0, 0, 0, 0.06)" },
+      "dark": { "value": "rgba(255, 255, 255, 0.06)" }
+    }
+  }
+}

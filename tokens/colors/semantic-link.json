@@ -1,0 +1,17 @@
+{
+  "$description": "Ant Design link color tokens — Brand/Link → Brand/Primary aliases",
+  "tokens": {
+    "colorLink": {
+      "light": { "ref": "Brand/Primary/colorPrimary" },
+      "dark": { "ref": "Brand/Primary/colorPrimary" }
+    },
+    "colorLinkHover": {
+      "light": { "ref": "Brand/Primary/colorPrimaryHover" },
+      "dark": { "ref": "Brand/Primary/colorPrimaryHover" }
+    },
+    "colorLinkActive": {
+      "light": { "ref": "Brand/Primary/colorPrimaryActive" },
+      "dark": { "ref": "Brand/Primary/colorPrimaryActive" }
+    }
+  }
+}

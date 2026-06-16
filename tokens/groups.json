@@ -1,0 +1,339 @@
+{
+  "$description": "Token group tree — Base, Neutral, Brand at same top level",
+  "groups": [
+    {
+      "name": "Base",
+      "description": "Radix primitive palettes — 10-step scale (steps 1–10 from rdxcolors)",
+      "source": "sources/rdx-base-10.json",
+      "figmaCollection": "ColorMode",
+      "tokenNaming": "Base/{palette}/{step}",
+      "modes": ["Light", "Dark"],
+      "palettes": [
+        { "name": "gray", "steps": 10 },
+        { "name": "mauve", "steps": 10 },
+        { "name": "slate", "steps": 10 },
+        { "name": "sage", "steps": 10 },
+        { "name": "olive", "steps": 10 },
+        { "name": "sand", "steps": 10 },
+        { "name": "tomato", "steps": 10 },
+        { "name": "red", "steps": 10 },
+        { "name": "ruby", "steps": 10 },
+        { "name": "crimson", "steps": 10 },
+        { "name": "pink", "steps": 10 },
+        { "name": "plum", "steps": 10 },
+        { "name": "purple", "steps": 10 },
+        { "name": "violet", "steps": 10 },
+        { "name": "iris", "steps": 10 },
+        { "name": "indigo", "steps": 10 },
+        { "name": "blue", "steps": 10 },
+        { "name": "cyan", "steps": 10 },
+        { "name": "teal", "steps": 10 },
+        { "name": "jade", "steps": 10 },
+        { "name": "green", "steps": 10 },
+        { "name": "grass", "steps": 10 },
+        { "name": "bronze", "steps": 10 },
+        { "name": "gold", "steps": 10 },
+        { "name": "brown", "steps": 10 },
+        { "name": "orange", "steps": 10 },
+        { "name": "amber", "steps": 10 },
+        { "name": "yellow", "steps": 10 },
+        { "name": "lime", "steps": 10 },
+        { "name": "mint", "steps": 10 },
+        { "name": "sky", "steps": 10 },
+        { "name": "black", "steps": 10 },
+        { "name": "white", "steps": 10 }
+      ]
+    },
+    {
+      "name": "Neutral",
+      "description": "Ant Design neutral semantic colors — Text, Icon, Fill, Bg, Border",
+      "figmaCollection": "ColorMode",
+      "tokenNaming": "Neutral/{category}/{token}",
+      "modes": ["Light", "Dark"],
+      "categories": [
+        { "name": "Text", "source": "colors/semantic-text.json", "tokens": ["colorText", "colorTextSecondary", "colorTextTertiary", "colorTextQuaternary", "colorTextLightSolid", "colorTextHeading", "colorTextLabel", "colorTextDescription", "colorTextDisabled", "colorTextPlaceholder"] },
+        { "name": "Icon", "source": "colors/semantic-icon.json", "tokens": ["colorIcon", "colorIconHover"] },
+        { "name": "Fill", "source": "colors/semantic-fill.json", "tokens": ["colorFill", "colorFillSecondary", "colorFillTertiary", "colorFillQuaternary", "colorFillContent", "colorFillContentHover", "colorFillAlter"] },
+        { "name": "Bg", "source": "colors/semantic-bg.json", "tokens": ["colorBgBase", "colorBgContainer", "colorBgElevated", "colorBgLayout", "colorBgMask", "colorBgSpotlight", "colorBgContainerDisabled", "colorBgTextActive", "colorBgTextHover", "colorBorderBg", "colorTransparent"] },
+        { "name": "Border", "source": "colors/semantic-border.json", "tokens": ["colorBorder", "colorBorderSecondary", "colorSplit"] }
+      ]
+    },
+    {
+      "name": "Brand",
+      "description": "Brand semantic colors — Figma collection: ColorMode",
+      "children": [
+        {
+          "name": "Primary",
+          "description": "Primary brand scale — aliases Base/indigo",
+          "source": "colors/semantic-primary.json",
+          "figmaCollection": "ColorMode",
+          "tokenNaming": "Brand/Primary/{token}",
+          "modes": ["Light", "Dark"],
+          "tokens": [
+            "colorPrimary",
+            "colorPrimaryBg",
+            "colorPrimaryBgHover",
+            "colorPrimaryBorder",
+            "colorPrimaryBorderHover",
+            "colorPrimaryHover",
+            "colorPrimaryActive",
+            "colorPrimaryTextHover",
+            "colorPrimaryText",
+            "colorPrimaryTextActive"
+          ]
+        },
+        {
+          "name": "Secondary",
+          "description": "Secondary brand scale — aliases Base/black",
+          "source": "colors/semantic-secondary.json",
+          "figmaCollection": "ColorMode",
+          "tokenNaming": "Brand/Secondary/{token}",
+          "modes": ["Light", "Dark"],
+          "tokens": [
+            "colorSecondary",
+            "colorSecondaryBg",
+            "colorSecondaryBgHover",
+            "colorSecondaryBorder",
+            "colorSecondaryBorderHover",
+            "colorSecondaryHover",
+            "colorSecondaryActive",
+            "colorSecondaryTextHover",
+            "colorSecondaryText",
+            "colorSecondaryTextActive"
+          ]
+        },
+        {
+          "name": "Success",
+          "description": "Success semantic scale — aliases Base/green (Ant Design mapping)",
+          "source": "colors/semantic-success.json",
+          "figmaCollection": "ColorMode",
+          "tokenNaming": "Brand/Success/{token}",
+          "modes": ["Light", "Dark"],
+          "tokens": [
+            "colorSuccess",
+            "colorSuccessBg",
+            "colorSuccessBgHover",
+            "colorSuccessBorder",
+            "colorSuccessBorderHover",
+            "colorSuccessHover",
+            "colorSuccessActive",
+            "colorSuccessTextHover",
+            "colorSuccessText",
+            "colorSuccessTextActive"
+          ]
+        },
+        {
+          "name": "Warning",
+          "description": "Warning semantic scale — aliases Base/gold (Ant Design mapping)",
+          "source": "colors/semantic-warning.json",
+          "figmaCollection": "ColorMode",
+          "tokenNaming": "Brand/Warning/{token}",
+          "modes": ["Light", "Dark"],
+          "tokens": [
+            "colorWarning",
+            "colorWarningBg",
+            "colorWarningBgHover",
+            "colorWarningBorder",
+            "colorWarningBorderHover",
+            "colorWarningHover",
+            "colorWarningActive",
+            "colorWarningTextHover",
+            "colorWarningText",
+            "colorWarningTextActive"
+          ]
+        },
+        {
+          "name": "Info",
+          "description": "Info semantic scale — aliases Brand/Primary (Ant Design mapping)",
+          "source": "colors/semantic-info.json",
+          "figmaCollection": "ColorMode",
+          "tokenNaming": "Brand/Info/{token}",
+          "modes": ["Light", "Dark"],
+          "tokens": [
+            "colorInfo",
+            "colorInfoBg",
+            "colorInfoBgHover",
+            "colorInfoBorder",
+            "colorInfoBorderHover",
+            "colorInfoHover",
+            "colorInfoActive",
+            "colorInfoTextHover",
+            "colorInfoText",
+            "colorInfoTextActive"
+          ]
+        },
+        {
+          "name": "Error",
+          "description": "Error semantic scale — aliases Base/red (Ant Design mapping)",
+          "source": "colors/semantic-error.json",
+          "figmaCollection": "ColorMode",
+          "tokenNaming": "Brand/Error/{token}",
+          "modes": ["Light", "Dark"],
+          "tokens": [
+            "colorError",
+            "colorErrorBg",
+            "colorErrorBgHover",
+            "colorErrorBorder",
+            "colorErrorBorderHover",
+            "colorErrorHover",
+            "colorErrorActive",
+            "colorErrorTextHover",
+            "colorErrorText",
+            "colorErrorTextActive"
+          ]
+        },
+        {
+          "name": "Link",
+          "description": "Link color tokens — aliases Brand/Primary (Ant Design mapping)",
+          "source": "colors/semantic-link.json",
+          "figmaCollection": "ColorMode",
+          "tokenNaming": "Brand/Link/{token}",
+          "modes": ["Light", "Dark"],
+          "tokens": [
+            "colorLink",
+            "colorLinkHover",
+            "colorLinkActive"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Radius",
+      "description": "Corner radius — Figma collection: Vision Token",
+      "source": "sources/radius.json",
+      "figmaCollection": "Vision Token",
+      "tokenNaming": "radius/rounded{Semantic}{px}",
+      "scope": "CORNER_RADIUS",
+      "tokens": [
+        { "name": "roundedNone0", "value": 0 },
+        { "name": "roundedXs2", "value": 2 },
+        { "name": "roundedSm4", "value": 4 },
+        { "name": "roundedMd6", "value": 6 },
+        { "name": "roundedLg8", "value": 8 },
+        { "name": "roundedXl12", "value": 12 },
+        { "name": "rounded2Xl16", "value": 16 },
+        { "name": "rounded3Xl24", "value": 24 },
+        { "name": "rounded4Xl32", "value": 32 },
+        { "name": "roundedFull999", "value": 999 }
+      ]
+    },
+    {
+      "name": "Margin",
+      "description": "Margin spacing — Figma collection: Vision Token",
+      "source": "sources/margin.json",
+      "figmaCollection": "Vision Token",
+      "tokenNaming": "margin/margin{Size}{px}",
+      "scope": "GAP",
+      "tokens": [
+        { "name": "marginXxs4", "value": 4 },
+        { "name": "marginXs8", "value": 8 },
+        { "name": "marginSm12", "value": 12 },
+        { "name": "margin16", "value": 16 },
+        { "name": "marginMd20", "value": 20 },
+        { "name": "marginLg24", "value": 24 },
+        { "name": "marginXl32", "value": 32 },
+        { "name": "marginXxl48", "value": 48 }
+      ]
+    },
+    {
+      "name": "Padding",
+      "description": "Padding spacing — Figma collection: Vision Token",
+      "source": "sources/padding.json",
+      "figmaCollection": "Vision Token",
+      "tokenNaming": "padding/padding{Size}{px}",
+      "scope": "GAP",
+      "tokens": [
+        { "name": "paddingXxs4", "value": 4 },
+        { "name": "paddingXs8", "value": 8 },
+        { "name": "paddingSm12", "value": 12 },
+        { "name": "padding16", "value": 16 },
+        { "name": "paddingMd20", "value": 20 },
+        { "name": "paddingLg24", "value": 24 },
+        { "name": "paddingXl32", "value": 32 }
+      ]
+    },
+    {
+      "name": "Border",
+      "description": "Stroke / border width",
+      "source": "sources/mode.json",
+      "tokenNaming": "Border/{token}",
+      "tokens": [
+        { "name": "stroke-width", "value": 2 },
+        { "name": "border-width", "value": 1 }
+      ]
+    },
+    {
+      "name": "ControlHeight",
+      "description": "Component control height — Figma collection: Vision Token",
+      "source": "sources/control-height.json",
+      "figmaCollection": "Vision Token",
+      "tokenNaming": "controlHeight/controlHeight{Size}{px}",
+      "scope": "WIDTH_HEIGHT",
+      "tokens": [
+        { "name": "controlHeightSm24", "value": 24 },
+        { "name": "controlHeightMd32", "value": 32 },
+        { "name": "controlHeightLg40", "value": 40 }
+      ]
+    },
+    {
+      "name": "IconSize",
+      "description": "Icon dimensions — Figma collection: Vision Token",
+      "source": "sources/icon-size.json",
+      "figmaCollection": "Vision Token",
+      "tokenNaming": "iconSize/iconSize{Size}{px}",
+      "scope": "WIDTH_HEIGHT",
+      "tokens": [
+        { "name": "iconSizeSm12", "value": 12 },
+        { "name": "iconSizeMd16", "value": 16 },
+        { "name": "iconSizeLg20", "value": 20 },
+        { "name": "iconSizeXl24", "value": 24 }
+      ]
+    },
+    {
+      "name": "Typography",
+      "description": "Text styles — Figma collection: Font",
+      "source": "typography/en-text-styles.json",
+      "figmaCollection": "Font",
+      "tokenNaming": "EN/{styleName}",
+      "styles": ["Paragraph 14_h20_Regular", "H6 16_h24_Regular"]
+    },
+    {
+      "name": "Effects",
+      "description": "Effect styles — Figma local effect styles (not variables)",
+      "source": "effects/styles.json",
+      "styles": [
+        "boxShadow",
+        "boxShadowSecondary",
+        "boxShadowTertiary",
+        "Component/Button/primaryShadow",
+        "Component/Button/secondaryShadow",
+        "Component/Button/defaultShadow",
+        "Component/Button/dangerShadow"
+      ]
+    },
+    {
+      "name": "Components",
+      "description": "Component-level specs (reference tokens, not standalone variables)",
+      "children": [
+        {
+          "name": "Button",
+          "description": "Ant Design Button — 960 variants, maps to Brand/Neutral/radius/padding tokens",
+          "source": "components/button.json",
+          "figmaReference": {
+            "fileKey": "L3k9dxCWyCjhm5G5V22A13",
+            "nodeId": "784:2294"
+          },
+          "variants": {
+            "type": 5,
+            "size": 3,
+            "state": 5,
+            "content": 2,
+            "ghost": 2,
+            "danger": 2,
+            "shape": 2
+          }
+        }
+      ]
+    }
+  ]
+}

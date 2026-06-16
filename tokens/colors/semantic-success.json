@@ -1,0 +1,46 @@
+{
+  "$description": "Ant Design success color tokens — Brand/Success → Base/green",
+  "palette": "green",
+  "tokens": {
+    "colorSuccess": {
+      "light": { "ref": "Base/green/6" },
+      "dark": { "ref": "Base/green/6" }
+    },
+    "colorSuccessBg": {
+      "light": { "ref": "Base/green/1" },
+      "dark": { "ref": "Base/green/1" }
+    },
+    "colorSuccessBgHover": {
+      "light": { "ref": "Base/green/2" },
+      "dark": { "ref": "Base/green/2" }
+    },
+    "colorSuccessBorder": {
+      "light": { "ref": "Base/green/3" },
+      "dark": { "ref": "Base/green/3" }
+    },
+    "colorSuccessBorderHover": {
+      "light": { "ref": "Base/green/4" },
+      "dark": { "ref": "Base/green/4" }
+    },
+    "colorSuccessHover": {
+      "light": { "ref": "Base/green/5" },
+      "dark": { "ref": "Base/green/7" }
+    },
+    "colorSuccessActive": {
+      "light": { "ref": "Base/green/7" },
+      "dark": { "ref": "Base/green/5" }
+    },
+    "colorSuccessTextHover": {
+      "light": { "ref": "Base/green/8" },
+      "dark": { "ref": "Base/green/8" }
+    },
+    "colorSuccessText": {
+      "light": { "ref": "Base/green/9" },
+      "dark": { "ref": "Base/green/9" }
+    },
+    "colorSuccessTextActive": {
+      "light": { "ref": "Base/green/10" },
+      "dark": { "ref": "Base/green/10" }
+    }
+  }
+}

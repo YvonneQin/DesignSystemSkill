@@ -1,0 +1,15 @@
+{
+  "$description": "Padding scale — Vision Token, camelCase group + fused names",
+  "collection": "Vision Token",
+  "naming": "padding/padding{Size}{px}",
+  "scope": "GAP",
+  "tokens": [
+    { "name": "paddingXxs4", "value": 4 },
+    { "name": "paddingXs8", "value": 8 },
+    { "name": "paddingSm12", "value": 12 },
+    { "name": "padding16", "value": 16 },
+    { "name": "paddingMd20", "value": 20 },
+    { "name": "paddingLg24", "value": 24 },
+    { "name": "paddingXl32", "value": 32 }
+  ]
+}

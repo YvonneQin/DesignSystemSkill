@@ -1,0 +1,46 @@
+function hexToRgba(hex) {
+  let h = String(hex).replace('#', '');
+  if (h.length === 8) {
+    return {
+      r: parseInt(h.slice(0, 2), 16) / 255,
+      g: parseInt(h.slice(2, 4), 16) / 255,
+      b: parseInt(h.slice(4, 6), 16) / 255,
+      a: parseInt(h.slice(6, 8), 16) / 255,
+    };
+  }
+  return {
+    r: parseInt(h.slice(0, 2), 16) / 255,
+    g: parseInt(h.slice(2, 4), 16) / 255,
+    b: parseInt(h.slice(4, 6), 16) / 255,
+    a: 1,
+  };
+}
+const DATA = {"gray":{"1":{"light":"#fcfcfc","dark":"#080808"},"2":{"light":"#f4f4f4","dark":"#0d0d0d"},"3":{"light":"#dfdfdf","dark":"#121212"},"4":{"light":"#cbcbcb","dark":"#161616"},"5":{"light":"#b7b7b7","dark":"#1b1b1b"},"6":{"light":"#a2a2a2","dark":"#202020"},"7":{"light":"#888888","dark":"#252525"},"8":{"light":"#717171","dark":"#292929"},"9":{"light":"#5d5d5d","dark":"#888888"},"10":{"light":"#4a4a4a","dark":"#9a9a9a"}},"mauve":{"1":{"light":"#f5f5f5","dark":"#070707"},"2":{"light":"#dedee0","dark":"#0b0a0c"},"3":{"light":"#c9c8cd","dark":"#0e0e10"},"4":{"light":"#b4b3ba","dark":"#121214"},"5":{"light":"#9f9ea6","dark":"#161618"},"6":{"light":"#8a8892","dark":"#1a1a1d"},"7":{"light":"#6f6d7a","dark":"#1e1d21"},"8":{"light":"#595860","dark":"#222125"},"9":{"light":"#46454c","dark":"#6f6d7a"},"10":{"light":"#343338","dark":"#85838e"}},"slate":{"1":{"light":"#f4f4f4","dark":"#060707"},"2":{"light":"#dddddf","dark":"#0a0a0b"},"3":{"light":"#c7c8cc","dark":"#0e0e10"},"4":{"light":"#b2b3b9","dark":"#121214"},"5":{"light":"#9d9ea5","dark":"#161618"},"6":{"light":"#878991","dark":"#191a1c"},"7":{"light":"#6c6e79","dark":"#1d1e21"},"8":{"light":"#57585f","dark":"#212225"},"9":{"light":"#44454b","dark":"#6c6e79"},"10":{"light":"#323337","dark":"#82848d"}},"sage":{"1":{"light":"#ededed","dark":"#060706"},"2":{"light":"#d6d8d7","dark":"#0a0b0a"},"3":{"light":"#c1c4c3","dark":"#0e0e0e"},"4":{"light":"#adb0af","dark":"#111212"},"5":{"light":"#989c9a","dark":"#151616"},"6":{"light":"#828885","dark":"#181a19"},"7":{"light":"#686f6c","dark":"#1c1e1d"},"8":{"light":"#525654","dark":"#202221"},"9":{"light":"#3f4241","dark":"#686f6c"},"10":{"light":"#2c2f2e","dark":"#7f8582"}},"olive":{"1":{"light":"#edeeed","dark":"#060706"},"2":{"light":"#d7d8d7","dark":"#0a0b0a"},"3":{"light":"#c3c4c2","dark":"#0e0e0e"},"4":{"light":"#aeb1ad","dark":"#121211"},"5":{"light":"#9a9d98","dark":"#151615"},"6":{"light":"#858883","dark":"#191a19"},"7":{"light":"#6b6f69","dark":"#1d1e1c"},"8":{"light":"#545653","dark":"#212220"},"9":{"light":"#414240","dark":"#6b6f69"},"10":{"light":"#2e2f2d","dark":"#818580"}},"sand":{"1":{"light":"#ededec","dark":"#070706"},"2":{"light":"#d7d7d6","dark":"#0a0a0a"},"3":{"light":"#c3c3c1","dark":"#0e0e0e"},"4":{"light":"#b0b0ac","dark":"#121211"},"5":{"light":"#9c9c97","dark":"#161615"},"6":{"light":"#878782","dark":"#1a1a18"},"7":{"light":"#6e6e68","dark":"#1e1e1c"},"8":{"light":"#555552","dark":"#222220"},"9":{"light":"#41413f","dark":"#6e6e68"},"10":{"light":"#2e2e2c","dark":"#84847f"}},"ruby":{"1":{"light":"#ffa4b6","dark":"#240007"},"2":{"light":"#ff7893","dark":"#33000a"},"3":{"light":"#ff4f72","dark":"#42000d"},"4":{"light":"#ff2752","dark":"#570011"},"5":{"light":"#fd0033","dark":"#6b0015"},"6":{"light":"#d3002a","dark":"#85001b"},"7":{"light":"#a00020","dark":"#a30021"},"8":{"light":"#710017","dark":"#d6002b"},"9":{"light":"#4a000f","dark":"#a00020"},"10":{"light":"#240007","dark":"#d80630"}},"crimson":{"1":{"light":"#fdeef4","dark":"#1f040f"},"2":{"light":"#f9c6da","dark":"#2d0616"},"3":{"light":"#f6a0c3","dark":"#3a081c"},"4":{"light":"#f27cac","dark":"#4c0a25"},"5":{"light":"#ef5694","dark":"#5e0d2e"},"6":{"light":"#eb307b","dark":"#751039"},"7":{"light":"#cc1c63","dark":"#901446"},"8":{"light":"#a9104e","dark":"#bc1a5b"},"9":{"light":"#850d3d","dark":"#cc1c63"},"10":{"light":"#63092d","dark":"#e14484"}},"plum":{"1":{"light":"#eed9f1","dark":"#170a19"},"2":{"light":"#dfb9e5","dark":"#210f24"},"3":{"light":"#d19bda","dark":"#2b132f"},"4":{"light":"#c47dd0","dark":"#39193e"},"5":{"light":"#b65fc5","dark":"#461f4c"},"6":{"light":"#a743b7","dark":"#57265f"},"7":{"light":"#82398e","dark":"#6b2f74"},"8":{"light":"#65296f","dark":"#8c3d99"},"9":{"light":"#4b1e53","dark":"#82398e"},"10":{"light":"#321437","dark":"#a64fb5"}},"violet":{"1":{"light":"#e4bbee","dark":"#18081c"},"2":{"light":"#d698e5","dark":"#220b28"},"3":{"light":"#c977dd","dark":"#2c0f34"},"4":{"light":"#bc57d5","dark":"#3a1343"},"5":{"light":"#b036cd","dark":"#481853"},"6":{"light":"#942bae","dark":"#591e67"},"7":{"light":"#6f2581","dark":"#6d247f"},"8":{"light":"#51185f","dark":"#8f30a6"},"9":{"light":"#371040","dark":"#6f2581"},"10":{"light":"#1d0822","dark":"#9636ad"}},"iris":{"1":{"light":"#f9f9fd","dark":"#08081c"},"2":{"light":"#d5d5f5","dark":"#0b0b28"},"3":{"light":"#b4b4ed","dark":"#0e0e34"},"4":{"light":"#9393e6","dark":"#131344"},"5":{"light":"#7272de","dark":"#171754"},"6":{"light":"#5050d6","dark":"#1c1c68"},"7":{"light":"#3434bf","dark":"#232380"},"8":{"light":"#25259f","dark":"#2e2ea8"},"9":{"light":"#1e1e7f","dark":"#3434bf"},"10":{"light":"#171760","dark":"#6060d0"}},"teal":{"1":{"light":"#67fff3","dark":"#002421"},"2":{"light":"#3bffef","dark":"#00332f"},"3":{"light":"#12ffec","dark":"#00423d"},"4":{"light":"#00e9d6","dark":"#005750"},"5":{"light":"#00c0b0","dark":"#006b62"},"6":{"light":"#00968a","dark":"#00857a"},"7":{"light":"#00635b","dark":"#00a396"},"8":{"light":"#003430","dark":"#00d6c5"},"9":{"light":"#000d0c","dark":"#00635b"},"10":{"light":"#000a09","dark":"#049c90"}},"jade":{"1":{"light":"#a8ead9","dark":"#081c17"},"2":{"light":"#84e2ca","dark":"#0b2820"},"3":{"light":"#63dabb","dark":"#0e342a"},"4":{"light":"#43d2ad","dark":"#134437"},"5":{"light":"#2dbf99","dark":"#175444"},"6":{"light":"#259d7e","dark":"#1d6854"},"7":{"light":"#1f705b","dark":"#238068"},"8":{"light":"#124e3e","dark":"#2ea888"},"9":{"light":"#0b2e25","dark":"#1f705b"},"10":{"light":"#040f0c","dark":"#2f9d81"}},"grass":{"1":{"light":"#cae9cf","dark":"#0b190d"},"2":{"light":"#abdcb3","dark":"#102313"},"3":{"light":"#8dd199","dark":"#142e19"},"4":{"light":"#71c580","dark":"#1b3c21"},"5":{"light":"#54b966","dark":"#214a28"},"6":{"light":"#42a153","dark":"#295c32"},"7":{"light":"#367a42","dark":"#32713d"},"8":{"light":"#255c2f","dark":"#429450"},"9":{"light":"#1a4021","dark":"#367a42"},"10":{"light":"#0f2513","dark":"#4ba25a"}},"bronze":{"1":{"light":"#f0ebe9","dark":"#15110f"},"2":{"light":"#dfd3ce","dark":"#1e1815"},"3":{"light":"#cebdb6","dark":"#271f1b"},"4":{"light":"#bea79e","dark":"#332823"},"5":{"light":"#ae9185","dark":"#40322c"},"6":{"light":"#9d7b6c","dark":"#4f3d36"},"7":{"light":"#7f6357","dark":"#614b42"},"8":{"light":"#644d43","dark":"#7f6357"},"9":{"light":"#4d3b33","dark":"#7f6357"},"10":{"light":"#362924","dark":"#9e8175"}},"brown":{"1":{"light":"#eee5dd","dark":"#18110c"},"2":{"light":"#e0cebf","dark":"#221911"},"3":{"light":"#d3b9a3","dark":"#2c2017"},"4":{"light":"#c6a488","dark":"#392a1d"},"5":{"light":"#b88f6d","dark":"#473424"},"6":{"light":"#a97952","dark":"#58402d"},"7":{"light":"#846144","dark":"#6c4f37"},"8":{"light":"#674a32","dark":"#8d6849"},"9":{"light":"#4d3725","dark":"#846144"},"10":{"light":"#332519","dark":"#a87f5d"}},"mint":{"1":{"light":"#fbfefd","dark":"#0a1a16"},"2":{"light":"#fbfefd","dark":"#0e2520"},"3":{"light":"#e5fbf6","dark":"#123029"},"4":{"light":"#c3f5ea","dark":"#183f36"},"5":{"light":"#9ff0de","dark":"#1e4d43"},"6":{"light":"#7bead1","dark":"#256053"},"7":{"light":"#55ddbf","dark":"#2d7666"},"8":{"light":"#27dcb4","dark":"#399d87"},"9":{"light":"#1ebe9b","dark":"#55ddbf"},"10":{"light":"#199d80","dark":"#8ae5d1"}},"sky":{"1":{"light":"#fafeff","dark":"#08181c"},"2":{"light":"#fafeff","dark":"#0b2228"},"3":{"light":"#ecfbff","dark":"#0e2c34"},"4":{"light":"#c4f2ff","dark":"#133944"},"5":{"light":"#9be9ff","dark":"#174754"},"6":{"light":"#71e0ff","dark":"#1c5868"},"7":{"light":"#44d2f9","dark":"#206e83"},"8":{"light":"#0fcbff","dark":"#2593b1"},"9":{"light":"#00b5e7","dark":"#44d2f9"},"10":{"light":"#0097c1","dark":"#78dcf7"}}};
+const collections = await figma.variables.getLocalVariableCollectionsAsync();
+const modeColl = collections.find(c => c.name === 'ColorMode');
+if (!modeColl) throw new Error('ColorMode collection missing');
+const lightId = modeColl.modes.find(m => m.name === 'Light').modeId;
+const darkId = modeColl.modes.find(m => m.name === 'Dark').modeId;
+const vars = await figma.variables.getLocalVariablesAsync();
+const byName = Object.fromEntries(vars.map(v => [v.name, v]));
+let updated = 0;
+let created = 0;
+const missing = [];
+for (const [palette, steps] of Object.entries(DATA)) {
+  for (const [step, colors] of Object.entries(steps)) {
+    const name = `Base/${palette}/${step}`;
+    let v = byName[name];
+    if (!v) {
+      v = figma.variables.createVariable(name, modeColl, 'COLOR');
+      v.scopes = [];
+      v.description = 'Base palette (10-step)';
+      v.setVariableCodeSyntax('WEB', `var(--${palette}-${step})`);
+      created++;
+    } else {
+      updated++;
+    }
+    v.setValueForMode(lightId, hexToRgba(colors.light));
+    v.setValueForMode(darkId, hexToRgba(colors.dark));
+  }
+}
+return { updated, created, missing, palettes: Object.keys(DATA).length, paletteNames: Object.keys(DATA) };

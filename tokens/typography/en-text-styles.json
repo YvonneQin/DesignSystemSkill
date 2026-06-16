@@ -1,0 +1,25 @@
+{
+  "$description": "English text styles — Figma Font collection (EN group)",
+  "collection": "Font",
+  "naming": "EN/{styleName}",
+  "styles": [
+    {
+      "name": "Paragraph 14_h20_Regular",
+      "ref": "EN/Paragraph 14_h20_Regular",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": 400,
+      "fontSize": 14,
+      "lineHeight": 20,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H6 16_h24_Regular",
+      "ref": "EN/H6 16_h24_Regular",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": 400,
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0
+    }
+  ]
+}

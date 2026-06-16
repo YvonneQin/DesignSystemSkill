@@ -1,0 +1,12 @@
+{
+  "$description": "Icon size scale — Vision Token",
+  "collection": "Vision Token",
+  "naming": "iconSize/iconSize{Size}{px}",
+  "scope": "WIDTH_HEIGHT",
+  "tokens": [
+    { "name": "iconSizeSm12", "value": 12 },
+    { "name": "iconSizeMd16", "value": 16 },
+    { "name": "iconSizeLg20", "value": 20 },
+    { "name": "iconSizeXl24", "value": 24 }
+  ]
+}

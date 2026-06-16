@@ -17,20 +17,22 @@ Load the `figma-use` skill before any `use_figma` call.
 
 ```
 - [ ] 1. Get Figma file URL and target page/frame node ID (from URL node-id).
-- [ ] 2. Inspect Radius tokens: collection name, prefix (e.g. Radius/rounded-lg).
+- [ ] 2. Inspect Radius tokens: collection name, prefix (e.g. radius/roundedLg8).
 - [ ] 3. Run scan-radius.js on the target scope → present report.
-- [ ] 4. User confirms mapping for near-matches (e.g. 5→rounded-md, 18→rounded-2xl).
+- [ ] 4. User confirms mapping for near-matches (e.g. 5→roundedMd6, 18→rounded2Xl16).
 - [ ] 5. Run bind-radius.js in batches (BATCH_LIMIT=80) until complete.
 - [ ] 6. Re-run scan-radius.js to verify unbound count is 0.
 ```
 
 ## Token naming
 
-For "Vision Token" collection, radius variables use `Radius/rounded-*` prefix:
-- `Radius/rounded-xs` (2), `Radius/rounded-sm` (4), `Radius/rounded-md` (6)
-- `Radius/rounded-lg` (8), `Radius/rounded-xl` (12), `Radius/rounded-2xl` (16)
-- `Radius/rounded-3xl` (24), `Radius/rounded-4xl` (32), `Radius/rounded-none` (0)
-- `Radius/rounded-full` (100) — create if missing for pill shapes
+For "Vision Token" collection, camelCase group + fused names (`radius/roundedMd6`):
+- `radius/roundedXs2`, `radius/roundedSm4`, `radius/roundedMd6`
+- `radius/roundedLg8`, `radius/roundedXl12`, `radius/rounded2Xl16`
+- `radius/rounded3Xl24`, `radius/rounded4Xl32`, `radius/roundedNone0`
+- `radius/roundedFull999` — create if missing for pill shapes
+
+Margin / Padding: `margin/marginMd20`, `padding/paddingLg24` (size suffix camelCase: Xxs, Sm, Md, Lg, Xl, 2Xl).
 
 ## Performance (critical)
 
@@ -41,7 +43,7 @@ For "Vision Token" collection, radius variables use `Radius/rounded-*` prefix:
 ## Near-match policy
 
 When no exact token exists, bind to closest and report in audit:
-- `5` → `rounded-md` (6)
-- `18` → `rounded-2xl` (16)
+- `5` → `roundedMd6` (6)
+- `18` → `rounded2Xl16` (16)
 
 Ask user before applying near-matches unless they already approved.

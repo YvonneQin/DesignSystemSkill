@@ -1,0 +1,11 @@
+{
+  "$description": "Control height scale — Vision Token, camelCase group + fused names",
+  "collection": "Vision Token",
+  "naming": "controlHeight/controlHeight{Size}{px}",
+  "scope": "WIDTH_HEIGHT",
+  "tokens": [
+    { "name": "controlHeightSm24", "value": 24 },
+    { "name": "controlHeightMd32", "value": 32 },
+    { "name": "controlHeightLg40", "value": 40 }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "$description": "Ant Design secondary brand color tokens — Brand/Secondary → Base/black",
+  "palette": "black",
+  "tokens": {
+    "colorSecondary": {
+      "light": { "ref": "Base/black/6" },
+      "dark": { "ref": "Base/black/6" }
+    },
+    "colorSecondaryBg": {
+      "light": { "ref": "Base/black/1" },
+      "dark": { "ref": "Base/black/1" }
+    },
+    "colorSecondaryBgHover": {
+      "light": { "ref": "Base/black/2" },
+      "dark": { "ref": "Base/black/2" }
+    },
+    "colorSecondaryBorder": {
+      "light": { "ref": "Base/black/3" },
+      "dark": { "ref": "Base/black/3" }
+    },
+    "colorSecondaryBorderHover": {
+      "light": { "ref": "Base/black/4" },
+      "dark": { "ref": "Base/black/4" }
+    },
+    "colorSecondaryHover": {
+      "light": { "ref": "Base/black/5" },
+      "dark": { "ref": "Base/black/7" }
+    },
+    "colorSecondaryActive": {
+      "light": { "ref": "Base/black/7" },
+      "dark": { "ref": "Base/black/5" }
+    },
+    "colorSecondaryTextHover": {
+      "light": { "ref": "Base/black/8" },
+      "dark": { "ref": "Base/black/8" }
+    },
+    "colorSecondaryText": {
+      "light": { "ref": "Base/black/9" },
+      "dark": { "ref": "Base/black/9" }
+    },
+    "colorSecondaryTextActive": {
+      "light": { "ref": "Base/black/10" },
+      "dark": { "ref": "Base/black/10" }
+    }
+  }
+}

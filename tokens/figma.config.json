@@ -1,0 +1,92 @@
+{
+  "$description": "Maps Ant Design-style token groups to Figma Variable collections.",
+  "collections": {
+    "colorLibrary": {
+      "name": "ColorMode",
+      "group": "Base",
+      "modes": ["Light", "Dark"],
+      "source": "sources/rdx-base-10.json",
+      "naming": "Base/{palette}/{step}",
+      "palettes": [
+        "gray", "mauve", "slate", "sage", "olive", "sand",
+        "tomato", "red", "ruby", "crimson", "pink", "plum",
+        "purple", "violet", "iris", "indigo", "blue", "cyan",
+        "teal", "jade", "green", "grass", "bronze", "gold",
+        "brown", "orange", "amber", "yellow", "lime", "mint",
+        "sky", "black", "white"
+      ],
+      "steps": 10
+    },
+    "brandPrimary": {
+      "name": "ColorMode",
+      "group": "Brand/Primary",
+      "modes": ["Light", "Dark"],
+      "source": "colors/semantic-primary.json",
+      "naming": "Brand/Primary/{token}",
+      "basePalette": "Base/indigo"
+    },
+    "brandSecondary": {
+      "name": "ColorMode",
+      "group": "Brand/Secondary",
+      "modes": ["Light", "Dark"],
+      "source": "colors/semantic-secondary.json",
+      "naming": "Brand/Secondary/{token}",
+      "basePalette": "Base/black"
+    },
+    "brandSuccess": {
+      "name": "ColorMode",
+      "group": "Brand/Success",
+      "modes": ["Light", "Dark"],
+      "source": "colors/semantic-success.json",
+      "naming": "Brand/Success/{token}",
+      "basePalette": "Base/green"
+    },
+    "brandWarning": {
+      "name": "ColorMode",
+      "group": "Brand/Warning",
+      "modes": ["Light", "Dark"],
+      "source": "colors/semantic-warning.json",
+      "naming": "Brand/Warning/{token}",
+      "basePalette": "Base/gold"
+    },
+    "brandInfo": {
+      "name": "ColorMode",
+      "group": "Brand/Info",
+      "modes": ["Light", "Dark"],
+      "source": "colors/semantic-info.json",
+      "naming": "Brand/Info/{token}",
+      "refPalette": "Brand/Primary"
+    },
+    "brandError": {
+      "name": "ColorMode",
+      "group": "Brand/Error",
+      "modes": ["Light", "Dark"],
+      "source": "colors/semantic-error.json",
+      "naming": "Brand/Error/{token}",
+      "basePalette": "Base/red"
+    },
+    "brandLink": {
+      "name": "ColorMode",
+      "group": "Brand/Link",
+      "modes": ["Light", "Dark"],
+      "source": "colors/semantic-link.json",
+      "naming": "Brand/Link/{token}",
+      "refPalette": "Brand/Primary"
+    },
+    "mode": {
+      "name": "ColorMode",
+      "group": "Neutral",
+      "modes": ["Light", "Dark"],
+      "source": "sources/mode.json",
+      "sourceModes": { "Light": "light_mode", "Dark": "dark_mode" },
+      "naming": "Neutral/{category}/{token}",
+      "refMapping": "colors/mapping.json",
+      "codeSyntax": "var(--mode-{token})"
+    }
+  },
+  "bindScripts": {
+    "colorCollections": ["ColorMode"],
+    "radiusCollection": "Vision Token",
+    "radiusPrefix": "radius/"
+  }
+}

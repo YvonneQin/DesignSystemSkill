@@ -8,24 +8,25 @@
 // ---------------------------- CONFIG ----------------------------------------
 const ROOT_NODE_ID = null; // e.g. '115962:128337'
 const BATCH_LIMIT = 80;
-const TOKEN_PREFIX = "Radius/";
+const TOKEN_PREFIX = "radius/";
 const COLLECTION_NAME = "Vision Token";
 
 // Exact radius (px) -> token name. Near-matches go here after user approval.
 const RADIUS_TO_TOKEN = {
-  0: "Radius/rounded-none",
-  2: "Radius/rounded-xs",
-  4: "Radius/rounded-sm",
-  6: "Radius/rounded-md",
-  8: "Radius/rounded-lg",
-  12: "Radius/rounded-xl",
-  16: "Radius/rounded-2xl",
-  24: "Radius/rounded-3xl",
-  32: "Radius/rounded-4xl",
-  100: "Radius/rounded-full",
+  0: "radius/roundedNone0",
+  2: "radius/roundedXs2",
+  4: "radius/roundedSm4",
+  6: "radius/roundedMd6",
+  8: "radius/roundedLg8",
+  12: "radius/roundedXl12",
+  16: "radius/rounded2Xl16",
+  24: "radius/rounded3Xl24",
+  32: "radius/rounded4Xl32",
+  100: "radius/roundedFull999",
+  999: "radius/roundedFull999",
   // Near-match examples (uncomment after user approval):
-  // 5: "Radius/rounded-md",
-  // 18: "Radius/rounded-2xl",
+  // 5: "radius/roundedMd6",
+  // 18: "radius/rounded2Xl16",
 };
 // ----------------------------------------------------------------------------
 
@@ -42,18 +43,19 @@ const varByName = Object.fromEntries(
     .map((v) => [v.name, v])
 );
 
-// Create rounded-full if mapping needs it and token is missing
+// Create roundedFull · 999 if mapping needs it and token is missing
 const modeId = collection.modes[0].modeId;
-if (RADIUS_TO_TOKEN[100] && !varByName["Radius/rounded-full"]) {
+const FULL_RADIUS_KEY = 999;
+if (RADIUS_TO_TOKEN[FULL_RADIUS_KEY] && !varByName["radius/roundedFull999"]) {
   const fullVar = figma.variables.createVariable(
-    "Radius/rounded-full",
+    "radius/roundedFull999",
     collection,
     "FLOAT"
   );
   fullVar.scopes = ["CORNER_RADIUS"];
-  fullVar.setVariableCodeSyntax("WEB", "var(--rounded-full)");
-  fullVar.setValueForMode(modeId, 100);
-  varByName["Radius/rounded-full"] = fullVar;
+  fullVar.setVariableCodeSyntax("WEB", "var(--roundedFull999)");
+  fullVar.setValueForMode(modeId, FULL_RADIUS_KEY);
+  varByName["radius/roundedFull999"] = fullVar;
 }
 
 let root;

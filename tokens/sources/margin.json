@@ -1,0 +1,16 @@
+{
+  "$description": "Margin scale — Vision Token, camelCase group + fused names",
+  "collection": "Vision Token",
+  "naming": "margin/margin{Size}{px}",
+  "scope": "GAP",
+  "tokens": [
+    { "name": "marginXxs4", "value": 4 },
+    { "name": "marginXs8", "value": 8 },
+    { "name": "marginSm12", "value": 12 },
+    { "name": "margin16", "value": 16 },
+    { "name": "marginMd20", "value": 20 },
+    { "name": "marginLg24", "value": 24 },
+    { "name": "marginXl32", "value": 32 },
+    { "name": "marginXxl48", "value": 48 }
+  ]
+}
