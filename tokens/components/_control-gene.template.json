@@ -10,7 +10,9 @@
     "layers": [
       { "name": "container", "role": "background, border, shadow, padding, radius, height" },
       { "name": "content", "role": "auto-layout, gap" },
-      { "name": "field", "role": "primary content" }
+      { "name": "iconLeft", "role": "optional direct icon instance — mainComponent via IconValue; visibility via ShowLeftIcon; color mirrors field text unless overridden" },
+      { "name": "field", "role": "primary content" },
+      { "name": "iconRight", "role": "optional direct icon instance — mainComponent via IconValue; visibility via ShowRightIcon; color mirrors field text unless overridden" }
     ]
   },
 
@@ -105,7 +107,12 @@
   "figmaConventions": {
     "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
     "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
-    "variantLayout": "Ant Design matrix inside component set — State blocks → Size rows."
+    "variantLayout": "Ant Design matrix inside component set — State blocks → Size rows.",
+    "iconBinding": {
+      "implementation": "direct icon instances",
+      "wrapper": false,
+      "colorStrategy": "icon vector fills mirror field text fills per variant"
+    }
   },
 
   "mappingCoverage": {

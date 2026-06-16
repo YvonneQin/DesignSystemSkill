@@ -690,7 +690,8 @@
         "implementation": "direct icon instances",
         "wrapper": false,
         "instanceSwapProp": "↳ Icon Value#478:0",
-        "visibilityProps": ["ShowLeftIcon#432:451", "ShowRightIcon#432:1353"]
+        "visibilityProps": ["ShowLeftIcon#432:451", "ShowRightIcon#432:1353"],
+        "colorStrategy": "icon vector fills mirror Label.fills per variant"
       },
       "colorPrimaryBound": {
         "token": "Brand/Primary/colorPrimary",
@@ -733,6 +734,12 @@
         "default": true,
         "bindTo": "right direct Icon.visible",
         "antd": "icon prop (suffix) — hide when false"
+      },
+      "IconColor": {
+        "type": "DERIVED",
+        "default": "follow Label.fills",
+        "bindTo": "left/right direct Icon > Vector.fills",
+        "antd": "inherits button text color in each variant/state"
       }
     },
     "variantLayout": "Ant Design matrix — Theme blocks (stacked) → State columns → Type sub-columns → Size rows × Shape sections",

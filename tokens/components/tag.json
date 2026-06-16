@@ -22,9 +22,9 @@
   "anatomy": {
     "layers": [
       { "name": "container", "role": "auto-layout frame — background, border, padding, radius" },
-      { "name": "iconLeft", "role": "optional 12×12 icon — Colorful + Button pattern; mainComponent via IconValue; visibility via ShowLeftIcon" },
+      { "name": "iconLeft", "role": "optional 12×12 direct icon instance — mainComponent via IconValue; visibility via ShowLeftIcon; color mirrors Label.fills unless overridden" },
       { "name": "label", "role": "tag text (12px in Ant source)" },
-      { "name": "iconRight", "role": "optional 12×12 icon — Colorful; mainComponent via IconValue; visibility via ShowRightIcon" },
+      { "name": "iconRight", "role": "optional 12×12 direct icon instance — mainComponent via IconValue; visibility via ShowRightIcon; color mirrors Label.fills unless overridden" },
       { "name": "closeIcon", "role": "optional — Basic Closeable variant" },
       { "name": "statusIcon", "role": "optional dot/icon — Status variant (BOOLEAN Icon)" },
       { "name": "plusIcon", "role": "optional — Basic Add New variant" }
@@ -198,52 +198,71 @@
       },
       "variantCount": 34,
       "status": "initialized",
-      "note": "Colorful preset colors alias to existing Base/* radix palettes (e.g. Magenta→pink, Geekblue→indigo, Volcano→tomato). Label → EN/Small Text 12_h20_Regular."
+      "note": "Colorful preset colors alias to existing Base/* radix palettes (e.g. Magenta→pink, Geekblue→indigo, Volcano→tomato). Label → EN/Small Text 12_h20_Regular. Inline icons should be direct icon instances and inherit Label.fills unless a family defines a separate icon token.",
+      "iconBinding": {
+        "implementation": "direct icon instances",
+        "wrapper": false,
+        "instanceSwapProp": "↳ Icon Value",
+        "visibilityProps": ["ShowLeftIcon", "ShowRightIcon"],
+        "colorStrategy": "icon vector fills mirror Label.fills per variant unless a status/icon token is explicitly defined"
+      }
     },
     "variantLayout": "Ant source matrix — Colorful/Basic: Border=Yes left + Border=No right, 69px row gap; Checkable/Status: vertical stack; page: sets stacked with 120px gap",
     "componentProperties": {
       "colorful": {
-        "IconValue": {
+        "↳ Icon Value": {
           "type": "INSTANCE_SWAP",
           "default": "Icon / SearchOutlined (432:24)",
-          "bindTo": "left Icon.mainComponent + right Icon.mainComponent",
+          "bindTo": "left direct Icon.mainComponent + right direct Icon.mainComponent",
           "antd": "icon prop — swap icon component on both sides"
         },
         "ShowLeftIcon": {
           "type": "BOOLEAN",
           "default": true,
-          "bindTo": "left Icon.visible",
+          "bindTo": "left direct Icon.visible",
           "antd": "icon prop — hide when false"
         },
         "ShowRightIcon": {
           "type": "BOOLEAN",
           "default": false,
-          "bindTo": "right Icon.visible",
+          "bindTo": "right direct Icon.visible",
           "antd": "icon prop (suffix) — hide when false"
+        },
+        "IconColor": {
+          "type": "DERIVED",
+          "default": "follow Label.fills",
+          "bindTo": "left/right direct Icon > Vector.fills",
+          "antd": "inherits tag text color in each variant/state"
         }
       },
       "checkable": {
-        "IconValue": {
+        "↳ Icon Value": {
           "type": "INSTANCE_SWAP",
           "default": "Icon / SearchOutlined (432:24)",
-          "bindTo": "left Icon.mainComponent + right Icon.mainComponent",
+          "bindTo": "left direct Icon.mainComponent + right direct Icon.mainComponent",
           "antd": "icon prop — swap icon component on both sides"
         },
         "ShowLeftIcon": {
           "type": "BOOLEAN",
           "default": true,
-          "bindTo": "left Icon.visible",
+          "bindTo": "left direct Icon.visible",
           "antd": "icon prop — hide when false"
         },
         "ShowRightIcon": {
           "type": "BOOLEAN",
           "default": false,
-          "bindTo": "right Icon.visible",
+          "bindTo": "right direct Icon.visible",
           "antd": "icon prop (suffix) — hide when false"
+        },
+        "IconColor": {
+          "type": "DERIVED",
+          "default": "follow Label.fills",
+          "bindTo": "left/right direct Icon > Vector.fills",
+          "antd": "inherits tag text color in each variant/state"
         }
       },
       "basic": {
-        "IconValue": {
+        "↳ Icon Value": {
           "type": "INSTANCE_SWAP",
           "default": "CloseOutlined (509:486)",
           "bindTo": "Icon.mainComponent — Closeable variants (right), Add New variant (left)",
@@ -256,9 +275,9 @@
   "mappingCoverage": {
     "mapped": {
       "colorful": "Base/{preset}/1|3|7; icon fill matches Label (Base/{preset}/7); iconSize/iconSizeSm12; iconTextGap → padding/paddingXxs4",
-      "basic": "Neutral/Bg, Neutral/Border, Neutral/Text, Neutral/Fill, iconSize/iconSizeSm12",
+      "basic": "Neutral/Bg, Neutral/Border, Neutral/Text, Neutral/Fill, iconSize/iconSizeSm12; icon fill mirrors Label.fills",
       "checkable": "Brand/Primary + Neutral/*; icon fill matches Label (colorText | colorTextLightSolid); iconSize/iconSizeSm12; iconTextGap → padding/paddingXxs4",
-      "status": "Brand/Success|Primary|Error|Warning + Neutral/Text",
+      "status": "Brand/Success|Primary|Error|Warning + Neutral/Text; status icon may follow status.icon when distinct, otherwise mirrors Label.fills",
       "radius": "radius/roundedSm4",
       "paddingInline": "padding/paddingXs8",
       "borderWidth": "Border/border-width",

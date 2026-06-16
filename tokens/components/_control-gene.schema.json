@@ -95,6 +95,13 @@
       "figmaScope": "WIDTH_HEIGHT"
     },
 
+    "iconColor": {
+      "description": "Inline icon color follows the text color of the same control state unless the component spec declares a separate icon token.",
+      "defaultStrategy": "Icon > Vector.fills mirrors Label.fills / field text fills per variant and state",
+      "bindTo": ["prefix icon fills", "suffix icon fills", "status icon fills"],
+      "overrideRule": "Only override when a component spec explicitly defines styles.*.icon distinct from styles.*.text"
+    },
+
     "borderWidth": {
       "description": "Stroke weight — 1px standard for outlined controls",
       "foundation": { "ref": "Border/border-width", "value": 1 },
@@ -250,6 +257,7 @@
       "container fills → background token",
       "container strokes → border token",
       "label/ffield fills → text token",
+      "icon vector fills → mirror text token unless spec declares separate icon token",
       "height → controlHeight/*",
       "paddingLeft/Right → padding/*",
       "cornerRadius → radius/*",
