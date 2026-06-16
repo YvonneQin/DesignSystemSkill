@@ -8,6 +8,8 @@ description: Bind hardcoded (unbound) SOLID colors in a Figma design file to the
 Maps hardcoded SOLID fills/strokes in a Figma file to the project's design-system
 color variables. Read-only scan first, confirm, then write.
 
+**Do not create or modify design tokens** — only bind to existing variables. Token changes require user approval per `.cursor/rules/design-token-confirmation.mdc`.
+
 Scripts live at `scripts/figma/`. Read them and paste their body
 into the `use_figma` tool — they are Figma Plugin API snippets, not Node scripts.
 
@@ -42,7 +44,9 @@ return {
 ```
 
 Set `TOKEN_COLLECTIONS` in both `scan-colors.js` and `bind-colors.js` to the collection names
-that hold COLOR tokens (commonly `color` and `tokens`).
+that hold COLOR tokens. In this repo, the expected local collection is commonly
+`ColorMode`, but always inspect the target file first because some design files
+may still use published library collections or legacy names.
 
 ### Step 5 — Scan and report
 

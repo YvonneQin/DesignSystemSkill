@@ -1,67 +1,91 @@
-# Design System Agent
+# Design System Skill Repo
 
-Cursor Agent skills and Figma Plugin API scripts for design-system workflows: token creation, color/radius binding, and design normalization.
+Design-system workspace for token sources, Figma sync payloads, normalization scripts, and project-level agent skills.
 
-## Structure
+This repo is organized so Codex can work here safely:
 
-```
-tokens/                  # Ant Design–style token sources + combined theme
-  groups.json            # Base + Neutral group tree
-  sources/               # rdxcolors.json, mode.json, …
-  dist/theme.json        # Generated (node scripts/tokens/build-theme.js)
-.cursor/skills/          # Project-level Cursor skills
-scripts/figma/           # Figma Plugin API snippets (paste into use_figma)
-scripts/tokens/          # Node build scripts
-workflows/               # Multi-step workflow guides
-templates/               # Report and spec templates
-```
+- `tokens/` is the source of truth for token data
+- `scripts/tokens/` contains local Node utilities
+- `scripts/figma/` contains Figma Plugin API payloads for `use_figma`
+- `.cursor/skills/` contains task-routing and workflow instructions
+- `workflows/` contains the human-readable process docs
 
-### Token layers
+## Start Here
 
-| Group | Source | Figma collection |
-|-------|--------|------------------|
-| Base | `tokens/sources/rdxcolors.json` | Color Library |
-| Neutral | `tokens/sources/mode.json` | Mode |
+1. Read [AGENTS.md](./AGENTS.md) for repository rules.
+2. Read [docs/repo-map.md](./docs/repo-map.md) for the actual structure.
+3. Use the npm scripts below for local token workflows.
+4. Treat `scripts/figma/*.js` as Figma payloads, not normal Node scripts.
 
-See [tokens/README.md](tokens/README.md).
+## Safety Rule
 
-## Prerequisites
+Do not change token values, names, refs, or Figma Variables without explicit user approval.
 
-- [Cursor](https://cursor.com) with Figma MCP enabled
-- Figma account with edit access to target files
-- Load `figma-use` before any `use_figma` call
+This includes changes under:
 
-## Skills
+- `tokens/sources/`
+- `tokens/colors/`
+- `tokens/groups.json`
+- `tokens/figma.config.json`
+- any Figma token sync payload
 
-| Skill | Trigger |
-|-------|---------|
-| `ds-orchestrator` | Route design-system tasks to the right workflow |
-| `figma-bind-colors` | Bind hardcoded colors to design tokens |
-| `figma-bind-radius` | Bind hardcoded corner radii to Radius tokens |
+Read-only audits and binding existing nodes to already-approved tokens are allowed.
 
-## Quick start
+## Repo Map
 
-1. Open this folder in Cursor.
-2. Share a Figma file URL and describe the task (e.g. "bind colors on this page").
-3. The agent loads the matching skill, runs read-only scans first, then writes after confirmation.
+| Path | Purpose | Notes |
+|------|---------|-------|
+| `tokens/` | canonical token definitions and generated theme | authoritative data lives here |
+| `tokens/dist/theme.json` | generated combined export | rebuild, do not hand-edit |
+| `tokens/components/` | component spec JSON and control DNA schema | component-token mapping source |
+| `scripts/tokens/` | local Node scripts for token build/refresh | safe local entrypoints |
+| `scripts/figma/` | Figma Plugin API snippets | paste into `use_figma` |
+| `.cursor/skills/` | project skills for routing tasks | Cursor-oriented, still useful reference |
+| `.cursor/rules/` | repo safety rules | token confirmation rule lives here |
+| `workflows/` | step-by-step process docs | use for repeatable execution |
+| `templates/` | report templates | audit/reporting helpers |
 
-### Tokens
+More detail: [docs/repo-map.md](./docs/repo-map.md)
+
+## Common Commands
 
 ```bash
-node scripts/tokens/build-theme.js   # → tokens/dist/theme.json
+npm run tokens:build
+npm run tokens:refresh-base -- /path/to/default.json
+npm run tokens:apply-default-base -- /path/to/default.json
+npm run tokens:uniformize-base -- /path/to/default.json
+npm run tokens:regen-non-antd-base
+npm run tokens:update-palettes-from-figma
 ```
 
-Edit `tokens/sources/*.json`, rebuild, then sync to Figma via `figma-generate-library`.
+## Common Workflows
 
-## Scripts
+| Goal | Read first | Main command / script |
+|------|------------|------------------------|
+| Edit token JSON and rebuild theme | `workflows/create-tokens.md` | `npm run tokens:build` |
+| Sync tokens to Figma | `workflows/create-tokens.md` | `scripts/figma/sync-*.js` via `use_figma` |
+| Audit hardcoded colors / radii | `workflows/normalize-design.md` | `scan-colors.js`, `scan-radius.js` |
+| Bind colors / radii | `workflows/normalize-design.md` | `bind-colors.js`, `bind-radius.js` |
+| Initialize component specs | `tokens/components/README.md` | component JSON + Figma workflow |
 
-| Script | Type | Purpose |
-|--------|------|---------|
-| `scripts/figma/scan-colors.js` | read-only | Find unbound colors, classify matches |
-| `scripts/figma/bind-colors.js` | writes | Bind colors to token variables |
-| `scripts/figma/scan-radius.js` | read-only | Find unbound corner radii |
-| `scripts/figma/bind-radius.js` | writes | Bind radii to Radius tokens (batched) |
+## Figma Conventions
 
-## License
+- Default to read-only scan before any write.
+- Scope to selection on heavy pages.
+- Batch write operations where the scripts expect it.
+- Verify with a follow-up scan or screenshot after writes.
+- Keep component pages focused on the component set only.
 
-MIT
+## Token Model
+
+Current top-level token groups are:
+
+- `Base`
+- `Neutral`
+- `Brand`
+- `Radius`
+- `Margin`
+- `Padding`
+- `Border`
+
+See [tokens/README.md](./tokens/README.md) and [tokens/groups.json](./tokens/groups.json) for the exact mapping.

@@ -1,0 +1,14 @@
+{
+  "name": "design-system-skill",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Local workflow entrypoints for the design-system skill repo.",
+  "scripts": {
+    "tokens:build": "node scripts/tokens/build-theme.js",
+    "tokens:apply-default-base": "node scripts/tokens/apply-default-base.js",
+    "tokens:uniformize-base": "node scripts/tokens/uniformize-base-palettes.js",
+    "tokens:regen-non-antd-base": "node scripts/tokens/regen-non-antd-base.js",
+    "tokens:refresh-base": "node scripts/tokens/refresh-base-palettes.js",
+    "tokens:update-palettes-from-figma": "node scripts/tokens/update-palettes-from-figma.js"
+  }
+}

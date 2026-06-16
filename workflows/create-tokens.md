@@ -1,6 +1,6 @@
 # Create / sync tokens
 
-Ant Design–style flow: edit sources → build → push to Figma.
+Ant Design-style flow: edit sources -> build -> push to Figma.
 
 ## Steps
 
@@ -8,26 +8,31 @@ Ant Design–style flow: edit sources → build → push to Figma.
 
 | Goal | File |
 |------|------|
-| Palette color (gray/9, blue/8…) | `tokens/sources/rdxcolors.json` |
-| Semantic token (background, primary…) | `tokens/sources/mode.json` |
+| Base palette color (`Base/gray/9`, `Base/blue/8`) | `tokens/sources/rdx-base-10.json` |
+| Neutral / Brand semantic token refs | `tokens/sources/mode.json` and `tokens/colors/semantic-*.json` |
 | Tailwind → Radix ref map | `tokens/colors/mapping.json` |
 
 ### 2. Build combined theme
 
 ```bash
-node scripts/tokens/build-theme.js
+npm run tokens:build
 ```
 
 Check `tokens/dist/theme.json` for unresolved refs.
 
 ### 3. Sync to Figma
 
-Load Cursor skill `figma-generate-library`.
+Use `figma-generate-library` for library-style sync, or run the specific
+`scripts/figma/sync-*.js` payload through `use_figma` when doing targeted sync.
+
+Important: `scripts/figma/*.js` are Figma Plugin API payloads, not local Node entrypoints.
 
 | Group | Figma collection | Modes |
 |-------|------------------|-------|
-| `Base` | Color Library | Light, Dark |
-| `Neutral` | Mode | Light, Dark |
+| `Base` | `ColorMode` | `Light`, `Dark` |
+| `Neutral` | `ColorMode` | `Light`, `Dark` |
+| `Brand` | `ColorMode` | `Light`, `Dark` |
+| `Radius` / spacing / sizing | `Vision Token` | single mode unless defined otherwise |
 
 Config: `tokens/figma.config.json`
 
@@ -42,4 +47,4 @@ See `workflows/normalize-design.md`.
 
 ## Group tree reference
 
-See `tokens/groups.json` for the full sidebar structure (Base palettes list, Semantic categories).
+See `tokens/groups.json` for the full sidebar structure and exact collection mappings.

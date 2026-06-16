@@ -55,16 +55,16 @@
       "values": [false, true],
       "antd": "danger",
       "default": false,
-      "figmaNote": "Figma uses Theme=Red instead of Danger=True"
+      "figmaNote": "Figma uses Theme=Danger instead of Danger=True"
     },
     "theme": {
-      "values": ["blue", "black", "red"],
+      "values": ["blue", "black", "danger"],
       "figma": "Theme",
       "default": "blue",
       "mapping": {
         "blue": "Brand/Primary palette — default Ant Design primary",
         "black": "Brand/Secondary palette — Type=Primary uses secondary styles",
-        "red": "Brand/Error palette — maps to danger style blocks"
+        "danger": "Brand/Error palette — maps to danger style blocks"
       }
     },
     "shape": {
@@ -614,10 +614,10 @@
 
   "styleResolution": {
     "rules": [
-      "if theme=red && type=primary → primaryDanger",
-      "if theme=red && type=outline → outlineDanger",
-      "if theme=red && type=dashed → dashedDanger",
-      "if theme=red && type=text → textDanger",
+      "if theme=danger && type=primary → primaryDanger",
+      "if theme=danger && type=outline → outlineDanger",
+      "if theme=danger && type=dashed → dashedDanger",
+      "if theme=danger && type=text → textDanger",
       "if theme=black && type=outline → outline + border: Brand/Secondary/colorSecondary*",
       "if theme=black && type=dashed → dashed + border: Brand/Secondary/colorSecondary*",
       "if theme=black && type=primary → secondary",

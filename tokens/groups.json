@@ -340,6 +340,26 @@
             "danger": 2,
             "shape": 2
           }
+        },
+        {
+          "name": "Tag",
+          "description": "Ant Design Tag — 4 component sets (Colorful, Basic, Checkable, Status), 34 variants",
+          "source": "components/tag.json",
+          "figmaReference": {
+            "fileKey": "L3k9dxCWyCjhm5G5V22A13",
+            "nodeIds": {
+              "colorful": "791:25199",
+              "basic": "791:25269",
+              "checkable": "791:25294",
+              "status": "791:25336"
+            }
+          },
+          "variants": {
+            "colorful": 22,
+            "basic": 5,
+            "checkable": 2,
+            "status": 5
+          }
         }
       ]
     }

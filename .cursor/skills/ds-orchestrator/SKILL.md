@@ -10,13 +10,19 @@ Routes tasks to domain skills and enforces phased workflows.
 ## Token layout (Ant Design style)
 
 ```
-Colors/
-  Base/      → tokens/sources/rdxcolors.json  → Figma Color Library
-  Semantic/  → tokens/sources/mode.json       → Figma Mode
+ColorMode/
+  Base/      → tokens/sources/rdx-base-10.json
+  Neutral/   → tokens/sources/mode.json + tokens/colors/semantic-*.json
+  Brand/     → tokens/colors/semantic-*.json
+
+Vision Token/
+  radius/, margin/, padding/, controlHeight/, iconSize/
 ```
 
 Combined export: `tokens/dist/theme.json` (run `node scripts/tokens/build-theme.js`).
 Config: `tokens/figma.config.json`, group tree: `tokens/groups.json`.
+
+Important: `scripts/figma/*.js` are Figma Plugin API payloads for `use_figma`, not local Node scripts.
 
 ## Routing
 
@@ -26,6 +32,7 @@ Config: `tokens/figma.config.json`, group tree: `tokens/groups.json`.
 | Sync tokens to Figma | `figma-generate-library` (built-in) | `workflows/create-tokens.md` |
 | Bind hardcoded colors | `figma-bind-colors` | `workflows/normalize-design.md` |
 | Bind corner radii | `figma-bind-radius` | `workflows/normalize-design.md` |
+| Init Ant Design component (spec + Figma) | `antd-component-init` | `tokens/components/README.md` |
 | Build component library | `figma-generate-library` (built-in) | — |
 
 ## Phased execution
@@ -38,6 +45,8 @@ Phase 1 — Report + user confirm
 Phase 2 — Execute (batched if needed)
 Phase 3 — Verify (screenshot / metadata)
 ```
+
+**Design token 变更**：Phase 1 必须单独列出拟改 token（路径、旧值→新值、影响），**未获用户明确同意不得进入 Phase 2**。详见 `.cursor/rules/design-token-confirmation.mdc`。
 
 Use `templates/audit-report.md` for scan output.
 

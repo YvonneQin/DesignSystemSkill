@@ -1,0 +1,28 @@
+---
+description: 修改 design token 前必须先征得用户确认
+alwaysApply: true
+---
+
+# Design Token 修改须先确认
+
+**在修改任何 design token 之前，必须先询问用户并获得明确同意。不得擅自执行。**
+
+## 须先询问的操作
+
+- 在 `tokens/` 下新增、删除、重命名 token（含 `sources/`、`colors/`、`groups.json`、`figma.config.json`）
+- 修改 token 的 **值**、**引用关系**、**命名**
+- 在 Figma 中创建、删除、重命名 Variables，或修改其 mode 值
+- 运行 `scripts/figma/sync-*-payload.js` 等会写入 Figma token 的脚本
+- 将组件绑定从 token A 改为 token B（若涉及 token 本身变更）
+
+## 无需询问的操作
+
+- 只读扫描、审计、报告（scan-colors、metadata 检查）
+- 在**已有 token 不变**的前提下，把组件属性绑定到用户已指定的 token
+- 用户本轮对话中已明确授权的具体 token 变更
+
+## 执行方式
+
+1. 说明拟改动的 token、路径、旧值 → 新值、影响范围
+2. 等待用户回复「可以」「确认」或等价指令
+3. 未获确认前：**不写入**仓库 JSON，**不调用**会改 Figma Variables 的 `use_figma`

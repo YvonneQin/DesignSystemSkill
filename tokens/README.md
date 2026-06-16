@@ -20,10 +20,10 @@ tokens/
 ├── groups.json           # Group tree manifest (sidebar structure)
 ├── figma.config.json     # Group → Figma collection mapping
 ├── colors/
-│   └── mapping.json      # Tailwind refs → Radix refs (for Semantic)
+│   └── mapping.json      # Tailwind refs → Base aliases (for Neutral mode refs)
 ├── sources/              # Authoritative JSON inputs
-│   ├── rdxcolors.json    # Base palettes (light_mode + dark_mode)
-│   ├── mode.json         # Semantic + radius + border
+│   ├── rdx-base-10.json  # Base palettes (Light + Dark)
+│   ├── mode.json         # Neutral mode refs + numeric tokens such as radius/border
 │   ├── twcolors.json     # Tailwind primitives (reference only)
 │   └── tokens.json       # Raw number primitives
 └── dist/
@@ -34,11 +34,12 @@ tokens/
 
 | Layer | File | Figma collection | Who uses it |
 |-------|------|------------------|-------------|
-| **Base** | `sources/rdxcolors.json` | `Color Library` | Palettes, charts, direct color needs |
-| **Semantic** | `sources/mode.json` | `Mode` | Components, pages |
-| **Mapping** | `colors/mapping.json` | — | Resolves `{neutral.950}` → `gray/12` |
+| **Base** | `sources/rdx-base-10.json` | `ColorMode` | Palettes, chart colors, direct primitive access |
+| **Neutral** | `sources/mode.json` + `colors/semantic-*.json` | `ColorMode` | Components and page semantics |
+| **Brand** | `colors/semantic-*.json` | `ColorMode` | Brand palettes such as Primary, Error, Success |
+| **Mapping** | `colors/mapping.json` | — | Resolves `{neutral.950}` → `Base/gray/12` |
 
-Components bind **Semantic** (`mode/background`), not Base (`gray/12`), unless you are building the palette itself.
+Components should bind **Neutral** or **Brand** tokens, not raw `Base/*`, unless you are building palettes or deliberate primitive-only assets.
 
 ## Build combined theme
 
@@ -52,13 +53,13 @@ Produces `tokens/dist/theme.json`:
 {
   "Colors": {
     "Base": {
-      "gray": { "1": { "light": "#fcfcfc", "dark": "#111111", "figma": "gray/1" } }
+      "gray": { "1": { "light": "#fcfcfc", "dark": "#111111", "figma": "Base/gray/1" } }
     },
     "Semantic": {
-      "background": {
-        "light": { "type": "alias", "ref": "white/1" },
-        "dark": { "type": "alias", "ref": "gray/1" },
-        "figma": "mode/background"
+      "colorBgBase": {
+        "light": { "type": "alias", "ref": "Base/white/1" },
+        "dark": { "type": "alias", "ref": "Base/gray/1" },
+        "figma": "Neutral/colorBgBase"
       }
     }
   }
@@ -67,11 +68,12 @@ Produces `tokens/dist/theme.json`:
 
 ## Edit workflow
 
-1. **Change a base color** → edit `sources/rdxcolors.json` → rebuild → sync to Figma `Color Library`
-2. **Change semantic mapping** → edit `sources/mode.json` or `colors/mapping.json` → rebuild → sync to Figma `Mode`
-3. **Sync to Figma** → use Cursor `figma-generate-library` with `tokens/dist/theme.json` + `tokens/figma.config.json`
+1. **Change a base color** -> edit `sources/rdx-base-10.json` -> rebuild -> sync to Figma `ColorMode`
+2. **Change Neutral refs** -> edit `sources/mode.json` or `colors/mapping.json` -> rebuild -> sync to Figma `ColorMode`
+3. **Change Brand refs** -> edit `colors/semantic-*.json` if the semantic palette itself changes
+4. **Sync to Figma** -> use `figma-generate-library` or the targeted `scripts/figma/sync-*.js` payloads
 
-## Semantic overrides
+## Mapping overrides
 
 `mode.json` has hardcoded hex for `semantic-background` and `semantic-border`. In Figma these alias to Base grays (see `colors/mapping.json` → `semanticOverrides`).
 
