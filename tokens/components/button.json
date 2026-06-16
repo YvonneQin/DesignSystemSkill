@@ -1,10 +1,11 @@
 {
-  "$description": "Ant Design Button component spec — sourced from Ant Design System for Figma",
+  "$description": "AgentOS Design System Button component spec — synchronized to the local Figma Button component set",
   "$source": {
     "figma": {
-      "fileKey": "L3k9dxCWyCjhm5G5V22A13",
-      "componentSetNodeId": "784:2294",
-      "url": "https://www.figma.com/design/L3k9dxCWyCjhm5G5V22A13/Ant-Design-System-for-Figma--Free-version---Community-?node-id=784-2294"
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageNodeId": "162:2",
+      "componentSetNodeId": "447:902",
+      "url": "https://www.figma.com/design/MwUyizdlqXKyFzHJWvBtI8/AgentOS-Design-System?node-id=447-902"
     },
     "docs": "https://ant.design/components/button/"
   },
@@ -12,7 +13,7 @@
   "component": "Button",
   "dna": "control",
   "$extends": "_control-gene.schema.json",
-  "variantCount": 1152,
+  "variantCount": 450,
 
   "anatomy": {
     "layers": [
@@ -29,7 +30,7 @@
       "values": ["primary", "secondary", "outline", "dashed", "text", "link"],
       "antd": "type",
       "antdMapping": { "outline": "default" },
-      "figma": "Outline",
+      "figma": "Type",
       "default": "outline"
     },
     "size": {
@@ -49,7 +50,8 @@
     "ghost": {
       "values": [false, true],
       "antd": "ghost",
-      "default": false
+      "default": false,
+      "figmaNote": "Current AgentOS Button component set does not expose Ghost as a Figma variant axis"
     },
     "danger": {
       "values": [false, true],
@@ -75,8 +77,8 @@
   },
 
   "naming": {
-    "figma": "Theme={Theme}, Type={Type}, Size={Size}, State={State}, Ghost={Ghost}, Shape={Shape}",
-    "example": "Theme=Blue, Type=Primary, Size=Default, State=Loading, Ghost=False, Shape=Default"
+    "figma": "Theme={Theme}, Type={Type}, Size={Size}, State={State}, Shape={Shape}",
+    "example": "Theme=Blue, Type=Primary, Size=Default, State=Loading, Shape=Default"
   },
 
   "layout": {
@@ -683,7 +685,7 @@
       "variantCount": 450,
       "stateAxis": ["Default", "Hover", "Loading", "Active", "Disabled"],
       "ghost": false,
-      "note": "State=Loading replaces Focused — container uses hover tokens; spinner TBD",
+      "note": "State=Loading replaces Focused — container uses hover tokens; spinner TBD. Icon wrappers were removed and both icon slots now bind directly to icon instances.",
       "colorPrimaryBound": {
         "token": "Brand/Primary/colorPrimary",
         "bindTo": ["container.strokes", "Label.fills", "Icon > Vector.fills"],
@@ -704,7 +706,7 @@
     "componentProperties": {
       "IconValue": {
         "type": "INSTANCE_SWAP",
-        "default": "Icon / SearchOutlined (432:24)",
+        "default": "Icon / StarOutlined (509:1356)",
         "bindTo": "left Icon.mainComponent + right Icon.mainComponent",
         "antd": "icon prop — swap icon component on both sides"
       },
@@ -722,7 +724,7 @@
       },
       "ShowRightIcon": {
         "type": "BOOLEAN",
-        "default": false,
+        "default": true,
         "bindTo": "right Icon.visible",
         "antd": "icon prop (suffix) — hide when false"
       }
