@@ -5,6 +5,7 @@
   "scope": "GAP",
   "tokens": [
     { "name": "paddingXxs4", "value": 4 },
+    { "name": "padding6", "value": 6 },
     { "name": "paddingXs8", "value": 8 },
     { "name": "paddingSm12", "value": 12 },
     { "name": "padding16", "value": 16 },

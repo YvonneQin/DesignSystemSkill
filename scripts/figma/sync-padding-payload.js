@@ -3,6 +3,7 @@
 
 const TOKENS = [
   ['paddingXxs4', 4],
+  ['padding6', 6],
   ['paddingXs8', 8],
   ['paddingSm12', 12],
   ['padding16', 16],
