@@ -19,9 +19,9 @@
     "layers": [
       { "name": "container", "role": "background, border, shadow, padding, radius" },
       { "name": "content", "role": "horizontal flex row — left icon + label + right icon" },
-      { "name": "iconLeft", "role": "optional 16×16 icon — mainComponent via IconValue; visibility via ShowLeftIcon" },
+      { "name": "iconLeft", "role": "optional 16×16 direct icon instance — no IconWrapper; mainComponent via IconValue; visibility via ShowLeftIcon" },
       { "name": "label", "role": "button text, default \"Button\" — visibility via ShowContent" },
-      { "name": "iconRight", "role": "optional 16×16 icon — mainComponent via IconValue; visibility via ShowRightIcon" }
+      { "name": "iconRight", "role": "optional 16×16 direct icon instance — no IconWrapper; mainComponent via IconValue; visibility via ShowRightIcon" }
     ]
   },
 
@@ -685,7 +685,13 @@
       "variantCount": 450,
       "stateAxis": ["Default", "Hover", "Loading", "Active", "Disabled"],
       "ghost": false,
-      "note": "State=Loading replaces Focused — container uses hover tokens; spinner TBD. Icon wrappers were removed and both icon slots now bind directly to icon instances.",
+      "note": "State=Loading replaces Focused — container uses hover tokens; spinner TBD. Left and right icon slots are top-level direct icon instances, not IconWrapper variants.",
+      "iconBinding": {
+        "implementation": "direct icon instances",
+        "wrapper": false,
+        "instanceSwapProp": "↳ Icon Value#478:0",
+        "visibilityProps": ["ShowLeftIcon#432:451", "ShowRightIcon#432:1353"]
+      },
       "colorPrimaryBound": {
         "token": "Brand/Primary/colorPrimary",
         "bindTo": ["container.strokes", "Label.fills", "Icon > Vector.fills"],
@@ -707,13 +713,13 @@
       "IconValue": {
         "type": "INSTANCE_SWAP",
         "default": "Icon / StarOutlined (509:1356)",
-        "bindTo": "left Icon.mainComponent + right Icon.mainComponent",
+        "bindTo": "left direct Icon.mainComponent + right direct Icon.mainComponent",
         "antd": "icon prop — swap icon component on both sides"
       },
       "ShowLeftIcon": {
         "type": "BOOLEAN",
         "default": true,
-        "bindTo": "left Icon.visible",
+        "bindTo": "left direct Icon.visible",
         "antd": "icon prop — hide when false"
       },
       "ShowContent": {
@@ -725,7 +731,7 @@
       "ShowRightIcon": {
         "type": "BOOLEAN",
         "default": true,
-        "bindTo": "right Icon.visible",
+        "bindTo": "right direct Icon.visible",
         "antd": "icon prop (suffix) — hide when false"
       }
     },
