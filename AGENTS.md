@@ -39,7 +39,13 @@ tokens/
 - **Brand** → Figma `ColorMode` / `Brand/*`
 - Build: `node scripts/tokens/build-theme.js`
 
-See `tokens/README.md` and `workflows/create-tokens.md`.
+See `tokens/README.md`, `tokens/components/README.md`, and `workflows/create-tokens.md`.
+
+## Component specs (Control DNA)
+
+- **Gene schema:** `tokens/components/_control-gene.schema.json`
+- **Template:** `tokens/components/_control-gene.template.json`
+- **Reference:** `tokens/components/button.json` (`dna: control`)
 
 ## Task routing
 

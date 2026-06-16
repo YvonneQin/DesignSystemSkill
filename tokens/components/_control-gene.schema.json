@@ -1,0 +1,291 @@
+{
+  "$schema": "control-gene-v1",
+  "$description": "Control DNA — shared genes extracted from Button. All interactive controls (Button, Input, Select, …) inherit this schema.",
+
+  "dna": "control",
+  "version": "1.0.0",
+  "referenceImplementation": "components/button.json",
+
+  "designSystemTree": {
+    "branch": "1. Control DNA",
+    "sharedGenes": ["height", "radius", "focus", "disabled", "loading", "gap"],
+    "members": [
+      "Button", "Icon Button", "Input", "Textarea", "Select", "Combobox",
+      "Autocomplete", "Date Picker", "Time Picker", "Number Input", "Search",
+      "Switch", "Checkbox", "Radio Group", "Segmented Control", "Toggle",
+      "Slider", "Stepper", "File Upload"
+    ]
+  },
+
+  "tokenLayers": {
+    "foundation": {
+      "description": "Figma variables / text styles / effect styles — shared across all controls",
+      "collections": {
+        "ColorMode": "Base/*, Neutral/*, Brand/*",
+        "Vision Token": "controlHeight/*, radius/*, padding/*, margin/*, iconSize/*",
+        "Font": "EN/{styleName}",
+        "Effect": "Component/{Component}/{effectName}"
+      }
+    },
+    "semantic": {
+      "description": "Brand/Neutral aliases — referenced by component style blocks",
+      "palettes": ["Primary", "Secondary", "Success", "Warning", "Error", "Link"]
+    },
+    "component": {
+      "description": "Per-component style blocks + styleResolution rules",
+      "slots": ["background", "border", "text", "shadow", "placeholder", "icon"]
+    },
+    "hardcoded": {
+      "description": "Not variables — document in spec with mapped: false",
+      "examples": ["borderStyle", "contentAlign", "minWidth", "dashPattern"]
+    }
+  },
+
+  "genes": {
+    "height": {
+      "description": "Control height — shared 3-step scale",
+      "foundation": {
+        "small": { "ref": "controlHeight/controlHeightSm24", "value": 24 },
+        "default": { "ref": "controlHeight/controlHeightMd32", "value": 32 },
+        "large": { "ref": "controlHeight/controlHeightLg40", "value": 40 }
+      },
+      "figmaScope": "WIDTH_HEIGHT",
+      "bindTo": ["height", "minHeight", "maxHeight"]
+    },
+
+    "radius": {
+      "description": "Corner radius — size-dependent; shape modifier overrides",
+      "foundation": {
+        "small": { "ref": "radius/roundedSm4", "value": 4 },
+        "default": { "ref": "radius/roundedLg8", "value": 8 },
+        "large": { "ref": "radius/roundedLg8", "value": 8 },
+        "round": { "ref": "radius/roundedFull999", "value": 999 }
+      },
+      "rules": [
+        "Shape=Default → use sizes[size].borderRadius",
+        "Shape=Round → roundedFull999 for all sizes"
+      ],
+      "figmaScope": "CORNER_RADIUS"
+    },
+
+    "paddingInline": {
+      "description": "Horizontal padding — nearest foundation match",
+      "foundation": {
+        "small": { "ref": "padding/paddingXs8", "value": 8, "mapping": "nearest" },
+        "default": { "ref": "padding/padding16", "value": 16, "mapping": "nearest" },
+        "large": { "ref": "padding/padding16", "value": 16, "mapping": "nearest" }
+      },
+      "figmaScope": "GAP"
+    },
+
+    "gap": {
+      "description": "Icon-to-label / prefix-to-input spacing",
+      "foundation": { "ref": "margin/marginXs8", "value": 8 },
+      "figmaScope": "GAP",
+      "bindTo": ["itemSpacing"]
+    },
+
+    "iconSize": {
+      "description": "Inline icon dimensions",
+      "foundation": {
+        "default": { "ref": "iconSize/iconSizeMd16", "value": 16 },
+        "small": { "ref": "iconSize/iconSizeSm12", "value": 12 },
+        "large": { "ref": "iconSize/iconSizeLg20", "value": 20 }
+      },
+      "figmaScope": "WIDTH_HEIGHT"
+    },
+
+    "borderWidth": {
+      "description": "Stroke weight — 1px standard for outlined controls",
+      "foundation": { "ref": "Border/border-width", "value": 1 },
+      "figmaScope": "STROKE_FLOAT",
+      "note": "Often hardcoded strokeWeight=1 until Vision Token border group exists"
+    },
+
+    "typography": {
+      "description": "Text style references — Font collection",
+      "foundation": {
+        "small": { "ref": "EN/Paragraph 14_h20_Regular" },
+        "default": { "ref": "EN/Paragraph 14_h20_Regular" },
+        "large": { "ref": "EN/H6 16_h24_Regular" }
+      },
+      "bindTo": ["textStyleId"]
+    },
+
+    "focus": {
+      "description": "Focused state visual — typically matches hover in Figma variants",
+      "rule": "focused appearance = hover appearance (Ant Design convention)",
+      "inputException": "Input/Select may add activeShadow effect on focus"
+    },
+
+    "disabled": {
+      "description": "Disabled state — shared neutral tokens",
+      "tokens": {
+        "background": "Neutral/Bg/colorBgContainerDisabled",
+        "border": "Neutral/Border/colorBorder",
+        "text": "Neutral/Text/colorTextDisabled",
+        "shadow": null
+      }
+    },
+
+    "loading": {
+      "description": "Loading modifier — reserved, not yet in Button Figma",
+      "status": "planned",
+      "expected": ["spinner slot", "opacity reduction", "pointer-events none"]
+    }
+  },
+
+  "variantAxes": {
+    "api": {
+      "description": "Exposed as component props / Figma component properties",
+      "examples": ["type", "size", "ghost", "danger", "shape", "status", "content"]
+    },
+    "figmaOnly": {
+      "description": "Design-time interaction states — not API props",
+      "values": ["default", "hover", "focused", "pressed", "disabled"],
+      "naming": "State={State}"
+    }
+  },
+
+  "appearanceStrategies": {
+    "solid": {
+      "description": "Filled background — Primary, Secondary",
+      "bg": "Brand/{Palette}/color{Palette}",
+      "border": "matches bg",
+      "text": "Neutral/Text/colorTextLightSolid",
+      "shadow": "Component/{Component}/{palette}Shadow"
+    },
+    "outline": {
+      "description": "Container bg + border — Default, Dashed",
+      "bg": "Neutral/Bg/colorBgContainer",
+      "border": "Neutral/Border/colorBorder → brand on hover",
+      "text": "Neutral/Text/colorText → brand on hover",
+      "shadow": "Component/{Component}/defaultShadow"
+    },
+    "ghost": {
+      "description": "Transparent bg + colored border/text",
+      "bg": "Neutral/Bg/colorTransparent",
+      "border": "Brand/{Palette}/color{Palette}",
+      "text": "Brand/{Palette}/color{Palette}",
+      "shadow": null
+    },
+    "text": {
+      "description": "Minimal — Text button",
+      "bg": "transparent → semantic fill on hover",
+      "border": "none",
+      "text": "Neutral/Text/colorText",
+      "shadow": null,
+      "dangerException": {
+        "hoverBg": "Brand/Error/colorErrorBg",
+        "text": "Brand/Error/colorError → colorErrorHover → colorErrorActive"
+      }
+    },
+    "link": {
+      "description": "Link appearance — no bg/border",
+      "bg": "Neutral/Bg/colorTransparent",
+      "text": "Brand/Link/colorLink → hover → active",
+      "shadow": null
+    }
+  },
+
+  "modifiers": {
+    "danger": {
+      "description": "Cross-cutting — replaces Primary palette with Error",
+      "styleResolution": "type + danger → {type}Danger style block",
+      "palette": "Brand/Error/*",
+      "componentSetSplit": "Separate Figma set when palette diverges (e.g. Button/Danger)"
+    },
+    "ghost": {
+      "description": "Transparent fill variant",
+      "styleResolution": "type + ghost → {type}Ghost style block"
+    },
+    "status": {
+      "description": "Validation states — Input/Select specific",
+      "values": ["default", "error", "warning"],
+      "tokens": {
+        "error": "Brand/Error/*",
+        "warning": "Brand/Warning/*"
+      }
+    }
+  },
+
+  "styleResolution": {
+    "description": "Rules evaluated top-to-bottom; first match wins",
+    "pattern": [
+      "if {modifierA} && {modifierB} → {combinedStyleBlock}",
+      "if type={x} && extends → base + override",
+      "else → styles[type]"
+    ],
+    "buttonExamples": [
+      "if type=primary && danger → primaryDanger",
+      "if type=default && danger → defaultDanger",
+      "if type=text && danger → textDanger",
+      "if type=dashed && danger → dashedDanger",
+      "if type=primary && ghost → primaryGhost",
+      "if type=dashed → default + borderStyle=dashed"
+    ]
+  },
+
+  "anatomy": {
+    "description": "Standard control layer model — extend per component",
+    "layers": [
+      { "name": "container", "role": "background, border, shadow, padding, radius, height" },
+      { "name": "content", "role": "auto-layout row/column, gap, alignment" },
+      { "name": "prefix", "role": "optional icon / addon (Input, Select)" },
+      { "name": "field", "role": "label text or input area" },
+      { "name": "suffix", "role": "optional icon / clear / chevron" }
+    ],
+    "buttonMapping": {
+      "prefix": "icon",
+      "field": "label"
+    }
+  },
+
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "componentSetRule": "One set per semantic palette — do NOT duplicate subsets (e.g. no Button/Primary when *Button* exists).",
+    "variantLayout": "Ant Design matrix inside component set — State blocks (columns) → Type sub-columns → Size rows.",
+    "bindingChecklist": [
+      "container fills → background token",
+      "container strokes → border token",
+      "label/ffield fills → text token",
+      "height → controlHeight/*",
+      "paddingLeft/Right → padding/*",
+      "cornerRadius → radius/*",
+      "itemSpacing → margin/*",
+      "effectStyleId → Component/*/shadow (not variable)",
+      "textStyleId → EN/* (Font collection)"
+    ]
+  },
+
+  "componentSetSplit": {
+    "description": "When to split into multiple Figma component sets",
+    "rules": [
+      "Same matrix, different semantic palette → split (Button/Secondary, Button/Danger)",
+      "Same palette, different type axis → single set with Type property",
+      "Never split by size or state alone"
+    ]
+  },
+
+  "extensionGuide": {
+    "input": {
+      "inherits": ["height", "radius", "paddingInline", "typography", "disabled", "gap"],
+      "adds": ["placeholder color", "status modifier", "activeShadow effect", "prefix/suffix slots"],
+      "variantAxes": { "api": ["size", "status", "disabled"], "figmaOnly": ["default", "hover", "focused", "disabled"] }
+    },
+    "select": {
+      "inherits": ["height", "radius", "paddingInline", "typography", "disabled"],
+      "adds": ["chevron icon", "dropdown → Overlay DNA"],
+      "trigger": "uses Control genes; menu uses Overlay DNA"
+    },
+    "switch": {
+      "inherits": ["disabled", "states"],
+      "adds": ["track", "thumb", "checked/unchecked binary — different geometry gene"]
+    },
+    "checkbox": {
+      "inherits": ["radius sm", "states", "disabled"],
+      "adds": ["checked/indeterminate", "16×16 box gene"]
+    }
+  }
+}

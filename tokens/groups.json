@@ -316,6 +316,13 @@
       "description": "Component-level specs (reference tokens, not standalone variables)",
       "children": [
         {
+          "name": "ControlGene",
+          "description": "Control DNA — shared genes for Button, Input, Select, …",
+          "source": "components/_control-gene.schema.json",
+          "template": "components/_control-gene.template.json",
+          "referenceImplementation": "components/button.json"
+        },
+        {
           "name": "Button",
           "description": "Ant Design Button — 960 variants, maps to Brand/Neutral/radius/padding tokens",
           "source": "components/button.json",

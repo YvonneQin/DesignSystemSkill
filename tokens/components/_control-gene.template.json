@@ -1,0 +1,115 @@
+{
+  "$description": "Control DNA component spec template — copy to {component}.json and fill in",
+  "$extends": "_control-gene.schema.json",
+  "dna": "control",
+
+  "component": "ComponentName",
+  "variantCount": 0,
+
+  "anatomy": {
+    "layers": [
+      { "name": "container", "role": "background, border, shadow, padding, radius, height" },
+      { "name": "content", "role": "auto-layout, gap" },
+      { "name": "field", "role": "primary content" }
+    ]
+  },
+
+  "variants": {
+    "size": {
+      "values": ["large", "default", "small"],
+      "default": "default"
+    },
+    "state": {
+      "values": ["default", "hover", "focused", "pressed", "disabled"],
+      "figmaOnly": true
+    }
+  },
+
+  "naming": {
+    "figma": "Size={Size}, State={State}",
+    "example": "Size=Default, State=Hover"
+  },
+
+  "layout": {
+    "gap": { "ref": "margin/marginXs8", "value": 8 },
+    "lineWidth": { "ref": "Border/border-width", "value": 1 },
+    "iconSize": { "ref": "iconSize/iconSizeMd16", "value": 16 }
+  },
+
+  "sizes": {
+    "small": {
+      "controlHeight": { "ref": "controlHeight/controlHeightSm24", "value": 24 },
+      "paddingInline": { "ref": "padding/paddingXs8", "value": 8 },
+      "borderRadius": { "ref": "radius/roundedSm4", "value": 4 },
+      "typography": { "ref": "EN/Paragraph 14_h20_Regular" }
+    },
+    "default": {
+      "controlHeight": { "ref": "controlHeight/controlHeightMd32", "value": 32 },
+      "paddingInline": { "ref": "padding/padding16", "value": 16 },
+      "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
+      "typography": { "ref": "EN/Paragraph 14_h20_Regular" }
+    },
+    "large": {
+      "controlHeight": { "ref": "controlHeight/controlHeightLg40", "value": 40 },
+      "paddingInline": { "ref": "padding/padding16", "value": 16 },
+      "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
+      "typography": { "ref": "EN/H6 16_h24_Regular" }
+    }
+  },
+
+  "effects": {},
+
+  "styles": {
+    "default": {
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorText",
+          "shadow": null
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "text": "Brand/Primary/colorPrimaryHover",
+          "shadow": null
+        },
+        "focused": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "text": "Brand/Primary/colorPrimaryHover",
+          "shadow": null
+        },
+        "pressed": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryActive",
+          "text": "Brand/Primary/colorPrimaryActive",
+          "shadow": null
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    }
+  },
+
+  "styleResolution": {
+    "rules": [
+      "else → styles.default"
+    ]
+  },
+
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "variantLayout": "Ant Design matrix inside component set — State blocks → Size rows."
+  },
+
+  "mappingCoverage": {
+    "mapped": {},
+    "gaps": []
+  }
+}

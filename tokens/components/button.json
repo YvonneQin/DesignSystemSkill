@@ -10,22 +10,27 @@
   },
 
   "component": "Button",
+  "dna": "control",
+  "$extends": "_control-gene.schema.json",
   "variantCount": 1152,
 
   "anatomy": {
     "layers": [
       { "name": "container", "role": "background, border, shadow, padding, radius" },
-      { "name": "content", "role": "horizontal flex row, icon + label" },
-      { "name": "icon", "role": "optional 16×16 icon" },
-      { "name": "label", "role": "button text, default \"Button\"" }
+      { "name": "content", "role": "horizontal flex row — left icon + label + right icon" },
+      { "name": "iconLeft", "role": "optional 16×16 icon — visibility via ShowLeftIcon" },
+      { "name": "label", "role": "button text, default \"Button\" — visibility via ShowContent" },
+      { "name": "iconRight", "role": "optional 16×16 icon (same as left) — visibility via ShowRightIcon" }
     ]
   },
 
   "variants": {
     "type": {
-      "values": ["primary", "secondary", "default", "dashed", "text", "link"],
+      "values": ["primary", "secondary", "outline", "dashed", "text", "link"],
       "antd": "type",
-      "default": "default"
+      "antdMapping": { "outline": "default" },
+      "figma": "Outline",
+      "default": "outline"
     },
     "size": {
       "values": ["large", "default", "small"],
@@ -33,8 +38,9 @@
       "default": "default"
     },
     "state": {
-      "values": ["default", "hover", "focused", "pressed", "disabled"],
-      "antd": "interactive state (not a prop)"
+      "values": ["default", "hover", "loading", "pressed", "disabled"],
+      "antd": "loading → antd `loading` prop; other states are design-time previews",
+      "figmaNote": "State=Focused renamed to State=Loading — container tokens match hover per Control DNA"
     },
     "content": {
       "values": ["basic", "iconOnly"],
@@ -48,7 +54,18 @@
     "danger": {
       "values": [false, true],
       "antd": "danger",
-      "default": false
+      "default": false,
+      "figmaNote": "Figma uses Theme=Red instead of Danger=True"
+    },
+    "theme": {
+      "values": ["blue", "black", "red"],
+      "figma": "Theme",
+      "default": "blue",
+      "mapping": {
+        "blue": "Brand/Primary palette — default Ant Design primary",
+        "black": "Brand/Secondary palette — Type=Primary uses secondary styles",
+        "red": "Brand/Error palette — maps to danger style blocks"
+      }
     },
     "shape": {
       "values": ["default", "round"],
@@ -58,13 +75,13 @@
   },
 
   "naming": {
-    "figma": "Type={Type}, Size={Size}, State={State}, Content={Content}, Ghost={Ghost}, Danger={Danger}, Shape={Shape}",
-    "example": "Type=Primary, Size=Default, State=Hover, Content=Basic, Ghost=False, Danger=False, Shape=Default"
+    "figma": "Theme={Theme}, Type={Type}, Size={Size}, State={State}, Ghost={Ghost}, Shape={Shape}",
+    "example": "Theme=Blue, Type=Primary, Size=Default, State=Loading, Ghost=False, Shape=Default"
   },
 
   "layout": {
     "iconSize": { "ref": "iconSize/iconSizeMd16", "value": 16 },
-    "iconTextGap": { "ref": "margin/marginXs8", "value": 8 },
+    "iconTextGap": { "ref": "padding/paddingXxs4", "value": 4 },
     "lineWidth": { "ref": "Border/border-width", "value": 1 },
     "contentAlign": { "value": "center", "mapped": false, "reason": "layout enum, not a design token" }
   },
@@ -73,26 +90,26 @@
     "small": {
       "controlHeight": { "ref": "controlHeight/controlHeightSm24", "value": 24 },
       "iconOnlySize": { "ref": "controlHeight/controlHeightSm24", "value": 24 },
-      "paddingInline": { "ref": "padding/paddingXs8", "value": 8, "antdValue": 7, "mapping": "nearest" },
+      "paddingInline": { "ref": "padding/paddingXxs4", "value": 4, "antdValue": 7, "mapping": "nearest" },
       "borderRadius": { "ref": "radius/roundedSm4", "value": 4 },
       "typography": { "ref": "EN/Paragraph 14_h20_Regular" },
-      "basicMinWidth": { "value": 58, "mapped": false, "reason": "Ant Design layout constant" }
+      "basicMinWidth": { "value": 58, "mapped": false, "reason": "Ant Design layout constant — not applied in Figma (HUG, no minWidth)" }
     },
     "default": {
       "controlHeight": { "ref": "controlHeight/controlHeightMd32", "value": 32 },
       "iconOnlySize": { "ref": "controlHeight/controlHeightMd32", "value": 32 },
-      "paddingInline": { "ref": "padding/padding16", "value": 16, "antdValue": 15, "mapping": "nearest" },
+      "paddingInline": { "ref": "padding/paddingXs8", "value": 8, "antdValue": 15, "mapping": "nearest" },
       "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
       "typography": { "ref": "EN/Paragraph 14_h20_Regular" },
-      "basicMinWidth": { "value": 74, "mapped": false, "reason": "Ant Design layout constant" }
+      "basicMinWidth": { "value": 74, "mapped": false, "reason": "Ant Design layout constant — not applied in Figma (HUG, no minWidth)" }
     },
     "large": {
       "controlHeight": { "ref": "controlHeight/controlHeightLg40", "value": 40 },
       "iconOnlySize": { "ref": "controlHeight/controlHeightLg40", "value": 40 },
-      "paddingInline": { "ref": "padding/padding16", "value": 16, "antdValue": 15, "mapping": "nearest" },
+      "paddingInline": { "ref": "padding/paddingSm12", "value": 12, "antdValue": 15, "mapping": "nearest" },
       "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
       "typography": { "ref": "EN/H6 16_h24_Regular" },
-      "basicMinWidth": { "value": 81, "mapped": false, "reason": "Ant Design layout constant" }
+      "basicMinWidth": { "value": 81, "mapped": false, "reason": "Ant Design layout constant — not applied in Figma (HUG, no minWidth)" }
     }
   },
 
@@ -151,7 +168,7 @@
       "radius": 0,
       "spread": 0,
       "color": "rgba(0, 0, 0, 0.02)",
-      "appliesTo": ["default", "dashed"]
+      "appliesTo": ["outline", "dashed"]
     },
     "dangerShadow": {
       "ref": "Component/Button/dangerShadow",
@@ -181,7 +198,7 @@
           "text": "Neutral/Text/colorTextLightSolid",
           "shadow": "Component/Button/primaryShadow"
         },
-        "focused": {
+        "loading": {
           "background": "Brand/Primary/colorPrimaryHover",
           "border": "Brand/Primary/colorPrimaryHover",
           "text": "Neutral/Text/colorTextLightSolid",
@@ -218,7 +235,7 @@
           "text": "Neutral/Text/colorTextLightSolid",
           "shadow": "Component/Button/secondaryShadow"
         },
-        "focused": {
+        "loading": {
           "background": "Brand/Secondary/colorSecondaryHover",
           "border": "Brand/Secondary/colorSecondaryHover",
           "text": "Neutral/Text/colorTextLightSolid",
@@ -255,7 +272,7 @@
           "text": "Neutral/Text/colorTextLightSolid",
           "shadow": "Component/Button/dangerShadow"
         },
-        "focused": {
+        "loading": {
           "background": "Brand/Error/colorErrorHover",
           "border": "Brand/Error/colorErrorHover",
           "text": "Neutral/Text/colorTextLightSolid",
@@ -292,7 +309,7 @@
           "text": "Brand/Secondary/colorSecondaryHover",
           "shadow": null
         },
-        "focused": {
+        "loading": {
           "background": "Neutral/Bg/colorTransparent",
           "border": "Brand/Secondary/colorSecondaryHover",
           "text": "Brand/Secondary/colorSecondaryHover",
@@ -329,7 +346,7 @@
           "text": "Neutral/Text/colorTextLightSolid",
           "shadow": "Component/Button/dangerShadow"
         },
-        "focused": {
+        "loading": {
           "background": "Brand/Error/colorErrorHover",
           "border": "Brand/Error/colorErrorHover",
           "text": "Neutral/Text/colorTextLightSolid",
@@ -350,10 +367,12 @@
       }
     },
 
-    "defaultDanger": {
+    "outlineDanger": {
       "danger": true,
       "ghost": false,
       "borderStyle": "solid",
+      "antd": "default",
+      "figma": "Outline",
       "states": {
         "default": {
           "background": "Neutral/Bg/colorBgContainer",
@@ -367,7 +386,7 @@
           "text": "Brand/Error/colorError",
           "shadow": "Component/Button/defaultShadow"
         },
-        "focused": {
+        "loading": {
           "background": "Neutral/Bg/colorBgContainer",
           "border": "Brand/Error/colorErrorHover",
           "text": "Brand/Error/colorError",
@@ -404,7 +423,7 @@
           "text": "Brand/Primary/colorPrimaryHover",
           "shadow": null
         },
-        "focused": {
+        "loading": {
           "background": "Neutral/Bg/colorTransparent",
           "border": "Brand/Primary/colorPrimaryHover",
           "text": "Brand/Primary/colorPrimaryHover",
@@ -425,10 +444,12 @@
       }
     },
 
-    "default": {
+    "outline": {
       "danger": false,
       "ghost": false,
       "borderStyle": "solid",
+      "antd": "default",
+      "figma": "Outline",
       "states": {
         "default": {
           "background": "Neutral/Bg/colorBgContainer",
@@ -442,7 +463,7 @@
           "text": "Brand/Primary/colorPrimaryHover",
           "shadow": "Component/Button/defaultShadow"
         },
-        "focused": {
+        "loading": {
           "background": "Neutral/Bg/colorBgContainer",
           "border": "Brand/Primary/colorPrimaryHover",
           "text": "Brand/Primary/colorPrimaryHover",
@@ -464,12 +485,12 @@
     },
 
     "dashed": {
-      "extends": "default",
+      "extends": "outline",
       "borderStyle": "dashed"
     },
 
     "dashedDanger": {
-      "extends": "defaultDanger",
+      "extends": "outlineDanger",
       "borderStyle": "dashed"
     },
 
@@ -490,7 +511,7 @@
           "text": "Neutral/Text/colorText",
           "shadow": null
         },
-        "focused": {
+        "loading": {
           "background": "Neutral/Bg/colorBgTextHover",
           "border": "Neutral/Bg/colorTransparent",
           "text": "Neutral/Text/colorText",
@@ -528,7 +549,7 @@
           "text": "Brand/Link/colorLinkHover",
           "shadow": null
         },
-        "focused": {
+        "loading": {
           "background": "Neutral/Bg/colorTransparent",
           "border": "Neutral/Bg/colorTransparent",
           "text": "Brand/Link/colorLinkHover",
@@ -566,7 +587,7 @@
           "text": "Brand/Error/colorErrorHover",
           "shadow": null
         },
-        "focused": {
+        "loading": {
           "background": "Brand/Error/colorErrorBg",
           "border": "Neutral/Bg/colorTransparent",
           "text": "Brand/Error/colorErrorHover",
@@ -590,14 +611,20 @@
 
   "styleResolution": {
     "rules": [
+      "if theme=red && type=primary → primaryDanger",
+      "if theme=red && type=outline → outlineDanger",
+      "if theme=red && type=dashed → dashedDanger",
+      "if theme=red && type=text → textDanger",
+      "if theme=black && type=primary → secondary",
+      "if theme=blue && type=primary → primary",
       "if type=primary && danger → primaryDanger",
-      "if type=default && danger → defaultDanger",
+      "if type=outline && danger → outlineDanger",
       "if type=dashed && danger → dashedDanger",
       "if type=primary && ghost → primaryGhost",
       "if type=secondary && danger → secondaryDanger",
       "if type=secondary && ghost → secondaryGhost",
       "if type=text && danger → textDanger",
-      "if type=dashed → default styles + borderStyle=dashed",
+      "if type=dashed → outline styles + borderStyle=dashed",
       "else → styles[type]"
     ]
   },
@@ -605,12 +632,13 @@
   "antd": {
     "import": "import { Button } from 'antd';",
     "notes": {
-      "secondary": "Custom type — not in Ant Design API. Map to a themed solid button using Brand/Secondary tokens (Base/black)."
+      "secondary": "Custom type — not in Ant Design API. Map to a themed solid button using Brand/Secondary tokens (Base/black).",
+      "outline": "Figma Type=Outline maps to antd default (no type prop) — outlined container button."
     },
     "examples": {
       "primary": "<Button type=\"primary\">Button</Button>",
       "secondary": "<Button type=\"secondary\">Button</Button>",
-      "default": "<Button>Button</Button>",
+      "outline": "<Button>Button</Button>",
       "dashed": "<Button type=\"dashed\">Button</Button>",
       "text": "<Button type=\"text\">Button</Button>",
       "link": "<Button type=\"link\">Button</Button>",
@@ -621,7 +649,18 @@
       "secondaryGhost": "<Button type=\"secondary\" ghost>Button</Button>",
       "danger": "<Button type=\"primary\" danger>Button</Button>",
       "secondaryDanger": "<Button type=\"secondary\" danger>Button</Button>",
-      "iconOnly": "<Button type=\"primary\" icon={<SearchOutlined />} />"
+      "iconOnly": "<Button type=\"primary\" icon={<SearchOutlined />} />",
+      "loading": "<Button type=\"primary\" loading>Button</Button>"
+    }
+  },
+
+  "loadingState": {
+    "variant": "State=Loading",
+    "antd": "loading",
+    "containerAppearance": "inherits hover tokens from each style block (same background/border/text/shadow as hover)",
+    "figmaImplemented": {
+      "spinner": false,
+      "note": "Loading variant exists for token preview; spinner layer not yet added"
     }
   },
 
@@ -629,15 +668,38 @@
     "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
     "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
     "componentSets": {
-      "*Button*": "Primary + Default + Dashed + Text + Link (Ghost=False, Danger=False) — do NOT duplicate as Button/Primary",
-      "Button/Secondary": "Secondary palette — same matrix, Type column uses Secondary instead of Primary",
-      "Button/Danger": "Danger=True variants — separate set for red theme"
+      "*Button*": "Single set — Theme=Blue|Black|Red × Type (Primary|Outline|Dashed|Text|Link) × Size × State × Shape (450 variants)"
     },
     "figmaImplemented": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "162:2",
+      "componentSetId": "447:902",
+      "variantCount": 450,
+      "stateAxis": ["Default", "Hover", "Loading", "Pressed", "Disabled"],
       "ghost": false,
-      "note": "primaryGhost / secondaryGhost defined in styles but not built in Figma yet"
+      "note": "State=Loading replaces Focused — container uses hover tokens; spinner TBD"
     },
-    "variantLayout": "Ant Design matrix inside component set — State blocks (columns) → Type sub-columns → Size rows; no page-level text labels.",
+    "componentProperties": {
+      "ShowLeftIcon": {
+        "type": "BOOLEAN",
+        "default": true,
+        "bindTo": "left Icon / SearchOutlined.visible",
+        "antd": "icon prop — hide when false"
+      },
+      "ShowContent": {
+        "type": "BOOLEAN",
+        "default": true,
+        "bindTo": "Label.visible",
+        "antd": "children / label — hide when false (icon-only button)"
+      },
+      "ShowRightIcon": {
+        "type": "BOOLEAN",
+        "default": true,
+        "bindTo": "right Icon / SearchOutlined.visible",
+        "antd": "icon prop (suffix) — hide when false"
+      }
+    },
+    "variantLayout": "Ant Design matrix — Theme blocks (stacked) → State columns → Type sub-columns → Size rows × Shape sections",
     "borderRadius": {
       "small": "radius/roundedSm4 (4) — Shape=Default only",
       "default": "radius/roundedLg8 (8) — Shape=Default only",
@@ -650,8 +712,7 @@
     "mapped": {
       "colors": "Brand/* + Neutral/* (all style background/border/text)",
       "radius": "radius/rounded*",
-      "padding": "padding/* (nearest-value)",
-      "margin": "margin/marginXs8",
+      "padding": "padding/* (nearest-value); iconTextGap → padding/paddingXxs4",
       "controlHeight": "controlHeight/controlHeight*",
       "iconSize": "iconSize/iconSizeMd16",
       "borderWidth": "Border/border-width",
@@ -707,7 +768,7 @@
       },
       {
         "field": "styles missing combos",
-        "reason": "default+danger, ghost+danger for non-primary types not in styles block",
+        "reason": "outline+danger, ghost+danger for non-primary types not in styles block",
         "action": "extend styles or derive via styleResolution rules"
       }
     ]
