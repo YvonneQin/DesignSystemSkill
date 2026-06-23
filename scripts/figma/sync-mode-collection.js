@@ -7,20 +7,20 @@ function parseRef(value) {
 }
 
 const LIGHT_REF = {
-  white: "white/1", "black.5": "black/5", "neutral.50": "gray/1", "neutral.100": "gray/3",
-  "neutral.200": "gray/4", "neutral.500": "gray/10", "neutral.900": "gray/12", "neutral.950": "gray/12",
-  "red.600": "red/9", "blue.8": "blue/8", "blue.9": "blue/9", "blue.10": "blue/10",
-  "blue.11": "blue/11", "blue.12": "blue/12",
+  white: "white/50", "black.5": "black/400", "neutral.50": "gray/50", "neutral.100": "gray/200",
+  "neutral.200": "gray/300", "neutral.500": "gray/900", "neutral.900": "gray/900", "neutral.950": "gray/900",
+  "red.600": "red/800", "blue.8": "blue/700", "blue.9": "blue/800", "blue.10": "blue/900",
+  "blue.800": "blue/800", "blue.900": "blue/900",
 };
 const DARK_REF = {
-  white: "white/1", "black.5": "black/5", "neutral.50": "gray/12", "neutral.100": "gray/3",
-  "neutral.200": "gray/11", "neutral.400": "gray/9", "neutral.500": "gray/10", "neutral.700": "gray/8",
-  "neutral.800": "gray/3", "neutral.900": "gray/2", "neutral.950": "gray/1", "red.400": "red/11",
-  "blue.8": "blue/8", "blue.9": "blue/9", "blue.10": "blue/10", "blue.11": "blue/11", "blue.12": "blue/12",
+  white: "white/50", "black.5": "black/400", "neutral.50": "gray/900", "neutral.100": "gray/200",
+  "neutral.200": "gray/800", "neutral.400": "gray/800", "neutral.500": "gray/900", "neutral.700": "gray/700",
+  "neutral.800": "gray/200", "neutral.900": "gray/100", "neutral.950": "gray/50", "red.400": "red/800",
+  "blue.8": "blue/700", "blue.9": "blue/800", "blue.10": "blue/900", "blue.800": "blue/800", "blue.900": "blue/900",
 };
 const SEMANTIC_OVERRIDES = {
-  "semantic-background": { light: "gray/11", dark: "gray/3" },
-  "semantic-border": { light: "gray/9", dark: "gray/7" },
+  "semantic-background": { light: "gray/800", dark: "gray/200" },
+  "semantic-border": { light: "gray/800", dark: "gray/600" },
 };
 
 const COLOR_KEYS = [
@@ -40,7 +40,7 @@ const LIGHT_VALUES = {
   muted:"{neutral.100}","muted-foreground":"{neutral.500}",accent:"{neutral.100}",
   "accent-foreground":"{neutral.900}",destructive:"{red.600}",border:"{neutral.200}",
   input:"{neutral.200}",ring:"{neutral.500}","chart-1":"{blue.8}","chart-2":"{blue.9}",
-  "chart-3":"{blue.10}","chart-4":"{blue.11}","chart-5":"{blue.12}",sidebar:"{neutral.50}",
+  "chart-3":"{blue.10}","chart-4":"{blue.800}","chart-5":"{blue.900}",sidebar:"{neutral.50}",
   "sidebar-foreground":"{neutral.950}","sidebar-primary":"{neutral.900}",
   "sidebar-primary-foreground":"{neutral.50}","sidebar-accent":"{neutral.100}",
   "sidebar-accent-foreground":"{neutral.900}","sidebar-border":"{neutral.200}",
@@ -54,7 +54,7 @@ const DARK_VALUES = {
   "secondary-foreground":"{neutral.50}",muted:"{neutral.800}","muted-foreground":"{neutral.400}",
   accent:"{neutral.700}","accent-foreground":"{neutral.50}",destructive:"{red.400}",
   border:"{neutral.700}",input:"{neutral.900}",ring:"{neutral.500}","chart-1":"{blue.8}",
-  "chart-2":"{blue.9}","chart-3":"{blue.10}","chart-4":"{blue.11}","chart-5":"{blue.12}",
+  "chart-2":"{blue.9}","chart-3":"{blue.10}","chart-4":"{blue.800}","chart-5":"{blue.900}",
   sidebar:"{neutral.900}","sidebar-foreground":"{neutral.50}","sidebar-primary":"{blue.10}",
   "sidebar-primary-foreground":"{neutral.50}","sidebar-accent":"{neutral.800}",
   "sidebar-accent-foreground":"{neutral.50}","sidebar-border":"{neutral.700}",

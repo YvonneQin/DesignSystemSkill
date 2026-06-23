@@ -52,9 +52,9 @@ const components = [];
 for (let pi = 0; pi < PRESETS.length; pi++) {
   const presetName = PRESETS[pi][0];
   const palette = PRESETS[pi][1];
-  const bgVar = v('Base/' + palette + '/1');
-  const borderVar = v('Base/' + palette + '/3');
-  const textVar = v('Base/' + palette + '/7');
+  const bgVar = v('Base/' + palette + '/50');
+  const borderVar = v('Base/' + palette + '/200');
+  const textVar = v('Base/' + palette + '/600');
 
   for (let bi = 0; bi < 2; bi++) {
     const borderYes = bi == 0;

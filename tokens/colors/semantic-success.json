@@ -3,44 +3,44 @@
   "palette": "green",
   "tokens": {
     "colorSuccess": {
-      "light": { "ref": "Base/green/6" },
-      "dark": { "ref": "Base/green/6" }
+      "light": { "ref": "Base/green/500" },
+      "dark": { "ref": "Base/green/500" }
     },
     "colorSuccessBg": {
-      "light": { "ref": "Base/green/1" },
-      "dark": { "ref": "Base/green/1" }
+      "light": { "ref": "Base/green/50" },
+      "dark": { "ref": "Base/green/50" }
     },
     "colorSuccessBgHover": {
-      "light": { "ref": "Base/green/2" },
-      "dark": { "ref": "Base/green/2" }
+      "light": { "ref": "Base/green/100" },
+      "dark": { "ref": "Base/green/100" }
     },
     "colorSuccessBorder": {
-      "light": { "ref": "Base/green/3" },
-      "dark": { "ref": "Base/green/3" }
+      "light": { "ref": "Base/green/200" },
+      "dark": { "ref": "Base/green/200" }
     },
     "colorSuccessBorderHover": {
-      "light": { "ref": "Base/green/4" },
-      "dark": { "ref": "Base/green/4" }
+      "light": { "ref": "Base/green/300" },
+      "dark": { "ref": "Base/green/300" }
     },
     "colorSuccessHover": {
-      "light": { "ref": "Base/green/5" },
-      "dark": { "ref": "Base/green/7" }
+      "light": { "ref": "Base/green/400" },
+      "dark": { "ref": "Base/green/600" }
     },
     "colorSuccessActive": {
-      "light": { "ref": "Base/green/7" },
-      "dark": { "ref": "Base/green/5" }
+      "light": { "ref": "Base/green/600" },
+      "dark": { "ref": "Base/green/400" }
     },
     "colorSuccessTextHover": {
-      "light": { "ref": "Base/green/8" },
-      "dark": { "ref": "Base/green/8" }
+      "light": { "ref": "Base/green/700" },
+      "dark": { "ref": "Base/green/700" }
     },
     "colorSuccessText": {
-      "light": { "ref": "Base/green/9" },
-      "dark": { "ref": "Base/green/9" }
+      "light": { "ref": "Base/green/800" },
+      "dark": { "ref": "Base/green/800" }
     },
     "colorSuccessTextActive": {
-      "light": { "ref": "Base/green/10" },
-      "dark": { "ref": "Base/green/10" }
+      "light": { "ref": "Base/green/900" },
+      "dark": { "ref": "Base/green/900" }
     }
   }
 }

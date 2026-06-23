@@ -1,0 +1,250 @@
+{
+  "$description": "AgentOS Design System Badge component spec — Ant Design badge indicator and status families",
+  "$source": {
+    "docs": "https://ant.design/components/badge/"
+  },
+
+  "component": "Badge",
+  "dna": "feedback",
+  "variantCount": 9,
+
+  "anatomy": {
+    "indicator": {
+      "layers": [
+        { "name": "anchor", "role": "placeholder content frame that the badge decorates; visibility via ShowAnchor" },
+        { "name": "indicator", "role": "absolute-positioned badge container at the top-right of the anchor" },
+        { "name": "countLabel", "role": "count text for numeric badge; hidden when Type=Dot" }
+      ]
+    },
+    "status": {
+      "layers": [
+        { "name": "statusDot", "role": "6×6 semantic dot" },
+        { "name": "label", "role": "optional status text; visibility via ShowText" }
+      ]
+    }
+  },
+
+  "variants": {
+    "family": {
+      "values": ["indicator", "status"],
+      "figma": "Separate component sets per family"
+    },
+    "type": {
+      "values": ["count", "dot"],
+      "antd": "count | dot",
+      "figma": "Type",
+      "appliesTo": ["indicator"]
+    },
+    "size": {
+      "values": ["default", "small"],
+      "antd": "size",
+      "figma": "Size",
+      "appliesTo": ["indicator"]
+    },
+    "status": {
+      "values": ["default", "success", "processing", "error", "warning"],
+      "antd": "status",
+      "figma": "Status",
+      "appliesTo": ["status"]
+    }
+  },
+
+  "naming": {
+    "indicator": "Type={Type}, Size={Size}",
+    "status": "Status={Status}",
+    "example": "Type=Count, Size=Default"
+  },
+
+  "layout": {
+    "indicator": {
+      "anchorSize": { "value": 32, "mapped": false, "reason": "Badge wraps arbitrary children; placeholder anchor is for component visualization only" },
+      "offsetX": { "value": 6, "mapped": false, "reason": "Badge overlay offset is geometric, not a shared token" },
+      "offsetY": { "value": -4, "mapped": false, "reason": "Badge overlay offset is geometric, not a shared token" },
+      "countDefaultHeight": { "value": 20, "mapped": false, "reason": "Ant Badge component token indicatorHeight = 20; no local foundation token" },
+      "countSmallHeight": { "value": 14, "mapped": false, "reason": "Ant Badge component token indicatorHeightSM = 14; no local foundation token" },
+      "dotSize": { "value": 6, "mapped": false, "reason": "Ant Badge component token dotSize = 6; no local foundation token" },
+      "paddingInline": { "ref": "padding/paddingXs8", "value": 8 },
+      "borderWidth": { "ref": "Border/border-width", "value": 1 },
+      "radiusPill": { "ref": "radius/roundedFull999", "value": 999 },
+      "typography": {
+        "ref": "EN/Small Text 12_h20_Regular",
+        "value": { "fontSize": 12, "lineHeight": 20 }
+      }
+    },
+    "status": {
+      "dotSize": { "value": 6, "mapped": false, "reason": "Ant Badge component token statusSize = 6; no local foundation token" },
+      "itemSpacing": { "ref": "margin/marginXs8", "value": 8 },
+      "typography": {
+        "ref": "EN/Small Text 12_h20_Regular",
+        "value": { "fontSize": 12, "lineHeight": 20 }
+      }
+    }
+  },
+
+  "styles": {
+    "indicator": {
+      "count": {
+        "default": {
+          "background": "Brand/Error/colorError",
+          "border": "Neutral/Bg/colorBorderBg",
+          "text": "Neutral/Text/colorTextLightSolid"
+        },
+        "small": {
+          "background": "Brand/Error/colorError",
+          "border": "Neutral/Bg/colorBorderBg",
+          "text": "Neutral/Text/colorTextLightSolid"
+        }
+      },
+      "dot": {
+        "default": {
+          "background": "Brand/Error/colorError",
+          "border": "Neutral/Bg/colorBorderBg"
+        },
+        "small": {
+          "background": "Brand/Error/colorError",
+          "border": "Neutral/Bg/colorBorderBg"
+        }
+      }
+    },
+    "status": {
+      "default": {
+        "dot": "Neutral/Text/colorTextPlaceholder",
+        "text": "Neutral/Text/colorTextSecondary"
+      },
+      "success": {
+        "dot": "Brand/Success/colorSuccess",
+        "text": "Brand/Success/colorSuccess"
+      },
+      "processing": {
+        "dot": "Brand/Info/colorInfo",
+        "text": "Brand/Info/colorInfo"
+      },
+      "error": {
+        "dot": "Brand/Error/colorError",
+        "text": "Brand/Error/colorError"
+      },
+      "warning": {
+        "dot": "Brand/Warning/colorWarning",
+        "text": "Brand/Warning/colorWarning"
+      }
+    }
+  },
+
+  "styleResolution": {
+    "rules": [
+      "if family=indicator && type=count → indicator.count.{size}",
+      "if family=indicator && type=dot → indicator.dot.{size}",
+      "if family=status → status.{status}"
+    ]
+  },
+
+  "antd": {
+    "import": "import { Badge } from 'antd';",
+    "notes": {
+      "scope": "Badge v1 includes numeric/dot indicator and status badge. Badge.Ribbon is excluded and should be a separate follow-up spec.",
+      "indicator": "count uses a text property in Figma; dot hides the count label instead of adding a separate component family."
+    },
+    "examples": {
+      "count": "<Badge count={5}><Avatar shape=\"square\" size=\"large\" /></Badge>",
+      "small": "<Badge count={5} size=\"small\"><Avatar shape=\"square\" size=\"large\" /></Badge>",
+      "dot": "<Badge dot><Avatar shape=\"square\" size=\"large\" /></Badge>",
+      "status": "<Badge status=\"success\" text=\"Success\" />"
+    }
+  },
+
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "componentSets": {
+      "*Badge* / Indicator": "Type=Count|Dot × Size=Default|Small — 4 variants",
+      "*Badge* / Status": "Status=Default|Success|Processing|Error|Warning — 5 variants"
+    },
+    "figmaImplemented": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "162:5",
+      "pageName": "├─  Badge 徽标 ✨",
+      "componentSetIds": {
+        "indicator": "778:20",
+        "status": "778:36"
+      },
+      "variantCount": 9,
+      "note": "Initialized in the AgentOS Design System file. Indicator set uses Type × Size, and Status set is a vertical semantic stack."
+    },
+    "componentProperties": {
+      "indicator": {
+        "ShowAnchor": {
+          "type": "BOOLEAN",
+          "default": true,
+          "bindTo": "anchor.visible",
+          "antd": "for Figma-only standalone preview; actual React Badge wraps arbitrary child content"
+        },
+        "ShowIndicator": {
+          "type": "BOOLEAN",
+          "default": true,
+          "bindTo": "indicator.visible",
+          "antd": "simulates empty count / hidden badge states"
+        },
+        "CountValue": {
+          "type": "TEXT",
+          "default": "5",
+          "bindTo": "countLabel.characters",
+          "antd": "count prop"
+        },
+        "ShowCountText": {
+          "type": "BOOLEAN",
+          "default": true,
+          "bindTo": "countLabel.visible",
+          "antd": "Type=Dot should set false; Type=Count should set true"
+        }
+      },
+      "status": {
+        "StatusText": {
+          "type": "TEXT",
+          "default": "Status",
+          "bindTo": "label.characters",
+          "antd": "text prop"
+        },
+        "ShowText": {
+          "type": "BOOLEAN",
+          "default": true,
+          "bindTo": "label.visible",
+          "antd": "status text is optional"
+        }
+      }
+    },
+    "variantLayout": "Page: Indicator set on top, Status set below with 120px gap. Indicator matrix: Type columns × Size rows. Status matrix: vertical stack."
+  },
+
+  "mappingCoverage": {
+    "mapped": {
+      "indicatorColors": "Brand/Error/colorError + Neutral/Bg/colorBorderBg + Neutral/Text/colorTextLightSolid",
+      "statusColors": "Neutral/Text + Brand/Success|Info|Error|Warning",
+      "radius": "radius/roundedFull999",
+      "paddingInline": "padding/paddingXs8",
+      "statusGap": "margin/marginXs8",
+      "typography": "EN/Small Text 12_h20_Regular"
+    },
+    "gaps": [
+      {
+        "name": "indicatorHeightTokens",
+        "reason": "Badge-specific heights 20 and 14 do not exist as foundation size tokens in the current system."
+      },
+      {
+        "name": "dotSizeToken",
+        "reason": "Badge dot/status dot size 6 is currently a component constant, not a shared token."
+      },
+      {
+        "name": "customColorProp",
+        "reason": "Ant Badge supports custom color strings, but v1 binds only the semantic default/status palettes."
+      },
+      {
+        "name": "ribbonSubcomponent",
+        "reason": "Badge.Ribbon has a different geometry and placement model and should be implemented as a separate spec."
+      },
+      {
+        "name": "slotBasedAnchor",
+        "reason": "Figma v1 uses a placeholder anchor frame instead of a true slot/property-driven wrapped child model."
+      }
+    ]
+  }
+}

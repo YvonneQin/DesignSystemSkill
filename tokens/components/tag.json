@@ -1,300 +1,276 @@
 {
-  "$description": "Ant Design Tag component spec — sourced from Ant Design System for Figma",
+  "$description": "AgentOS Design System Tag component spec synced to the latest local Figma draft with palette theme, type, state, and shape axes.",
   "$source": {
-    "figma": {
-      "fileKey": "L3k9dxCWyCjhm5G5V22A13",
-      "page": "Tag",
-      "componentSets": {
-        "colorful": "791:25199",
-        "basic": "791:25269",
-        "checkable": "791:25294",
-        "status": "791:25336"
-      },
-      "url": "https://www.figma.com/design/L3k9dxCWyCjhm5G5V22A13/Ant-Design-System-for-Figma--Free-version---Community-?node-id=791-25199"
-    },
-    "docs": "https://ant.design/components/tag"
+    "docs": "https://ant.design/components/tag/"
   },
-
   "component": "Tag",
   "dna": "feedback",
-  "variantCount": 34,
-
+  "variantCount": 320,
   "anatomy": {
     "layers": [
-      { "name": "container", "role": "auto-layout frame — background, border, padding, radius" },
-      { "name": "iconLeft", "role": "optional 12×12 direct icon instance — mainComponent via IconValue; visibility via ShowLeftIcon; color mirrors Label.fills unless overridden" },
-      { "name": "label", "role": "tag text (12px in Ant source)" },
-      { "name": "iconRight", "role": "optional 12×12 direct icon instance — mainComponent via IconValue; visibility via ShowRightIcon; color mirrors Label.fills unless overridden" },
-      { "name": "closeIcon", "role": "optional — Basic Closeable variant" },
-      { "name": "statusIcon", "role": "optional dot/icon — Status variant (BOOLEAN Icon)" },
-      { "name": "plusIcon", "role": "optional — Basic Add New variant" }
+      { "name": "container", "role": "background, border, radius, padding, and state treatment" },
+      { "name": "leftIcon", "role": "optional leading icon instance" },
+      { "name": "label", "role": "tag text label" },
+      { "name": "rightIcon", "role": "optional trailing icon instance" }
     ]
   },
-
   "variants": {
-    "family": {
-      "values": ["colorful", "basic", "checkable", "status"],
-      "figma": "Separate component sets per family (matches Ant Design for Figma)"
+    "theme": {
+      "values": ["pink", "cyan", "indigo", "lime", "orange", "purple", "tomato", "neutral"],
+      "figma": "Theme"
     },
-    "preset": {
-      "values": ["magenta", "blue", "cyan", "geekblue", "gold", "green", "lime", "orange", "purple", "red", "volcano"],
-      "antd": "color prop — preset palette names",
-      "figma": "Preset",
-      "appliesTo": ["colorful"]
+    "type": {
+      "values": ["primary", "outline", "dashed", "link"],
+      "antd": "visual treatment family",
+      "default": "primary"
     },
-    "border": {
-      "values": [true, false],
-      "antd": "variant=filled (border) vs solid/outlined — legacy bordered prop deprecated",
-      "figma": "Border=Yes|No",
-      "appliesTo": ["colorful", "basic"]
+    "state": {
+      "values": ["default", "hover", "loading", "active", "disabled"],
+      "figmaOnly": true
     },
-    "variant": {
-      "values": ["default", "closeable", "addNew"],
-      "figma": "Variant=Default|Closeable|Add New",
-      "appliesTo": ["basic"]
-    },
-    "checked": {
-      "values": [false, true],
-      "antd": "Tag.CheckableTag checked",
-      "figma": "Checked=False|True",
-      "appliesTo": ["checkable"]
-    },
-    "status": {
-      "values": ["default", "success", "processing", "error", "warning"],
-      "figma": "Status",
-      "appliesTo": ["status"]
+    "shape": {
+      "values": ["default", "round"],
+      "default": "default"
     }
   },
-
   "naming": {
-    "colorful": "Preset={Preset}, Border={Border}",
-    "basic": "Variant={Variant}, Border={Border}",
-    "checkable": "Checked={Checked}",
-    "status": "Status={Status}",
-    "example": "Preset=Blue, Border=Yes"
+    "figma": "Theme={Theme}, Type={Type}, State={State}, Shape={Shape}",
+    "example": "Theme=Pink, Type=Primary, State=Default, Shape=Round"
   },
-
   "layout": {
-    "height": { "value": 22, "mapped": false, "reason": "Ant Tag fixed height — not controlHeight scale" },
+    "height": { "value": 22, "mapped": false, "reason": "fixed tag height in latest local Figma draft" },
     "paddingInline": { "ref": "padding/paddingXs8", "value": 8 },
-    "paddingBlock": { "value": 1, "mapped": false, "reason": "Ant Tag vertical padding 1px — no foundation token" },
+    "paddingBlock": { "value": 1, "mapped": false, "reason": "1px vertical inset from Figma draft" },
     "borderRadius": { "ref": "radius/roundedSm4", "value": 4 },
     "lineWidth": { "ref": "Border/border-width", "value": 1 },
     "itemSpacing": { "ref": "padding/paddingXxs4", "value": 4 },
     "typography": {
       "ref": "EN/Small Text 12_h20_Regular",
-      "value": { "fontSize": 12, "lineHeight": 20 },
-      "figmaTextStyleId": "S:579ce9d375171f48e904e4d646556642e4ff6c22,"
+      "value": { "fontSize": 12, "lineHeight": 20 }
     }
   },
-
-  "presetPalette": {
-    "$description": "Colorful Tag — Ant preset → Base palette steps (filled + bordered)",
-    "mapping": {
-      "magenta": "Base/pink",
-      "blue": "Base/blue",
-      "cyan": "Base/cyan",
-      "geekblue": "Base/indigo",
-      "gold": "Base/gold",
-      "green": "Base/green",
-      "lime": "Base/lime",
-      "orange": "Base/orange",
-      "purple": "Base/purple",
-      "red": "Base/red",
-      "volcano": "Base/tomato"
+  "shape": {
+    "default": {
+      "borderRadius": { "ref": "radius/roundedSm4", "value": 4 }
     },
-    "borderYes": {
-      "background": "{palette}/1",
-      "border": "{palette}/3",
-      "text": "{palette}/7"
-    },
-    "borderNo": {
-      "background": "{palette}/1",
-      "border": null,
-      "text": "{palette}/7"
-    },
-    "labelText": "Label.characters = capitalized Base palette name from bound text token (e.g. Preset=Magenta → Pink, Geekblue → Indigo, Volcano → Tomato)"
+    "round": {
+      "borderRadius": { "ref": "radius/roundedFull999", "value": 999 }
+    }
   },
-
+  "palettes": {
+    "pink": {
+      "background": "Base/pink/50",
+      "border": "Base/pink/200",
+      "text": "Base/pink/600"
+    },
+    "cyan": {
+      "background": "Base/cyan/50",
+      "border": "Base/cyan/200",
+      "text": "Base/cyan/600"
+    },
+    "indigo": {
+      "background": "Base/indigo/50",
+      "border": "Base/indigo/200",
+      "text": "Base/indigo/600"
+    },
+    "lime": {
+      "background": "Base/lime/50",
+      "border": "Base/lime/200",
+      "text": "Base/lime/600"
+    },
+    "orange": {
+      "background": "Base/orange/50",
+      "border": "Base/orange/200",
+      "text": "Base/orange/600"
+    },
+    "purple": {
+      "background": "Base/purple/50",
+      "border": "Base/purple/200",
+      "text": "Base/purple/600"
+    },
+    "tomato": {
+      "background": "Base/tomato/50",
+      "border": "Base/tomato/200",
+      "text": "Base/tomato/600"
+    },
+    "neutral": {
+      "background": "Neutral/Fill/colorFillTertiary",
+      "border": "Neutral/Border/colorBorder",
+      "text": "Neutral/Text/colorText"
+    }
+  },
   "styles": {
-    "basicDefault": {
-      "borderYes": {
-        "background": "Neutral/Bg/colorBgContainer",
-        "border": "Neutral/Border/colorBorder",
-        "text": "Neutral/Text/colorText"
-      },
-      "borderNo": {
-        "background": "Neutral/Fill/colorFillTertiary",
-        "border": null,
-        "text": "Neutral/Text/colorText"
+    "primary": {
+      "states": {
+        "default": {
+          "background": "{paletteBg}",
+          "border": "{paletteBorder}",
+          "text": "{paletteText}",
+          "borderStyle": "solid"
+        },
+        "hover": {
+          "background": "{paletteBg}",
+          "border": "{paletteText}",
+          "text": "{paletteText}",
+          "borderStyle": "solid"
+        },
+        "loading": {
+          "background": "{paletteBg}",
+          "border": "{paletteText}",
+          "text": "{paletteText}",
+          "borderStyle": "solid"
+        },
+        "active": {
+          "background": "{paletteBorder}",
+          "border": "{paletteText}",
+          "text": "{paletteText}",
+          "borderStyle": "solid"
+        },
+        "disabled": {
+          "background": "Neutral/Fill/colorFillTertiary",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "borderStyle": "solid"
+        }
       }
     },
-    "checkable": {
-      "unchecked": {
-        "background": "Neutral/Bg/colorBgContainer",
-        "border": "Neutral/Border/colorBorder",
-        "text": "Neutral/Text/colorText"
-      },
-      "checked": {
-        "background": "Brand/Primary/colorPrimary",
-        "border": "Brand/Primary/colorPrimary",
-        "text": "Neutral/Text/colorTextLightSolid"
+    "outline": {
+      "states": {
+        "default": {
+          "background": "transparent",
+          "border": "{paletteBorder}",
+          "text": "{paletteText}",
+          "borderStyle": "solid"
+        },
+        "hover": {
+          "background": "{paletteBg}",
+          "border": "{paletteText}",
+          "text": "{paletteText}",
+          "borderStyle": "solid"
+        },
+        "loading": {
+          "background": "transparent",
+          "border": "{paletteText}",
+          "text": "{paletteText}",
+          "borderStyle": "solid"
+        },
+        "active": {
+          "background": "{paletteBg}",
+          "border": "{paletteText}",
+          "text": "{paletteText}",
+          "borderStyle": "solid"
+        },
+        "disabled": {
+          "background": "transparent",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "borderStyle": "solid"
+        }
       }
     },
-    "status": {
-      "default": { "text": "Neutral/Text/colorText", "icon": "Neutral/Text/colorText" },
-      "success": { "text": "Brand/Success/colorSuccess", "icon": "Brand/Success/colorSuccess" },
-      "processing": { "text": "Brand/Primary/colorPrimary", "icon": "Brand/Primary/colorPrimary" },
-      "error": { "text": "Brand/Error/colorError", "icon": "Brand/Error/colorError" },
-      "warning": { "text": "Brand/Warning/colorWarning", "icon": "Brand/Warning/colorWarning" }
+    "dashed": {
+      "states": {
+        "default": {
+          "background": "transparent",
+          "border": "{paletteBorder}",
+          "text": "{paletteText}",
+          "borderStyle": "dashed"
+        },
+        "hover": {
+          "background": "{paletteBg}",
+          "border": "{paletteText}",
+          "text": "{paletteText}",
+          "borderStyle": "dashed"
+        },
+        "loading": {
+          "background": "transparent",
+          "border": "{paletteText}",
+          "text": "{paletteText}",
+          "borderStyle": "dashed"
+        },
+        "active": {
+          "background": "{paletteBg}",
+          "border": "{paletteText}",
+          "text": "{paletteText}",
+          "borderStyle": "dashed"
+        },
+        "disabled": {
+          "background": "transparent",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "borderStyle": "dashed"
+        }
+      }
+    },
+    "link": {
+      "states": {
+        "default": {
+          "background": "transparent",
+          "border": "transparent",
+          "text": "{paletteText}",
+          "borderStyle": "none"
+        },
+        "hover": {
+          "background": "{paletteBg}",
+          "border": "transparent",
+          "text": "{paletteText}",
+          "borderStyle": "none"
+        },
+        "loading": {
+          "background": "transparent",
+          "border": "transparent",
+          "text": "{paletteText}",
+          "borderStyle": "none"
+        },
+        "active": {
+          "background": "{paletteBg}",
+          "border": "transparent",
+          "text": "{paletteText}",
+          "borderStyle": "none"
+        },
+        "disabled": {
+          "background": "transparent",
+          "border": "transparent",
+          "text": "Neutral/Text/colorTextDisabled",
+          "borderStyle": "none"
+        }
+      }
     }
   },
-
   "styleResolution": {
     "rules": [
-      "if family=colorful → presetPalette.borderYes|borderNo by Border axis",
-      "if family=basic && variant=default → basicDefault",
-      "if family=basic && variant=closeable → basicDefault + closeIcon layer",
-      "if family=basic && variant=addNew → basicDefault.borderYes + plusIcon + dashed border style",
-      "if family=checkable → checkable.unchecked|checked",
-      "if family=status → status.{status}"
+      "if type=primary -> styles.primary.states.{state}",
+      "if type=outline -> styles.outline.states.{state}",
+      "if type=dashed -> styles.dashed.states.{state}",
+      "if type=link -> styles.link.states.{state}",
+      "palette variables resolve from palettes.{theme}"
     ]
   },
-
   "antd": {
     "import": "import { Tag } from 'antd';",
     "notes": {
-      "colorful": "<Tag color=\"blue\">blue</Tag> — preset or custom hex",
-      "checkable": "<Tag.CheckableTag checked={checked} onChange={setChecked}>Checkable</Tag.CheckableTag>",
-      "variant": "antd 6.0+ variant: filled | solid | outlined — maps to Border axis in Ant Figma kit"
+      "scope": "This local draft diverges from the stock Ant Design colorful/checkable/status split and instead uses a unified theme + type matrix.",
+      "state": "hover/loading/active are design preview states; disabled maps from the component prop."
     },
     "examples": {
-      "basic": "<Tag>Tag</Tag>",
-      "closable": "<Tag closable onClose={log}>Tag 2</Tag>",
-      "colorful": "<Tag color=\"magenta\">magenta</Tag>",
-      "checkable": "<Tag.CheckableTag checked>Checked</Tag.CheckableTag>",
-      "status": "<Tag icon={<CheckCircleOutlined />} color=\"success\">success</Tag>"
+      "primary": "<Tag color=\"magenta\">Pink</Tag>",
+      "outline": "<Tag bordered>Outline</Tag>",
+      "dashed": "<Tag style={{ borderStyle: 'dashed' }}>Dashed</Tag>",
+      "link": "<Tag bordered={false}>Link</Tag>"
     }
   },
-
   "figmaConventions": {
     "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
     "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
     "componentSets": {
-      "*Tag* / Colorful": "Preset × Border — 22 variants",
-      "*Tag* / Basic": "Variant × Border — 5 variants",
-      "*Tag* / Checkable": "Checked — 2 variants",
-      "*Tag* / Status": "Status + Icon BOOLEAN — 5 variants"
+      "*Tag*": "Theme=Pink|Cyan|Indigo|Lime|Orange|Purple|Tomato|Neutral x Type=Primary|Outline|Dashed|Link x State=Default|Hover|Loading|Active|Disabled x Shape=Default|Round (320 variants)"
     },
     "figmaImplemented": {
       "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
       "pageId": "162:10",
-      "pageName": "├─  Tag 标签",
-      "componentSetIds": {
-        "colorful": "521:46",
-        "basic": "524:15",
-        "checkable": "524:20",
-        "status": "524:36"
-      },
-      "variantCount": 34,
-      "status": "initialized",
-      "note": "Colorful preset colors alias to existing Base/* radix palettes (e.g. Magenta→pink, Geekblue→indigo, Volcano→tomato). Label → EN/Small Text 12_h20_Regular. Inline icons should be direct icon instances and inherit Label.fills unless a family defines a separate icon token.",
-      "iconBinding": {
-        "implementation": "direct icon instances",
-        "wrapper": false,
-        "instanceSwapProp": "↳ Icon Value",
-        "visibilityProps": ["ShowLeftIcon", "ShowRightIcon"],
-        "colorStrategy": "icon vector fills mirror Label.fills per variant unless a status/icon token is explicitly defined"
-      }
-    },
-    "variantLayout": "Ant source matrix — Colorful/Basic: Border=Yes left + Border=No right, 69px row gap; Checkable/Status: vertical stack; page: sets stacked with 120px gap",
-    "componentProperties": {
-      "colorful": {
-        "↳ Icon Value": {
-          "type": "INSTANCE_SWAP",
-          "default": "Icon / SearchOutlined (432:24)",
-          "bindTo": "left direct Icon.mainComponent + right direct Icon.mainComponent",
-          "antd": "icon prop — swap icon component on both sides"
-        },
-        "ShowLeftIcon": {
-          "type": "BOOLEAN",
-          "default": true,
-          "bindTo": "left direct Icon.visible",
-          "antd": "icon prop — hide when false"
-        },
-        "ShowRightIcon": {
-          "type": "BOOLEAN",
-          "default": false,
-          "bindTo": "right direct Icon.visible",
-          "antd": "icon prop (suffix) — hide when false"
-        },
-        "IconColor": {
-          "type": "DERIVED",
-          "default": "follow Label.fills",
-          "bindTo": "left/right direct Icon > Vector.fills",
-          "antd": "inherits tag text color in each variant/state"
-        }
-      },
-      "checkable": {
-        "↳ Icon Value": {
-          "type": "INSTANCE_SWAP",
-          "default": "Icon / SearchOutlined (432:24)",
-          "bindTo": "left direct Icon.mainComponent + right direct Icon.mainComponent",
-          "antd": "icon prop — swap icon component on both sides"
-        },
-        "ShowLeftIcon": {
-          "type": "BOOLEAN",
-          "default": true,
-          "bindTo": "left direct Icon.visible",
-          "antd": "icon prop — hide when false"
-        },
-        "ShowRightIcon": {
-          "type": "BOOLEAN",
-          "default": false,
-          "bindTo": "right direct Icon.visible",
-          "antd": "icon prop (suffix) — hide when false"
-        },
-        "IconColor": {
-          "type": "DERIVED",
-          "default": "follow Label.fills",
-          "bindTo": "left/right direct Icon > Vector.fills",
-          "antd": "inherits tag text color in each variant/state"
-        }
-      },
-      "basic": {
-        "↳ Icon Value": {
-          "type": "INSTANCE_SWAP",
-          "default": "CloseOutlined (509:486)",
-          "bindTo": "Icon.mainComponent — Closeable variants (right), Add New variant (left)",
-          "antd": "closeIcon / plus icon — swap via IconValue"
-        }
-      }
+      "componentSetId": "671:1376",
+      "variantCount": 320,
+      "note": "Latest local draft uses EN/Small Text 12_h20_Regular, 22px height, 8px inline padding, 1px vertical inset, and direct left/right icon instances."
     }
-  },
-
-  "mappingCoverage": {
-    "mapped": {
-      "colorful": "Base/{preset}/1|3|7; icon fill matches Label (Base/{preset}/7); iconSize/iconSizeSm12; iconTextGap → padding/paddingXxs4",
-      "basic": "Neutral/Bg, Neutral/Border, Neutral/Text, Neutral/Fill, iconSize/iconSizeSm12; icon fill mirrors Label.fills",
-      "checkable": "Brand/Primary + Neutral/*; icon fill matches Label (colorText | colorTextLightSolid); iconSize/iconSizeSm12; iconTextGap → padding/paddingXxs4",
-      "status": "Brand/Success|Primary|Error|Warning + Neutral/Text; status icon may follow status.icon when distinct, otherwise mirrors Label.fills",
-      "radius": "radius/roundedSm4",
-      "paddingInline": "padding/paddingXs8",
-      "borderWidth": "Border/border-width",
-      "typography": "EN/Small Text 12_h20_Regular — all Label layers"
-    },
-    "gaps": [
-      {
-        "field": "layout.paddingBlock",
-        "value": 1,
-        "reason": "Ant Tag vertical padding — no 1px padding token",
-        "action": "keep as layout constant or add padding1 later (requires user approval)"
-      },
-      {
-        "field": "basic.closeIcon",
-        "reason": "CloseOutlined + PlusOutlined via IconValue INSTANCE_SWAP on *Tag* / Basic",
-        "action": "done — Icon page 509:486, 509:476"
-      }
-    ]
   }
 }

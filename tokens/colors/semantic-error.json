@@ -3,44 +3,44 @@
   "palette": "red",
   "tokens": {
     "colorError": {
-      "light": { "ref": "Base/red/6" },
-      "dark": { "ref": "Base/red/6" }
+      "light": { "ref": "Base/red/500" },
+      "dark": { "ref": "Base/red/500" }
     },
     "colorErrorBg": {
-      "light": { "ref": "Base/red/1" },
-      "dark": { "ref": "Base/red/1" }
+      "light": { "ref": "Base/red/50" },
+      "dark": { "ref": "Base/red/50" }
     },
     "colorErrorBgHover": {
-      "light": { "ref": "Base/red/2" },
-      "dark": { "ref": "Base/red/2" }
+      "light": { "ref": "Base/red/100" },
+      "dark": { "ref": "Base/red/100" }
     },
     "colorErrorBorder": {
-      "light": { "ref": "Base/red/3" },
-      "dark": { "ref": "Base/red/3" }
+      "light": { "ref": "Base/red/200" },
+      "dark": { "ref": "Base/red/200" }
     },
     "colorErrorBorderHover": {
-      "light": { "ref": "Base/red/4" },
-      "dark": { "ref": "Base/red/4" }
+      "light": { "ref": "Base/red/300" },
+      "dark": { "ref": "Base/red/300" }
     },
     "colorErrorHover": {
-      "light": { "ref": "Base/red/5" },
-      "dark": { "ref": "Base/red/7" }
+      "light": { "ref": "Base/red/400" },
+      "dark": { "ref": "Base/red/600" }
     },
     "colorErrorActive": {
-      "light": { "ref": "Base/red/7" },
-      "dark": { "ref": "Base/red/5" }
+      "light": { "ref": "Base/red/600" },
+      "dark": { "ref": "Base/red/400" }
     },
     "colorErrorTextHover": {
-      "light": { "ref": "Base/red/8" },
-      "dark": { "ref": "Base/red/8" }
+      "light": { "ref": "Base/red/700" },
+      "dark": { "ref": "Base/red/700" }
     },
     "colorErrorText": {
-      "light": { "ref": "Base/red/9" },
-      "dark": { "ref": "Base/red/9" }
+      "light": { "ref": "Base/red/800" },
+      "dark": { "ref": "Base/red/800" }
     },
     "colorErrorTextActive": {
-      "light": { "ref": "Base/red/10" },
-      "dark": { "ref": "Base/red/10" }
+      "light": { "ref": "Base/red/900" },
+      "dark": { "ref": "Base/red/900" }
     }
   }
 }

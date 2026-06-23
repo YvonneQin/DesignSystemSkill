@@ -106,12 +106,12 @@
       "prefix": "mode"
     },
     "chart-4": {
-      "value": "{blue.11}",
+      "value": "{blue.800}",
       "type": "color",
       "prefix": "mode"
     },
     "chart-5": {
-      "value": "{blue.12}",
+      "value": "{blue.900}",
       "type": "color",
       "prefix": "mode"
     },
@@ -343,12 +343,12 @@
       "prefix": "mode"
     },
     "chart-4": {
-      "value": "{blue.11}",
+      "value": "{blue.800}",
       "type": "color",
       "prefix": "mode"
     },
     "chart-5": {
-      "value": "{blue.12}",
+      "value": "{blue.900}",
       "type": "color",
       "prefix": "mode"
     },

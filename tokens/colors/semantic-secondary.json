@@ -1,46 +1,46 @@
 {
-  "$description": "Ant Design secondary brand color tokens — Brand/Secondary → Base/black",
+  "$description": "Ant Design tertiary brand color tokens — Brand/Tertiary → Base/black",
   "palette": "black",
   "tokens": {
-    "colorSecondary": {
-      "light": { "ref": "Base/black/6" },
-      "dark": { "ref": "Base/black/6" }
+    "colorTertiary": {
+      "light": { "ref": "Base/black/500" },
+      "dark": { "ref": "Base/black/500" }
     },
-    "colorSecondaryBg": {
-      "light": { "ref": "Base/black/1" },
-      "dark": { "ref": "Base/black/1" }
+    "colorTertiaryBg": {
+      "light": { "ref": "Base/black/50" },
+      "dark": { "ref": "Base/black/50" }
     },
-    "colorSecondaryBgHover": {
-      "light": { "ref": "Base/black/2" },
-      "dark": { "ref": "Base/black/2" }
+    "colorTertiaryBgHover": {
+      "light": { "ref": "Base/black/100" },
+      "dark": { "ref": "Base/black/100" }
     },
-    "colorSecondaryBorder": {
-      "light": { "ref": "Base/black/3" },
-      "dark": { "ref": "Base/black/3" }
+    "colorTertiaryBorder": {
+      "light": { "ref": "Base/black/200" },
+      "dark": { "ref": "Base/black/200" }
     },
-    "colorSecondaryBorderHover": {
-      "light": { "ref": "Base/black/4" },
-      "dark": { "ref": "Base/black/4" }
+    "colorTertiaryBorderHover": {
+      "light": { "ref": "Base/black/300" },
+      "dark": { "ref": "Base/black/300" }
     },
-    "colorSecondaryHover": {
-      "light": { "ref": "Base/black/5" },
-      "dark": { "ref": "Base/black/7" }
+    "colorTertiaryHover": {
+      "light": { "ref": "Base/black/400" },
+      "dark": { "ref": "Base/black/600" }
     },
-    "colorSecondaryActive": {
-      "light": { "ref": "Base/black/7" },
-      "dark": { "ref": "Base/black/5" }
+    "colorTertiaryActive": {
+      "light": { "ref": "Base/black/600" },
+      "dark": { "ref": "Base/black/400" }
     },
-    "colorSecondaryTextHover": {
-      "light": { "ref": "Base/black/8" },
-      "dark": { "ref": "Base/black/8" }
+    "colorTertiaryTextHover": {
+      "light": { "ref": "Base/black/700" },
+      "dark": { "ref": "Base/black/700" }
     },
-    "colorSecondaryText": {
-      "light": { "ref": "Base/black/9" },
-      "dark": { "ref": "Base/black/9" }
+    "colorTertiaryText": {
+      "light": { "ref": "Base/black/800" },
+      "dark": { "ref": "Base/black/800" }
     },
-    "colorSecondaryTextActive": {
-      "light": { "ref": "Base/black/10" },
-      "dark": { "ref": "Base/black/10" }
+    "colorTertiaryTextActive": {
+      "light": { "ref": "Base/black/900" },
+      "dark": { "ref": "Base/black/900" }
     }
   }
 }

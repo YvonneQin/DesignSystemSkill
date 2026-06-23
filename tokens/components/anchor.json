@@ -1,0 +1,118 @@
+{
+  "$description": "AgentOS Design System Anchor component spec — rebuilt from Ant Design community reference using AgentOS tokens",
+  "$source": {
+    "referenceFigma": {
+      "fileKey": "L3k9dxCWyCjhm5G5V22A13",
+      "nodeId": "791:3516",
+      "url": "https://www.figma.com/design/L3k9dxCWyCjhm5G5V22A13/Ant-Design-System-for-Figma--Free-version---Community-?node-id=791-3516"
+    },
+    "targetFigma": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "162:27",
+      "pageName": "├─  Anchor 锚点   ✅✨"
+    }
+  },
+  "component": "Anchor",
+  "dna": "navigation",
+  "variantCount": 7,
+  "anatomy": {
+    "layers": [
+      { "name": "container", "role": "top-level auto-layout wrapper for vertical anchor items" },
+      { "name": "rail", "role": "vertical guide line for the vertical variant" },
+      { "name": "content", "role": "link content wrapper for label or nested content" },
+      { "name": "nestedContent", "role": "nested second-level link content wrapper" },
+      { "name": "indicator", "role": "active line mark for the vertical left edge" },
+      { "name": "label", "role": "anchor label text" }
+    ]
+  },
+  "variants": {
+    "direction": {
+      "values": ["vertical"],
+      "figma": "Direction",
+      "default": "vertical"
+    },
+    "state": {
+      "values": ["default", "hover", "active"],
+      "figma": "State",
+      "appliesTo": ["link"]
+    },
+    "level": {
+      "values": ["1", "2"],
+      "figma": "Level",
+      "appliesTo": ["link"],
+      "figmaNote": "Only vertical level 1 and 2 links are kept in AgentOS."
+    }
+  },
+  "naming": {
+    "figma": "Direction={Direction}",
+    "example": "Direction=Vertical"
+  },
+  "layout": {
+    "linkPaddingBlock": { "ref": "padding/paddingXxs4", "value": 4 },
+    "linkPaddingInlineStart": { "ref": "padding/padding16", "value": 16 },
+    "nestedIndent": { "ref": "padding/padding16", "value": 16 },
+    "railWidth": { "value": 2, "mapped": false, "reason": "Current foundation tokens do not define a 2px line-width token." },
+    "nestedPaddingBlock": { "value": 2, "mapped": false, "reason": "Current foundation tokens do not define a 2px vertical padding token for second-level items." }
+  },
+  "typography": {
+    "label": { "ref": "EN/Paragraph 14_h20_Regular" }
+  },
+  "styles": {
+    "item": {
+      "default": {
+        "background": "Neutral/Bg/colorTransparent",
+        "text": "Neutral/Text/colorText",
+        "indicator": null
+      },
+      "hover": {
+        "background": "Neutral/Bg/colorTransparent",
+        "text": "Brand/Primary/colorPrimaryHover",
+        "indicator": null
+      },
+      "active": {
+        "background": "Neutral/Bg/colorTransparent",
+        "text": "Brand/Primary/colorPrimary",
+        "indicator": "Brand/Primary/colorPrimary"
+      }
+    },
+    "container": {
+      "verticalRail": "Neutral/Border/colorSplit"
+    }
+  },
+  "styleResolution": {
+    "rules": [
+      "Direction=Vertical → vertical rail + stacked items + nested second-level items under API",
+      "State=Active → styles.item.active",
+      "State=Hover → styles.item.hover",
+      "else → styles.item.default"
+    ]
+  },
+  "antd": {
+    "import": "import { Anchor } from 'antd';",
+    "examples": {
+      "vertical": "<Anchor><Anchor.Link href=\"#basic\" title=\"Basic demo\" /><Anchor.Link href=\"#static\" title=\"Static demo\" /><Anchor.Link href=\"#api\" title=\"API\"><Anchor.Link href=\"#anchor-props\" title=\"Anchor Props\" /><Anchor.Link href=\"#link-props\" title=\"Link Props\" /></Anchor.Link></Anchor>"
+    }
+  },
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "componentSets": {
+      "*Anchor* / Link": "State=Default|Hover|Active × Level=1|2 × Direction=Vertical — 6 variants",
+      "*Anchor* / Vertical": "Direction=Vertical — composed variant built from *Anchor* / Link instances"
+    },
+    "variantLayout": "Place the atomic *Anchor* / Link set first with State columns horizontally, then place *Anchor* / Vertical as a separate composed node on the same page with no extra showcase frames."
+  },
+  "mappingCoverage": {
+    "mapped": {
+      "active text color": true,
+      "default text color": true,
+      "vertical rail color": true,
+      "active indicator color": true,
+      "primary typography": true
+    },
+    "gaps": [
+      "Ant Design reference uses 14/22 text metrics; AgentOS reuses EN/Paragraph 14_h20_Regular because no local 14/22 English style is currently defined.",
+      "The community reference documents item subcomponents separately; AgentOS v1 keeps a single composed Anchor set on the page."
+    ]
+  }
+}

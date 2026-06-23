@@ -14,8 +14,10 @@ const DEFAULT_PATH =
 const RDX_PATH = path.join(ROOT, "tokens/sources/rdx-base-10.json");
 const SYNC_PATH = path.join(ROOT, "scripts/figma/sync-rdx-base-10-payload.js");
 
+const SCALE_STEPS = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
+
 // Ant Design Base name → rdx-base-10 palette key
-// blue uses Figma reference (#386bff @ step 7), not Ant Design default.json
+// blue uses the Figma reference accent (#386bff), not Ant Design default.json
 const PALETTE_MAP = {
   Cyan: "cyan",
   Geekblue: "indigo",
@@ -32,12 +34,12 @@ const PALETTE_MAP = {
 
 function extractSteps(basePalette) {
   const steps = {};
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= SCALE_STEPS.length; i++) {
     const entry = basePalette[String(i)];
     if (!entry?.value) {
       throw new Error(`Missing step ${i}`);
     }
-    steps[String(i)] = entry.value.toLowerCase();
+    steps[SCALE_STEPS[i - 1]] = entry.value.toLowerCase();
   }
   return steps;
 }
@@ -64,8 +66,7 @@ for (const [antdName, rdxName] of Object.entries(PALETTE_MAP)) {
   const lightSteps = extractSteps(lightBase[antdName]);
   const darkSteps = extractSteps(darkBase[antdName]);
 
-  for (let step = 1; step <= 10; step++) {
-    const key = String(step);
+  for (const key of SCALE_STEPS) {
     rdx[rdxName][key] = {
       light: lightSteps[key],
       dark: darkSteps[key],
@@ -76,8 +77,7 @@ for (const [antdName, rdxName] of Object.entries(PALETTE_MAP)) {
 
 // Warning token uses gold; mirror gold → amber for consistency
 if (rdx.gold && rdx.amber) {
-  for (let step = 1; step <= 10; step++) {
-    const key = String(step);
+  for (const key of SCALE_STEPS) {
     rdx.amber[key] = { ...rdx.gold[key] };
   }
   console.log("Mirrored gold → amber");

@@ -1,0 +1,239 @@
+{
+  "$description": "AgentOS Design System Checkbox component spec — Control DNA selection control with checked and indeterminate states",
+  "$source": {
+    "figma": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageNodeId": "162:12",
+      "componentSetNodeId": "796:62",
+      "url": "https://www.figma.com/design/MwUyizdlqXKyFzHJWvBtI8/AgentOS-Design-System?node-id=796-62"
+    },
+    "docs": "https://ant.design/components/checkbox/"
+  },
+
+  "component": "Checkbox",
+  "dna": "control",
+  "$extends": "_control-gene.schema.json",
+  "variantCount": 12,
+
+  "anatomy": {
+    "layers": [
+      { "name": "root", "role": "horizontal auto-layout row for box + label" },
+      { "name": "box", "role": "16x16 selection box; background, border, radius" },
+      { "name": "mark", "role": "check or indeterminate glyph inside box; visibility depends on Value" },
+      { "name": "label", "role": "checkbox label text; optional via ShowLabel" }
+    ]
+  },
+
+  "variants": {
+    "value": {
+      "values": ["unchecked", "checked", "indeterminate"],
+      "antd": "checked + indeterminate",
+      "default": "unchecked"
+    },
+    "state": {
+      "values": ["default", "hover", "pressed", "disabled"],
+      "antd": "disabled maps to State=Disabled; hover and pressed are design-time previews",
+      "figmaOnly": true
+    }
+  },
+
+  "naming": {
+    "figma": "Value={Value}, State={State}",
+    "example": "Value=Checked, State=Hover"
+  },
+
+  "layout": {
+    "gap": { "ref": "margin/marginXs8", "value": 8 },
+    "boxSize": { "value": 16, "mapped": false, "reason": "Checkbox box uses a fixed 16x16 geometry gene." },
+    "lineWidth": { "ref": "Border/border-width", "value": 1 },
+    "markSize": { "value": 10, "mapped": false, "reason": "Check glyph geometry is a component drawing constant." },
+    "contentAlign": { "value": "center", "mapped": false, "reason": "Layout enum, not a design token." }
+  },
+
+  "sizes": {
+    "default": {
+      "boxSize": { "value": 16, "mapped": false, "reason": "Checkbox box is fixed at 16px in Ant Design." },
+      "borderRadius": { "ref": "radius/roundedSm4", "value": 4 },
+      "typography": { "ref": "EN/Paragraph 14_h20_Regular" }
+    }
+  },
+
+  "effects": {},
+
+  "styles": {
+    "unchecked": {
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Neutral/Border/colorBorder",
+          "mark": null,
+          "text": "Neutral/Text/colorText"
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "mark": null,
+          "text": "Neutral/Text/colorText"
+        },
+        "pressed": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryActive",
+          "mark": null,
+          "text": "Neutral/Text/colorText"
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "mark": null,
+          "text": "Neutral/Text/colorTextDisabled"
+        }
+      }
+    },
+
+    "checked": {
+      "states": {
+        "default": {
+          "background": "Brand/Primary/colorPrimary",
+          "border": "Brand/Primary/colorPrimary",
+          "mark": "Neutral/Text/colorTextLightSolid",
+          "text": "Neutral/Text/colorText"
+        },
+        "hover": {
+          "background": "Brand/Primary/colorPrimaryHover",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "mark": "Neutral/Text/colorTextLightSolid",
+          "text": "Neutral/Text/colorText"
+        },
+        "pressed": {
+          "background": "Brand/Primary/colorPrimaryActive",
+          "border": "Brand/Primary/colorPrimaryActive",
+          "mark": "Neutral/Text/colorTextLightSolid",
+          "text": "Neutral/Text/colorText"
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "mark": "Neutral/Text/colorTextDisabled",
+          "text": "Neutral/Text/colorTextDisabled"
+        }
+      }
+    },
+
+    "indeterminate": {
+      "states": {
+        "default": {
+          "background": "Brand/Primary/colorPrimary",
+          "border": "Brand/Primary/colorPrimary",
+          "mark": "Neutral/Text/colorTextLightSolid",
+          "text": "Neutral/Text/colorText"
+        },
+        "hover": {
+          "background": "Brand/Primary/colorPrimaryHover",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "mark": "Neutral/Text/colorTextLightSolid",
+          "text": "Neutral/Text/colorText"
+        },
+        "pressed": {
+          "background": "Brand/Primary/colorPrimaryActive",
+          "border": "Brand/Primary/colorPrimaryActive",
+          "mark": "Neutral/Text/colorTextLightSolid",
+          "text": "Neutral/Text/colorText"
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "mark": "Neutral/Text/colorTextDisabled",
+          "text": "Neutral/Text/colorTextDisabled"
+        }
+      }
+    }
+  },
+
+  "styleResolution": {
+    "rules": [
+      "if value=checked → styles.checked",
+      "if value=indeterminate → styles.indeterminate",
+      "else → styles.unchecked"
+    ]
+  },
+
+  "antd": {
+    "import": "import { Checkbox } from 'antd';",
+    "notes": {
+      "scope": "Base Checkbox only. Checkbox.Group is a separate follow-up spec.",
+      "state": "Hover and pressed are design preview states; disabled maps from the antd disabled prop.",
+      "mark": "Checked and indeterminate share the same semantic fill tokens; only the inner glyph geometry differs."
+    },
+    "examples": {
+      "default": "<Checkbox>Option</Checkbox>",
+      "checked": "<Checkbox checked>Option</Checkbox>",
+      "indeterminate": "<Checkbox indeterminate>Option</Checkbox>",
+      "disabled": "<Checkbox disabled>Option</Checkbox>",
+      "disabledChecked": "<Checkbox checked disabled>Option</Checkbox>"
+    }
+  },
+
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "componentSets": {
+      "*Checkbox*": "Single set — Value=Unchecked|Checked|Indeterminate × State=Default|Hover|Pressed|Disabled (12 variants)"
+    },
+    "figmaImplemented": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "162:12",
+      "componentSetId": "796:62",
+      "variantCount": 12,
+      "note": "Initialized in the AgentOS Design System file. Matrix layout is State columns horizontally and Value rows vertically."
+    },
+    "variantLayout": "Value groups stacked vertically with State columns horizontally.",
+    "componentProperties": {
+      "ShowLabel": {
+        "type": "BOOLEAN",
+        "default": true,
+        "bindTo": "label.visible",
+        "antd": "children label content"
+      },
+      "Label": {
+        "type": "TEXT",
+        "default": "Option",
+        "bindTo": "label.characters",
+        "antd": "children"
+      },
+      "ShowMark": {
+        "type": "DERIVED",
+        "default": "Value != Unchecked",
+        "bindTo": "mark.visible",
+        "antd": "unchecked hides the mark; checked and indeterminate show it"
+      }
+    }
+  },
+
+  "mappingCoverage": {
+    "mapped": {
+      "radius": "radius/roundedSm4",
+      "gap": "margin/marginXs8",
+      "box border": "Neutral/Border/colorBorder and Brand/Primary/*",
+      "box fill": "Neutral/Bg/colorBgContainer and Brand/Primary/*",
+      "mark": "Neutral/Text/colorTextLightSolid and Neutral/Text/colorTextDisabled",
+      "label text": "Neutral/Text/colorText and Neutral/Text/colorTextDisabled",
+      "typography": "EN/Paragraph 14_h20_Regular"
+    },
+    "gaps": [
+      {
+        "name": "boxSize",
+        "value": 16,
+        "reason": "Checkbox box geometry is fixed; no dedicated foundation sizing token exists for this control."
+      },
+      {
+        "name": "markSize",
+        "value": 10,
+        "reason": "Check and indeterminate glyph drawing size is a component constant, not a shared token."
+      },
+      {
+        "name": "glyphSwap",
+        "reason": "Checked and indeterminate require different inner glyph drawings, but the current spec only defines shared semantic color binding."
+      }
+    ]
+  }
+}

@@ -15,6 +15,7 @@ Then branch by task type.
 | Task | Start here | Write target |
 |------|------------|--------------|
 | Repo cleanup / docs | `README.md`, `docs/`, `workflows/` | docs only |
+| Looping-agent execution | `docs/looping-engineer.md` | docs, reports, approved narrow writes |
 | Token source change | `workflows/create-tokens.md` | `tokens/` after approval |
 | Figma color / radius normalization | `workflows/normalize-design.md` | Figma via `scripts/figma/*.js` |
 | Component spec / init | `tokens/components/README.md` | `tokens/components/*.json` first, then Figma |

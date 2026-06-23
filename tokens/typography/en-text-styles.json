@@ -4,21 +4,183 @@
   "naming": "EN/{styleName}",
   "styles": [
     {
+      "name": "H1 56_h72_Regular",
+      "ref": "EN/H1 56_h72_Regular",
+      "fontFamily": "SF Pro",
+      "fontWeight": 400,
+      "fontSize": 56,
+      "lineHeight": 72,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H1 56_h72_SemiBold",
+      "ref": "EN/H1 56_h72_SemiBold",
+      "fontFamily": "SF Pro",
+      "fontWeight": 600,
+      "fontSize": 56,
+      "lineHeight": 72,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H2 48_h56_Regular",
+      "ref": "EN/H2 48_h56_Regular",
+      "fontFamily": "SF Pro",
+      "fontWeight": 400,
+      "fontSize": 48,
+      "lineHeight": 56,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H2 48_h56_SemiBold",
+      "ref": "EN/H2 48_h56_SemiBold",
+      "fontFamily": "SF Pro",
+      "fontWeight": 600,
+      "fontSize": 48,
+      "lineHeight": 56,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H3 36_h48_Regular",
+      "ref": "EN/H3 36_h48_Regular",
+      "fontFamily": "SF Pro",
+      "fontWeight": 400,
+      "fontSize": 36,
+      "lineHeight": 48,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H3 36_h48_SemiBold",
+      "ref": "EN/H3 36_h48_SemiBold",
+      "fontFamily": "SF Pro",
+      "fontWeight": 600,
+      "fontSize": 36,
+      "lineHeight": 48,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H4 24_h36_Regular",
+      "ref": "EN/H4 24_h36_Regular",
+      "fontFamily": "SF Pro",
+      "fontWeight": 400,
+      "fontSize": 24,
+      "lineHeight": 36,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H4 24_h36_SemiBold",
+      "ref": "EN/H4 24_h36_SemiBold",
+      "fontFamily": "SF Pro",
+      "fontWeight": 600,
+      "fontSize": 24,
+      "lineHeight": 36,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H5 20_h28_Regular",
+      "ref": "EN/H5 20_h28_Regular",
+      "fontFamily": "SF Pro",
+      "fontWeight": 400,
+      "fontSize": 20,
+      "lineHeight": 28,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H5 20_h28_SemiBold",
+      "ref": "EN/H5 20_h28_SemiBold",
+      "fontFamily": "SF Pro",
+      "fontWeight": 600,
+      "fontSize": 20,
+      "lineHeight": 28,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H6 16_h24_Regular",
+      "ref": "EN/H6 16_h24_Regular",
+      "fontFamily": "SF Pro",
+      "fontWeight": 400,
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H6 16_h24_SemiBold",
+      "ref": "EN/H6 16_h24_SemiBold",
+      "fontFamily": "SF Pro",
+      "fontWeight": 600,
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0
+    },
+    {
       "name": "Paragraph 14_h20_Regular",
       "ref": "EN/Paragraph 14_h20_Regular",
-      "fontFamily": "SF Pro Text",
+      "fontFamily": "SF Pro",
       "fontWeight": 400,
       "fontSize": 14,
       "lineHeight": 20,
       "letterSpacing": 0
     },
     {
-      "name": "H6 16_h24_Regular",
-      "ref": "EN/H6 16_h24_Regular",
-      "fontFamily": "SF Pro Text",
+      "name": "Paragraph 14_h20_SemiBold",
+      "ref": "EN/Paragraph 14_h20_SemiBold",
+      "fontFamily": "SF Pro",
+      "fontWeight": 600,
+      "fontSize": 14,
+      "lineHeight": 20,
+      "letterSpacing": 0
+    },
+    {
+      "name": "Paragraph Small 13_h18_Regular",
+      "ref": "EN/Paragraph Small 13_h18_Regular",
+      "fontFamily": "SF Pro",
       "fontWeight": 400,
-      "fontSize": 16,
-      "lineHeight": 24,
+      "fontSize": 13,
+      "lineHeight": 18,
+      "letterSpacing": 0
+    },
+    {
+      "name": "Paragraph Small 13_h18_SemiBold",
+      "ref": "EN/Paragraph Small 13_h18_SemiBold",
+      "fontFamily": "SF Pro",
+      "fontWeight": 600,
+      "fontSize": 13,
+      "lineHeight": 18,
+      "letterSpacing": 0
+    },
+    {
+      "name": "Small Text 12_h20_Regular",
+      "ref": "EN/Small Text 12_h20_Regular",
+      "fontFamily": "SF Pro",
+      "fontWeight": 400,
+      "fontSize": 12,
+      "lineHeight": 20,
+      "letterSpacing": 0
+    },
+    {
+      "name": "Small Text 12_h20_SemiBold",
+      "ref": "EN/Small Text 12_h20_SemiBold",
+      "fontFamily": "SF Pro",
+      "fontWeight": 600,
+      "fontSize": 12,
+      "lineHeight": 20,
+      "letterSpacing": 0
+    },
+    {
+      "name": "Micro 10_h14_Regular",
+      "ref": "EN/Micro 10_h14_Regular",
+      "fontFamily": "SF Pro",
+      "fontWeight": 400,
+      "fontSize": 10,
+      "lineHeight": 14,
+      "letterSpacing": 0
+    },
+    {
+      "name": "Micro 10_h14_SemiBold",
+      "ref": "EN/Micro 10_h14_SemiBold",
+      "fontFamily": "SF Pro",
+      "fontWeight": 600,
+      "fontSize": 10,
+      "lineHeight": 14,
       "letterSpacing": 0
     }
   ]

@@ -27,10 +27,10 @@
     },
     "brandSecondary": {
       "name": "ColorMode",
-      "group": "Brand/Secondary",
+      "group": "Brand/Tertiary",
       "modes": ["Light", "Dark"],
       "source": "colors/semantic-secondary.json",
-      "naming": "Brand/Secondary/{token}",
+      "naming": "Brand/Tertiary/{token}",
       "basePalette": "Base/black"
     },
     "brandSuccess": {

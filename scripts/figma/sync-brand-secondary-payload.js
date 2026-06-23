@@ -1,17 +1,17 @@
-// Create/update Brand/Secondary semantic tokens (alias → Base/black/*).
+// Create/update Brand/Tertiary semantic tokens (alias → Base/black/*).
 // Paste body into use_figma.
 
 const TOKENS = {
-  colorSecondary: { light: 6, dark: 6, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
-  colorSecondaryBg: { light: 1, dark: 1, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
-  colorSecondaryBgHover: { light: 2, dark: 2, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
-  colorSecondaryBorder: { light: 3, dark: 3, scopes: ['STROKE_COLOR'] },
-  colorSecondaryBorderHover: { light: 4, dark: 4, scopes: ['STROKE_COLOR'] },
-  colorSecondaryHover: { light: 5, dark: 7, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
-  colorSecondaryActive: { light: 7, dark: 5, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
-  colorSecondaryTextHover: { light: 8, dark: 8, scopes: ['TEXT_FILL'] },
-  colorSecondaryText: { light: 9, dark: 9, scopes: ['TEXT_FILL'] },
-  colorSecondaryTextActive: { light: 10, dark: 10, scopes: ['TEXT_FILL'] },
+  colorTertiary: { light: 500, dark: 500, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
+  colorTertiaryBg: { light: 50, dark: 50, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
+  colorTertiaryBgHover: { light: 100, dark: 100, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
+  colorTertiaryBorder: { light: 200, dark: 200, scopes: ['STROKE_COLOR'] },
+  colorTertiaryBorderHover: { light: 300, dark: 300, scopes: ['STROKE_COLOR'] },
+  colorTertiaryHover: { light: 400, dark: 600, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
+  colorTertiaryActive: { light: 600, dark: 400, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
+  colorTertiaryTextHover: { light: 700, dark: 700, scopes: ['TEXT_FILL'] },
+  colorTertiaryText: { light: 800, dark: 800, scopes: ['TEXT_FILL'] },
+  colorTertiaryTextActive: { light: 900, dark: 900, scopes: ['TEXT_FILL'] },
 };
 
 const collections = await figma.variables.getLocalVariableCollectionsAsync();
@@ -34,7 +34,7 @@ let updated = 0;
 const results = [];
 
 for (const [token, cfg] of Object.entries(TOKENS)) {
-  const varName = `Brand/Secondary/${token}`;
+  const varName = `Brand/Tertiary/${token}`;
   let v = byName[varName];
   if (!v) {
     v = figma.variables.createVariable(varName, modeColl, 'COLOR');
@@ -43,7 +43,7 @@ for (const [token, cfg] of Object.entries(TOKENS)) {
     updated++;
   }
   v.scopes = cfg.scopes;
-  v.description = 'Brand secondary — alias to Base/black';
+  v.description = 'Brand tertiary — alias to Base/black';
   v.setVariableCodeSyntax('WEB', `var(--${token})`);
   v.setValueForMode(lightId, figma.variables.createVariableAlias(base(cfg.light)));
   v.setValueForMode(darkId, figma.variables.createVariableAlias(base(cfg.dark)));

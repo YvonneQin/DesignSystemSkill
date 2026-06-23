@@ -1,0 +1,472 @@
+{
+  "$description": "AgentOS Design System Select component spec — base single-select control with status and popup preview states",
+  "$source": {
+    "figma": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "941:35",
+      "pageName": "├─  Select 选择器  ✅",
+      "url": "https://www.figma.com/design/MwUyizdlqXKyFzHJWvBtI8/AgentOS-Design-System?node-id=941-35"
+    },
+    "docs": "https://ant.design/components/select/"
+  },
+
+  "component": "Select",
+  "dna": "control",
+  "$extends": "_control-gene.schema.json",
+  "variantCount": 45,
+
+  "anatomy": {
+    "layers": [
+      { "name": "container", "role": "trigger surface — background, border, radius, height, inline padding" },
+      { "name": "content", "role": "horizontal auto-layout row for prefix, field, clear, and chevron" },
+      { "name": "prefix", "role": "optional direct icon instance for leading context; hidden by default" },
+      { "name": "field", "role": "content frame for placeholder and selected value text" },
+      { "name": "placeholder", "role": "placeholder text shown when no selection is displayed" },
+      { "name": "value", "role": "selected option label shown when placeholder is hidden" },
+      { "name": "suffix", "role": "suffix group for clear and chevron affordances" },
+      { "name": "clear", "role": "optional direct icon instance for allowClear; hidden by default" },
+      { "name": "chevron", "role": "direct icon instance for dropdown affordance" },
+      { "name": "overlay", "role": "popup surface shown for State=Open" },
+      { "name": "menu", "role": "vertical auto-layout list of representative options" },
+      { "name": "optionDefault", "role": "default option row" },
+      { "name": "optionHover", "role": "hovered option row" },
+      { "name": "optionSelected", "role": "selected option row with check icon" }
+    ]
+  },
+
+  "variants": {
+    "size": {
+      "values": ["large", "default", "small"],
+      "antd": "size",
+      "default": "default"
+    },
+    "state": {
+      "values": ["closed", "hover", "focused", "open", "disabled"],
+      "antd": "disabled maps from the disabled prop; hover/focused/open are design-time previews",
+      "figmaOnly": true
+    },
+    "status": {
+      "values": ["default", "error", "warning"],
+      "antd": "status",
+      "default": "default"
+    }
+  },
+
+  "naming": {
+    "figma": "Size={Size}, State={State}, Status={Status}",
+    "example": "Size=Default, State=Open, Status=Warning"
+  },
+
+  "layout": {
+    "gap": { "ref": "margin/marginXs8", "value": 8 },
+    "suffixGap": { "ref": "padding/paddingXxs4", "value": 4 },
+    "lineWidth": { "ref": "Border/border-width", "value": 1 },
+    "menuPaddingBlock": { "ref": "padding/paddingXxs4", "value": 4 },
+    "overlayOffsetY": { "value": 4, "mapped": false, "reason": "Popup offset is a placement constant, not a shared token." },
+    "triggerWidth": { "value": 220, "mapped": false, "reason": "Representative library width for previewing placeholder and value states." },
+    "optionWidth": { "value": 220, "mapped": false, "reason": "Popup option width follows trigger preview width in the component page." }
+  },
+
+  "sizes": {
+    "small": {
+      "controlHeight": { "ref": "controlHeight/controlHeightSm24", "value": 24 },
+      "paddingInline": { "ref": "padding/paddingXs8", "value": 8 },
+      "borderRadius": { "ref": "radius/roundedSm4", "value": 4 },
+      "iconSize": { "ref": "iconSize/iconSizeSm12", "value": 12 },
+      "typography": { "ref": "EN/Paragraph 14_h20_Regular" },
+      "optionHeight": { "ref": "controlHeight/controlHeightSm24", "value": 24, "mapping": "nearest" }
+    },
+    "default": {
+      "controlHeight": { "ref": "controlHeight/controlHeightMd32", "value": 32 },
+      "paddingInline": { "ref": "padding/padding16", "value": 16 },
+      "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
+      "iconSize": { "ref": "iconSize/iconSizeMd16", "value": 16 },
+      "typography": { "ref": "EN/Paragraph 14_h20_Regular" },
+      "optionHeight": { "ref": "controlHeight/controlHeightMd32", "value": 32, "mapping": "nearest" }
+    },
+    "large": {
+      "controlHeight": { "ref": "controlHeight/controlHeightLg40", "value": 40 },
+      "paddingInline": { "ref": "padding/padding16", "value": 16 },
+      "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
+      "iconSize": { "ref": "iconSize/iconSizeLg20", "value": 20 },
+      "typography": { "ref": "EN/H6 16_h24_Regular" },
+      "optionHeight": { "ref": "controlHeight/controlHeightLg40", "value": 40, "mapping": "nearest" }
+    }
+  },
+
+  "styles": {
+    "default": {
+      "status": "default",
+      "states": {
+        "closed": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Neutral/Icon/colorIcon",
+          "clear": "Neutral/Icon/colorIcon",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "optionText": "Neutral/Text/colorText",
+          "optionHover": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedBg": "Brand/Primary/colorPrimaryBg",
+          "optionSelectedText": "Brand/Primary/colorPrimary",
+          "optionCheck": "Brand/Primary/colorPrimary",
+          "shadow": null
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Neutral/Icon/colorIconHover",
+          "clear": "Neutral/Icon/colorIconHover",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "optionText": "Neutral/Text/colorText",
+          "optionHover": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedBg": "Brand/Primary/colorPrimaryBg",
+          "optionSelectedText": "Brand/Primary/colorPrimary",
+          "optionCheck": "Brand/Primary/colorPrimary",
+          "shadow": null
+        },
+        "focused": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimary",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Neutral/Icon/colorIcon",
+          "clear": "Neutral/Icon/colorIcon",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "optionText": "Neutral/Text/colorText",
+          "optionHover": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedBg": "Brand/Primary/colorPrimaryBg",
+          "optionSelectedText": "Brand/Primary/colorPrimary",
+          "optionCheck": "Brand/Primary/colorPrimary",
+          "shadow": null
+        },
+        "open": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimary",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Primary/colorPrimary",
+          "clear": "Neutral/Icon/colorIcon",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "optionText": "Neutral/Text/colorText",
+          "optionHover": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedBg": "Brand/Primary/colorPrimaryBg",
+          "optionSelectedText": "Brand/Primary/colorPrimary",
+          "optionCheck": "Brand/Primary/colorPrimary",
+          "shadow": null
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "placeholder": "Neutral/Text/colorTextDisabled",
+          "icon": "Neutral/Text/colorTextDisabled",
+          "clear": "Neutral/Text/colorTextDisabled",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "optionText": "Neutral/Text/colorTextDisabled",
+          "optionHover": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedBg": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedText": "Neutral/Text/colorTextDisabled",
+          "optionCheck": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    },
+
+    "error": {
+      "status": "error",
+      "states": {
+        "closed": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Error/colorError",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Error/colorError",
+          "clear": "Brand/Error/colorError",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "optionText": "Neutral/Text/colorText",
+          "optionHover": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedBg": "Brand/Primary/colorPrimaryBg",
+          "optionSelectedText": "Brand/Primary/colorPrimary",
+          "optionCheck": "Brand/Primary/colorPrimary",
+          "shadow": null
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Error/colorErrorHover",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Error/colorErrorHover",
+          "clear": "Brand/Error/colorErrorHover",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "optionText": "Neutral/Text/colorText",
+          "optionHover": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedBg": "Brand/Primary/colorPrimaryBg",
+          "optionSelectedText": "Brand/Primary/colorPrimary",
+          "optionCheck": "Brand/Primary/colorPrimary",
+          "shadow": null
+        },
+        "focused": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Error/colorError",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Error/colorError",
+          "clear": "Brand/Error/colorError",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "optionText": "Neutral/Text/colorText",
+          "optionHover": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedBg": "Brand/Primary/colorPrimaryBg",
+          "optionSelectedText": "Brand/Primary/colorPrimary",
+          "optionCheck": "Brand/Primary/colorPrimary",
+          "shadow": null
+        },
+        "open": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Error/colorError",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Error/colorError",
+          "clear": "Brand/Error/colorError",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "optionText": "Neutral/Text/colorText",
+          "optionHover": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedBg": "Brand/Primary/colorPrimaryBg",
+          "optionSelectedText": "Brand/Primary/colorPrimary",
+          "optionCheck": "Brand/Primary/colorPrimary",
+          "shadow": null
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "placeholder": "Neutral/Text/colorTextDisabled",
+          "icon": "Neutral/Text/colorTextDisabled",
+          "clear": "Neutral/Text/colorTextDisabled",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "optionText": "Neutral/Text/colorTextDisabled",
+          "optionHover": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedBg": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedText": "Neutral/Text/colorTextDisabled",
+          "optionCheck": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    },
+
+    "warning": {
+      "status": "warning",
+      "states": {
+        "closed": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Warning/colorWarning",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Warning/colorWarning",
+          "clear": "Brand/Warning/colorWarning",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "optionText": "Neutral/Text/colorText",
+          "optionHover": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedBg": "Brand/Primary/colorPrimaryBg",
+          "optionSelectedText": "Brand/Primary/colorPrimary",
+          "optionCheck": "Brand/Primary/colorPrimary",
+          "shadow": null
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Warning/colorWarningHover",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Warning/colorWarningHover",
+          "clear": "Brand/Warning/colorWarningHover",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "optionText": "Neutral/Text/colorText",
+          "optionHover": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedBg": "Brand/Primary/colorPrimaryBg",
+          "optionSelectedText": "Brand/Primary/colorPrimary",
+          "optionCheck": "Brand/Primary/colorPrimary",
+          "shadow": null
+        },
+        "focused": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Warning/colorWarning",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Warning/colorWarning",
+          "clear": "Brand/Warning/colorWarning",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "optionText": "Neutral/Text/colorText",
+          "optionHover": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedBg": "Brand/Primary/colorPrimaryBg",
+          "optionSelectedText": "Brand/Primary/colorPrimary",
+          "optionCheck": "Brand/Primary/colorPrimary",
+          "shadow": null
+        },
+        "open": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Warning/colorWarning",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Warning/colorWarning",
+          "clear": "Brand/Warning/colorWarning",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "optionText": "Neutral/Text/colorText",
+          "optionHover": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedBg": "Brand/Primary/colorPrimaryBg",
+          "optionSelectedText": "Brand/Primary/colorPrimary",
+          "optionCheck": "Brand/Primary/colorPrimary",
+          "shadow": null
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "placeholder": "Neutral/Text/colorTextDisabled",
+          "icon": "Neutral/Text/colorTextDisabled",
+          "clear": "Neutral/Text/colorTextDisabled",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "optionText": "Neutral/Text/colorTextDisabled",
+          "optionHover": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedBg": "Neutral/Fill/colorFillTertiary",
+          "optionSelectedText": "Neutral/Text/colorTextDisabled",
+          "optionCheck": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    }
+  },
+
+  "styleResolution": {
+    "rules": [
+      "if status=error && state=disabled → styles.error.states.disabled",
+      "if status=warning && state=disabled → styles.warning.states.disabled",
+      "if status=error → styles.error",
+      "if status=warning → styles.warning",
+      "else → styles.default"
+    ]
+  },
+
+  "antd": {
+    "import": "import { Select } from 'antd';",
+    "notes": {
+      "scope": "v1 covers the base single-select trigger and popup preview only. multiple, tags, search input, custom option render, and complex prefix/suffix recipes remain follow-up specs.",
+      "state": "State=Open shows the popup for design review. closed, hover, and focused are design-time previews; disabled maps from the antd disabled prop.",
+      "status": "status=error|warning follows the Input family validation treatment."
+    },
+    "examples": {
+      "default": "<Select placeholder=\"Please select\" options={options} />",
+      "large": "<Select size=\"large\" placeholder=\"Please select\" options={options} />",
+      "small": "<Select size=\"small\" placeholder=\"Please select\" options={options} />",
+      "error": "<Select status=\"error\" placeholder=\"Please select\" options={options} />",
+      "warning": "<Select status=\"warning\" placeholder=\"Please select\" options={options} />",
+      "disabled": "<Select disabled placeholder=\"Please select\" options={options} />",
+      "prefix": "<Select prefix={<SearchOutlined />} placeholder=\"Search items\" options={options} />",
+      "allowClear": "<Select allowClear placeholder=\"Please select\" options={options} />"
+    }
+  },
+
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "componentSets": {
+      "*Select*": "Composed set using extracted trigger and option atomics — Size=Large|Default|Small × State=Closed|Hover|Focused|Open|Disabled × Status=Default|Error|Warning (45 variants)",
+      "*Select / Trigger*": "Atomic trigger set — Size=Large|Default|Small × State=Closed|Hover|Focused|Open|Disabled × Status=Default|Error|Warning (45 variants)",
+      "*Select / Option*": "Atomic option-row set — Size=Large|Default|Small × Row=Default|Hover|Selected (9 variants)"
+    },
+    "figmaImplemented": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "941:35",
+      "componentSetId": "1168:13345",
+      "atomicComponentSetIds": {
+        "trigger": "1170:853",
+        "option": "1170:884"
+      },
+      "variantCount": 45,
+      "status": "initialized",
+      "note": "Initialized as a composed component set on the Select page. The main Select variants now nest *Select / Trigger* and *Select / Option* instances. Status blocks stack vertically, State columns flow horizontally, and Size rows flow vertically. State=Open reveals the popup preview and a selected trigger value."
+    },
+    "componentProperties": {
+      "PrefixIconValue": {
+        "type": "INSTANCE_SWAP",
+        "default": "Icon / SearchOutlined (509:1318)",
+        "bindTo": "prefix.mainComponent",
+        "antd": "prefix icon replacement"
+      },
+      "ShowPrefix": {
+        "type": "BOOLEAN",
+        "default": false,
+        "bindTo": "prefix.visible",
+        "antd": "prefix prop visibility"
+      },
+      "ShowValue": {
+        "type": "BOOLEAN",
+        "default": false,
+        "bindTo": "value.visible",
+        "antd": "whether a selected value is displayed"
+      },
+      "ShowPlaceholder": {
+        "type": "BOOLEAN",
+        "default": true,
+        "bindTo": "placeholder.visible",
+        "antd": "placeholder visibility when no value is displayed"
+      },
+      "ClearIconValue": {
+        "type": "INSTANCE_SWAP",
+        "default": "Icon / CloseOutlined (509:708)",
+        "bindTo": "clear.mainComponent",
+        "antd": "allowClear affordance"
+      },
+      "ShowClear": {
+        "type": "BOOLEAN",
+        "default": false,
+        "bindTo": "clear.visible",
+        "antd": "allowClear visibility"
+      },
+      "ChevronIconValue": {
+        "type": "INSTANCE_SWAP",
+        "default": "Icon / CaretDownOutlined (509:585)",
+        "bindTo": "chevron.mainComponent",
+        "antd": "dropdown affordance icon"
+      },
+      "OverlayVisibility": {
+        "type": "DERIVED",
+        "default": "State=Open shows overlay; other states hide it",
+        "bindTo": "overlay.visible",
+        "antd": "design-time popup preview"
+      }
+    },
+    "variantLayout": "Status blocks stacked vertically, State columns horizontally, and Size rows vertically within each state."
+  },
+
+  "mappingCoverage": {
+    "mapped": {
+      "colors": "Neutral/Bg, Neutral/Border, Neutral/Text, Neutral/Icon, Brand/Primary, Brand/Error, Brand/Warning",
+      "radius": "radius/roundedSm4 | radius/roundedLg8",
+      "padding": "padding/paddingXs8 | padding/padding16 | padding/paddingXxs4",
+      "controlHeight": "controlHeight/controlHeightSm24 | Md32 | Lg40",
+      "iconSize": "iconSize/iconSizeSm12 | Md16 | Lg20",
+      "typography": "EN/Paragraph 14_h20_Regular | EN/H6 16_h24_Regular"
+    },
+    "gaps": [
+      {
+        "name": "focusShadow",
+        "reason": "Select focus effect style is not defined under local effect styles yet; v1 binds border and icon state only."
+      },
+      {
+        "name": "multipleTagsSearchModes",
+        "reason": "Ant Design multiple, tags, and searchable combobox behaviors are intentionally out of scope for the base single-select control."
+      },
+      {
+        "name": "popupElevationEffect",
+        "reason": "The popup uses tokenized elevated background colors, but no dedicated local Select shadow style is available yet."
+      },
+      {
+        "name": "optionCountVirtualScroll",
+        "reason": "The popup preview uses three representative rows instead of encoding long option lists or virtualization behavior into the component set."
+      }
+    ]
+  }
+}

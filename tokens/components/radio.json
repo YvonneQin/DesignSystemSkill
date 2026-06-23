@@ -1,0 +1,205 @@
+{
+  "$description": "AgentOS Design System Radio component spec — Control DNA selection control with checked states",
+  "$source": {
+    "figma": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageNodeId": "162:16",
+      "componentSetNodeId": "805:34",
+      "url": "https://www.figma.com/design/MwUyizdlqXKyFzHJWvBtI8/AgentOS-Design-System?node-id=805-34"
+    },
+    "docs": "https://ant.design/components/radio/"
+  },
+
+  "component": "Radio",
+  "dna": "control",
+  "$extends": "_control-gene.schema.json",
+  "variantCount": 8,
+
+  "anatomy": {
+    "layers": [
+      { "name": "root", "role": "horizontal auto-layout row for control + label" },
+      { "name": "outer", "role": "16x16 circular selection ring; background, border, radius" },
+      { "name": "dot", "role": "8x8 inner selected indicator; visibility depends on Value" },
+      { "name": "label", "role": "radio label text; optional via ShowLabel" }
+    ]
+  },
+
+  "variants": {
+    "value": {
+      "values": ["unchecked", "checked"],
+      "antd": "checked",
+      "default": "unchecked"
+    },
+    "state": {
+      "values": ["default", "hover", "pressed", "disabled"],
+      "antd": "disabled maps to State=Disabled; hover and pressed are design-time previews",
+      "figmaOnly": true
+    }
+  },
+
+  "naming": {
+    "figma": "Value={Value}, State={State}",
+    "example": "Value=Checked, State=Hover"
+  },
+
+  "layout": {
+    "gap": { "ref": "margin/marginXs8", "value": 8 },
+    "outerSize": { "value": 16, "mapped": false, "reason": "Radio control uses a fixed 16x16 geometry gene." },
+    "dotSize": { "value": 8, "mapped": false, "reason": "Selected dot geometry is a component drawing constant." },
+    "lineWidth": { "ref": "Border/border-width", "value": 1 },
+    "contentAlign": { "value": "center", "mapped": false, "reason": "Layout enum, not a design token." }
+  },
+
+  "sizes": {
+    "default": {
+      "outerSize": { "value": 16, "mapped": false, "reason": "Radio control is fixed at 16px in Ant Design." },
+      "dotSize": { "value": 8, "mapped": false, "reason": "Selected dot is fixed at 8px in Ant Design." },
+      "borderRadius": { "ref": "radius/roundedFull999", "value": 999 },
+      "typography": { "ref": "EN/Paragraph 14_h20_Regular" }
+    }
+  },
+
+  "effects": {},
+
+  "styles": {
+    "unchecked": {
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Neutral/Border/colorBorder",
+          "dot": null,
+          "text": "Neutral/Text/colorText"
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "dot": null,
+          "text": "Neutral/Text/colorText"
+        },
+        "pressed": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryActive",
+          "dot": null,
+          "text": "Neutral/Text/colorText"
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "dot": null,
+          "text": "Neutral/Text/colorTextDisabled"
+        }
+      }
+    },
+
+    "checked": {
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimary",
+          "dot": "Brand/Primary/colorPrimary",
+          "text": "Neutral/Text/colorText"
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "dot": "Brand/Primary/colorPrimaryHover",
+          "text": "Neutral/Text/colorText"
+        },
+        "pressed": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryActive",
+          "dot": "Brand/Primary/colorPrimaryActive",
+          "text": "Neutral/Text/colorText"
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "dot": "Neutral/Text/colorTextDisabled",
+          "text": "Neutral/Text/colorTextDisabled"
+        }
+      }
+    }
+  },
+
+  "styleResolution": {
+    "rules": [
+      "if value=checked → styles.checked",
+      "else → styles.unchecked"
+    ]
+  },
+
+  "antd": {
+    "import": "import { Radio } from 'antd';",
+    "notes": {
+      "scope": "Base Radio only. Radio.Group and button-style radios are separate follow-up specs.",
+      "state": "Hover and pressed are design preview states; disabled maps from the antd disabled prop.",
+      "dot": "Checked state uses the same semantic color for border and inner dot in v1."
+    },
+    "examples": {
+      "default": "<Radio>Option</Radio>",
+      "checked": "<Radio checked>Option</Radio>",
+      "disabled": "<Radio disabled>Option</Radio>",
+      "disabledChecked": "<Radio checked disabled>Option</Radio>"
+    }
+  },
+
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "componentSets": {
+      "*Radio*": "Single set — Value=Unchecked|Checked × State=Default|Hover|Pressed|Disabled (8 variants)"
+    },
+    "figmaImplemented": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "162:16",
+      "componentSetId": "805:34",
+      "variantCount": 8,
+      "note": "Initialized in the AgentOS Design System file. Matrix layout is State columns horizontally and Value rows vertically."
+    },
+    "variantLayout": "Value groups stacked vertically with State columns horizontally.",
+    "componentProperties": {
+      "ShowLabel": {
+        "type": "BOOLEAN",
+        "default": true,
+        "bindTo": "label.visible",
+        "antd": "children label content"
+      },
+      "Label": {
+        "type": "TEXT",
+        "default": "Option",
+        "bindTo": "label.characters",
+        "antd": "children"
+      },
+      "ShowDot": {
+        "type": "DERIVED",
+        "default": "Value == Checked",
+        "bindTo": "dot.visible",
+        "antd": "unchecked hides the dot; checked shows it"
+      }
+    }
+  },
+
+  "mappingCoverage": {
+    "mapped": {
+      "radius": "radius/roundedFull999",
+      "gap": "margin/marginXs8",
+      "outer border": "Neutral/Border/colorBorder and Brand/Primary/*",
+      "outer fill": "Neutral/Bg/colorBgContainer and Neutral/Bg/colorBgContainerDisabled",
+      "dot": "Brand/Primary/* and Neutral/Text/colorTextDisabled",
+      "label text": "Neutral/Text/colorText and Neutral/Text/colorTextDisabled",
+      "typography": "EN/Paragraph 14_h20_Regular"
+    },
+    "gaps": [
+      {
+        "name": "outerSize",
+        "value": 16,
+        "reason": "Radio outer circle geometry is fixed; no dedicated foundation sizing token exists for this control."
+      },
+      {
+        "name": "dotSize",
+        "value": 8,
+        "reason": "Radio selected dot size is a component constant, not a shared token."
+      }
+    ]
+  }
+}

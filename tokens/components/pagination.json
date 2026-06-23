@@ -1,0 +1,157 @@
+{
+  "$description": "AgentOS Design System Pagination component spec — rebuilt from Ant Design community reference using AgentOS tokens",
+  "$source": {
+    "referenceFigma": {
+      "fileKey": "L3k9dxCWyCjhm5G5V22A13",
+      "nodeId": "791:119",
+      "url": "https://www.figma.com/design/L3k9dxCWyCjhm5G5V22A13/Ant-Design-System-for-Figma--Free-version---Community-?node-id=791-119"
+    },
+    "targetFigma": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "162:25",
+      "pageName": "├─  Pagination 分页  ✅✨"
+    }
+  },
+  "component": "Pagination",
+  "dna": "navigation",
+  "variantCount": 7,
+  "anatomy": {
+    "layers": [
+      { "name": "container", "role": "horizontal auto-layout row for pager segments" },
+      { "name": "summary", "role": "optional total count label such as 共50条" },
+      { "name": "prev", "role": "previous control — arrow or text button" },
+      { "name": "itemCurrent", "role": "active page item" },
+      { "name": "item", "role": "default page item" },
+      { "name": "more", "role": "ellipsis / jump-more item" },
+      { "name": "next", "role": "next control — arrow or text button" },
+      { "name": "jumper", "role": "optional jump input cluster" }
+    ]
+  },
+  "variants": {
+    "variant": {
+      "values": ["basic", "jumper", "mini", "miniJumper", "more", "simple", "prevNext"],
+      "figma": "Variant",
+      "default": "basic"
+    }
+  },
+  "naming": {
+    "figma": "Variant={Variant}",
+    "example": "Variant=Basic"
+  },
+  "layout": {
+    "gap": { "ref": "margin/marginXs8", "value": 8 },
+    "lineWidth": { "ref": "Border/border-width", "value": 1 },
+    "iconSize": { "ref": "iconSize/iconSizeSm12", "value": 12 },
+    "miniControlHeight": { "ref": "controlHeight/controlHeightSm24", "value": 24 },
+    "defaultControlHeight": { "ref": "controlHeight/controlHeightMd32", "value": 32 },
+    "paddingMini": { "ref": "padding/paddingXs8", "value": 8, "mapping": "nearest" },
+    "paddingDefault": { "ref": "padding/paddingXs8", "value": 8, "mapping": "nearest" },
+    "paddingLoose": { "ref": "padding/paddingSm12", "value": 12, "mapping": "nearest" },
+    "radius": { "ref": "radius/roundedSm4", "value": 4 }
+  },
+  "typography": {
+    "defaultLabel": { "ref": "EN/Paragraph 14_h20_Regular" },
+    "currentNumber": { "ref": "EN/Paragraph 14_h20_Regular" },
+    "miniNumber": { "ref": "CN/Small Text 12_h18_Regular" },
+    "supportingCn": { "ref": "CN/Paragraph 14_h22_Regular" }
+  },
+  "styles": {
+    "item": {
+      "default": {
+        "background": "Neutral/Bg/colorTransparent",
+        "border": null,
+        "text": "Neutral/Text/colorTextDescription"
+      },
+      "hover": {
+        "background": "Neutral/Bg/colorTransparent",
+        "border": null,
+        "text": "Brand/Primary/colorPrimaryHover"
+      },
+      "active": {
+        "background": "Brand/Primary/colorPrimaryBg",
+        "border": "Brand/Primary/colorPrimaryBorder",
+        "text": "Brand/Primary/colorPrimary"
+      },
+      "disabled": {
+        "background": "Neutral/Fill/colorFillTertiary",
+        "border": "Neutral/Border/colorBorderSecondary",
+        "text": "Neutral/Text/colorTextDisabled"
+      }
+    },
+    "arrow": {
+      "default": {
+        "background": "Neutral/Bg/colorTransparent",
+        "border": null,
+        "icon": "Neutral/Text/colorTextDescription"
+      },
+      "hover": {
+        "background": "Neutral/Bg/colorTransparent",
+        "border": null,
+        "icon": "Brand/Primary/colorPrimaryHover"
+      },
+      "disabled": {
+        "background": "Neutral/Bg/colorTransparent",
+        "border": null,
+        "icon": "Neutral/Text/colorTextDisabled"
+      }
+    },
+    "textButton": {
+      "default": {
+        "background": "Neutral/Bg/colorTransparent",
+        "border": null,
+        "text": "Neutral/Text/colorTextDescription",
+        "icon": "Neutral/Text/colorTextDescription"
+      },
+      "hover": {
+        "background": "Neutral/Bg/colorTransparent",
+        "border": null,
+        "text": "Brand/Primary/colorPrimaryHover",
+        "icon": "Brand/Primary/colorPrimaryHover"
+      },
+      "disabled": {
+        "background": "Neutral/Bg/colorTransparent",
+        "border": null,
+        "text": "Neutral/Text/colorTextDisabled",
+        "icon": "Neutral/Text/colorTextDisabled"
+      }
+    },
+    "input": {
+      "background": "Neutral/Bg/colorBgContainer",
+      "border": "Neutral/Border/colorBorder",
+      "placeholder": "Neutral/Text/colorTextPlaceholder",
+      "text": "Neutral/Text/colorText"
+    }
+  },
+  "styleResolution": {
+    "rules": [
+      "Variant=Basic → active item + plain items + arrow controls",
+      "Variant=Jumper → basic + summary + jumper input",
+      "Variant=Mini → compact 24px pager with active mini item",
+      "Variant=Mini Jumper → mini + summary + jumper input",
+      "Variant=More → basic + ellipsis items",
+      "Variant=Simple → prev + current/total + next compact layout",
+      "Variant=Prev and next → text button previous + text button next"
+    ]
+  },
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "componentSets": {
+      "*Pagination*": "Variant=Basic|Jumper|Mini|Mini Jumper|More|Simple|Prev and next — 7 variants"
+    },
+    "variantLayout": "A single horizontal pagination row per variant, combined into one component set."
+  },
+  "mappingCoverage": {
+    "mapped": {
+      "active item colors": true,
+      "default item text": true,
+      "disabled item treatment": true,
+      "mini and default sizing": true,
+      "spacing and radius": true
+    },
+    "gaps": [
+      "The community reference includes additional subcomponent pages for number, arrow, and more items. AgentOS v1 keeps only the composed Pagination set on the page.",
+      "The original reference uses Nunito Sans and a different token namespace; AgentOS rebuild maps the visuals to existing local typography and color tokens."
+    ]
+  }
+}

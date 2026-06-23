@@ -1,0 +1,154 @@
+{
+  "$description": "Design System DNA tree. This file classifies component families and their shared genes. It does not define per-component style output.",
+  "version": "1.0.0",
+  "branches": {
+    "control": {
+      "label": "1. Control DNA",
+      "sharedGenes": [
+        "height",
+        "radius",
+        "focus",
+        "disabled",
+        "loading",
+        "gap",
+        "paddingInline",
+        "iconSize",
+        "typography"
+      ],
+      "rulePresetRef": "rules/control.rules.json",
+      "members": [
+        "Button",
+        "Icon Button",
+        "Input",
+        "Textarea",
+        "Select",
+        "Combobox",
+        "Autocomplete",
+        "Date Picker",
+        "Time Picker",
+        "Number Input",
+        "Search",
+        "Switch",
+        "Checkbox",
+        "Radio Group",
+        "Segmented Control",
+        "Toggle",
+        "Slider",
+        "Stepper",
+        "File Upload"
+      ]
+    },
+    "overlay": {
+      "label": "2. Overlay DNA",
+      "sharedGenes": ["elevation", "animation", "escape", "focusTrap"],
+      "members": [
+        "Tooltip",
+        "Popover",
+        "Hover Card",
+        "Dropdown Menu",
+        "Context Menu",
+        "Dialog",
+        "Alert Dialog",
+        "Drawer",
+        "Sheet",
+        "Side Panel",
+        "Bottom Sheet",
+        "Command Palette",
+        "Coachmark"
+      ]
+    },
+    "selection": {
+      "label": "3. Selection DNA",
+      "sharedGenes": ["selectedState", "multiSelect", "rangeSelect", "keyboardNavigation"],
+      "members": [
+        "Listbox",
+        "Transfer",
+        "Tree Select",
+        "Picker Panel",
+        "Table Row Selection"
+      ]
+    },
+    "navigation": {
+      "label": "4. Navigation DNA",
+      "sharedGenes": ["activeState", "currentState", "orientation"],
+      "members": [
+        "Navbar",
+        "Sidebar",
+        "Navigation Menu",
+        "Breadcrumb",
+        "Pagination",
+        "Tabs",
+        "Steps",
+        "Anchor",
+        "Menu",
+        "Back-to-top"
+      ]
+    },
+    "feedback": {
+      "label": "5. Feedback DNA",
+      "sharedGenes": ["success", "warning", "error", "motion"],
+      "members": [
+        "Toast",
+        "Alert",
+        "Banner",
+        "Inline Message",
+        "Snackbar",
+        "Empty State",
+        "Skeleton",
+        "Progress",
+        "Spinner",
+        "Result",
+        "Status Badge"
+      ]
+    },
+    "information": {
+      "label": "6. Information DNA",
+      "sharedGenes": ["typographyHierarchy", "density"],
+      "members": [
+        "Avatar",
+        "Badge",
+        "Tag",
+        "Chip",
+        "Stat",
+        "Description List",
+        "Card",
+        "List Item",
+        "Timeline"
+      ]
+    },
+    "layout": {
+      "label": "7. Layout DNA",
+      "sharedGenes": ["padding", "spacing", "responsive"],
+      "members": [
+        "Container",
+        "Stack",
+        "Grid",
+        "Flex",
+        "Split View",
+        "Divider",
+        "Separator",
+        "Panel",
+        "Section",
+        "Dashboard Layout"
+      ]
+    },
+    "visualization": {
+      "label": "8. Visualization DNA",
+      "sharedGenes": ["legend", "tooltip", "interactionModel"],
+      "members": [
+        "Line Chart",
+        "Bar Chart",
+        "Pie Chart",
+        "Area Chart",
+        "Scatter Plot",
+        "Heatmap",
+        "Treemap",
+        "Gauge",
+        "Map",
+        "Sankey",
+        "Network Graph",
+        "3D Viewer"
+      ]
+    }
+  }
+}

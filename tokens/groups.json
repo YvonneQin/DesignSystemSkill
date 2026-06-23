@@ -3,7 +3,7 @@
   "groups": [
     {
       "name": "Base",
-      "description": "Radix primitive palettes — 10-step scale (steps 1–10 from rdxcolors)",
+      "description": "Radix primitive palettes — 10-step scale labeled 50–900",
       "source": "sources/rdx-base-10.json",
       "figmaCollection": "ColorMode",
       "tokenNaming": "Base/{palette}/{step}",
@@ -83,23 +83,23 @@
           ]
         },
         {
-          "name": "Secondary",
-          "description": "Secondary brand scale — aliases Base/black",
+          "name": "Tertiary",
+          "description": "Tertiary brand scale — aliases Base/black",
           "source": "colors/semantic-secondary.json",
           "figmaCollection": "ColorMode",
-          "tokenNaming": "Brand/Secondary/{token}",
+          "tokenNaming": "Brand/Tertiary/{token}",
           "modes": ["Light", "Dark"],
           "tokens": [
-            "colorSecondary",
-            "colorSecondaryBg",
-            "colorSecondaryBgHover",
-            "colorSecondaryBorder",
-            "colorSecondaryBorderHover",
-            "colorSecondaryHover",
-            "colorSecondaryActive",
-            "colorSecondaryTextHover",
-            "colorSecondaryText",
-            "colorSecondaryTextActive"
+            "colorTertiary",
+            "colorTertiaryBg",
+            "colorTertiaryBgHover",
+            "colorTertiaryBorder",
+            "colorTertiaryBorderHover",
+            "colorTertiaryHover",
+            "colorTertiaryActive",
+            "colorTertiaryTextHover",
+            "colorTertiaryText",
+            "colorTertiaryTextActive"
           ]
         },
         {
@@ -293,10 +293,66 @@
     {
       "name": "Typography",
       "description": "Text styles — Figma collection: Font",
-      "source": "typography/en-text-styles.json",
-      "figmaCollection": "Font",
-      "tokenNaming": "EN/{styleName}",
-      "styles": ["Paragraph 14_h20_Regular", "H6 16_h24_Regular"]
+      "children": [
+        {
+          "name": "EN",
+          "description": "English text styles",
+          "source": "typography/en-text-styles.json",
+          "figmaCollection": "Font",
+          "tokenNaming": "EN/{styleName}",
+          "styles": [
+            "H1 56_h72_Regular",
+            "H1 56_h72_SemiBold",
+            "H2 48_h56_Regular",
+            "H2 48_h56_SemiBold",
+            "H3 36_h48_Regular",
+            "H3 36_h48_SemiBold",
+            "H4 24_h36_Regular",
+            "H4 24_h36_SemiBold",
+            "H5 20_h28_Regular",
+            "H5 20_h28_SemiBold",
+            "H6 16_h24_Regular",
+            "H6 16_h24_SemiBold",
+            "Paragraph 14_h20_Regular",
+            "Paragraph 14_h20_SemiBold",
+            "Paragraph Small 13_h18_Regular",
+            "Paragraph Small 13_h18_SemiBold",
+            "Small Text 12_h20_Regular",
+            "Small Text 12_h20_SemiBold",
+            "Micro 10_h14_Regular",
+            "Micro 10_h14_SemiBold"
+          ]
+        },
+        {
+          "name": "CN",
+          "description": "Chinese text styles",
+          "source": "typography/cn-text-styles.json",
+          "figmaCollection": "Font",
+          "tokenNaming": "CN/{styleName}",
+          "styles": [
+            "H1 56_h72_Regular",
+            "H1 56_h72_Medium",
+            "H2 48_h56_Regular",
+            "H2 48_h56_Medium",
+            "H3 36_h48_Regular",
+            "H3 36_h48_Medium",
+            "H4 24_h36_Regular",
+            "H4 24_h36_Medium",
+            "H5 20_h28_Regular",
+            "H5 20_h28_Medium",
+            "H6 16_h24_Regular",
+            "H6 16_h24_Medium",
+            "Paragraph 14_h22_Regular",
+            "Paragraph 14_h20_Medium",
+            "Paragraph Small 13_h18_Regular",
+            "Paragraph Small 13_h18_Medium",
+            "Small Text 12_h18_Regular",
+            "Small Text 12_h18_Medium",
+            "Micro 10_h14_Regular",
+            "Micro 10_h14_Medium"
+          ]
+        }
+      ]
     },
     {
       "name": "Effects",
@@ -342,6 +398,106 @@
           }
         },
         {
+          "name": "Input",
+          "description": "Ant Design Input — base text field with size, status, and design-time state axes",
+          "source": "components/input.json",
+          "figmaReference": {
+            "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+            "nodeId": "733:402"
+          },
+          "variants": {
+            "size": 3,
+            "state": 4,
+            "status": 3
+          }
+        },
+        {
+          "name": "Breadcrumb",
+          "description": "Ant Design Breadcrumb — navigation item and separator families for path navigation",
+          "source": "components/breadcrumb.json",
+          "figmaReference": {
+            "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+            "nodeIds": {
+              "item": "792:34",
+              "separator": "793:12",
+              "composite": "810:71"
+            }
+          },
+          "variants": {
+            "item": 8,
+            "separator": 3,
+            "composite": 3
+          }
+        },
+        {
+          "name": "Anchor",
+          "description": "Ant Design Anchor — vertical and horizontal in-page navigation samples using AgentOS tokens",
+          "source": "components/anchor.json",
+          "figmaReference": {
+            "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+            "nodeId": "162:27"
+          },
+          "variants": {
+            "direction": 2
+          }
+        },
+        {
+          "name": "Tabs",
+          "description": "Ant Design Tabs — top line tab item with AgentOS large/default/small/mini sizes and selected-state preview",
+          "source": "components/tabs.json",
+          "figmaReference": {
+            "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+            "pageNodeId": "941:41"
+          },
+          "variants": {
+            "size": 4,
+            "selected": 2,
+            "state": 3
+          }
+        },
+        {
+          "name": "Checkbox",
+          "description": "Ant Design Checkbox — base selection control with unchecked, checked, and indeterminate states",
+          "source": "components/checkbox.json",
+          "figmaReference": {
+            "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+            "nodeId": "796:62"
+          },
+          "variants": {
+            "value": 3,
+            "state": 4
+          }
+        },
+        {
+          "name": "Radio",
+          "description": "Ant Design Radio — base selection control with unchecked and checked states",
+          "source": "components/radio.json",
+          "figmaReference": {
+            "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+            "nodeId": "805:34"
+          },
+          "variants": {
+            "value": 2,
+            "state": 4
+          }
+        },
+        {
+          "name": "Badge",
+          "description": "Ant Design Badge — indicator and status families with attached-count and semantic-dot use cases",
+          "source": "components/badge.json",
+          "figmaReference": {
+            "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+            "nodeIds": {
+              "indicator": "778:20",
+              "status": "778:36"
+            }
+          },
+          "variants": {
+            "indicator": 4,
+            "status": 5
+          }
+        },
+        {
           "name": "Tag",
           "description": "Ant Design Tag — 4 component sets (Colorful, Basic, Checkable, Status), 34 variants",
           "source": "components/tag.json",
@@ -359,6 +515,21 @@
             "basic": 5,
             "checkable": 2,
             "status": 5
+          }
+        },
+        {
+          "name": "Skeleton",
+          "description": "Ant Design Skeleton — content, avatar, button, and input placeholder families",
+          "source": "components/skeleton.json",
+          "figmaReference": {
+            "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+            "pageNodeId": "162:20"
+          },
+          "variants": {
+            "content": 4,
+            "avatar": 12,
+            "button": 48,
+            "input": 12
           }
         }
       ]

@@ -16,6 +16,7 @@ This repo is organized so Codex can work here safely:
 2. Read [docs/repo-map.md](./docs/repo-map.md) for the actual structure.
 3. Use the npm scripts below for local token workflows.
 4. Treat `scripts/figma/*.js` as Figma payloads, not normal Node scripts.
+5. See [docs/looping-engineer.md](./docs/looping-engineer.md) for tasks that fit iterative agent execution.
 
 ## Safety Rule
 
@@ -50,6 +51,9 @@ More detail: [docs/repo-map.md](./docs/repo-map.md)
 ## Common Commands
 
 ```bash
+npm install
+npm run storybook
+npm run build-storybook
 npm run tokens:build
 npm run tokens:refresh-base -- /path/to/default.json
 npm run tokens:apply-default-base -- /path/to/default.json
@@ -57,6 +61,20 @@ npm run tokens:uniformize-base -- /path/to/default.json
 npm run tokens:regen-non-antd-base
 npm run tokens:update-palettes-from-figma
 ```
+
+## Storybook
+
+This repo now includes a Storybook-based design-system workbench plus per-component spec pages.
+
+- Local dev: `npm run storybook`
+- Static build: `npm run build-storybook`
+- Public publish: GitHub Actions workflow at `.github/workflows/storybook.yml`
+
+To publish on GitHub Pages:
+
+1. Push the repo to the `main` branch on GitHub.
+2. In GitHub repo settings, open `Pages` and set the source to `GitHub Actions`.
+3. Re-run the `Publish Storybook` workflow if needed.
 
 ## Common Workflows
 
@@ -67,6 +85,7 @@ npm run tokens:update-palettes-from-figma
 | Audit hardcoded colors / radii | `workflows/normalize-design.md` | `scan-colors.js`, `scan-radius.js` |
 | Bind colors / radii | `workflows/normalize-design.md` | `bind-colors.js`, `bind-radius.js` |
 | Initialize component specs | `tokens/components/README.md` | component JSON + Figma workflow |
+| Run an iterative agent safely | `docs/looping-engineer.md` | audit, bind, build, docs loops |
 
 ## Figma Conventions
 

@@ -27,11 +27,11 @@
 
   "variants": {
     "type": {
-      "values": ["primary", "secondary", "outline", "dashed", "text", "link"],
+      "values": ["primary", "outline", "dashed", "text", "ghost"],
       "antd": "type",
       "antdMapping": { "outline": "default" },
       "figma": "Type",
-      "default": "outline"
+      "default": "primary"
     },
     "size": {
       "values": ["large", "default", "small"],
@@ -51,7 +51,7 @@
       "values": [false, true],
       "antd": "ghost",
       "default": false,
-      "figmaNote": "Current AgentOS Button component set does not expose Ghost as a Figma variant axis"
+      "figmaNote": "Legacy compatibility field. Latest local Figma component set exposes Ghost as a first-class Type axis."
     },
     "danger": {
       "values": [false, true],
@@ -60,12 +60,12 @@
       "figmaNote": "Figma uses Theme=Danger instead of Danger=True"
     },
     "theme": {
-      "values": ["blue", "black", "danger"],
+      "values": ["primary", "secondary", "danger"],
       "figma": "Theme",
-      "default": "blue",
+      "default": "primary",
       "mapping": {
-        "blue": "Brand/Primary palette — default Ant Design primary",
-        "black": "Brand/Secondary palette — Type=Primary uses secondary styles",
+        "primary": "Brand/Primary palette — default primary theme",
+        "secondary": "Brand/Tertiary palette — secondary theme in the local Figma set",
         "danger": "Brand/Error palette — maps to danger style blocks"
       }
     },
@@ -78,7 +78,7 @@
 
   "naming": {
     "figma": "Theme={Theme}, Type={Type}, Size={Size}, State={State}, Shape={Shape}",
-    "example": "Theme=Blue, Type=Primary, Size=Default, State=Loading, Shape=Default"
+    "example": "Theme=Primary, Type=Primary, Size=Default, State=Loading, Shape=Default"
   },
 
   "layout": {
@@ -121,7 +121,7 @@
   "typography": {
     "baseNormal": {
       "ref": "EN/Paragraph 14_h20_Regular",
-      "fontFamily": "SF Pro Text",
+      "fontFamily": "SF Pro",
       "fontWeight": 400,
       "fontSize": 14,
       "lineHeight": 20,
@@ -130,7 +130,7 @@
     },
     "lgNormal": {
       "ref": "EN/H6 16_h24_Regular",
-      "fontFamily": "SF Pro Text",
+      "fontFamily": "SF Pro",
       "fontWeight": 400,
       "fontSize": 16,
       "lineHeight": 24,
@@ -229,26 +229,26 @@
       "ghost": false,
       "states": {
         "default": {
-          "background": "Brand/Secondary/colorSecondary",
-          "border": "Brand/Secondary/colorSecondary",
+          "background": "Brand/Tertiary/colorTertiary",
+          "border": "Brand/Tertiary/colorTertiary",
           "text": "Neutral/Text/colorTextLightSolid",
           "shadow": "Component/Button/secondaryShadow"
         },
         "hover": {
-          "background": "Brand/Secondary/colorSecondaryHover",
-          "border": "Brand/Secondary/colorSecondaryHover",
+          "background": "Brand/Tertiary/colorTertiaryHover",
+          "border": "Brand/Tertiary/colorTertiaryHover",
           "text": "Neutral/Text/colorTextLightSolid",
           "shadow": "Component/Button/secondaryShadow"
         },
         "loading": {
-          "background": "Brand/Secondary/colorSecondaryHover",
-          "border": "Brand/Secondary/colorSecondaryHover",
+          "background": "Brand/Tertiary/colorTertiaryHover",
+          "border": "Brand/Tertiary/colorTertiaryHover",
           "text": "Neutral/Text/colorTextLightSolid",
           "shadow": "Component/Button/secondaryShadow"
         },
         "active": {
-          "background": "Brand/Secondary/colorSecondaryActive",
-          "border": "Brand/Secondary/colorSecondaryActive",
+          "background": "Brand/Tertiary/colorTertiaryActive",
+          "border": "Brand/Tertiary/colorTertiaryActive",
           "text": "Neutral/Text/colorTextLightSolid",
           "shadow": "Component/Button/secondaryShadow"
         },
@@ -304,26 +304,26 @@
       "states": {
         "default": {
           "background": "Neutral/Bg/colorTransparent",
-          "border": "Brand/Secondary/colorSecondary",
-          "text": "Brand/Secondary/colorSecondary",
+          "border": "Brand/Tertiary/colorTertiary",
+          "text": "Brand/Tertiary/colorTertiary",
           "shadow": null
         },
         "hover": {
           "background": "Neutral/Bg/colorTransparent",
-          "border": "Brand/Secondary/colorSecondaryHover",
-          "text": "Brand/Secondary/colorSecondaryHover",
+          "border": "Brand/Tertiary/colorTertiaryHover",
+          "text": "Brand/Tertiary/colorTertiaryHover",
           "shadow": null
         },
         "loading": {
           "background": "Neutral/Bg/colorTransparent",
-          "border": "Brand/Secondary/colorSecondaryHover",
-          "text": "Brand/Secondary/colorSecondaryHover",
+          "border": "Brand/Tertiary/colorTertiaryHover",
+          "text": "Brand/Tertiary/colorTertiaryHover",
           "shadow": null
         },
         "active": {
           "background": "Neutral/Bg/colorTransparent",
-          "border": "Brand/Secondary/colorSecondaryActive",
-          "text": "Brand/Secondary/colorSecondaryActive",
+          "border": "Brand/Tertiary/colorTertiaryActive",
+          "text": "Brand/Tertiary/colorTertiaryActive",
           "shadow": null
         },
         "disabled": {
@@ -537,38 +537,38 @@
       }
     },
 
-    "link": {
+    "ghost": {
       "danger": false,
-      "ghost": false,
-      "borderStyle": "none",
+      "ghost": true,
+      "borderStyle": "solid",
       "states": {
         "default": {
           "background": "Neutral/Bg/colorTransparent",
-          "border": "Neutral/Bg/colorTransparent",
-          "text": "Brand/Link/colorLink",
+          "border": "Brand/Primary/colorPrimary",
+          "text": "Brand/Primary/colorPrimary",
           "shadow": null
         },
         "hover": {
           "background": "Neutral/Bg/colorTransparent",
-          "border": "Neutral/Bg/colorTransparent",
-          "text": "Brand/Link/colorLinkHover",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "text": "Brand/Primary/colorPrimaryHover",
           "shadow": null
         },
         "loading": {
           "background": "Neutral/Bg/colorTransparent",
-          "border": "Neutral/Bg/colorTransparent",
-          "text": "Brand/Link/colorLinkHover",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "text": "Brand/Primary/colorPrimaryHover",
           "shadow": null
         },
         "active": {
           "background": "Neutral/Bg/colorTransparent",
-          "border": "Neutral/Bg/colorTransparent",
-          "text": "Brand/Link/colorLinkActive",
+          "border": "Brand/Primary/colorPrimaryActive",
+          "text": "Brand/Primary/colorPrimaryActive",
           "shadow": null
         },
         "disabled": {
           "background": "Neutral/Bg/colorTransparent",
-          "border": "Neutral/Bg/colorTransparent",
+          "border": "Neutral/Border/colorBorder",
           "text": "Neutral/Text/colorTextDisabled",
           "shadow": null
         }
@@ -620,17 +620,13 @@
       "if theme=danger && type=outline → outlineDanger",
       "if theme=danger && type=dashed → dashedDanger",
       "if theme=danger && type=text → textDanger",
-      "if theme=black && type=outline → outline + border: Brand/Secondary/colorSecondary*",
-      "if theme=black && type=dashed → dashed + border: Brand/Secondary/colorSecondary*",
-      "if theme=black && type=primary → secondary",
-      "if theme=blue && type=primary → primary",
-      "if theme=blue && type in (outline,dashed) && state=default → patch border + text + icon: Brand/Primary/colorPrimary",
-      "if type=primary && danger → primaryDanger",
-      "if type=outline && danger → outlineDanger",
-      "if type=dashed && danger → dashedDanger",
-      "if type=primary && ghost → primaryGhost",
-      "if type=secondary && danger → secondaryDanger",
-      "if type=secondary && ghost → secondaryGhost",
+      "if theme=secondary && type=outline → outline + border: Brand/Tertiary/colorTertiary*",
+      "if theme=secondary && type=dashed → dashed + border: Brand/Tertiary/colorTertiary*",
+      "if theme=secondary && type=primary → secondary",
+      "if theme=primary && type=primary → primary",
+      "if theme=primary && type in (outline,dashed,ghost) && state=default → patch border + text: Brand/Primary/colorPrimary",
+      "if type=ghost && theme=primary → primaryGhost",
+      "if type=ghost && theme=secondary → secondaryGhost",
       "if type=text && danger → textDanger",
       "if type=dashed → outline styles + borderStyle=dashed",
       "else → styles[type]"
@@ -640,23 +636,22 @@
   "antd": {
     "import": "import { Button } from 'antd';",
     "notes": {
-      "secondary": "Custom type — not in Ant Design API. Map to a themed solid button using Brand/Secondary tokens (Base/black).",
+      "secondary": "Custom theme — not in Ant Design API. Map to a themed solid button using Brand/Tertiary tokens (Base/black).",
       "outline": "Figma Type=Outline maps to antd default (no type prop) — outlined container button."
     },
     "examples": {
       "primary": "<Button type=\"primary\">Button</Button>",
-      "secondary": "<Button type=\"secondary\">Button</Button>",
+      "secondary": "<Button data-theme=\"secondary\" type=\"primary\">Button</Button>",
       "outline": "<Button>Button</Button>",
       "dashed": "<Button type=\"dashed\">Button</Button>",
       "text": "<Button type=\"text\">Button</Button>",
-      "link": "<Button type=\"link\">Button</Button>",
+      "ghost": "<Button type=\"ghost\">Button</Button>",
       "large": "<Button size=\"large\">Button</Button>",
       "small": "<Button size=\"small\">Button</Button>",
       "round": "<Button type=\"primary\" shape=\"round\">Button</Button>",
-      "ghost": "<Button type=\"primary\" ghost>Button</Button>",
-      "secondaryGhost": "<Button type=\"secondary\" ghost>Button</Button>",
-      "danger": "<Button type=\"primary\" danger>Button</Button>",
-      "secondaryDanger": "<Button type=\"secondary\" danger>Button</Button>",
+      "secondaryGhost": "<Button data-theme=\"secondary\" type=\"ghost\">Button</Button>",
+      "danger": "<Button data-theme=\"danger\" type=\"primary\">Button</Button>",
+      "dangerOutline": "<Button data-theme=\"danger\" type=\"outline\">Button</Button>",
       "iconOnly": "<Button type=\"primary\" icon={<SearchOutlined />} />",
       "loading": "<Button type=\"primary\" loading>Button</Button>"
     }
@@ -676,7 +671,7 @@
     "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
     "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
     "componentSets": {
-      "*Button*": "Single set — Theme=Blue|Black|Red × Type (Primary|Outline|Dashed|Text|Link) × Size × State × Shape (450 variants)"
+      "*Button*": "Single set — Theme=Primary|Secondary|Danger × Type (Primary|Outline|Dashed|Text|Ghost) × Size × State × Shape (450 variants)"
     },
     "figmaImplemented": {
       "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
@@ -684,8 +679,8 @@
       "componentSetId": "447:902",
       "variantCount": 450,
       "stateAxis": ["Default", "Hover", "Loading", "Active", "Disabled"],
-      "ghost": false,
-      "note": "State=Loading replaces Focused — container uses hover tokens; spinner TBD. Left and right icon slots are top-level direct icon instances, not IconWrapper variants.",
+      "ghost": true,
+      "note": "State=Loading replaces Focused. Ghost is now a first-class Type axis in Figma. Left and right icon slots are top-level direct icon instances, not IconWrapper variants.",
       "iconBinding": {
         "implementation": "direct icon instances",
         "wrapper": false,
@@ -696,7 +691,7 @@
       "colorPrimaryBound": {
         "token": "Brand/Primary/colorPrimary",
         "bindTo": ["container.strokes", "Label.fills", "Icon > Vector.fills"],
-        "scope": "Theme=Blue, Type=Outline|Dashed, State=Default, Ghost=False — all Size × Shape (12 variants)",
+        "scope": "Theme=Primary, Type=Outline|Dashed, State=Default — all Size × Shape (12 variants)",
         "variantIds": ["447:4", "447:6", "447:14", "447:16", "447:24", "447:26", "447:154", "447:156", "447:164", "447:166", "447:174", "447:176"]
       },
       "iconSizeBound": {

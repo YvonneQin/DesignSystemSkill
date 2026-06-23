@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Uniformize Base ramp shape (shared curve) while keeping each palette's own
- * step-7 hue, lightness, and saturation. Ant Design palettes stay untouched.
+ * accent hue, lightness, and saturation. Ant Design palettes stay untouched.
  *
  * Run after: node scripts/tokens/apply-default-base.js
  * Usage: node scripts/tokens/uniformize-base-palettes.js [path/to/default.json]
@@ -16,7 +16,8 @@ const DEFAULT_PATH =
 const RDX_PATH = path.join(ROOT, "tokens/sources/rdx-base-10.json");
 const SYNC_PATH = path.join(ROOT, "scripts/figma/sync-rdx-base-10-payload.js");
 
-const ANCHOR_STEP = 7;
+const SCALE_STEPS = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
+const ANCHOR_STEP = "600";
 
 // Ant Design palettes from default.json + alpha — never reshape these
 const KEEP = new Set([
@@ -25,7 +26,7 @@ const KEEP = new Set([
 ]);
 
 // Figma 新色板主色相 — not Ant Design Blue
-const FIXED_STEP7 = {
+const FIXED_STEP600 = {
   blue: { light: "#386bff", dark: "#1d3887" },
 };
 
@@ -112,8 +113,8 @@ function extractCurve(stepsObj, anchorStep) {
   const aS = relSat(anchor) || 1;
   const dl = [];
   const sm = [];
-  for (let i = 1; i <= 10; i++) {
-    const v = stepsObj[String(i)].value;
+  for (const step of SCALE_STEPS) {
+    const v = stepsObj[String(step)].value;
     dl.push(relHslL(v) - aL);
     sm.push(aS > 0 ? relSat(v) / aS : 1);
   }
@@ -228,7 +229,7 @@ const DATA = ${JSON.stringify(rdx)};
 }
 
 const source = JSON.parse(fs.readFileSync(DEFAULT_PATH, "utf8"));
-const lightCurve = extractCurve(source.light.Colors.Base.Blue, ANCHOR_STEP);
+const lightCurve = extractCurve(source.light.Colors.Base.Blue, 7);
 
 // Neutrals: same ramp shape, gentler saturation swing
 const neutralCurve = {
@@ -237,12 +238,12 @@ const neutralCurve = {
 };
 
 const rdx = JSON.parse(fs.readFileSync(RDX_PATH, "utf8"));
-const pinIndex = ANCHOR_STEP - 1;
+const pinIndex = SCALE_STEPS.indexOf(ANCHOR_STEP);
 
 for (const palette of Object.keys(rdx)) {
   if (KEEP.has(palette)) continue;
 
-  const fixed = FIXED_STEP7[palette];
+  const fixed = FIXED_STEP600[palette];
   const lightAnchor = fixed?.light ?? rdx[palette][String(ANCHOR_STEP)].light;
   const darkAnchor = fixed?.dark ?? rdx[palette][String(ANCHOR_STEP)].dark;
   const curve = NEUTRAL.has(palette) ? neutralCurve : lightCurve;
@@ -252,10 +253,11 @@ for (const palette of Object.keys(rdx)) {
     ? generateNeutralDarkScale(lightSteps, darkAnchor, pinIndex)
     : generateDarkScale(lightSteps, darkAnchor, pinIndex);
 
-  for (let step = 1; step <= 10; step++) {
-    rdx[palette][String(step)] = {
-      light: lightSteps[step - 1],
-      dark: darkSteps[step - 1],
+  for (let i = 0; i < SCALE_STEPS.length; i++) {
+    const step = SCALE_STEPS[i];
+    rdx[palette][step] = {
+      light: lightSteps[i],
+      dark: darkSteps[i],
     };
   }
   console.log(

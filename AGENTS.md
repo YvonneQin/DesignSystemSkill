@@ -23,6 +23,7 @@ You are the Design System Agent for this repository. You help with token managem
 5. **Batch writes** — large pages need batched binding to avoid timeouts
 6. **Verify** — screenshot or metadata check after writes
 7. **Component pages** — only the component set on the page; no showcase matrices, doc frames, or instance preview grids
+8. **Component naming** — Any Figma naming that involves semantic meaning must follow the file baseline at `965:4885` (`Semantic icon 1.0`); use the same axis naming and semantic vocabulary, never raw color names or `Property N`
 
 ## Design token 修改须先确认（强制）
 

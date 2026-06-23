@@ -1,0 +1,187 @@
+{
+  "$description": "Chinese text styles — Figma Font collection (CN group)",
+  "collection": "Font",
+  "naming": "CN/{styleName}",
+  "styles": [
+    {
+      "name": "H1 56_h72_Regular",
+      "ref": "CN/H1 56_h72_Regular",
+      "fontFamily": "Inter",
+      "fontWeight": 400,
+      "fontSize": 56,
+      "lineHeight": 72,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H1 56_h72_Medium",
+      "ref": "CN/H1 56_h72_Medium",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 56,
+      "lineHeight": 72,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H2 48_h56_Regular",
+      "ref": "CN/H2 48_h56_Regular",
+      "fontFamily": "Inter",
+      "fontWeight": 400,
+      "fontSize": 48,
+      "lineHeight": 56,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H2 48_h56_Medium",
+      "ref": "CN/H2 48_h56_Medium",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 48,
+      "lineHeight": 56,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H3 36_h48_Regular",
+      "ref": "CN/H3 36_h48_Regular",
+      "fontFamily": "Inter",
+      "fontWeight": 400,
+      "fontSize": 36,
+      "lineHeight": 48,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H3 36_h48_Medium",
+      "ref": "CN/H3 36_h48_Medium",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 36,
+      "lineHeight": 48,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H4 24_h36_Regular",
+      "ref": "CN/H4 24_h36_Regular",
+      "fontFamily": "Inter",
+      "fontWeight": 400,
+      "fontSize": 24,
+      "lineHeight": 36,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H4 24_h36_Medium",
+      "ref": "CN/H4 24_h36_Medium",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 24,
+      "lineHeight": 36,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H5 20_h28_Regular",
+      "ref": "CN/H5 20_h28_Regular",
+      "fontFamily": "Inter",
+      "fontWeight": 400,
+      "fontSize": 20,
+      "lineHeight": 28,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H5 20_h28_Medium",
+      "ref": "CN/H5 20_h28_Medium",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 20,
+      "lineHeight": 28,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H6 16_h24_Regular",
+      "ref": "CN/H6 16_h24_Regular",
+      "fontFamily": "Inter",
+      "fontWeight": 400,
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0
+    },
+    {
+      "name": "H6 16_h24_Medium",
+      "ref": "CN/H6 16_h24_Medium",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0
+    },
+    {
+      "name": "Paragraph 14_h22_Regular",
+      "ref": "CN/Paragraph 14_h22_Regular",
+      "fontFamily": "Inter",
+      "fontWeight": 400,
+      "fontSize": 14,
+      "lineHeight": 22,
+      "letterSpacing": 0
+    },
+    {
+      "name": "Paragraph 14_h20_Medium",
+      "ref": "CN/Paragraph 14_h20_Medium",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 14,
+      "lineHeight": 20,
+      "letterSpacing": 0
+    },
+    {
+      "name": "Paragraph Small 13_h18_Regular",
+      "ref": "CN/Paragraph Small 13_h18_Regular",
+      "fontFamily": "Inter",
+      "fontWeight": 400,
+      "fontSize": 13,
+      "lineHeight": 18,
+      "letterSpacing": 0
+    },
+    {
+      "name": "Paragraph Small 13_h18_Medium",
+      "ref": "CN/Paragraph Small 13_h18_Medium",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 13,
+      "lineHeight": 18,
+      "letterSpacing": 0
+    },
+    {
+      "name": "Small Text 12_h18_Regular",
+      "ref": "CN/Small Text 12_h18_Regular",
+      "fontFamily": "Inter",
+      "fontWeight": 400,
+      "fontSize": 12,
+      "lineHeight": 18,
+      "letterSpacing": 0
+    },
+    {
+      "name": "Small Text 12_h18_Medium",
+      "ref": "CN/Small Text 12_h18_Medium",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 12,
+      "lineHeight": 18,
+      "letterSpacing": 0
+    },
+    {
+      "name": "Micro 10_h14_Regular",
+      "ref": "CN/Micro 10_h14_Regular",
+      "fontFamily": "Inter",
+      "fontWeight": 400,
+      "fontSize": 10,
+      "lineHeight": 14,
+      "letterSpacing": 0
+    },
+    {
+      "name": "Micro 10_h14_Medium",
+      "ref": "CN/Micro 10_h14_Medium",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 10,
+      "lineHeight": 14,
+      "letterSpacing": 0
+    }
+  ]
+}

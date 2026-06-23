@@ -1,0 +1,312 @@
+{
+  "$description": "AgentOS Design System Skeleton component spec — Ant Design loading placeholder families for content, avatar, button, and input",
+  "$source": {
+    "docs": "https://ant.design/components/skeleton/"
+  },
+
+  "component": "Skeleton",
+  "dna": "feedback",
+  "variantCount": 76,
+
+  "anatomy": {
+    "content": {
+      "layers": [
+        { "name": "wrapper", "role": "vertical auto-layout frame for avatar + body; visibility via ShowAvatar" },
+        { "name": "avatar", "role": "optional avatar placeholder block; shape and size via properties" },
+        { "name": "body", "role": "vertical auto-layout frame for title + paragraph skeletons" },
+        { "name": "title", "role": "optional title placeholder bar; width via TitleWidth" },
+        { "name": "paragraph", "role": "vertical stack of paragraph rows; row visibility and widths via ParagraphRows and RowWidth props" }
+      ]
+    },
+    "avatar": {
+      "layers": [
+        { "name": "avatar", "role": "standalone avatar placeholder block" }
+      ]
+    },
+    "button": {
+      "layers": [
+        { "name": "button", "role": "standalone button placeholder block" }
+      ]
+    },
+    "input": {
+      "layers": [
+        { "name": "input", "role": "standalone input placeholder block" }
+      ]
+    }
+  },
+
+  "variants": {
+    "family": {
+      "values": ["content", "avatar", "button", "input"],
+      "figma": "Separate component sets per family"
+    },
+    "active": {
+      "values": [false, true],
+      "antd": "active",
+      "figma": "Active",
+      "default": false
+    },
+    "round": {
+      "values": [false, true],
+      "antd": "round",
+      "figma": "Round",
+      "default": false,
+      "appliesTo": ["content"]
+    },
+    "size": {
+      "values": ["large", "default", "small"],
+      "antd": "size",
+      "figma": "Size",
+      "default": "default",
+      "appliesTo": ["avatar", "button", "input"]
+    },
+    "shape": {
+      "values": ["circle", "square"],
+      "antd": "shape",
+      "figma": "Shape",
+      "default": "circle",
+      "appliesTo": ["avatar"]
+    },
+    "buttonShape": {
+      "values": ["default", "square", "round", "circle"],
+      "antd": "shape",
+      "figma": "Shape",
+      "default": "default",
+      "appliesTo": ["button"]
+    },
+    "block": {
+      "values": [false, true],
+      "antd": "block",
+      "figma": "Block",
+      "default": false,
+      "appliesTo": ["button", "input"]
+    }
+  },
+
+  "naming": {
+    "content": "Active={Active}, Round={Round}",
+    "avatar": "Active={Active}, Shape={Shape}, Size={Size}",
+    "button": "Active={Active}, Shape={Shape}, Size={Size}, Block={Block}",
+    "input": "Active={Active}, Size={Size}, Block={Block}",
+    "example": "Active=True, Shape=Round, Size=Default, Block=False"
+  },
+
+  "layout": {
+    "fillBase": { "ref": "Neutral/Fill/colorFillContent", "value": "rgba(0, 0, 0, 0.06)" },
+    "fillShimmer": { "ref": "Neutral/Fill/colorFill", "value": "rgba(0, 0, 0, 0.15)" },
+    "contentGap": { "ref": "margin/marginXs8", "value": 8 },
+    "avatarBodyGap": { "ref": "padding/padding16", "value": 16 },
+    "titleHeight": { "value": 16, "mapped": false, "reason": "Ant Skeleton component token titleHeight = 16; no local foundation token" },
+    "paragraphRowHeight": { "value": 16, "mapped": false, "reason": "Ant Skeleton component token paragraphLiHeight = 16; no local foundation token" },
+    "paragraphMarginTop": { "value": 28, "mapped": false, "reason": "Ant Skeleton component token paragraphMarginTop = 28; no local foundation token" },
+    "blockRadius": { "ref": "radius/roundedSm4", "value": 4, "mapping": "nearest" }
+  },
+
+  "sizes": {
+    "avatar": {
+      "small": {
+        "size": { "ref": "controlHeight/controlHeightSm24", "value": 24 },
+        "borderRadius": { "ref": "radius/roundedSm4", "value": 4 }
+      },
+      "default": {
+        "size": { "ref": "controlHeight/controlHeightMd32", "value": 32 },
+        "borderRadius": { "ref": "radius/roundedLg8", "value": 8 }
+      },
+      "large": {
+        "size": { "ref": "controlHeight/controlHeightLg40", "value": 40 },
+        "borderRadius": { "ref": "radius/roundedLg8", "value": 8 }
+      }
+    },
+    "button": {
+      "small": {
+        "height": { "ref": "controlHeight/controlHeightSm24", "value": 24 },
+        "width": { "value": 64, "mapped": false, "reason": "Standalone Skeleton.Button width is customizable and not tokenized; use Ant default preview width" },
+        "borderRadius": { "ref": "radius/roundedSm4", "value": 4 }
+      },
+      "default": {
+        "height": { "ref": "controlHeight/controlHeightMd32", "value": 32 },
+        "width": { "value": 96, "mapped": false, "reason": "Standalone Skeleton.Button width is customizable and not tokenized; use Ant default preview width" },
+        "borderRadius": { "ref": "radius/roundedLg8", "value": 8 }
+      },
+      "large": {
+        "height": { "ref": "controlHeight/controlHeightLg40", "value": 40 },
+        "width": { "value": 128, "mapped": false, "reason": "Standalone Skeleton.Button width is customizable and not tokenized; use Ant default preview width" },
+        "borderRadius": { "ref": "radius/roundedLg8", "value": 8 }
+      }
+    },
+    "input": {
+      "small": {
+        "height": { "ref": "controlHeight/controlHeightSm24", "value": 24 },
+        "width": { "value": 160, "mapped": false, "reason": "Standalone Skeleton.Input width is customizable and not tokenized; use compact preview width" },
+        "borderRadius": { "ref": "radius/roundedSm4", "value": 4 }
+      },
+      "default": {
+        "height": { "ref": "controlHeight/controlHeightMd32", "value": 32 },
+        "width": { "value": 200, "mapped": false, "reason": "Standalone Skeleton.Input width is customizable and not tokenized; use Ant default preview width" },
+        "borderRadius": { "ref": "radius/roundedLg8", "value": 8 }
+      },
+      "large": {
+        "height": { "ref": "controlHeight/controlHeightLg40", "value": 40 },
+        "width": { "value": 240, "mapped": false, "reason": "Standalone Skeleton.Input width is customizable and not tokenized; use expanded preview width" },
+        "borderRadius": { "ref": "radius/roundedLg8", "value": 8 }
+      }
+    },
+    "content": {
+      "avatarSize": { "ref": "controlHeight/controlHeightLg40", "value": 40, "mapping": "default complex-combination preview avatar size" },
+      "titleWidth": { "value": "38%", "mapped": false, "reason": "Ant default title width is percentage-based and content-driven" },
+      "paragraphDefaultRows": { "value": 3, "mapped": false, "reason": "Ant Skeleton paragraph row count is content-dependent" },
+      "paragraphLastRowWidth": { "value": "61%", "mapped": false, "reason": "Ant default last-row width is percentage-based and content-driven" }
+    }
+  },
+
+  "styles": {
+    "inactive": {
+      "baseFill": "Neutral/Fill/colorFillContent",
+      "highlightFill": null,
+      "border": null
+    },
+    "active": {
+      "baseFill": "Neutral/Fill/colorFillContent",
+      "highlightFill": "Neutral/Fill/colorFill",
+      "border": null,
+      "effect": "linear shimmer left-to-right using baseFill -> highlightFill -> baseFill"
+    }
+  },
+
+  "shape": {
+    "avatar": {
+      "circle": {
+        "borderRadius": { "ref": "radius/roundedFull999", "value": 9999 }
+      },
+      "square": {
+        "borderRadius": "from sizes.avatar[size].borderRadius"
+      }
+    },
+    "button": {
+      "default": {
+        "borderRadius": "from sizes.button[size].borderRadius"
+      },
+      "square": {
+        "borderRadius": { "ref": "radius/roundedSm4", "value": 4 }
+      },
+      "round": {
+        "borderRadius": { "ref": "radius/roundedFull999", "value": 9999 }
+      },
+      "circle": {
+        "borderRadius": { "ref": "radius/roundedFull999", "value": 9999 },
+        "widthStrategy": "width = height"
+      }
+    },
+    "content": {
+      "roundFalse": {
+        "borderRadius": { "ref": "radius/roundedSm4", "value": 4 }
+      },
+      "roundTrue": {
+        "borderRadius": { "ref": "radius/roundedFull999", "value": 9999 }
+      }
+    }
+  },
+
+  "styleResolution": {
+    "rules": [
+      "if active=true → styles.active",
+      "else → styles.inactive"
+    ]
+  },
+
+  "antd": {
+    "import": "import { Skeleton } from 'antd';",
+    "notes": {
+      "scope": "v1 covers Skeleton, Skeleton.Avatar, Skeleton.Button, and Skeleton.Input. Skeleton.Image and Skeleton.Node are follow-up specs because they need different geometry and icon/content treatment.",
+      "content": "Main Skeleton composes optional avatar, title, and paragraph placeholders. These are best represented with Figma BOOLEAN/TEXT properties, not exploded into variant axes.",
+      "active": "Ant active shimmer is approximated through the shared Neutral/Fill tokens already present in the design system."
+    },
+    "examples": {
+      "basic": "<Skeleton />",
+      "complex": "<Skeleton avatar paragraph={{ rows: 4 }} active />",
+      "round": "<Skeleton round title={{ width: '40%' }} paragraph={{ rows: 3 }} />",
+      "avatar": "<Skeleton.Avatar active size=\"large\" shape=\"circle\" />",
+      "button": "<Skeleton.Button active size=\"default\" shape=\"round\" />",
+      "input": "<Skeleton.Input active block size=\"large\" />"
+    }
+  },
+
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "componentSets": {
+      "*Skeleton* / Content": "Active=False|True × Round=False|True — 4 variants",
+      "*Skeleton* / Avatar": "Active=False|True × Shape=Circle|Square × Size=Large|Default|Small — 12 variants",
+      "*Skeleton* / Button": "Active=False|True × Shape=Default|Square|Round|Circle × Size=Large|Default|Small × Block=False|True — 48 variants",
+      "*Skeleton* / Input": "Active=False|True × Size=Large|Default|Small × Block=False|True — 12 variants"
+    },
+    "figmaImplemented": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "162:20",
+      "componentSetIds": {
+        "content": "795:1498",
+        "avatar": "797:1486",
+        "button": "797:1583",
+        "input": "797:1608"
+      },
+      "status": "initialized",
+      "variantCount": 76,
+      "note": "Initialized on the Skeleton page in the AgentOS Design System file. v1 prioritizes variant coverage and token bindings; metadata-only width/row text properties remain intentionally unimplemented."
+    },
+    "componentProperties": {
+      "content": {
+        "ShowAvatar": {
+          "type": "BOOLEAN",
+          "default": false,
+          "bindTo": "avatar.visible",
+          "antd": "avatar prop"
+        },
+        "ShowTitle": {
+          "type": "BOOLEAN",
+          "default": true,
+          "bindTo": "title.visible",
+          "antd": "title prop"
+        },
+        "ShowParagraph": {
+          "type": "BOOLEAN",
+          "default": true,
+          "bindTo": "paragraph.visible",
+          "antd": "paragraph prop"
+        }
+      }
+    },
+    "variantLayout": "Page: Content set on top, Avatar below, Button below, Input below with 120px gaps. Inside each set: Active columns, then shape/size sub-columns where applicable."
+  },
+
+  "mappingCoverage": {
+    "mapped": {
+      "baseFill": "Neutral/Fill/colorFillContent",
+      "activeHighlight": "Neutral/Fill/colorFill",
+      "radius": "radius/roundedSm4 + radius/roundedLg8 + radius/roundedFull999",
+      "sizeScale": "controlHeight/controlHeightSm24|Md32|Lg40",
+      "spacing": "margin/marginXs8 + padding/padding16"
+    },
+    "gaps": [
+      {
+        "name": "skeletonComponentTokens",
+        "reason": "Ant exposes blockRadius, titleHeight, paragraphLiHeight, and paragraphMarginTop as component tokens, but the local design system does not yet provide dedicated Skeleton foundation tokens."
+      },
+      {
+        "name": "exactShimmerGradient",
+        "reason": "The Ant shimmer uses dedicated gradient color tokens; v1 approximates them with Neutral/Fill/colorFillContent and Neutral/Fill/colorFill."
+      },
+      {
+        "name": "imageAndNodeSubcomponents",
+        "reason": "Skeleton.Image and Skeleton.Node need distinct geometry/content models and are intentionally excluded from v1."
+      },
+      {
+        "name": "contentWidthPercentages",
+        "reason": "Title and paragraph widths are percentage-based/content-driven values, not existing local tokens."
+      },
+      {
+        "name": "metadataTextProperties",
+        "reason": "Figma v1 does not expose TitleWidth, ParagraphRows, LastRowWidth, or WidthValue as TEXT component properties; these remain spec-level metadata for a follow-up pass."
+      }
+    ]
+  }
+}

@@ -2,9 +2,12 @@
   "$description": "Control DNA component spec template — copy to {component}.json and fill in",
   "$extends": "_control-gene.schema.json",
   "dna": "control",
+  "dnaTreeRef": "_dna-tree.json#/branches/control",
+  "rulePresetRef": "rules/control.rules.json",
 
   "component": "ComponentName",
   "variantCount": 0,
+  "sizeStrategy": "scale",
 
   "anatomy": {
     "layers": [
@@ -102,6 +105,15 @@
     "rules": [
       "else → styles.default"
     ]
+  },
+
+  "ruleOverrides": {
+    "$description": "Only fill this when the component must intentionally diverge from shared Control DNA rules.",
+    "size": [],
+    "variant": [],
+    "state": [],
+    "icon": [],
+    "loading": []
   },
 
   "figmaConventions": {

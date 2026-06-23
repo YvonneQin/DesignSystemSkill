@@ -32,6 +32,7 @@ Important: `scripts/figma/*.js` are Figma Plugin API payloads for `use_figma`, n
 | Sync tokens to Figma | `figma-generate-library` (built-in) | `workflows/create-tokens.md` |
 | Bind hardcoded colors | `figma-bind-colors` | `workflows/normalize-design.md` |
 | Bind corner radii | `figma-bind-radius` | `workflows/normalize-design.md` |
+| Wash / normalize a component end-to-end | `wash-component` | `workflows/normalize-design.md` + `tokens/components/README.md` |
 | Init Ant Design component (spec + Figma) | `antd-component-init` | `tokens/components/README.md` |
 | Build component library | `figma-generate-library` (built-in) | — |
 

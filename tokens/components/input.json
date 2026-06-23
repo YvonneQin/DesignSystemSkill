@@ -1,0 +1,325 @@
+{
+  "$description": "AgentOS Design System Input component spec synced to the latest local Figma draft with size, state, and semantic axes.",
+  "$source": {
+    "docs": "https://ant.design/components/input/"
+  },
+  "component": "Input",
+  "dna": "control",
+  "$extends": "_control-gene.schema.json",
+  "variantCount": 72,
+  "anatomy": {
+    "layers": [
+      { "name": "container", "role": "background, border, radius, and state treatment" },
+      { "name": "content", "role": "horizontal row for prefix cluster, text field, and suffix cluster" },
+      { "name": "prefixIcon", "role": "optional leading icon instance" },
+      { "name": "prefixText", "role": "optional leading text token such as Prefix or protocol text" },
+      { "name": "field", "role": "placeholder or typed value area" },
+      { "name": "suffixText", "role": "optional trailing helper text" },
+      { "name": "suffixIcon", "role": "optional trailing icon instance" }
+    ]
+  },
+  "variants": {
+    "size": {
+      "values": ["large", "default", "small"],
+      "antd": "size",
+      "default": "default"
+    },
+    "state": {
+      "values": ["default", "hover", "focused", "typing", "disabled", "filled"],
+      "antd": "disabled maps to State=Disabled; other values are design-time previews",
+      "figmaOnly": true
+    },
+    "semantic": {
+      "values": ["default", "danger", "warning", "success"],
+      "antd": "status",
+      "default": "default"
+    }
+  },
+  "naming": {
+    "figma": "Size={Size}, State={State}, Semantic={Semantic}",
+    "example": "Size=Default, State=Typing, Semantic=Danger"
+  },
+  "layout": {
+    "gap": { "ref": "margin/marginXs8", "value": 8 },
+    "lineWidth": { "ref": "Border/border-width", "value": 1 },
+    "iconSize": { "ref": "iconSize/iconSizeMd16", "value": 16 },
+    "contentAlign": { "value": "center", "mapped": false, "reason": "layout enum, not a design token" }
+  },
+  "sizes": {
+    "small": {
+      "controlHeight": { "ref": "controlHeight/controlHeightSm24", "value": 24 },
+      "paddingInline": { "ref": "padding/paddingXs8", "value": 8 },
+      "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
+      "iconSize": { "ref": "iconSize/iconSizeSm12", "value": 12 },
+      "typography": { "ref": "EN/Paragraph Small 13_h18_Regular" }
+    },
+    "default": {
+      "controlHeight": { "ref": "controlHeight/controlHeightMd32", "value": 32 },
+      "paddingInline": { "ref": "padding/paddingSm12", "value": 12 },
+      "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
+      "iconSize": { "ref": "iconSize/iconSizeMd16", "value": 16 },
+      "typography": { "ref": "EN/Paragraph 14_h20_Regular" }
+    },
+    "large": {
+      "controlHeight": { "ref": "controlHeight/controlHeightLg40", "value": 40 },
+      "paddingInline": { "ref": "padding/paddingSm12", "value": 12 },
+      "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
+      "iconSize": { "ref": "iconSize/iconSizeMd16", "value": 16 },
+      "typography": { "ref": "EN/H6 16_h24_Regular" }
+    }
+  },
+  "effects": {},
+  "styles": {
+    "default": {
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Neutral/Icon/colorIcon",
+          "shadow": null
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Neutral/Icon/colorIconHover",
+          "shadow": null
+        },
+        "focused": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimary",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Neutral/Icon/colorIcon",
+          "shadow": "boxShadowSecondary"
+        },
+        "typing": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimary",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Neutral/Icon/colorIcon",
+          "shadow": "boxShadowSecondary"
+        },
+        "filled": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Neutral/Icon/colorIcon",
+          "shadow": null
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "placeholder": "Neutral/Text/colorTextDisabled",
+          "icon": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    },
+    "danger": {
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Error/colorError",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Error/colorError",
+          "shadow": null
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Error/colorErrorHover",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Error/colorErrorHover",
+          "shadow": null
+        },
+        "focused": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Error/colorError",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Error/colorError",
+          "shadow": null
+        },
+        "typing": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Error/colorError",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Error/colorError",
+          "shadow": null
+        },
+        "filled": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Error/colorError",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Error/colorError",
+          "shadow": null
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "placeholder": "Neutral/Text/colorTextDisabled",
+          "icon": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    },
+    "warning": {
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Warning/colorWarning",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Warning/colorWarning",
+          "shadow": null
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Warning/colorWarningHover",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Warning/colorWarningHover",
+          "shadow": null
+        },
+        "focused": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Warning/colorWarning",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Warning/colorWarning",
+          "shadow": null
+        },
+        "typing": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Warning/colorWarning",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Warning/colorWarning",
+          "shadow": null
+        },
+        "filled": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Warning/colorWarning",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Warning/colorWarning",
+          "shadow": null
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "placeholder": "Neutral/Text/colorTextDisabled",
+          "icon": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    },
+    "success": {
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Success/colorSuccess",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Success/colorSuccess",
+          "shadow": null
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Success/colorSuccessHover",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Success/colorSuccessHover",
+          "shadow": null
+        },
+        "focused": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Success/colorSuccess",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Success/colorSuccess",
+          "shadow": null
+        },
+        "typing": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Success/colorSuccess",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Success/colorSuccess",
+          "shadow": null
+        },
+        "filled": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Success/colorSuccess",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Brand/Success/colorSuccess",
+          "shadow": null
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "placeholder": "Neutral/Text/colorTextDisabled",
+          "icon": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    }
+  },
+  "styleResolution": {
+    "rules": [
+      "if semantic=danger && state=disabled -> styles.danger.states.disabled",
+      "if semantic=warning && state=disabled -> styles.warning.states.disabled",
+      "if semantic=success && state=disabled -> styles.success.states.disabled",
+      "if semantic=danger -> styles.danger",
+      "if semantic=warning -> styles.warning",
+      "if semantic=success -> styles.success",
+      "else -> styles.default"
+    ]
+  },
+  "antd": {
+    "import": "import { Input } from 'antd';",
+    "notes": {
+      "scope": "Base text input only. Search, Password, OTP, TextArea, and addonBefore/addonAfter remain follow-up specs.",
+      "state": "hover/focused/typing/filled are design preview states; disabled maps from the antd disabled prop."
+    },
+    "examples": {
+      "default": "<Input placeholder=\"Please enter\" />",
+      "large": "<Input size=\"large\" placeholder=\"Please enter\" />",
+      "small": "<Input size=\"small\" placeholder=\"Please enter\" />",
+      "danger": "<Input status=\"error\" placeholder=\"Please enter\" />",
+      "warning": "<Input status=\"warning\" placeholder=\"Please enter\" />",
+      "success": "<Input status=\"success\" placeholder=\"Please enter\" />",
+      "disabled": "<Input disabled placeholder=\"Please enter\" />",
+      "prefix": "<Input prefix={<SearchOutlined />} placeholder=\"Search\" />",
+      "suffix": "<Input suffix={<InfoCircleOutlined />} placeholder=\"Please enter\" />"
+    }
+  },
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "componentSets": {
+      "*Input*": "Size=Large|Default|Small x State=Default|Hover|Focused|Typing|Disabled|Filled x Semantic=Default|Danger|Warning|Success (72 variants)"
+    },
+    "figmaImplemented": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "162:15",
+      "componentSetId": "1040:2651",
+      "variantCount": 72,
+      "note": "Latest local draft uses Prefix + field + Suffix clusters, 8px gap, 12px inline padding, and EN/Paragraph 14_h20_Regular on the default row."
+    }
+  }
+}

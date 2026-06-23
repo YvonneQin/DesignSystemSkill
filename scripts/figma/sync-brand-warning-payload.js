@@ -2,16 +2,16 @@
 // Paste body into use_figma.
 
 const TOKENS = {
-  colorWarning: { light: 6, dark: 6, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
-  colorWarningBg: { light: 1, dark: 1, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
-  colorWarningBgHover: { light: 2, dark: 2, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
-  colorWarningBorder: { light: 3, dark: 3, scopes: ['STROKE_COLOR'] },
-  colorWarningBorderHover: { light: 4, dark: 4, scopes: ['STROKE_COLOR'] },
-  colorWarningHover: { light: 5, dark: 7, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
-  colorWarningActive: { light: 7, dark: 5, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
-  colorWarningTextHover: { light: 8, dark: 8, scopes: ['TEXT_FILL'] },
-  colorWarningText: { light: 9, dark: 9, scopes: ['TEXT_FILL'] },
-  colorWarningTextActive: { light: 10, dark: 10, scopes: ['TEXT_FILL'] },
+  colorWarning: { light: 500, dark: 500, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
+  colorWarningBg: { light: 50, dark: 50, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
+  colorWarningBgHover: { light: 100, dark: 100, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
+  colorWarningBorder: { light: 200, dark: 200, scopes: ['STROKE_COLOR'] },
+  colorWarningBorderHover: { light: 300, dark: 300, scopes: ['STROKE_COLOR'] },
+  colorWarningHover: { light: 400, dark: 600, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
+  colorWarningActive: { light: 600, dark: 400, scopes: ['FRAME_FILL', 'SHAPE_FILL'] },
+  colorWarningTextHover: { light: 700, dark: 700, scopes: ['TEXT_FILL'] },
+  colorWarningText: { light: 800, dark: 800, scopes: ['TEXT_FILL'] },
+  colorWarningTextActive: { light: 900, dark: 900, scopes: ['TEXT_FILL'] },
 };
 
 const collections = await figma.variables.getLocalVariableCollectionsAsync();

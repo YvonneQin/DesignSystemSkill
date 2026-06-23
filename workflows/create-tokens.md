@@ -8,7 +8,7 @@ Ant Design-style flow: edit sources -> build -> push to Figma.
 
 | Goal | File |
 |------|------|
-| Base palette color (`Base/gray/9`, `Base/blue/8`) | `tokens/sources/rdx-base-10.json` |
+| Base palette color (`Base/gray/800`, `Base/blue/700`) | `tokens/sources/rdx-base-10.json` |
 | Neutral / Brand semantic token refs | `tokens/sources/mode.json` and `tokens/colors/semantic-*.json` |
 | Tailwind → Radix ref map | `tokens/colors/mapping.json` |
 

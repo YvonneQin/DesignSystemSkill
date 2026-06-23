@@ -37,7 +37,7 @@ tokens/
 | **Base** | `sources/rdx-base-10.json` | `ColorMode` | Palettes, chart colors, direct primitive access |
 | **Neutral** | `sources/mode.json` + `colors/semantic-*.json` | `ColorMode` | Components and page semantics |
 | **Brand** | `colors/semantic-*.json` | `ColorMode` | Brand palettes such as Primary, Error, Success |
-| **Mapping** | `colors/mapping.json` | — | Resolves `{neutral.950}` → `Base/gray/12` |
+| **Mapping** | `colors/mapping.json` | — | Resolves `{neutral.950}` → `Base/gray/900` |
 
 Components should bind **Neutral** or **Brand** tokens, not raw `Base/*`, unless you are building palettes or deliberate primitive-only assets.
 
@@ -53,12 +53,12 @@ Produces `tokens/dist/theme.json`:
 {
   "Colors": {
     "Base": {
-      "gray": { "1": { "light": "#fcfcfc", "dark": "#111111", "figma": "Base/gray/1" } }
+      "gray": { "50": { "light": "#fcfcfc", "dark": "#111111", "figma": "Base/gray/50" } }
     },
     "Semantic": {
       "colorBgBase": {
-        "light": { "type": "alias", "ref": "Base/white/1" },
-        "dark": { "type": "alias", "ref": "Base/gray/1" },
+        "light": { "type": "alias", "ref": "Base/white/50" },
+        "dark": { "type": "alias", "ref": "Base/gray/50" },
         "figma": "Neutral/colorBgBase"
       }
     }
@@ -79,4 +79,4 @@ Produces `tokens/dist/theme.json`:
 
 ## white / black solids
 
-Base `white/*` and `black/*` are solid neutral grays (no alpha). `black/6` = `#0a0a0a` (pinned anchor); `black/1` light = `#f2f2f2` … `black/10` light = `#000000`.
+Base `white/*` and `black/*` are solid neutral grays (no alpha). `black/500` = `#0a0a0a` (pinned anchor); `black/50` light = `#f2f2f2` … `black/900` light = `#000000`.

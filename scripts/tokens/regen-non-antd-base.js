@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Regenerate non–Ant Design Base palettes from per-palette step-9 accents.
+ * Regenerate non–Ant Design Base palettes from per-palette 800 accents.
  * Each palette keeps its own hue/sat anchor — ramps are NOT forced to match blue.
  *
  * Run after: node scripts/tokens/apply-default-base.js
@@ -19,8 +19,10 @@ const KEEP = new Set([
   "purple", "red", "tomato", "yellow", "amber", "gray", "black", "white",
 ]);
 
-// Step-9 accent anchors (chromatic identity per palette)
-const ACCENT_STEP9 = {
+const SCALE_STEPS = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
+
+// 800 accent anchors (chromatic identity per palette)
+const ACCENT_STEP800 = {
   mauve: "#6f6d7a",
   slate: "#6c6e79",
   sage: "#686f6c",
@@ -195,10 +197,11 @@ function applyPalette(rdx, palette, lightSteps, source) {
   const darkSteps = NEUTRAL.has(palette)
     ? generateNeutralDarkScale(lightSteps)
     : generateDarkScale(lightSteps);
-  for (let step = 1; step <= 10; step++) {
-    rdx[palette][String(step)] = {
-      light: lightSteps[step - 1],
-      dark: darkSteps[step - 1],
+  for (let i = 0; i < SCALE_STEPS.length; i++) {
+    const step = SCALE_STEPS[i];
+    rdx[palette][step] = {
+      light: lightSteps[i],
+      dark: darkSteps[i],
     };
   }
   console.log(`Regenerated ${palette} (${source})`);
@@ -206,7 +209,7 @@ function applyPalette(rdx, palette, lightSteps, source) {
 
 const rdx = JSON.parse(fs.readFileSync(RDX_PATH, "utf8"));
 
-for (const [palette, accent] of Object.entries(ACCENT_STEP9)) {
+for (const [palette, accent] of Object.entries(ACCENT_STEP800)) {
   const curve = NEUTRAL.has(palette) ? NEUTRAL_LIGHT_CURVE : LIGHT_CURVE;
   const lightSteps = generateLightScaleFromAccent(accent, curve);
   applyPalette(rdx, palette, lightSteps, `accent ${accent}`);

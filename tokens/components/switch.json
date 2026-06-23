@@ -1,0 +1,235 @@
+{
+  "$description": "AgentOS Design System Switch component spec — Control DNA toggle control with checked and loading preview states",
+  "$source": {
+    "figma": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageNodeId": "941:17",
+      "componentSetNodeId": "1319:12653",
+      "url": "https://www.figma.com/design/MwUyizdlqXKyFzHJWvBtI8/AgentOS-Design-System?node-id=941-17"
+    },
+    "docs": "https://ant.design/components/switch/"
+  },
+
+  "component": "Switch",
+  "dna": "control",
+  "$extends": "_control-gene.schema.json",
+  "variantCount": 16,
+  "sizeStrategy": "fixed",
+
+  "anatomy": {
+    "layers": [
+      { "name": "track", "role": "switch track; background, border, radius, and horizontal padding" },
+      { "name": "content", "role": "horizontal row for checked slot, unchecked slot, and thumb" },
+      { "name": "checkedSlot", "role": "optional checked content preview; hidden by default in v1 scaffold" },
+      { "name": "uncheckedSlot", "role": "optional unchecked content preview; hidden by default in v1 scaffold" },
+      { "name": "thumb", "role": "circular handle that slides between checked and unchecked positions" }
+    ]
+  },
+
+  "variants": {
+    "size": {
+      "values": ["default", "small"],
+      "antd": "size",
+      "default": "default"
+    },
+    "value": {
+      "values": ["unchecked", "checked"],
+      "antd": "checked",
+      "default": "unchecked"
+    },
+    "state": {
+      "values": ["default", "hover", "loading", "disabled"],
+      "antd": "disabled + loading; hover is a design-time preview",
+      "figmaOnly": true
+    }
+  },
+
+  "naming": {
+    "figma": "Size={Size}, Value={Value}, State={State}",
+    "example": "Size=Default, Value=Checked, State=Hover"
+  },
+
+  "layout": {
+    "trackPadding": { "value": 2, "mapped": false, "reason": "Switch track padding is a component geometry constant; no matching foundation token exists." },
+    "defaultTrackWidth": { "value": 44, "mapped": false, "reason": "Ant Design switch track min width is component-specific geometry." },
+    "defaultTrackHeight": { "value": 22, "mapped": false, "reason": "Switch track height does not map to existing controlHeight tokens." },
+    "smallTrackWidth": { "value": 28, "mapped": false, "reason": "Small switch track min width is component-specific geometry." },
+    "smallTrackHeight": { "value": 16, "mapped": false, "reason": "Small switch track height does not map to existing controlHeight tokens." },
+    "defaultThumbSize": { "value": 18, "mapped": false, "reason": "Switch handle size is a component token in Ant Design, not a current foundation token in AgentOS." },
+    "smallThumbSize": { "value": 12, "mapped": false, "reason": "Small switch handle size is a component token in Ant Design, not a current foundation token in AgentOS." },
+    "contentMinMargin": { "value": 9, "mapped": false, "reason": "Inner content margin is a switch-specific layout constant." },
+    "contentMinMarginSmall": { "value": 6, "mapped": false, "reason": "Small inner content margin is a switch-specific layout constant." }
+  },
+
+  "sizes": {
+    "default": {
+      "trackWidth": { "value": 44, "mapped": false, "reason": "Switch track geometry is fixed in v1." },
+      "trackHeight": { "value": 22, "mapped": false, "reason": "Switch track geometry is fixed in v1." },
+      "thumbSize": { "value": 18, "mapped": false, "reason": "Switch thumb geometry is fixed in v1." },
+      "borderRadius": { "ref": "radius/roundedFull999", "value": 999 },
+      "typography": { "ref": "EN/Paragraph 14_h20_Regular" }
+    },
+    "small": {
+      "trackWidth": { "value": 28, "mapped": false, "reason": "Switch track geometry is fixed in v1." },
+      "trackHeight": { "value": 16, "mapped": false, "reason": "Switch track geometry is fixed in v1." },
+      "thumbSize": { "value": 12, "mapped": false, "reason": "Switch thumb geometry is fixed in v1." },
+      "borderRadius": { "ref": "radius/roundedFull999", "value": 999 },
+      "typography": { "ref": "EN/Paragraph Small 13_h18_Regular" }
+    }
+  },
+
+  "effects": {},
+
+  "styles": {
+    "unchecked": {
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Neutral/Border/colorBorder",
+          "thumb": "Neutral/Text/colorTextLightSolid",
+          "slot": "Neutral/Text/colorText",
+          "opacity": 1
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "thumb": "Neutral/Text/colorTextLightSolid",
+          "slot": "Brand/Primary/colorPrimaryHover",
+          "opacity": 1
+        },
+        "loading": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Neutral/Border/colorBorder",
+          "thumb": "Neutral/Text/colorTextLightSolid",
+          "slot": "Neutral/Text/colorText",
+          "opacity": 0.65
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "thumb": "Neutral/Text/colorTextDisabled",
+          "slot": "Neutral/Text/colorTextDisabled",
+          "opacity": 1
+        }
+      }
+    },
+
+    "checked": {
+      "states": {
+        "default": {
+          "background": "Brand/Primary/colorPrimary",
+          "border": "Brand/Primary/colorPrimary",
+          "thumb": "Neutral/Text/colorTextLightSolid",
+          "slot": "Neutral/Text/colorTextLightSolid",
+          "opacity": 1
+        },
+        "hover": {
+          "background": "Brand/Primary/colorPrimaryHover",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "thumb": "Neutral/Text/colorTextLightSolid",
+          "slot": "Neutral/Text/colorTextLightSolid",
+          "opacity": 1
+        },
+        "loading": {
+          "background": "Brand/Primary/colorPrimary",
+          "border": "Brand/Primary/colorPrimary",
+          "thumb": "Neutral/Text/colorTextLightSolid",
+          "slot": "Neutral/Text/colorTextLightSolid",
+          "opacity": 0.65
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "thumb": "Neutral/Text/colorTextDisabled",
+          "slot": "Neutral/Text/colorTextDisabled",
+          "opacity": 1
+        }
+      }
+    }
+  },
+
+  "styleResolution": {
+    "rules": [
+      "if value=checked → styles.checked",
+      "else → styles.unchecked"
+    ]
+  },
+
+  "antd": {
+    "import": "import { Switch } from 'antd';",
+    "notes": {
+      "scope": "Base Switch only. This v1 scaffold focuses on size, checked state, disabled state, and loading preview.",
+      "state": "Hover, loading, and disabled are design preview states; runtime motion is intentionally not modeled in the component set.",
+      "content": "checkedChildren and unCheckedChildren are reserved as optional slot layers but not exposed as editable props in this first initialization."
+    },
+    "examples": {
+      "default": "<Switch />",
+      "checked": "<Switch checked />",
+      "small": "<Switch size=\"small\" />",
+      "loading": "<Switch loading />",
+      "disabled": "<Switch disabled />"
+    }
+  },
+
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "componentSets": {
+      "*Switch*": "Single set — Size=Default|Small × Value=Unchecked|Checked × State=Default|Hover|Loading|Disabled (16 variants)"
+    },
+    "figmaImplemented": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "941:17",
+      "componentSetId": "1319:12653",
+      "variantCount": 16,
+      "note": "Initialized in the AgentOS Design System file. The page contains only the *Switch* component set."
+    },
+    "variantLayout": "State columns horizontally; Value groups inside each state; Size rows vertically.",
+    "componentProperties": {
+      "Value": {
+        "type": "VARIANT",
+        "default": "Unchecked",
+        "antd": "checked"
+      },
+      "State": {
+        "type": "VARIANT",
+        "default": "Default",
+        "antd": "loading + disabled + hover preview"
+      },
+      "Size": {
+        "type": "VARIANT",
+        "default": "Default",
+        "antd": "size"
+      }
+    }
+  },
+
+  "mappingCoverage": {
+    "mapped": {
+      "track fill": "Neutral/Bg/colorBgContainer and Brand/Primary/*",
+      "track border": "Neutral/Border/colorBorder and Brand/Primary/*",
+      "thumb fill": "Neutral/Text/colorTextLightSolid and Neutral/Text/colorTextDisabled",
+      "radius": "radius/roundedFull999",
+      "slot text": "Neutral/Text/colorText, Neutral/Text/colorTextDisabled, and Neutral/Text/colorTextLightSolid",
+      "typography": "EN/Paragraph 14_h20_Regular and EN/Paragraph Small 13_h18_Regular"
+    },
+    "gaps": [
+      {
+        "name": "trackGeometry",
+        "reason": "Track width, height, and padding are switch-specific component constants with no approved Vision Token equivalents."
+      },
+      {
+        "name": "thumbGeometry",
+        "reason": "Thumb size and slide offset are switch-specific geometry constants with no approved foundation tokens."
+      },
+      {
+        "name": "contentSlots",
+        "reason": "checkedChildren and unCheckedChildren are reserved in the anatomy but not exposed in the initial Figma scaffold."
+      },
+      {
+        "name": "loadingSpinner",
+        "reason": "The initial Figma scaffold uses opacity to preview loading; it does not yet model the runtime spinner treatment."
+      }
+    ]
+  }
+}

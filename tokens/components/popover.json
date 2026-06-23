@@ -1,0 +1,178 @@
+{
+  "$description": "AgentOS Design System Popover component spec — Ant Design popover trigger with elevated content card for the local Figma library",
+  "$source": {
+    "figma": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "162:8",
+      "pageName": "├─  Popover 气泡卡片   ✅ ✨",
+      "url": "https://www.figma.com/design/MwUyizdlqXKyFzHJWvBtI8/AgentOS-Design-System?node-id=162-8"
+    },
+    "docs": "https://ant.design/components/popover/"
+  },
+
+  "component": "Popover",
+  "dna": "overlay",
+  "variantCount": 12,
+
+  "anatomy": {
+    "layers": [
+      { "name": "trigger", "role": "trigger container — background, border, radius, padding, height" },
+      { "name": "triggerLabel", "role": "trigger text label" },
+      { "name": "overlay", "role": "floating popover wrapper shown for State=Open" },
+      { "name": "arrowSlot", "role": "transparent holder that positions the arrow above the card" },
+      { "name": "arrow", "role": "diamond arrow that inherits the overlay fill" },
+      { "name": "card", "role": "vertical elevated surface for title, body, and optional footer actions" },
+      { "name": "header", "role": "optional title row" },
+      { "name": "body", "role": "description copy block" },
+      { "name": "footer", "role": "optional action row with divider" }
+    ]
+  },
+
+  "variants": {
+    "title": {
+      "values": ["withTitle", "noTitle"],
+      "antd": "title prop",
+      "default": "withTitle"
+    },
+    "content": {
+      "values": ["info", "action"],
+      "antd": "content prop represented as either descriptive text only or text plus actions",
+      "default": "info"
+    },
+    "state": {
+      "values": ["closed", "hover", "open"],
+      "antd": "open maps to visible popup; closed and hover are design-time trigger previews",
+      "figmaOnly": true
+    }
+  },
+
+  "naming": {
+    "figma": "Title={Title}, Content={Content}, State={State}",
+    "example": "Title=WithTitle, Content=Action, State=Open"
+  },
+
+  "layout": {
+    "triggerHeight": { "ref": "controlHeight/controlHeightMd32", "value": 32 },
+    "triggerPaddingInline": { "ref": "padding/padding16", "value": 16 },
+    "triggerRadius": { "ref": "radius/roundedLg8", "value": 8 },
+    "cardRadius": { "ref": "radius/roundedLg8", "value": 8 },
+    "cardPadding": { "ref": "padding/padding16", "value": 16 },
+    "sectionGap": { "ref": "padding/paddingXs8", "value": 8 },
+    "footerGap": { "ref": "padding/paddingXs8", "value": 8 },
+    "dividerWeight": { "ref": "Border/border-width", "value": 1 },
+    "titleMinWidth": { "value": 177, "mapped": false, "reason": "Ant Design Popover token titleMinWidth is not a local Vision Token variable." },
+    "cardWidth": { "value": 240, "mapped": false, "reason": "Overlay width depends on content and is kept as a local component constant." },
+    "arrowSize": { "value": 10, "mapped": false, "reason": "Arrow geometry is component-specific and not modeled as a shared token." },
+    "overlayOffsetY": { "value": 8, "mapped": false, "reason": "Trigger-to-overlay placement is a local composition constant." },
+    "shadow": { "ref": "Component/Button/secondaryShadow", "mapped": "reuse", "reason": "Local file lacks a dedicated Popover overlay shadow; reuse the existing subtle system shadow." }
+  },
+
+  "styles": {
+    "default": {
+      "states": {
+        "closed": {
+          "triggerBackground": "Neutral/Bg/colorBgContainer",
+          "triggerBorder": "Neutral/Border/colorBorderSecondary",
+          "triggerText": "Neutral/Text/colorText",
+          "overlayBackground": "Neutral/Bg/colorBgElevated",
+          "titleText": "Neutral/Text/colorTextHeading",
+          "bodyText": "Neutral/Text/colorTextSecondary",
+          "divider": "Neutral/Border/colorSplit",
+          "primaryAction": "Brand/Primary/colorPrimary",
+          "secondaryAction": "Neutral/Text/colorTextSecondary",
+          "shadow": "Component/Button/secondaryShadow"
+        },
+        "hover": {
+          "triggerBackground": "Neutral/Bg/colorBgContainer",
+          "triggerBorder": "Brand/Primary/colorPrimaryHover",
+          "triggerText": "Brand/Primary/colorPrimaryHover",
+          "overlayBackground": "Neutral/Bg/colorBgElevated",
+          "titleText": "Neutral/Text/colorTextHeading",
+          "bodyText": "Neutral/Text/colorTextSecondary",
+          "divider": "Neutral/Border/colorSplit",
+          "primaryAction": "Brand/Primary/colorPrimary",
+          "secondaryAction": "Neutral/Text/colorTextSecondary",
+          "shadow": "Component/Button/secondaryShadow"
+        },
+        "open": {
+          "triggerBackground": "Neutral/Bg/colorBgContainer",
+          "triggerBorder": "Brand/Primary/colorPrimary",
+          "triggerText": "Brand/Primary/colorPrimary",
+          "overlayBackground": "Neutral/Bg/colorBgElevated",
+          "titleText": "Neutral/Text/colorTextHeading",
+          "bodyText": "Neutral/Text/colorTextSecondary",
+          "divider": "Neutral/Border/colorSplit",
+          "primaryAction": "Brand/Primary/colorPrimary",
+          "secondaryAction": "Neutral/Text/colorTextSecondary",
+          "shadow": "Component/Button/secondaryShadow"
+        }
+      }
+    }
+  },
+
+  "antd": {
+    "import": "import { Popover } from 'antd';",
+    "notes": {
+      "scope": "v1 models the trigger plus a representative content card with optional title and optional footer actions. Placement, auto shift, keyboard treatment, and custom arrow configs remain follow-up work.",
+      "state": "State=Open keeps the card visible. State=Closed and State=Hover keep the overlay hidden and only preview trigger styling.",
+      "content": "Content=Info represents a pure informational popover. Content=Action adds a divider and two inline actions to reflect Ant Design guidance that Popover may include operations."
+    }
+  },
+
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "componentSets": {
+      "*Popover*": "Title=WithTitle|NoTitle × Content=Info|Action × State=Closed|Hover|Open (12 variants)"
+    },
+    "componentProperties": {
+      "TitleText": {
+        "type": "TEXT",
+        "default": "Popover title",
+        "bindTo": "header title characters"
+      },
+      "BodyText": {
+        "type": "TEXT",
+        "default": "This is a lightweight container for supplementary information and follow-up actions.",
+        "bindTo": "body characters"
+      },
+      "PrimaryActionText": {
+        "type": "TEXT",
+        "default": "Primary action",
+        "bindTo": "footer primary action characters"
+      },
+      "SecondaryActionText": {
+        "type": "TEXT",
+        "default": "Dismiss",
+        "bindTo": "footer secondary action characters"
+      }
+    },
+    "variantLayout": "State columns horizontally, Content rows grouped vertically inside each Title block."
+  },
+
+  "mappingCoverage": {
+    "mapped": {
+      "surfaceColors": "Neutral/Bg/colorBgElevated, Neutral/Bg/colorBgContainer",
+      "textColors": "Neutral/Text/colorText, Neutral/Text/colorTextHeading, Neutral/Text/colorTextSecondary, Brand/Primary/colorPrimary",
+      "borderColors": "Neutral/Border/colorBorderSecondary, Neutral/Border/colorSplit",
+      "radius": "radius/roundedLg8",
+      "padding": "padding/padding16 | padding/paddingXs8",
+      "controlHeight": "controlHeight/controlHeightMd32",
+      "typography": "EN/Paragraph 14_h20_Regular | EN/Paragraph 14_h20_SemiBold"
+    },
+    "gaps": [
+      {
+        "name": "placementVariants",
+        "reason": "Top, left, right, and corner placements are intentionally excluded from v1 to keep the component set compact."
+      },
+      {
+        "name": "overlayShadowToken",
+        "reason": "No dedicated overlay effect style exists in the local file yet, so the component reuses the existing subtle button shadow."
+      },
+      {
+        "name": "arrowVisibilityAxis",
+        "reason": "Arrow is fixed on in v1 and not promoted to a separate variant axis."
+      }
+    ]
+  }
+}

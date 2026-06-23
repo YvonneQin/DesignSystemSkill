@@ -1,0 +1,210 @@
+{
+  "$description": "Ant Design Breadcrumb component spec — navigation DNA for breadcrumb items and separators",
+  "$source": {
+    "docs": "https://ant.design/components/breadcrumb/"
+  },
+
+  "component": "Breadcrumb",
+  "dna": "navigation",
+  "variantCount": 14,
+
+  "anatomy": {
+    "layers": [
+      { "name": "container", "role": "transparent auto-layout row wrapper for item or separator" },
+      { "name": "iconLeft", "role": "optional leading icon for breadcrumb item; visibility via ShowIcon" },
+      { "name": "label", "role": "breadcrumb text label" },
+      { "name": "separator", "role": "slash or chevron glyph for separator family" },
+      { "name": "trail", "role": "composed breadcrumb row built from item and separator instances" },
+      { "name": "dropdownIcon", "role": "optional trailing icon for dropdown breadcrumb item in composite family" }
+    ]
+  },
+
+  "variants": {
+    "family": {
+      "values": ["item", "separator"],
+      "figma": "Family"
+    },
+    "state": {
+      "values": ["default", "hover", "current", "disabled"],
+      "figma": "State",
+      "figmaOnly": true,
+      "appliesTo": ["item"]
+    },
+    "showIcon": {
+      "values": [false, true],
+      "figma": "ShowIcon",
+      "appliesTo": ["item"]
+    },
+    "separatorType": {
+      "values": ["slash", "chevron", "dot"],
+      "figma": "Separator",
+      "appliesTo": ["separator"]
+    },
+    "pattern": {
+      "values": ["basic", "dropdown", "icon"],
+      "figma": "Pattern",
+      "appliesTo": ["composite"]
+    }
+  },
+
+  "naming": {
+    "item": "Family=Item, State={State}, ShowIcon={ShowIcon}",
+    "separator": "Family=Separator, Separator={Separator}",
+    "composite": "Pattern={Pattern}",
+    "example": "Family=Item, State=Hover, ShowIcon=True"
+  },
+
+  "layout": {
+    "itemSpacing": { "ref": "margin/marginXs8", "value": 8 },
+    "iconSize": { "ref": "iconSize/iconSizeSm12", "value": 12 },
+    "paddingInline": { "value": 0, "mapped": false, "reason": "Breadcrumb items are text links, not padded controls" },
+    "borderRadius": { "value": 0, "mapped": false, "reason": "Breadcrumb items do not use a container radius in the base spec" },
+    "typography": { "ref": "EN/Paragraph 14_h20_Regular" }
+  },
+
+  "styles": {
+    "item": {
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorTransparent",
+          "text": "Neutral/Text/colorTextDescription",
+          "icon": "Neutral/Text/colorTextDescription"
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorTransparent",
+          "text": "Brand/Primary/colorPrimaryHover",
+          "icon": "Brand/Primary/colorPrimaryHover"
+        },
+        "current": {
+          "background": "Neutral/Bg/colorTransparent",
+          "text": "Neutral/Text/colorText",
+          "icon": "Neutral/Text/colorText"
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorTransparent",
+          "text": "Neutral/Text/colorTextDisabled",
+          "icon": "Neutral/Text/colorTextDisabled"
+        }
+      }
+    },
+    "separator": {
+      "slash": {
+        "background": "Neutral/Bg/colorTransparent",
+        "text": "Neutral/Text/colorTextDescription"
+      },
+      "chevron": {
+        "background": "Neutral/Bg/colorTransparent",
+        "text": "Neutral/Text/colorTextDescription"
+      },
+      "dot": {
+        "background": "Neutral/Bg/colorTransparent",
+        "text": "Neutral/Text/colorTextDescription"
+      }
+    },
+    "composite": {
+      "basic": {
+        "items": ["default", "default", "default", "current"],
+        "separator": "slash"
+      },
+      "dropdown": {
+        "items": ["default", "default", "default", "current"],
+        "separator": "slash",
+        "dropdownItemIndex": 2,
+        "dropdownIcon": "Neutral/Text/colorTextDescription"
+      },
+      "icon": {
+        "items": ["default", "default", "current"],
+        "separator": "slash",
+        "iconItemIndexes": [0, 1]
+      }
+    }
+  },
+
+  "styleResolution": {
+    "rules": [
+      "if family=item && state=current → styles.item.states.current",
+      "if family=item && state=disabled → styles.item.states.disabled",
+      "if family=item && state=hover → styles.item.states.hover",
+      "if family=item → styles.item.states.default",
+      "if family=separator && separatorType=chevron → styles.separator.chevron",
+      "if family=separator && separatorType=dot → styles.separator.dot",
+      "if family=separator → styles.separator.slash",
+      "if family=composite && pattern=dropdown → styles.composite.dropdown",
+      "if family=composite && pattern=icon → styles.composite.icon",
+      "else → styles.composite.basic"
+    ]
+  },
+
+  "antd": {
+    "import": "import { Breadcrumb } from 'antd';",
+    "notes": {
+      "scope": "Covers base breadcrumb item and separator visuals only. Dropdown menus, route object APIs, and custom rendered separators remain follow-up work.",
+      "state": "hover/current/disabled are design preview states for item variants."
+    },
+    "examples": {
+      "basic": "<Breadcrumb items={[{ title: 'Home' }, { title: 'Application Center' }, { title: 'Application List' }, { title: 'An Application' }]} />",
+      "withIcon": "<Breadcrumb items={[{ title: <><HomeOutlined /><span>Home</span></> }, { title: 'Application Center' }]} />",
+      "customSeparator": "<Breadcrumb separator=\">\" items={[{ title: 'Home' }, { title: 'List' }, { title: 'App' }]} />"
+    }
+  },
+
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "componentSets": {
+      "*Breadcrumb* / Item": "State=Default|Hover|Current|Disabled × ShowIcon=False|True — 8 variants",
+      "*Breadcrumb* / Separator": "Separator=Slash|Chevron|Dot — 3 variants",
+      "*Breadcrumb*": "Pattern=Basic|Dropdown|Icon — 3 composed variants"
+    },
+    "figmaImplemented": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "162:21",
+      "pageName": "├─  Breadcrumb 面包屑  ✅✨",
+      "componentSetIds": {
+        "item": "792:34",
+        "separator": "793:12",
+        "composite": "810:71"
+      },
+      "variantCount": 14,
+      "status": "initialized",
+      "note": "Initialized in the AgentOS Design System file. Item variants use State columns with ShowIcon rows; Separator variants are laid out as a horizontal trio below the item set; Composite variants provide Basic, Dropdown, and Icon breadcrumb examples."
+    },
+    "componentProperties": {
+      "item": {
+        "Label": {
+          "type": "TEXT",
+          "default": "Home",
+          "bindTo": "label.characters",
+          "antd": "title content for each breadcrumb item"
+        },
+        "↳ Icon Value": {
+          "type": "INSTANCE_SWAP",
+          "default": "Icon / HomeOutlined (509:1160)",
+          "bindTo": "iconLeft.mainComponent",
+          "antd": "optional item icon when ShowIcon=True"
+        }
+      },
+      "composite": {
+        "Pattern": {
+          "type": "VARIANT",
+          "default": "Basic",
+          "bindTo": "top-level composite example variant"
+        }
+      }
+    },
+    "variantLayout": "Keep Item, Separator, and Composite as separate sets on the same page. Item set uses State columns and ShowIcon rows; Separator set is a simple horizontal trio; Composite set is a vertical stack of Basic, Dropdown, and Icon examples."
+  },
+
+  "mappingCoverage": {
+    "mapped": {
+      "item text and icon color": true,
+      "separator text color": true,
+      "breadcrumb spacing": true,
+      "composed breadcrumb examples": true
+    },
+    "gaps": [
+      "Collapsed breadcrumb / maxCount behavior is not represented in the base component spec.",
+      "Custom separator content is approximated by slash/chevron/dot presets only."
+    ]
+  }
+}

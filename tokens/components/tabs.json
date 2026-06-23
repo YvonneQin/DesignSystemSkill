@@ -1,0 +1,372 @@
+{
+  "$description": "AgentOS Design System Tabs component spec — top line tab item rebuilt for the local Tabs page after page reset",
+  "$source": {
+    "docs": "https://ant.design/components/tabs/",
+    "referenceFigma": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "nodeId": "1098:750",
+      "url": "https://www.figma.com/design/MwUyizdlqXKyFzHJWvBtI8/AgentOS-Design-System?node-id=1098-750"
+    },
+    "targetFigma": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "941:41",
+      "pageName": "├─  Tabs 标签页 ✅✨🍎"
+    }
+  },
+  "component": "Tabs",
+  "dna": "navigation",
+  "variantCount": 32,
+  "anatomy": {
+    "layers": [
+      {
+        "name": "container",
+        "role": "transparent vertical auto-layout wrapper for one tab item"
+      },
+      {
+        "name": "content",
+        "role": "transparent label row with size-specific padding"
+      },
+      {
+        "name": "label",
+        "role": "tab title text"
+      },
+      {
+        "name": "indicator",
+        "role": "bottom active line; visible only when selected"
+      }
+    ]
+  },
+  "variants": {
+    "size": {
+      "values": [
+        "large",
+        "default",
+        "small",
+        "mini"
+      ],
+      "figma": "Size",
+      "default": "default",
+      "antdMapping": {
+        "large": "large",
+        "default": "middle",
+        "small": "small",
+        "mini": "custom compact size in AgentOS"
+      }
+    },
+    "selected": {
+      "values": [
+        false,
+        true
+      ],
+      "figma": "Selected",
+      "default": false
+    },
+    "state": {
+      "values": [
+        "default",
+        "hover",
+        "disabled"
+      ],
+      "figma": "State",
+      "figmaOnly": true,
+      "default": "default"
+    },
+    "pattern": {
+      "values": [
+        "basic",
+        "action",
+        "scroll",
+        "icon",
+        "iconAction",
+        "iconScroll"
+      ],
+      "figma": "Pattern",
+      "appliesTo": [
+        "composite"
+      ],
+      "default": "basic"
+    }
+  },
+  "naming": {
+    "figma": "Size={Size}, Selected={Selected}, State={State}",
+    "example": "Size=Default, Selected=True, State=Hover"
+  },
+  "layout": {
+    "indicatorHeight": {
+      "value": 2,
+      "mapped": false,
+      "reason": "Tabs ink bar thickness constant"
+    },
+    "itemGap": {
+      "value": 0,
+      "mapped": false,
+      "reason": "Single tab item has no internal gap beyond text-to-indicator stack"
+    },
+    "horizontalPadding": {
+      "large": {
+        "value": 18,
+        "mapped": false,
+        "reason": "Matches local Typical layout tab reference"
+      },
+      "default": {
+        "value": 16,
+        "mapped": false,
+        "reason": "AgentOS compact middle tab padding"
+      },
+      "small": {
+        "value": 14,
+        "mapped": false,
+        "reason": "AgentOS compact small tab padding"
+      },
+      "mini": {
+        "value": 12,
+        "mapped": false,
+        "reason": "AgentOS extra-compact mini tab padding"
+      }
+    }
+  },
+  "sizes": {
+    "large": {
+      "height": {
+        "value": 44,
+        "mapped": false,
+        "reason": "Recovered from previous Tabs page metadata"
+      },
+      "contentHeight": {
+        "value": 42,
+        "mapped": false,
+        "reason": "Total height minus 2px indicator"
+      },
+      "paddingInline": {
+        "value": 18,
+        "mapped": false,
+        "reason": "Matches Typical layout reference"
+      },
+      "paddingTop": {
+        "value": 9,
+        "mapped": false,
+        "reason": "Centers 24px text within 42px content area"
+      },
+      "paddingBottom": {
+        "value": 9,
+        "mapped": false,
+        "reason": "Centers 24px text within 42px content area"
+      },
+      "typography": {
+        "ref": "CN/H6 16_h24_Medium"
+      }
+    },
+    "default": {
+      "height": {
+        "value": 40,
+        "mapped": false,
+        "reason": "Recovered from previous Tabs page metadata"
+      },
+      "contentHeight": {
+        "value": 38,
+        "mapped": false,
+        "reason": "Total height minus 2px indicator"
+      },
+      "paddingInline": {
+        "value": 16,
+        "mapped": false,
+        "reason": "AgentOS middle tab padding"
+      },
+      "paddingTop": {
+        "value": 10,
+        "mapped": false,
+        "reason": "Centers 18px text within 38px content area"
+      },
+      "paddingBottom": {
+        "value": 10,
+        "mapped": false,
+        "reason": "Centers 18px text within 38px content area"
+      },
+      "typography": {
+        "ref": "CN/Paragraph Small 13_h18_Medium"
+      }
+    },
+    "small": {
+      "height": {
+        "value": 36,
+        "mapped": false,
+        "reason": "Recovered from previous Tabs page metadata"
+      },
+      "contentHeight": {
+        "value": 34,
+        "mapped": false,
+        "reason": "Total height minus 2px indicator"
+      },
+      "paddingInline": {
+        "value": 14,
+        "mapped": false,
+        "reason": "AgentOS small tab padding"
+      },
+      "paddingTop": {
+        "value": 8,
+        "mapped": false,
+        "reason": "Centers 18px text within 34px content area"
+      },
+      "paddingBottom": {
+        "value": 8,
+        "mapped": false,
+        "reason": "Centers 18px text within 34px content area"
+      },
+      "typography": {
+        "ref": "CN/Paragraph Small 13_h18_Medium"
+      }
+    },
+    "mini": {
+      "height": {
+        "value": 30,
+        "mapped": false,
+        "reason": "Recovered from previous Tabs page metadata"
+      },
+      "contentHeight": {
+        "value": 28,
+        "mapped": false,
+        "reason": "Total height minus 2px indicator"
+      },
+      "paddingInline": {
+        "value": 12,
+        "mapped": false,
+        "reason": "AgentOS mini tab padding"
+      },
+      "paddingTop": {
+        "value": 5,
+        "mapped": false,
+        "reason": "Centers 18px text within 28px content area"
+      },
+      "paddingBottom": {
+        "value": 5,
+        "mapped": false,
+        "reason": "Centers 18px text within 28px content area"
+      },
+      "typography": {
+        "ref": "CN/Small Text 12_h18_Medium"
+      }
+    }
+  },
+  "styles": {
+    "unselected": {
+      "default": {
+        "background": "Neutral/Bg/colorTransparent",
+        "text": "Neutral/Text/colorTextSecondary",
+        "indicator": null
+      },
+      "hover": {
+        "background": "Neutral/Bg/colorTransparent",
+        "text": "Brand/Primary/colorPrimaryHover",
+        "indicator": null
+      },
+      "disabled": {
+        "background": "Neutral/Bg/colorTransparent",
+        "text": "Neutral/Text/colorTextDisabled",
+        "indicator": null
+      }
+    },
+    "selected": {
+      "default": {
+        "background": "Neutral/Bg/colorTransparent",
+        "text": "Brand/Primary/colorPrimary",
+        "indicator": "Brand/Primary/colorPrimary"
+      },
+      "hover": {
+        "background": "Neutral/Bg/colorTransparent",
+        "text": "Brand/Primary/colorPrimaryHover",
+        "indicator": "Brand/Primary/colorPrimaryHover"
+      },
+      "disabled": {
+        "background": "Neutral/Bg/colorTransparent",
+        "text": "Neutral/Text/colorTextDisabled",
+        "indicator": null
+      }
+    }
+  },
+  "styleResolution": {
+    "rules": [
+      "if Selected=True && State=Hover → styles.selected.hover",
+      "if Selected=True && State=Disabled → styles.selected.disabled",
+      "if Selected=True → styles.selected.default",
+      "if State=Hover → styles.unselected.hover",
+      "if State=Disabled → styles.unselected.disabled",
+      "else → styles.unselected.default"
+    ]
+  },
+  "antd": {
+    "import": "import { Tabs } from 'antd';",
+    "notes": {
+      "scope": "This v1 spec initializes the top line tab item only, not editable-card, icon, placement, or overflow patterns.",
+      "size": "Ant Design exposes large | middle | small. AgentOS keeps an extra mini size to match the previous local Tabs page."
+    },
+    "examples": {
+      "basic": "<Tabs items={[{ key: '1', label: '标签页一' }, { key: '2', label: '标签页二' }]} />",
+      "disabled": "<Tabs items={[{ key: '1', label: '标签页一' }, { key: '2', label: '标签页二', disabled: true }]} />",
+      "renderTabBar": "<Tabs tabBarExtraContent=\"Action\" items={[...]} />",
+      "iconLabel": "<Tabs items={[{ key: '1', label: <><SettingOutlined />Tab 1</> }]} />"
+    }
+  },
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "componentSets": {
+      "*Tabs*": "Size=Large|Default|Small|Mini × Selected=False|True × State=Default|Hover|Disabled — 24 variants",
+      "*Tabs* / Composite": "Pattern=Basic|Action|Scroll|Icon|Icon Action|Icon Scroll — 6 variants",
+      "*Tabs* / Vertical": "Pattern=Basic|Icon — 2 variants"
+    },
+    "variantLayout": "Item set: columns by State+Selected combination, rows by Size. Composite set: vertical stack by Pattern. Keep only component sets on the Tabs page.",
+    "componentProperties": {
+      "Label": {
+        "type": "TEXT",
+        "default": "标签页",
+        "bindTo": "label.characters",
+        "antd": "TabItemType.label"
+      },
+      "Pattern": {
+        "type": "VARIANT",
+        "default": "Basic",
+        "bindTo": "top-level composite example variant"
+      }
+    },
+    "figmaImplemented": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "941:41",
+      "pageName": "├─  Tabs 标签页 ✅✨🍎",
+      "componentSetIds": {
+        "item": "1214:144",
+        "composite": "1214:275",
+        "vertical": "1218:78"
+      },
+      "variantCount": 32,
+      "status": "initialized"
+    }
+  },
+  "mappingCoverage": {
+    "mapped": {
+      "selected text color": "Brand/Primary/colorPrimary",
+      "hover text color": "Brand/Primary/colorPrimaryHover",
+      "disabled text color": "Neutral/Text/colorTextDisabled",
+      "default text color": "Neutral/Text/colorTextSecondary",
+      "indicator color": "Brand/Primary/colorPrimary | colorPrimaryHover",
+      "composite divider": "Neutral/Border/colorSplit",
+      "composite action text": "Brand/Primary/colorPrimary"
+    },
+    "gaps": [
+      {
+        "field": "sizes.*.height",
+        "reason": "Tabs item heights do not map to existing controlHeight tokens in Vision Token",
+        "action": "keep as layout constants until a dedicated navigation height token group exists"
+      },
+      {
+        "field": "layout.horizontalPadding",
+        "reason": "Current AgentOS tabs padding does not align 1:1 with existing padding tokens",
+        "action": "keep as layout constants for v1"
+      },
+      {
+        "field": "variants.mini",
+        "reason": "Mini is an AgentOS local size, not a direct Ant Design API size",
+        "action": "documented as local extension"
+      }
+    ]
+  }
+}

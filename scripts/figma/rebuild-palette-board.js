@@ -14,12 +14,12 @@ const PALETTES = [
 ];
 const COL_W = 160;
 const SWATCH_H = 56;
-const STEPS = 10;
+const SCALE_STEPS = ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'];
 const COL_PITCH = 180;
 const START_X = 294;
 const START_Y = 310;
-const MAIN_HUE_ROW = 7; // Radix accent row on 10-step scale
-const ACCENT_STEP = 7;
+const MAIN_HUE_ROW = 7; // 1-based row index in SCALE_STEPS
+const ACCENT_STEP = '600';
 const SQUARE_SIZE = 56;
 const SQUARE_Y = 1008;
 const LABEL_Y = 1084;
@@ -66,7 +66,7 @@ async function buildBoard(frameId, modeName) {
   await figma.setCurrentPageAsync(frame.parent);
   frame.setExplicitVariableModeForCollection(modeColl, modeId);
   for (const child of [...frame.children]) child.remove();
-  bindFill(frame, token('gray', 1));
+  bindFill(frame, token('gray', '50'));
 
   let fontFamily = 'Inter';
   let fontStyle = 'Medium';
@@ -88,7 +88,7 @@ async function buildBoard(frameId, modeName) {
   guide.resize(lineWidth, 0);
   guide.strokeWeight = 2;
   guide.dashPattern = [8, 8];
-  bindStroke(guide, token('gray', 6));
+  bindStroke(guide, token('gray', '500'));
   frame.appendChild(guide);
   created.push(guide.id);
 
@@ -100,7 +100,7 @@ async function buildBoard(frameId, modeName) {
   title.characters = '主色相';
   title.x = 160;
   title.y = 656;
-  bindFill(title, token('gray', 9));
+  bindFill(title, token('gray', '800'));
   frame.appendChild(title);
   created.push(title.id);
 
@@ -109,7 +109,7 @@ async function buildBoard(frameId, modeName) {
     const x = START_X + ci * COL_PITCH;
     const col = figma.createFrame();
     col.name = `Column / ${palette}`;
-    col.resize(COL_W, SWATCH_H * STEPS);
+    col.resize(COL_W, SWATCH_H * SCALE_STEPS.length);
     col.x = x;
     col.y = START_Y;
     col.fills = [];
@@ -117,11 +117,12 @@ async function buildBoard(frameId, modeName) {
     frame.appendChild(col);
     created.push(col.id);
 
-    for (let step = 1; step <= STEPS; step++) {
+    for (let i = 0; i < SCALE_STEPS.length; i++) {
+      const step = SCALE_STEPS[i];
       const sw = figma.createRectangle();
       sw.name = 'Subtract';
       sw.resize(COL_W, SWATCH_H);
-      sw.y = (step - 1) * SWATCH_H;
+      sw.y = i * SWATCH_H;
       bindFill(sw, token(palette, step));
       col.appendChild(sw);
       created.push(sw.id);
@@ -146,7 +147,7 @@ async function buildBoard(frameId, modeName) {
     const labelW = label.width;
     label.x = x + (COL_W - labelW) / 2;
     label.y = LABEL_Y;
-    bindFill(label, token('gray', 10));
+    bindFill(label, token('gray', '900'));
     frame.appendChild(label);
     created.push(label.id);
   }
@@ -158,7 +159,7 @@ async function buildBoard(frameId, modeName) {
     frameId,
     modeName,
     palettes: PALETTES.length,
-    swatches: PALETTES.length * STEPS,
+    swatches: PALETTES.length * SCALE_STEPS.length,
     nodes: created.length,
     width: frameW,
     height: frameH,

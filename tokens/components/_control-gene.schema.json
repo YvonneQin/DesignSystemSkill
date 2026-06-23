@@ -5,6 +5,8 @@
   "dna": "control",
   "version": "1.0.0",
   "referenceImplementation": "components/button.json",
+  "dnaTreeRef": "_dna-tree.json#/branches/control",
+  "rulePresetRef": "rules/control.rules.json",
 
   "designSystemTree": {
     "branch": "1. Control DNA",
@@ -112,8 +114,8 @@
     "typography": {
       "description": "Text style references — Font collection",
       "foundation": {
-        "small": { "ref": "EN/Paragraph 14_h20_Regular" },
-        "default": { "ref": "EN/Paragraph 14_h20_Regular" },
+        "small": { "ref": "EN/Paragraph Small 13_h18_Regular" },
+        "default": { "ref": "EN/Paragraph Small 13_h18_Regular" },
         "large": { "ref": "EN/H6 16_h24_Regular" }
       },
       "bindTo": ["textStyleId"]
@@ -152,6 +154,25 @@
       "values": ["default", "hover", "focused", "pressed", "disabled"],
       "naming": "State={State}"
     }
+  },
+
+  "ruleSystem": {
+    "description": "Control DNA generation flow. Genes describe what is shared; rules describe how a component spec resolves into one family of controls.",
+    "propertyDrivers": {
+      "size": ["height", "paddingInline", "radius", "typography", "iconSize"],
+      "variant": ["appearanceStrategy", "semanticPalette", "shadow", "borderStyle"],
+      "state": ["background", "border", "text", "shadow", "iconColor"],
+      "icon": ["slotVisibility", "layoutMode", "gap", "contentVisibility"],
+      "loading": ["state", "interactivity", "spinnerVisibility"]
+    },
+    "resolutionOrder": [
+      "size -> geometry + typography",
+      "variant -> appearance strategy + semantic palette",
+      "state -> interaction tokens",
+      "modifiers -> danger, ghost, status, icon, loading",
+      "bindings -> Figma layers + component properties"
+    ],
+    "goal": "New controls should feel like they were generated from one family, not hand-styled as unrelated components."
   },
 
   "appearanceStrategies": {
@@ -295,5 +316,33 @@
       "inherits": ["radius sm", "states", "disabled"],
       "adds": ["checked/indeterminate", "16×16 box gene"]
     }
+  },
+
+  "componentSpecContract": {
+    "requiredTopLevelFields": [
+      "component",
+      "dna",
+      "variantCount",
+      "anatomy",
+      "variants",
+      "naming",
+      "layout",
+      "styles",
+      "styleResolution",
+      "figmaConventions",
+      "mappingCoverage"
+    ],
+    "optionalTopLevelFields": [
+      "sizes",
+      "typography",
+      "effects",
+      "shape",
+      "loadingState",
+      "ruleOverrides"
+    ],
+    "sizeStrategyRule": [
+      "Components with a size axis should declare sizes.",
+      "Components without a size axis should keep fixed geometry in layout and document sizeStrategy=fixed."
+    ]
   }
 }

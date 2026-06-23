@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Update rdx-base-10.json light palettes from Figma reference board (308:37)
- * and regenerate dark scales from the step-7 accent (主色相).
+ * and regenerate dark scales from the accent swatch.
  *
  * Usage: node scripts/tokens/update-palettes-from-figma.js
  */
@@ -13,7 +13,10 @@ const ROOT = path.resolve(__dirname, "../..");
 const RDX_PATH = path.join(ROOT, "tokens/sources/rdx-base-10.json");
 const SYNC_PATH = path.join(ROOT, "scripts/figma/sync-rdx-base-10-payload.js");
 
-// Figma 新色板 (Light) — steps 1-10, columns corrected by accent match
+const SCALE_STEPS = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
+const ACCENT_INDEX = 6;
+
+// Figma 新色板 (Light) — 50-900, columns corrected by accent match
 const LIGHT_REFERENCE = {
   blue: [
     "#f8faff", "#ecf0ff", "#d4dfff", "#b2c8ff", "#7fa3ff",
@@ -141,7 +144,7 @@ function mixRgb(a, b, t) {
   };
 }
 
-// Calibrated from reference blue (主色相 at step 7)
+// Calibrated from the reference blue accent swatch.
 const LIGHT_CURVE = {
   dl: [0.38, 0.32, 0.26, 0.2, 0.14, 0.07, 0, -0.08, -0.12, -0.18],
   sm: [0.12, 0.18, 0.28, 0.42, 0.65, 0.85, 1.0, 1.0, 0.95, 0.9],
@@ -159,7 +162,7 @@ function generateLightScaleFromAccent(accentHex) {
 }
 
 function generateDarkScale(lightSteps) {
-  const accent = hexToRgb(lightSteps[6]);
+  const accent = hexToRgb(lightSteps[ACCENT_INDEX]);
   const accentHsl = rgbToHsl(accent.r, accent.g, accent.b);
   const black = { r: 0, g: 0, b: 0 };
   const white = { r: 255, g: 255, b: 255 };
@@ -198,15 +201,15 @@ function isNeutralPalette(name) {
 }
 
 function generateNeutralDarkScale(lightSteps) {
-  const accent = hexToRgb(lightSteps[6]);
+  const accent = hexToRgb(lightSteps[ACCENT_INDEX]);
   const dark = [];
   for (let i = 0; i < 10; i++) {
     if (i === 8) {
-      dark.push(lightSteps[6]);
+      dark.push(lightSteps[ACCENT_INDEX]);
       continue;
     }
     if (i === 9) {
-      const a = hexToRgb(lightSteps[6]);
+      const a = hexToRgb(lightSteps[ACCENT_INDEX]);
       const lighter = mixRgb(a, { r: 255, g: 255, b: 255 }, 0.15);
       dark.push(rgbToHex(lighter.r, lighter.g, lighter.b));
       continue;
@@ -232,10 +235,11 @@ function applyPalette(palette, lightSteps, source) {
     ? generateNeutralDarkScale(lightSteps)
     : generateDarkScale(lightSteps);
 
-  for (let step = 1; step <= 10; step++) {
-    rdx[palette][String(step)] = {
-      light: lightSteps[step - 1],
-      dark: darkSteps[step - 1],
+  for (let i = 0; i < SCALE_STEPS.length; i++) {
+    const step = SCALE_STEPS[i];
+    rdx[palette][step] = {
+      light: lightSteps[i],
+      dark: darkSteps[i],
     };
   }
   console.log(`Updated ${palette} (${source})`);
@@ -247,7 +251,7 @@ for (const [palette, lightSteps] of Object.entries(LIGHT_REFERENCE)) {
 
 for (const palette of Object.keys(rdx)) {
   if (REFERENCE_SET.has(palette) || SKIP_REGEN.has(palette)) continue;
-  const accent = rdx[palette]["9"].light;
+  const accent = rdx[palette]["800"].light;
   const lightSteps = generateLightScaleFromAccent(accent);
   applyPalette(palette, lightSteps, `accent ${accent}`);
 }

@@ -3,44 +3,44 @@
   "palette": "indigo",
   "tokens": {
     "colorPrimary": {
-      "light": { "ref": "Base/indigo/6" },
-      "dark": { "ref": "Base/indigo/6" }
+      "light": { "ref": "Base/indigo/500" },
+      "dark": { "ref": "Base/indigo/500" }
     },
     "colorPrimaryBg": {
-      "light": { "ref": "Base/indigo/1" },
-      "dark": { "ref": "Base/indigo/1" }
+      "light": { "ref": "Base/indigo/50" },
+      "dark": { "ref": "Base/indigo/50" }
     },
     "colorPrimaryBgHover": {
-      "light": { "ref": "Base/indigo/2" },
-      "dark": { "ref": "Base/indigo/2" }
+      "light": { "ref": "Base/indigo/100" },
+      "dark": { "ref": "Base/indigo/100" }
     },
     "colorPrimaryBorder": {
-      "light": { "ref": "Base/indigo/3" },
-      "dark": { "ref": "Base/indigo/3" }
+      "light": { "ref": "Base/indigo/200" },
+      "dark": { "ref": "Base/indigo/200" }
     },
     "colorPrimaryBorderHover": {
-      "light": { "ref": "Base/indigo/4" },
-      "dark": { "ref": "Base/indigo/4" }
+      "light": { "ref": "Base/indigo/300" },
+      "dark": { "ref": "Base/indigo/300" }
     },
     "colorPrimaryHover": {
-      "light": { "ref": "Base/indigo/5" },
-      "dark": { "ref": "Base/indigo/7" }
+      "light": { "ref": "Base/indigo/400" },
+      "dark": { "ref": "Base/indigo/600" }
     },
     "colorPrimaryActive": {
-      "light": { "ref": "Base/indigo/7" },
-      "dark": { "ref": "Base/indigo/5" }
+      "light": { "ref": "Base/indigo/600" },
+      "dark": { "ref": "Base/indigo/400" }
     },
     "colorPrimaryTextHover": {
-      "light": { "ref": "Base/indigo/8" },
-      "dark": { "ref": "Base/indigo/8" }
+      "light": { "ref": "Base/indigo/700" },
+      "dark": { "ref": "Base/indigo/700" }
     },
     "colorPrimaryText": {
-      "light": { "ref": "Base/indigo/9" },
-      "dark": { "ref": "Base/indigo/9" }
+      "light": { "ref": "Base/indigo/800" },
+      "dark": { "ref": "Base/indigo/800" }
     },
     "colorPrimaryTextActive": {
-      "light": { "ref": "Base/indigo/10" },
-      "dark": { "ref": "Base/indigo/10" }
+      "light": { "ref": "Base/indigo/900" },
+      "dark": { "ref": "Base/indigo/900" }
     }
   }
 }

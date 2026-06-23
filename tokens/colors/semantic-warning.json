@@ -3,44 +3,44 @@
   "palette": "gold",
   "tokens": {
     "colorWarning": {
-      "light": { "ref": "Base/gold/6" },
-      "dark": { "ref": "Base/gold/6" }
+      "light": { "ref": "Base/gold/500" },
+      "dark": { "ref": "Base/gold/500" }
     },
     "colorWarningBg": {
-      "light": { "ref": "Base/gold/1" },
-      "dark": { "ref": "Base/gold/1" }
+      "light": { "ref": "Base/gold/50" },
+      "dark": { "ref": "Base/gold/50" }
     },
     "colorWarningBgHover": {
-      "light": { "ref": "Base/gold/2" },
-      "dark": { "ref": "Base/gold/2" }
+      "light": { "ref": "Base/gold/100" },
+      "dark": { "ref": "Base/gold/100" }
     },
     "colorWarningBorder": {
-      "light": { "ref": "Base/gold/3" },
-      "dark": { "ref": "Base/gold/3" }
+      "light": { "ref": "Base/gold/200" },
+      "dark": { "ref": "Base/gold/200" }
     },
     "colorWarningBorderHover": {
-      "light": { "ref": "Base/gold/4" },
-      "dark": { "ref": "Base/gold/4" }
+      "light": { "ref": "Base/gold/300" },
+      "dark": { "ref": "Base/gold/300" }
     },
     "colorWarningHover": {
-      "light": { "ref": "Base/gold/5" },
-      "dark": { "ref": "Base/gold/7" }
+      "light": { "ref": "Base/gold/400" },
+      "dark": { "ref": "Base/gold/600" }
     },
     "colorWarningActive": {
-      "light": { "ref": "Base/gold/7" },
-      "dark": { "ref": "Base/gold/5" }
+      "light": { "ref": "Base/gold/600" },
+      "dark": { "ref": "Base/gold/400" }
     },
     "colorWarningTextHover": {
-      "light": { "ref": "Base/gold/8" },
-      "dark": { "ref": "Base/gold/8" }
+      "light": { "ref": "Base/gold/700" },
+      "dark": { "ref": "Base/gold/700" }
     },
     "colorWarningText": {
-      "light": { "ref": "Base/gold/9" },
-      "dark": { "ref": "Base/gold/9" }
+      "light": { "ref": "Base/gold/800" },
+      "dark": { "ref": "Base/gold/800" }
     },
     "colorWarningTextActive": {
-      "light": { "ref": "Base/gold/10" },
-      "dark": { "ref": "Base/gold/10" }
+      "light": { "ref": "Base/gold/900" },
+      "dark": { "ref": "Base/gold/900" }
     }
   }
 }

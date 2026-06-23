@@ -1,0 +1,143 @@
+{
+  "$description": "Shared generation rules for Control DNA. These rules define how control components should feel like one family.",
+  "version": "1.0.0",
+  "referenceImplementation": "../button.json",
+  "principles": [
+    "Prefer one coherent family over one-off component optimizations.",
+    "Resolve from gene -> rule -> style block -> Figma binding.",
+    "Use Button as the golden reference for interaction and visual rhythm, but do not force Button-only anatomy onto every control."
+  ],
+  "familyTraits": {
+    "shapeLanguage": "Rounded corners with small/large scale progression and optional full-round override.",
+    "interactionLanguage": "Hover and active states shift semantic color, disabled collapses into shared neutral treatment, focus mirrors hover unless a component adds activeShadow.",
+    "spacingLanguage": "Compact horizontal rhythm with predictable icon-text gap and size-dependent padding.",
+    "typographyLanguage": "Shared text styles by size tier; large size steps up both font size and line height."
+  },
+  "propertyRules": {
+    "size": {
+      "controls": ["controlHeight", "paddingInline", "borderRadius", "typography", "iconSize"],
+      "tokenRefs": [
+        "controlHeight/controlHeightSm24",
+        "controlHeight/controlHeightMd32",
+        "controlHeight/controlHeightLg40",
+        "padding/paddingXs8",
+        "padding/padding16",
+        "radius/roundedSm4",
+        "radius/roundedLg8",
+        "radius/roundedFull999",
+        "iconSize/iconSizeSm12",
+        "iconSize/iconSizeMd16",
+        "iconSize/iconSizeLg20",
+        "EN/Paragraph 14_h20_Regular",
+        "EN/H6 16_h24_Regular"
+      ],
+      "notes": [
+        "Size is the primary geometry driver for controls.",
+        "If a control has no size axis, it must declare sizeStrategy=fixed in its component spec."
+      ]
+    },
+    "variant": {
+      "controls": ["appearanceStrategy", "semanticPalette", "shadow", "borderStyle"],
+      "tokenRefs": [
+        "Neutral/Bg/colorBgContainer",
+        "Neutral/Bg/colorTransparent",
+        "Neutral/Text/colorText",
+        "Neutral/Text/colorTextLightSolid",
+        "Neutral/Border/colorBorder",
+        "Brand/Primary/*",
+        "Brand/Tertiary/*",
+        "Brand/Error/*",
+        "Brand/Warning/*",
+        "Brand/Link/*",
+        "Component/{Component}/{palette}Shadow",
+        "Component/{Component}/defaultShadow"
+      ],
+      "notes": [
+        "Variants choose a visual strategy such as solid, outline, ghost, text, or link.",
+        "Palette should stay semantic. Do not encode raw color values in variant definitions."
+      ]
+    },
+    "state": {
+      "controls": ["background", "border", "text", "shadow", "iconColor"],
+      "tokenRefs": [
+        "Neutral/Bg/colorBgContainer",
+        "Neutral/Bg/colorBgContainerDisabled",
+        "Neutral/Bg/colorTransparent",
+        "Neutral/Border/colorBorder",
+        "Neutral/Text/colorText",
+        "Neutral/Text/colorTextDisabled",
+        "Neutral/Text/colorTextLightSolid",
+        "Brand/Primary/*",
+        "Brand/Tertiary/*",
+        "Brand/Error/*",
+        "Brand/Warning/*",
+        "Brand/Link/*"
+      ],
+      "notes": [
+        "State changes should read as the same interaction language across the family.",
+        "Disabled always resolves through the shared neutral token set unless the component spec documents an exception."
+      ]
+    },
+    "icon": {
+      "controls": ["slotVisibility", "layoutMode", "gap", "iconSize", "contentVisibility"],
+      "tokenRefs": [
+        "margin/marginXs8",
+        "iconSize/iconSizeSm12",
+        "iconSize/iconSizeMd16",
+        "iconSize/iconSizeLg20",
+        "Neutral/Text/colorText",
+        "Neutral/Text/colorTextDisabled",
+        "Neutral/Text/colorTextLightSolid",
+        "Brand/Primary/*",
+        "Brand/Tertiary/*",
+        "Brand/Error/*",
+        "Brand/Warning/*",
+        "Brand/Link/*"
+      ],
+      "patterns": {
+        "none": "showLeftIcon=false, showRightIcon=false, showContent=true",
+        "left": "showLeftIcon=true, showRightIcon=false, showContent=true",
+        "right": "showLeftIcon=false, showRightIcon=true, showContent=true",
+        "only": "showLeftIcon=true, showRightIcon=false, showContent=false"
+      }
+    },
+    "loading": {
+      "controls": ["state", "interactivity", "spinnerVisibility"],
+      "tokenRefs": [
+        "inherits hover state tokens by default",
+        "no dedicated loading token set in Control DNA v1"
+      ],
+      "notes": [
+        "Loading should disable click or equivalent interaction.",
+        "Loading appearance may inherit hover tokens when no dedicated loading palette exists."
+      ]
+    }
+  },
+  "resolutionOrder": [
+    "Start from the component's declared DNA and inherited genes.",
+    "Resolve size-driven geometry and typography.",
+    "Resolve variant into an appearance strategy and semantic palette.",
+    "Apply state tokens on top of the chosen variant.",
+    "Apply modifiers such as danger, ghost, status, icon, and loading.",
+    "Bind the resolved output to Figma layers and component properties."
+  ],
+  "outputContract": {
+    "requiredSlots": ["background", "border", "text"],
+    "optionalSlots": ["shadow", "icon", "placeholder"],
+    "figmaBindings": [
+      "container fills -> background token",
+      "container strokes -> border token",
+      "label or field fills -> text token",
+      "icon vector fills -> mirror text token unless overridden",
+      "textStyleId -> typography token"
+    ]
+  },
+  "componentGenerationChecklist": [
+    "Classify the new component under Control DNA in _dna-tree.json.",
+    "Start from _control-gene.template.json.",
+    "Declare only the variant axes the component truly exposes.",
+    "Reuse shared genes before adding component-only constants.",
+    "Document every hardcoded value in mappingCoverage.gaps or mapped:false fields.",
+    "Verify the resulting Figma set still looks like Button's family in rhythm, state behavior, and token usage."
+  ]
+}

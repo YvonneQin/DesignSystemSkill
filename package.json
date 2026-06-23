@@ -4,11 +4,26 @@
   "version": "0.1.0",
   "description": "Local workflow entrypoints for the design-system skill repo.",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "tokens:build": "node scripts/tokens/build-theme.js",
     "tokens:apply-default-base": "node scripts/tokens/apply-default-base.js",
     "tokens:uniformize-base": "node scripts/tokens/uniformize-base-palettes.js",
     "tokens:regen-non-antd-base": "node scripts/tokens/regen-non-antd-base.js",
     "tokens:refresh-base": "node scripts/tokens/refresh-base-palettes.js",
     "tokens:update-palettes-from-figma": "node scripts/tokens/update-palettes-from-figma.js"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.0",
+    "@storybook/react-vite": "^8.6.0",
+    "@vitejs/plugin-react": "^4.4.1",
+    "storybook": "^8.6.0",
+    "vite": "^6.3.5"
   }
 }

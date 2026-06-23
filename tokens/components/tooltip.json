@@ -1,0 +1,125 @@
+{
+  "$description": "AgentOS Design System Tooltip component spec — existing Figma tooltip set normalized into Overlay DNA conventions without changing token values",
+  "$source": {
+    "figma": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "162:11",
+      "pageName": "├─  Tooltip 文字提示✅ ✨",
+      "url": "https://www.figma.com/design/MwUyizdlqXKyFzHJWvBtI8/AgentOS-Design-System?node-id=1342-11103"
+    },
+    "docs": "https://arco.design/react/components/tooltip"
+  },
+
+  "component": "Tooltip",
+  "dna": "overlay",
+  "variantCount": 24,
+
+  "anatomy": {
+    "layers": [
+      { "name": "Tooltip-center", "role": "surface container that holds text content" },
+      { "name": "Tooltip-text", "role": "single-line tooltip copy" },
+      { "name": "arrow-position-scrubber", "role": "placement helper that offsets the arrow relative to the surface" },
+      { "name": "Tooltip-angle", "role": "arrow vector that mirrors the tooltip surface fill" }
+    ]
+  },
+
+  "variants": {
+    "placement": {
+      "values": [
+        "top",
+        "bottom",
+        "left",
+        "right",
+        "topLeft",
+        "topRight",
+        "bottomLeft",
+        "bottomRight",
+        "leftTop",
+        "leftBottom",
+        "rightTop",
+        "rightBottom"
+      ],
+      "antd": "placement prop"
+    },
+    "size": {
+      "values": ["default", "mini"],
+      "antd": "compact visual size preview",
+      "figmaOnly": true,
+      "default": "default"
+    }
+  },
+
+  "naming": {
+    "figma": "Placement={Placement}, Size={Size}",
+    "example": "Placement=Top, Size=Default"
+  },
+
+  "layout": {
+    "radius": { "ref": "radius/roundedLg8", "value": 8 },
+    "paddingInline": { "value": 12, "mapped": false, "reason": "Tooltip horizontal padding is currently a component constant in the local file." },
+    "paddingBlockDefault": { "value": 8, "mapped": false, "reason": "Default tooltip vertical padding is currently a component constant in the local file." },
+    "paddingBlockMini": { "value": 4, "mapped": false, "reason": "Mini tooltip vertical padding is currently a component constant in the local file." },
+    "arrowWidth": { "value": 10, "mapped": false, "reason": "Arrow geometry is component-specific and not modeled as a shared token." },
+    "arrowHeight": { "value": 4, "mapped": false, "reason": "Arrow geometry is component-specific and not modeled as a shared token." }
+  },
+
+  "styles": {
+    "default": {
+      "states": {
+        "rest": {
+          "surface": "Neutral/Bg/colorBgSpotlight",
+          "text": "Neutral/Text/colorTextLightSolid",
+          "radius": "Radius/rounded-lg"
+        }
+      }
+    }
+  },
+
+  "antd": {
+    "import": "import { Tooltip } from 'antd';",
+    "notes": {
+      "scope": "v1 covers the existing 12 placement directions and the two density previews already present in the Figma file.",
+      "placement": "The current component set includes center, edge, and corner placements as distinct variants.",
+      "size": "Size=Mini is kept as a Figma-only preview axis because the existing file already exposes it, even though this is not a standard Ant Design API axis."
+    }
+  },
+
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "componentSets": {
+      "*Tooltip*": "Placement=Top|Bottom|Left|Right|TopLeft|TopRight|BottomLeft|BottomRight|LeftTop|LeftBottom|RightTop|RightBottom × Size=Default|Mini (24 variants)"
+    },
+    "componentProperties": {
+      "Text": {
+        "type": "TEXT",
+        "default": "Tooltip",
+        "bindTo": "Tooltip-text characters"
+      }
+    },
+    "variantLayout": "Placement variants remain arranged as a directional matrix; the normalized API uses explicit English axis names and values."
+  },
+
+  "mappingCoverage": {
+    "mapped": {
+      "surfaceColor": "Neutral/Bg/colorBgSpotlight",
+      "textColor": "Neutral/Text/colorTextLightSolid",
+      "radius": "Radius/rounded-lg",
+      "textStyle": "13/CN-Regular"
+    },
+    "gaps": [
+      {
+        "name": "legacyValueParity",
+        "reason": "The legacy Tooltip surface color was closer to Base/gray/900, but the normalized design-system binding uses the semantic overlay token Neutral/Bg/colorBgSpotlight."
+      },
+      {
+        "name": "paddingTokens",
+        "reason": "Tooltip padding values are hardcoded in the current component and are not yet backed by a shared spacing token."
+      },
+      {
+        "name": "propertyNamingCleanup",
+        "reason": "The current text component property exists in Figma but still uses the legacy Chinese property name and should be normalized to Text."
+      }
+    ]
+  }
+}

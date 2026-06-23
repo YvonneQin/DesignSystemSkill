@@ -1,0 +1,285 @@
+{
+  "$description": "AgentOS Design System Dropdown component spec — Ant Design dropdown trigger with elevated menu overlay for the AgentOS Figma file",
+  "$source": {
+    "figma": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "162:22",
+      "pageName": "├─  Dropdown 下拉菜单  ✅✨",
+      "url": "https://www.figma.com/design/MwUyizdlqXKyFzHJWvBtI8/AgentOS-Design-System?node-id=162-22"
+    },
+    "docs": "https://ant.design/components/dropdown/"
+  },
+
+  "component": "Dropdown",
+  "dna": "overlay",
+  "variantCount": 24,
+
+  "anatomy": {
+    "layers": [
+      { "name": "trigger", "role": "trigger container — background, border, radius, padding, height" },
+      { "name": "content", "role": "horizontal auto-layout row for label + chevron" },
+      { "name": "label", "role": "trigger text label" },
+      { "name": "chevron", "role": "direct icon instance for the dropdown affordance" },
+      { "name": "overlay", "role": "elevated menu surface shown for State=Open" },
+      { "name": "menu", "role": "vertical auto-layout menu list" },
+      { "name": "itemDefault", "role": "default menu item row" },
+      { "name": "itemHover", "role": "hovered menu item row" },
+      { "name": "itemDanger", "role": "danger menu item row" }
+    ]
+  },
+
+  "variants": {
+    "trigger": {
+      "values": ["default", "text"],
+      "antd": "Trigger visual treatment represented in the Figma library",
+      "default": "default"
+    },
+    "size": {
+      "values": ["large", "default", "small"],
+      "antd": "size",
+      "default": "default"
+    },
+    "state": {
+      "values": ["closed", "hover", "open", "disabled"],
+      "antd": "open and disabled map to runtime props; closed and hover are design-time previews",
+      "figmaOnly": true
+    }
+  },
+
+  "naming": {
+    "figma": "Trigger={Trigger}, Size={Size}, State={State}",
+    "example": "Trigger=Default, Size=Default, State=Open"
+  },
+
+  "layout": {
+    "triggerGap": { "ref": "padding/paddingXxs4", "value": 4 },
+    "menuGap": { "ref": "padding/paddingXxs4", "value": 4 },
+    "itemPaddingInline": { "ref": "padding/paddingXs8", "value": 8 },
+    "menuPaddingBlock": { "ref": "padding/paddingXxs4", "value": 4 },
+    "overlayOffsetY": { "value": 4, "mapped": false, "reason": "Dropdown menu offset is a placement constant, not a shared token." },
+    "menuMinWidth": { "value": 180, "mapped": false, "reason": "Overlay width depends on menu content and placement, not a shared token." },
+    "lineWidth": { "ref": "Border/border-width", "value": 1 },
+    "shadow": { "ref": "Component/Dropdown/elevatedShadow", "mapped": false, "reason": "Effect style has not been created yet in the local file." }
+  },
+
+  "sizes": {
+    "small": {
+      "controlHeight": { "ref": "controlHeight/controlHeightSm24", "value": 24 },
+      "paddingInline": { "ref": "padding/paddingXs8", "value": 8 },
+      "borderRadius": { "ref": "radius/roundedSm4", "value": 4 },
+      "iconSize": { "ref": "iconSize/iconSizeSm12", "value": 12 },
+      "typography": { "ref": "EN/Paragraph 14_h20_Regular" },
+      "menuItemHeight": { "ref": "controlHeight/controlHeightSm24", "value": 24, "mapping": "nearest" }
+    },
+    "default": {
+      "controlHeight": { "ref": "controlHeight/controlHeightMd32", "value": 32 },
+      "paddingInline": { "ref": "padding/paddingSm12", "value": 12 },
+      "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
+      "iconSize": { "ref": "iconSize/iconSizeMd16", "value": 16 },
+      "typography": { "ref": "EN/Paragraph 14_h20_Regular" },
+      "menuItemHeight": { "ref": "controlHeight/controlHeightMd32", "value": 32, "mapping": "nearest" }
+    },
+    "large": {
+      "controlHeight": { "ref": "controlHeight/controlHeightLg40", "value": 40 },
+      "paddingInline": { "ref": "padding/paddingSm12", "value": 12 },
+      "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
+      "iconSize": { "ref": "iconSize/iconSizeLg20", "value": 20 },
+      "typography": { "ref": "EN/H6 16_h24_Regular" },
+      "menuItemHeight": { "ref": "controlHeight/controlHeightLg40", "value": 40, "mapping": "nearest" }
+    }
+  },
+
+  "styles": {
+    "triggerDefault": {
+      "states": {
+        "closed": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorText",
+          "icon": "Neutral/Icon/colorIcon",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "menuText": "Neutral/Text/colorText",
+          "menuItemHover": "Neutral/Fill/colorFillTertiary",
+          "menuItemDangerText": "Brand/Error/colorError",
+          "shadow": null
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "text": "Neutral/Text/colorText",
+          "icon": "Neutral/Icon/colorIconHover",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "menuText": "Neutral/Text/colorText",
+          "menuItemHover": "Neutral/Fill/colorFillTertiary",
+          "menuItemDangerText": "Brand/Error/colorError",
+          "shadow": null
+        },
+        "open": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimary",
+          "text": "Neutral/Text/colorText",
+          "icon": "Brand/Primary/colorPrimary",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "menuText": "Neutral/Text/colorText",
+          "menuItemHover": "Brand/Primary/colorPrimaryBg",
+          "menuItemDangerText": "Brand/Error/colorError",
+          "shadow": null
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "icon": "Neutral/Text/colorTextDisabled",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "menuText": "Neutral/Text/colorTextDisabled",
+          "menuItemHover": "Neutral/Fill/colorFillTertiary",
+          "menuItemDangerText": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    },
+
+    "triggerText": {
+      "states": {
+        "closed": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": null,
+          "text": "Neutral/Text/colorText",
+          "icon": "Neutral/Icon/colorIcon",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "menuText": "Neutral/Text/colorText",
+          "menuItemHover": "Neutral/Fill/colorFillTertiary",
+          "menuItemDangerText": "Brand/Error/colorError",
+          "shadow": null
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgTextHover",
+          "border": null,
+          "text": "Brand/Primary/colorPrimaryHover",
+          "icon": "Brand/Primary/colorPrimaryHover",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "menuText": "Neutral/Text/colorText",
+          "menuItemHover": "Neutral/Fill/colorFillTertiary",
+          "menuItemDangerText": "Brand/Error/colorError",
+          "shadow": null
+        },
+        "open": {
+          "background": "Neutral/Bg/colorBgTextActive",
+          "border": null,
+          "text": "Brand/Primary/colorPrimary",
+          "icon": "Brand/Primary/colorPrimary",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "menuText": "Neutral/Text/colorText",
+          "menuItemHover": "Brand/Primary/colorPrimaryBg",
+          "menuItemDangerText": "Brand/Error/colorError",
+          "shadow": null
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorTransparent",
+          "border": null,
+          "text": "Neutral/Text/colorTextDisabled",
+          "icon": "Neutral/Text/colorTextDisabled",
+          "overlay": "Neutral/Bg/colorBgElevated",
+          "menuText": "Neutral/Text/colorTextDisabled",
+          "menuItemHover": "Neutral/Fill/colorFillTertiary",
+          "menuItemDangerText": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    }
+  },
+
+  "styleResolution": {
+    "rules": [
+      "if trigger=text → styles.triggerText",
+      "else → styles.triggerDefault"
+    ]
+  },
+
+  "antd": {
+    "import": "import { Dropdown } from 'antd';",
+    "notes": {
+      "scope": "v1 covers a trigger plus a representative elevated menu overlay. Arrow, split button, custom popup render, and nested submenu trees remain follow-up work.",
+      "state": "State=Open keeps the menu visible in the component preview; closed and hover variants keep the overlay hidden.",
+      "menu": "Menu content is represented with three sample rows: default, hovered, and danger action."
+    },
+    "examples": {
+      "default": "<Dropdown menu={{ items }}><Button>Actions</Button></Dropdown>",
+      "textTrigger": "<Dropdown menu={{ items }}><a onClick={(e) => e.preventDefault()}>More</a></Dropdown>",
+      "disabled": "<Dropdown menu={{ items }} disabled><Button>Actions</Button></Dropdown>"
+    }
+  },
+
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "componentSets": {
+      "*Dropdown*": "Composed set using extracted trigger and menu-item atomics — Trigger=Default|Text × Size=Large|Default|Small × State=Closed|Hover|Open|Disabled (24 variants)",
+      "*Dropdown / Trigger*": "Atomic trigger set — Trigger=Default|Text × Size=Large|Default|Small × State=Closed|Hover|Open|Disabled (24 variants)",
+      "*Dropdown / Menu Item*": "Atomic menu row set — Size=Large|Default|Small × Row=Default|Hover|Danger (9 variants)"
+    },
+    "figmaImplemented": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageId": "162:22",
+      "componentSetId": "888:338",
+      "atomicComponentSetIds": {
+        "trigger": "914:146",
+        "menuItem": "914:198"
+      },
+      "variantCount": 24,
+      "status": "initialized",
+      "note": "Initialized on the target Dropdown page. Trigger treatments are stacked vertically, states are arranged in columns, and only the Open variants show the elevated menu overlay. The main set now composes extracted *Dropdown / Trigger* and *Dropdown / Menu Item* atomics."
+    },
+    "componentProperties": {
+      "ChevronIconValue": {
+        "type": "INSTANCE_SWAP",
+        "default": "Icon / CaretDownOutlined (509:585)",
+        "bindTo": "chevron.mainComponent",
+        "antd": "trigger icon replacement"
+      },
+      "IconColor": {
+        "type": "DERIVED",
+        "default": "follow styles.*.icon",
+        "bindTo": "chevron direct icon vector fills",
+        "antd": "trigger icon follows resolved foreground color"
+      },
+      "OverlayVisibility": {
+        "type": "DERIVED",
+        "default": "State=Open shows overlay; other states hide it",
+        "bindTo": "overlay.visible",
+        "antd": "design-time state preview; not exposed as a separate component property in v1"
+      }
+    },
+    "variantLayout": "State columns horizontally, Size rows vertically, Trigger treatment blocks stacked vertically. Overlay is visible only for State=Open."
+  },
+
+  "mappingCoverage": {
+    "mapped": {
+      "triggerColors": "Neutral/Bg, Neutral/Border, Neutral/Text, Neutral/Icon, Brand/Primary/*",
+      "overlayColors": "Neutral/Bg/colorBgElevated, Neutral/Fill/colorFillTertiary, Brand/Primary/colorPrimaryBg, Brand/Error/colorError",
+      "radius": "radius/roundedSm4 | radius/roundedLg8",
+      "padding": "padding/paddingXxs4 | padding/paddingXs8 | padding/paddingSm12",
+      "controlHeight": "controlHeight/controlHeightSm24 | Md32 | Lg40",
+      "iconSize": "iconSize/iconSizeSm12 | Md16 | Lg20",
+      "typography": "EN/Paragraph 14_h20_Regular | EN/H6 16_h24_Regular"
+    },
+    "gaps": [
+      {
+        "name": "effectStyle",
+        "reason": "A dedicated Dropdown elevation effect style does not exist in the local file yet; the spec keeps shadow unset instead of creating a new token without approval."
+      },
+      {
+        "name": "placementAxis",
+        "reason": "Ant Design placement variants such as bottomLeft or topRight are intentionally out of scope for v1 to keep the component set compact."
+      },
+      {
+        "name": "submenuTree",
+        "reason": "Nested submenu and selectable menu states require a separate Menu or Navigation spec rather than the base dropdown trigger."
+      },
+      {
+        "name": "splitButtonTrigger",
+        "reason": "Dropdown.Button is a composed control family and should be modeled after the base Dropdown trigger is approved."
+      }
+    ]
+  }
+}
