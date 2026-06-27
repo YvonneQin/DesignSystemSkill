@@ -1,0 +1,148 @@
+{
+  "$description": "AgentOS Design System Textarea component spec synced to the local Figma component set.",
+  "$source": {
+    "figma": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "pageNodeId": "941:11",
+      "componentSetNodeId": "1505:88813",
+      "url": "https://www.figma.com/design/MwUyizdlqXKyFzHJWvBtI8/AgentOS-Design-System?node-id=1505-88813"
+    },
+    "docs": "https://ant.design/components/input/#components-input-demo-textarea"
+  },
+  "component": "Textarea",
+  "dna": "control",
+  "$extends": "_control-gene.schema.json",
+  "variantCount": 8,
+  "sizeStrategy": "fixed",
+  "anatomy": {
+    "layers": [
+      { "name": "container", "role": "background, border, radius, padding, and state treatment" },
+      { "name": "field", "role": "placeholder or typed multiline value" },
+      { "name": "resizer", "role": "bottom-right resize affordance icon" },
+      { "name": "count", "role": "optional character count text" }
+    ]
+  },
+  "variants": {
+    "state": {
+      "values": ["default", "hover", "focused", "disabled"],
+      "figmaOnly": true,
+      "default": "default"
+    },
+    "value": {
+      "values": ["empty", "filled"],
+      "figmaOnly": true,
+      "default": "empty",
+      "figmaNote": "Maps the local draft's filled-vs-placeholder preview, not the runtime value prop type."
+    }
+  },
+  "naming": {
+    "figma": "State={State}, Value={Value}",
+    "example": "State=Hover, Value=Filled"
+  },
+  "layout": {
+    "lineWidth": { "ref": "Border/border-width", "value": 1 },
+    "paddingInline": { "ref": "padding/paddingSm12", "value": 12 },
+    "paddingBlock": { "ref": "padding/paddingXxs4", "value": 4 },
+    "resizerSize": { "value": 8, "mapped": false, "reason": "Current resize affordance geometry is a fixed local vector." }
+  },
+  "sizes": {
+    "default": {
+      "controlHeight": { "value": 52, "mapped": false, "reason": "Current local Textarea set is a fixed-height preview, not on the shared controlHeight scale." },
+      "paddingInline": { "ref": "padding/paddingSm12", "value": 12 },
+      "paddingBlock": { "ref": "padding/paddingXxs4", "value": 4 },
+      "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
+      "typography": { "ref": "13/CN-Regular" }
+    }
+  },
+  "effects": {},
+  "styles": {
+    "default": {
+      "states": {
+        "default": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "count": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Neutral/Icon/colorIcon",
+          "shadow": null
+        },
+        "hover": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimaryHover",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "count": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Neutral/Icon/colorIconHover",
+          "shadow": null
+        },
+        "focused": {
+          "background": "Neutral/Bg/colorBgContainer",
+          "border": "Brand/Primary/colorPrimary",
+          "text": "Neutral/Text/colorText",
+          "placeholder": "Neutral/Text/colorTextPlaceholder",
+          "count": "Neutral/Text/colorTextPlaceholder",
+          "icon": "Neutral/Icon/colorIcon",
+          "shadow": null
+        },
+        "disabled": {
+          "background": "Neutral/Bg/colorBgContainerDisabled",
+          "border": "Neutral/Border/colorBorder",
+          "text": "Neutral/Text/colorTextDisabled",
+          "placeholder": "Neutral/Text/colorTextDisabled",
+          "count": "Neutral/Text/colorTextDisabled",
+          "icon": "Neutral/Text/colorTextDisabled",
+          "shadow": null
+        }
+      }
+    }
+  },
+  "styleResolution": {
+    "rules": [
+      "else → styles.default"
+    ]
+  },
+  "ruleOverrides": {
+    "size": [
+      "Textarea v1 uses a fixed 52px local preview height instead of the shared controlHeight scale."
+    ],
+    "variant": [],
+    "state": [],
+    "icon": [
+      "Resizer affordance uses fixed local vectors; only its color is token-bound."
+    ],
+    "loading": []
+  },
+  "figmaConventions": {
+    "variableMode": "Never set explicit Light/Dark mode on component appearance — inherit from file or page context.",
+    "pageContent": "Component pages contain only component sets — no text labels, showcase matrices, doc frames, or instance grids.",
+    "variantLayout": "State rows with Value sub-variants in one component set.",
+    "iconBinding": {
+      "implementation": "local vector affordance",
+      "wrapper": false,
+      "colorStrategy": "resizer vector fills follow icon state tokens; vector strokes fall back to Neutral/Border/colorBorder because the current icon semantic variables are not scoped for STROKE_COLOR."
+    }
+  },
+  "mappingCoverage": {
+    "mapped": {
+      "radius": "radius/roundedLg8",
+      "paddingInline": "padding/paddingSm12",
+      "paddingBlock": "padding/paddingXxs4",
+      "background": "Neutral/Bg/colorBgContainer | Neutral/Bg/colorBgContainerDisabled",
+      "border": "Neutral/Border/colorBorder | Brand/Primary/colorPrimary | Brand/Primary/colorPrimaryHover",
+      "text": "Neutral/Text/colorText | Neutral/Text/colorTextPlaceholder | Neutral/Text/colorTextDisabled",
+      "icon": "Neutral/Icon/colorIcon | Neutral/Icon/colorIconHover | Neutral/Text/colorTextDisabled",
+      "iconStroke": "Neutral/Border/colorBorder"
+    },
+    "gaps": [
+      {
+        "field": "sizes.default.controlHeight",
+        "reason": "Current local draft uses a fixed 52px preview height that does not map to existing controlHeight tokens."
+      },
+      {
+        "field": "layout.resizerSize",
+        "reason": "Current resize affordance geometry is a fixed local vector."
+      }
+    ]
+  }
+}
