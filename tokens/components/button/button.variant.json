@@ -1,0 +1,62 @@
+{
+  "$description": "AgentOS Button variant and component-property definition aligned to the local Figma *Button* set.",
+  "$source": {
+    "figma": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "componentSetNodeId": "447:902"
+    },
+    "compiledSpec": "../button.json"
+  },
+  "component": "Button",
+  "variantCount": 150,
+  "naming": {
+    "figma": "Theme={Theme}, Type={Type}, Size={Size}, State={State}",
+    "example": "Theme=Primary, Type=Default, Size=Default, State=Default"
+  },
+  "axes": {
+    "theme": {
+      "values": ["primary", "secondary", "black", "danger"],
+      "figma": "Theme",
+      "default": "primary",
+      "coverage": {
+        "primary": ["default", "outline", "ghost"],
+        "secondary": ["default"],
+        "black": ["default", "outline", "ghost"],
+        "danger": ["default", "outline", "ghost"]
+      }
+    },
+    "type": {
+      "values": ["default", "outline", "ghost"],
+      "figma": "Type",
+      "default": "default"
+    },
+    "size": {
+      "values": ["large", "default", "small"],
+      "figma": "Size",
+      "default": "default"
+    },
+    "state": {
+      "values": ["default", "hover", "focus", "active", "disabled"],
+      "figma": "State",
+      "default": "default",
+      "figmaOnly": true
+    }
+  },
+  "componentProperties": {
+    "Theme": { "type": "VARIANT", "options": ["Primary", "Secondary", "Black", "Danger"] },
+    "Type": { "type": "VARIANT", "options": ["Default", "Outline", "Ghost"] },
+    "Size": { "type": "VARIANT", "options": ["Default", "Large", "Small"] },
+    "State": { "type": "VARIANT", "options": ["Default", "Hover", "Focus", "Active", "Disabled"] },
+    "ShowLeftIcon": { "type": "BOOLEAN", "default": false },
+    "ShowContent": { "type": "BOOLEAN", "default": true },
+    "ShowRightIcon": { "type": "BOOLEAN", "default": false },
+    "IconValue": { "type": "INSTANCE_SWAP", "sharedSlot": true }
+  },
+  "legacyCompatibility": {
+    "type.primary": "maps to type=default + theme=primary",
+    "danger=true": "maps to theme=danger",
+    "type.dashed": "legacy preview fallback only; no live Figma axis",
+    "type.text": "legacy preview fallback only; no live Figma axis",
+    "shape.round": "legacy preview fallback only; no live Figma axis"
+  }
+}

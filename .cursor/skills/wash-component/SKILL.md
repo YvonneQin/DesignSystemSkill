@@ -99,36 +99,6 @@ description: 洗组件并规范到 AgentOS 设计系统。Use when the user says
    - 哪些缺少结构化 spec
 4. 若用户给的是示例容器而不是组件本体，要明确指出“本体是谁、容器是谁”
 
-#### Phase 0 补充：先把“找组件”这件事洗清楚
-
-如果用户是在追这些问题：
-
-- “从这个节点里找组件”
-- “这个 group / frame 用的是哪个 button”
-- “列出来”
-- “快洗”
-
-先做这四件事，再给解释：
-
-1. 明确用户给的节点到底是组件集、单组件、实例，还是示例容器 / 展示墙
-2. 如果用户说“从 A 里面找”，输出必须优先基于 **A 的直接子节点或明确后代节点**
-3. 如果 A 里没有“完整目标组件”，要直接说清：
-   - A 里有的是哪些单个组件
-   - A 里没有的是什么
-   - 目标对象是不是由 A 里的哪些节点拼出来的
-4. 当用户明显在追“到底是哪几个”时，先给 **节点 ID + 名称 / 变体名**，再补一句解释；不要先给抽象推断
-
-#### 取证优先级
-
-定位来源组件、判断有没有绑定时，证据顺序固定为：
-
-1. 实例引用链 / `mainComponent`
-2. 目标节点下的精确子节点列表（`node id + name`）
-3. 可编程读取的绑定字段（如 `textStyleId`、`boundVariables.height`）
-4. 截图视觉判断
-
-只有前 1-3 拿不到时，才允许用截图推断，并且必须明确写“这是视觉判断，不是引用链结果”。
-
 ### Phase 1 — Explain + Confirm
 
 向用户输出一份简短方案，至少包含：
@@ -170,14 +140,6 @@ description: 洗组件并规范到 AgentOS 设计系统。Use when the user says
 - 整页重写时分批
 - 不并行对同一文件做多次 `use_figma` 写入
 
-补充要求：
-
-- 用户问“绑了没有”时，不要先靠截图回答，要直接查绑定字段
-- 文字样式看 `textStyleId`
-- 高度受控看 `boundVariables.height`
-- 颜色受控看 `boundVariables.fills` / `boundVariables.strokes`
-- 回答里至少给：总数、已绑定数、未绑定数、抽样节点 ID
-
 ### Phase 3 — Verify
 
 至少验证三件事：
@@ -185,11 +147,6 @@ description: 洗组件并规范到 AgentOS 设计系统。Use when the user says
 1. `textStyleId` 是否完整
 2. 可见纯色 fill/stroke 是否都已挂本地变量
 3. 命名是否已经变成可读语义名
-
-如果本轮补了受控高度 / 图标尺寸 / 间距变量，还要追加：
-
-4. `boundVariables.height` / `width` / `padding*` 是否挂到预期变量
-5. `24 / 32 / 40` 这类尺寸档位是否逐档核对完毕
 
 必要时补一次 `get_variable_defs` / metadata / screenshot 回查。
 
@@ -268,11 +225,6 @@ description: 洗组件并规范到 AgentOS 设计系统。Use when the user says
 3. 哪些命名被规范
 4. 是否已写入 `tokens/components/{name}.json`
 5. 是否已经进入线上结构化展示链路
-
-如果本轮用户重点是在“找组件 / 找来源 / 列清单”，还要额外给出：
-
-6. 用户指定节点中的精确子节点清单（至少 `node id + name`）
-7. 明确写出“找得到的是什么，找不到的是什么”
 
 如果还没进入结构化数据阶段，要明确说：
 

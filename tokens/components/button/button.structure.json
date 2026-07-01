@@ -1,0 +1,86 @@
+{
+  "$description": "AgentOS Button component tree extracted from the local Figma *Button* component set. This file is the editable source of truth for subtree and component property wiring.",
+  "$source": {
+    "figma": {
+      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
+      "componentSetNodeId": "447:902",
+      "sampleVariantNodeId": "447:2",
+      "url": "https://www.figma.com/design/MwUyizdlqXKyFzHJWvBtI8/AgentOS-Design-System?node-id=447-2"
+    },
+    "compiledSpec": "../button.json"
+  },
+  "component": "Button",
+  "dna": "control",
+  "componentSet": {
+    "name": "*Button*",
+    "nodeId": "447:902",
+    "variantCount": 150
+  },
+  "anatomy": {
+    "layers": [
+      { "name": "container", "role": "background, border, radius, padding, shadow, height" },
+      { "name": "content", "role": "horizontal auto-layout row that distributes icon and label slots" },
+      { "name": "iconLeft", "role": "optional leading icon instance; visibility bound to ShowLeftIcon" },
+      { "name": "label", "role": "button text label; visibility bound to ShowContent" },
+      { "name": "iconRight", "role": "optional trailing icon instance; visibility bound to ShowRightIcon" }
+    ],
+    "tree": {
+      "container": {
+        "type": "COMPONENT_VARIANT",
+        "children": ["content"]
+      },
+      "content": {
+        "type": "AUTO_LAYOUT_FRAME",
+        "direction": "HORIZONTAL",
+        "children": ["iconLeft", "label", "iconRight"]
+      },
+      "iconLeft": {
+        "type": "INSTANCE",
+        "name": "Icon / StarOutlined",
+        "mainComponentRef": "componentProperties.IconValue",
+        "visibleRef": "componentProperties.ShowLeftIcon"
+      },
+      "label": {
+        "type": "TEXT",
+        "nodeId": "447:3",
+        "visibleRef": "componentProperties.ShowContent"
+      },
+      "iconRight": {
+        "type": "INSTANCE",
+        "name": "Icon / StarOutlined",
+        "mainComponentRef": "componentProperties.IconValue",
+        "visibleRef": "componentProperties.ShowRightIcon"
+      }
+    }
+  },
+  "componentProperties": {
+    "ShowLeftIcon": {
+      "type": "BOOLEAN",
+      "key": "ShowLeftIcon#432:451",
+      "bindsTo": ["anatomy.tree.iconLeft.visibleRef"]
+    },
+    "ShowContent": {
+      "type": "BOOLEAN",
+      "key": "ShowContent#432:902",
+      "bindsTo": ["anatomy.tree.label.visibleRef"]
+    },
+    "ShowRightIcon": {
+      "type": "BOOLEAN",
+      "key": "ShowRightIcon#432:1353",
+      "bindsTo": ["anatomy.tree.iconRight.visibleRef"]
+    },
+    "IconValue": {
+      "type": "INSTANCE_SWAP",
+      "figmaName": "↳ Icon Value",
+      "key": "↳ Icon Value#478:0",
+      "bindsTo": [
+        "anatomy.tree.iconLeft.mainComponentRef",
+        "anatomy.tree.iconRight.mainComponentRef"
+      ]
+    }
+  },
+  "notes": [
+    "The left and right icon slots share one instance-swap property in Figma.",
+    "This subtree is based on the live Figma descendant tree returned by Code Connect context for node 447:902."
+  ]
+}

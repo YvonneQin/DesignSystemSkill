@@ -21,12 +21,14 @@ If the task touches token meaning, naming, refs, or values, stop and get user ap
 | Layer | Source of truth | Notes |
 |------|------------------|-------|
 | Token primitives and semantic refs | `tokens/` | user approval required for token changes |
-| Component behavior and bindings | `tokens/components/{name}.json` | authoritative spec for the component |
+| Component behavior and bindings | `tokens/components/{name}.json` | compiled compatibility spec consumed by local code |
+| Editable split spec | `tokens/components/{name}/{name}.*.json` | source-of-truth when a component is decomposed into structure/variant/token/style/rule files |
 | Figma implementation | component set in Figma | must follow the JSON spec, not the other way around |
 
 Practical rule:
 
-- Change the JSON spec first.
+- Change the split spec first when it exists; otherwise change the single JSON spec.
+- Regenerate or update the compiled `{name}.json` compatibility file in the same edit.
 - Review the spec.
 - Only then initialize or update Figma.
 

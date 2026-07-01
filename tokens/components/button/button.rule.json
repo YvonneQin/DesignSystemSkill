@@ -1,0 +1,49 @@
+{
+  "$description": "AgentOS Button style resolution, API mapping, and compatibility rules aligned to the local Figma *Button* set.",
+  "$source": {
+    "compiledSpec": "../button.json",
+    "docs": "https://ant.design/components/button/"
+  },
+  "component": "Button",
+  "styleResolution": {
+    "rules": [
+      "if theme=primary and type=default -> primary",
+      "if theme=primary and type=outline -> outline",
+      "if theme=primary and type=ghost -> ghost",
+      "if theme=secondary and type=default -> secondary",
+      "if theme=black and type=default -> black",
+      "if theme=black and type=outline -> blackOutline",
+      "if theme=black and type=ghost -> blackGhost",
+      "if theme=danger and type=default -> danger",
+      "if theme=danger and type=outline -> dangerOutline",
+      "if theme=danger and type=ghost -> dangerGhost",
+      "if state=focus and no dedicated focus token exists -> use hover appearance",
+      "if state=disabled -> override with shared disabled treatment"
+    ]
+  },
+  "antd": {
+    "import": "import { Button } from 'antd';",
+    "notes": {
+      "primary": "Theme=Primary, Type=Default aligns with Ant primary button.",
+      "outline": "Type=Outline aligns with the Ant default stroked button.",
+      "ghost": "Type=Ghost aligns with the Ant ghost button.",
+      "secondary": "Custom local theme; not a native Ant theme.",
+      "black": "Custom local theme built on Brand/Tertiary tokens.",
+      "danger": "Custom local danger theme; mapped through theme=danger instead of the Ant danger boolean."
+    }
+  },
+  "previewCompatibility": {
+    "legacyTypeMap": {
+      "primary": "default",
+      "dashed": "outline",
+      "text": "ghost"
+    },
+    "legacyStateMap": {
+      "loading": "hover"
+    },
+    "notes": [
+      "These fallbacks are for local React preview only and are not part of the source-of-truth Figma spec.",
+      "Round shape remains a preview fallback until the live Figma set adds a Shape axis."
+    ]
+  }
+}

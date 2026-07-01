@@ -1,183 +1,9 @@
 {
-  "$description": "AgentOS Design System Button component spec aligned to the current local Figma *Button* component set.",
+  "$description": "AgentOS Button style blocks aligned to the local Figma *Button* component set.",
   "$source": {
-    "figma": {
-      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
-      "componentSetNodeId": "447:902",
-      "url": "https://www.figma.com/design/MwUyizdlqXKyFzHJWvBtI8/AgentOS-Design-System?node-id=447-902"
-    },
-    "docs": "https://ant.design/components/button/",
-    "splitSpecDir": "components/button",
-    "splitSpecs": {
-      "structure": "components/button/button.structure.json",
-      "variants": "components/button/button.variant.json",
-      "tokens": "components/button/button.token.json",
-      "styles": "components/button/button.style.json",
-      "rules": "components/button/button.rule.json"
-    }
+    "compiledSpec": "../button.json"
   },
-
   "component": "Button",
-  "dna": "control",
-  "$extends": "_control-gene.schema.json",
-  "variantCount": 150,
-
-  "anatomy": {
-    "layers": [
-      { "name": "container", "role": "background, border, radius, padding, shadow, height" },
-      { "name": "content", "role": "horizontal auto-layout row that distributes icon and label slots" },
-      { "name": "iconLeft", "role": "optional leading icon instance; visibility bound to ShowLeftIcon" },
-      { "name": "label", "role": "button text label; visibility bound to ShowContent" },
-      { "name": "iconRight", "role": "optional trailing icon instance; visibility bound to ShowRightIcon" }
-    ],
-    "tree": {
-      "contentDirection": "horizontal",
-      "slotOrder": ["iconLeft", "label", "iconRight"]
-    },
-    "notes": [
-      "Child subtree and component-property wiring were audited from live Figma Code Connect context for node 447:902.",
-      "The live component set implements left icon, content visibility, and right icon slots. Shape and loading remain preview-only compatibility features."
-    ]
-  },
-
-  "componentProperties": {
-    "ShowLeftIcon": {
-      "type": "BOOLEAN",
-      "key": "ShowLeftIcon#432:451",
-      "bindsTo": "iconLeft.visible"
-    },
-    "ShowContent": {
-      "type": "BOOLEAN",
-      "key": "ShowContent#432:902",
-      "bindsTo": "label.visible"
-    },
-    "ShowRightIcon": {
-      "type": "BOOLEAN",
-      "key": "ShowRightIcon#432:1353",
-      "bindsTo": "iconRight.visible"
-    },
-    "IconValue": {
-      "type": "INSTANCE_SWAP",
-      "figmaName": "↳ Icon Value",
-      "key": "↳ Icon Value#478:0",
-      "bindsTo": ["iconLeft.mainComponent", "iconRight.mainComponent"]
-    }
-  },
-
-  "variants": {
-    "theme": {
-      "values": ["primary", "secondary", "black", "danger"],
-      "figma": "Theme",
-      "default": "primary",
-      "coverage": {
-        "primary": ["default", "outline", "ghost"],
-        "secondary": ["default"],
-        "black": ["default", "outline", "ghost"],
-        "danger": ["default", "outline", "ghost"]
-      }
-    },
-    "type": {
-      "values": ["default", "outline", "ghost"],
-      "figma": "Type",
-      "default": "default",
-      "antdMapping": {
-        "default": "solid custom button; maps to Ant `type=\"primary\"` only for the primary theme",
-        "outline": "Ant default button with stroked container",
-        "ghost": "Ant ghost button"
-      }
-    },
-    "size": {
-      "values": ["large", "default", "small"],
-      "figma": "Size",
-      "antd": "size",
-      "default": "default"
-    },
-    "state": {
-      "values": ["default", "hover", "focus", "active", "disabled"],
-      "figma": "State",
-      "figmaOnly": true,
-      "default": "default",
-      "notes": [
-        "The current set uses `State=Focus`, not `Loading`.",
-        "Focus is modeled as a design-time preview state, not a public Ant Button API prop."
-      ]
-    }
-  },
-
-  "naming": {
-    "figma": "Theme={Theme}, Type={Type}, Size={Size}, State={State}",
-    "example": "Theme=Primary, Type=Default, Size=Default, State=Default"
-  },
-
-  "layout": {
-    "lineWidth": { "ref": "Border/border-width", "value": 1 },
-    "iconTextGap": { "ref": "margin/marginXs8", "value": 8 },
-    "contentAlign": { "value": "center", "mapped": false, "reason": "layout enum, not a token" }
-  },
-
-  "sizes": {
-    "small": {
-      "controlHeight": { "ref": "controlHeight/controlHeightSm24", "value": 24 },
-      "paddingInline": { "ref": "padding/padding6", "value": 6, "mapping": "nearest" },
-      "borderRadius": { "ref": "radius/roundedSm4", "value": 4 },
-      "typography": { "ref": "EN/Paragraph 14_h20_Regular" },
-      "previewWidth": { "value": 72, "mapped": false, "reason": "observed Figma sample width for the default label" },
-      "basicMinWidth": { "value": 72, "mapped": false, "reason": "preview compatibility alias of previewWidth" },
-      "iconOnlySize": { "value": 24, "mapped": false, "reason": "preview compatibility derived from controlHeight" }
-    },
-    "default": {
-      "controlHeight": { "ref": "controlHeight/controlHeightMd32", "value": 32 },
-      "paddingInline": { "ref": "padding/paddingXs8", "value": 8, "mapping": "nearest" },
-      "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
-      "typography": { "ref": "EN/Paragraph 14_h20_Regular" },
-      "previewWidth": { "value": 80, "mapped": false, "reason": "observed Figma sample width for the default label" },
-      "basicMinWidth": { "value": 80, "mapped": false, "reason": "preview compatibility alias of previewWidth" },
-      "iconOnlySize": { "value": 32, "mapped": false, "reason": "preview compatibility derived from controlHeight" }
-    },
-    "large": {
-      "controlHeight": { "ref": "controlHeight/controlHeightLg40", "value": 40 },
-      "paddingInline": { "ref": "padding/paddingSm12", "value": 12, "mapping": "nearest" },
-      "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
-      "typography": { "ref": "EN/H6 16_h24_Regular" },
-      "previewWidth": { "value": 97, "mapped": false, "reason": "observed Figma sample width for the default label" },
-      "basicMinWidth": { "value": 97, "mapped": false, "reason": "preview compatibility alias of previewWidth" },
-      "iconOnlySize": { "value": 40, "mapped": false, "reason": "preview compatibility derived from controlHeight" }
-    }
-  },
-
-  "shape": {
-    "default": {
-      "mode": "size-driven radius"
-    },
-    "round": {
-      "borderRadius": { "ref": "radius/roundedFull999", "value": 999 },
-      "status": "preview compatibility only; not a live Figma axis"
-    }
-  },
-
-  "effects": {
-    "primaryShadow": {
-      "ref": "Component/Button/primaryShadow",
-      "type": "DROP_SHADOW",
-      "appliesTo": ["primary/default"]
-    },
-    "secondaryShadow": {
-      "ref": "Component/Button/secondaryShadow",
-      "type": "DROP_SHADOW",
-      "appliesTo": ["secondary/default", "black/default"]
-    },
-    "defaultShadow": {
-      "ref": "Component/Button/defaultShadow",
-      "type": "DROP_SHADOW",
-      "appliesTo": ["primary/outline", "black/outline", "danger/outline"]
-    },
-    "dangerShadow": {
-      "ref": "Component/Button/dangerShadow",
-      "type": "DROP_SHADOW",
-      "appliesTo": ["danger/default"]
-    }
-  },
-
   "styles": {
     "primary": {
       "states": {
@@ -213,7 +39,6 @@
         }
       }
     },
-
     "outline": {
       "states": {
         "default": {
@@ -248,7 +73,6 @@
         }
       }
     },
-
     "ghost": {
       "states": {
         "default": {
@@ -283,7 +107,6 @@
         }
       }
     },
-
     "secondary": {
       "states": {
         "default": {
@@ -316,13 +139,8 @@
           "text": "Neutral/Text/colorTextDisabled",
           "shadow": null
         }
-      },
-      "notes": [
-        "This style block is kept as the current best local mapping.",
-        "The Figma file now exposes both `Theme=Secondary` and `Theme=Black`; their semantic split still needs screenshot-level audit."
-      ]
+      }
     },
-
     "black": {
       "states": {
         "default": {
@@ -357,7 +175,6 @@
         }
       }
     },
-
     "blackOutline": {
       "states": {
         "default": {
@@ -392,7 +209,6 @@
         }
       }
     },
-
     "blackGhost": {
       "states": {
         "default": {
@@ -427,7 +243,6 @@
         }
       }
     },
-
     "danger": {
       "states": {
         "default": {
@@ -462,7 +277,6 @@
         }
       }
     },
-
     "dangerOutline": {
       "states": {
         "default": {
@@ -497,7 +311,6 @@
         }
       }
     },
-
     "dangerGhost": {
       "states": {
         "default": {
@@ -532,101 +345,5 @@
         }
       }
     }
-  },
-
-  "styleResolution": {
-    "rules": [
-      "if theme=primary and type=default -> primary",
-      "if theme=primary and type=outline -> outline",
-      "if theme=primary and type=ghost -> ghost",
-      "if theme=secondary and type=default -> secondary",
-      "if theme=black and type=default -> black",
-      "if theme=black and type=outline -> blackOutline",
-      "if theme=black and type=ghost -> blackGhost",
-      "if theme=danger and type=default -> danger",
-      "if theme=danger and type=outline -> dangerOutline",
-      "if theme=danger and type=ghost -> dangerGhost",
-      "if state=focus and no dedicated focus token exists -> use hover appearance",
-      "if state=disabled -> override with shared disabled treatment"
-    ]
-  },
-
-  "antd": {
-    "import": "import { Button } from 'antd';",
-    "notes": {
-      "primary": "Theme=Primary, Type=Default aligns with Ant primary button.",
-      "outline": "Type=Outline aligns with the Ant default stroked button.",
-      "ghost": "Type=Ghost aligns with the Ant ghost button.",
-      "secondary": "Custom local theme; not a native Ant theme.",
-      "black": "Custom local theme built on Brand/Tertiary (Base/black) tokens.",
-      "danger": "Custom local danger theme; not using Ant's built-in danger prop directly in this spec."
-    },
-    "examples": {
-      "primary": "<Button type=\"primary\">Button</Button>",
-      "outline": "<Button>Button</Button>",
-      "ghost": "<Button ghost>Button</Button>",
-      "secondary": "<Button data-theme=\"secondary\">Button</Button>",
-      "black": "<Button data-theme=\"black\">Button</Button>",
-      "danger": "<Button data-theme=\"danger\">Button</Button>"
-    }
-  },
-
-  "figmaConventions": {
-    "pageContent": "Component page contains the Button component set only.",
-    "componentSets": {
-      "*Button*": "Theme=Primary|Secondary|Black|Danger × Type coverage by theme × Size=Large|Default|Small × State=Default|Hover|Focus|Active|Disabled"
-    },
-    "figmaImplemented": {
-      "fileKey": "MwUyizdlqXKyFzHJWvBtI8",
-      "componentSetId": "447:902",
-      "variantCount": 150,
-      "themeCounts": {
-        "Primary": 45,
-        "Secondary": 15,
-        "Black": 45,
-        "Danger": 45
-      }
-    },
-    "variantLayout": "Theme blocks stacked vertically; inside each block, State columns and Type sub-columns, with Size rows."
-  },
-
-  "mappingCoverage": {
-    "mapped": {
-      "colors": "Brand/Primary/*, Brand/Tertiary/*, Brand/Error/*, Neutral/*",
-      "radius": "radius/roundedSm4, radius/roundedLg8",
-      "padding": "padding/padding6, padding/paddingXs8, padding/paddingSm12",
-      "controlHeight": "controlHeight/controlHeightSm24, controlHeight/controlHeightMd32, controlHeight/controlHeightLg40",
-      "borderWidth": "Border/border-width",
-      "typography": "EN/Paragraph 14_h20_Regular, EN/H6 16_h24_Regular",
-      "effects": "Component/Button/primaryShadow, Component/Button/secondaryShadow, Component/Button/defaultShadow, Component/Button/dangerShadow",
-      "transparent": "Neutral/Bg/colorTransparent"
-    },
-    "gaps": [
-      {
-        "name": "secondary-vs-black semantic split",
-        "reason": "Current Figma exposes both `Theme=Secondary` and `Theme=Black`, but available MCP reads do not give screenshot-inspected subtree/color confirmation.",
-        "action": "Audit rendered variants visually before locking the final token distinction."
-      },
-      {
-        "name": "shape axis",
-        "reason": "Previous JSON assumed Shape variants, but the current Figma set naming and coverage do not include Shape.",
-        "action": "Keep shape out of the source-of-truth spec until it exists again in Figma."
-      },
-      {
-        "name": "icon-only coverage",
-        "reason": "The live Figma set exposes left and right icon slots, but does not expose a dedicated icon-only variant axis.",
-        "action": "Keep icon-only geometry as preview-only compatibility until Figma adds explicit coverage."
-      },
-      {
-        "name": "loading state",
-        "reason": "Previous JSON modeled Loading, but current Figma uses Focus instead.",
-        "action": "Treat loading as out of scope for this spec revision."
-      },
-      {
-        "name": "text and dashed types",
-        "reason": "Previous JSON modeled `text` and `dashed`, but current Figma set only implements `default`, `outline`, and `ghost`.",
-        "action": "Re-add only after Figma implements them."
-      }
-    ]
   }
 }

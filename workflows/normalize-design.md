@@ -7,7 +7,6 @@ Bring a hardcoded Figma design in line with the design system.
 1. Open Figma file; note `fileKey` and target `node-id`.
 2. Inspect variable collections (local vs library).
 3. Confirm user selection scope.
-4. If the user says "find it from this node", first list the exact child / descendant nodes in that node before inferring source components.
 
 ## Phase 1 — Audit (read-only)
 
@@ -27,4 +26,3 @@ Bring a hardcoded Figma design in line with the design system.
 1. Re-run scans; confirm zero unbound (or document intentional exceptions).
 2. Screenshot affected frames.
 3. Summarize bound counts by token.
-4. For text-style or controlled-height questions, verify by reading binding fields directly (`textStyleId`, `boundVariables.height`) and report counts, not just screenshots.

@@ -51,12 +51,6 @@ Phase 3 — Verify (screenshot / metadata)
 
 Use `templates/audit-report.md` for scan output.
 
-## Response discipline
-
-- 用户如果明确说“从这个节点里找”，回答必须先基于该节点的直接子节点 / 明确后代节点，不要先跳出节点范围做抽象推断。
-- 用户如果问“有没有绑上”，优先回读 Figma 绑定字段（如 `textStyleId`、`boundVariables.height`），不要先用截图判断。
-- 当用户连续追问“列出来 / 快洗 / 还没洗清”时，先给硬结果：`node id + name + 绑定状态 / 变体名`，再补解释。
-
 ## Performance
 
 - Scope to user selection when possible

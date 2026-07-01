@@ -7,7 +7,7 @@ export default {
   args: {
     children: 'Button',
     theme: 'primary',
-    type: 'primary',
+    type: 'default',
     size: 'default',
     shape: 'default',
     disabled: false,
@@ -19,11 +19,11 @@ export default {
   argTypes: {
     theme: {
       control: 'radio',
-      options: ['primary', 'secondary', 'danger'],
+      options: ['primary', 'secondary', 'black', 'danger'],
     },
     type: {
       control: 'radio',
-      options: ['primary', 'outline', 'dashed', 'text', 'ghost'],
+      options: ['default', 'outline', 'ghost'],
     },
     size: {
       control: 'radio',
@@ -35,7 +35,7 @@ export default {
     },
     state: {
       control: 'radio',
-      options: [undefined, 'default', 'hover', 'active', 'loading', 'disabled'],
+      options: [undefined, 'default', 'hover', 'focus', 'active', 'disabled'],
     },
   },
   parameters: {
@@ -53,32 +53,32 @@ export const VisualSystem = {
   render: () => (
     <div className="story-stack">
       <div className="story-row">
-        <Button type="primary">Primary</Button>
-        <Button theme="secondary" type="primary">Secondary</Button>
+        <Button type="default">Primary</Button>
+        <Button theme="secondary" type="default">Secondary</Button>
+        <Button theme="black" type="default">Black</Button>
+        <Button theme="danger" type="default">Danger</Button>
         <Button type="outline">Outline</Button>
-        <Button type="dashed">Dashed</Button>
-        <Button type="text">Text</Button>
         <Button type="ghost">Ghost</Button>
       </div>
       <div className="story-row">
-        <Button type="primary">Interactive</Button>
-        <Button type="primary" state="hover">Hover</Button>
-        <Button type="primary" state="active">Pressed</Button>
-        <Button type="primary" loading>Loading</Button>
-        <Button type="primary" disabled>Disabled</Button>
+        <Button type="default">Interactive</Button>
+        <Button type="default" state="hover">Hover</Button>
+        <Button type="default" state="focus">Focus</Button>
+        <Button type="default" state="active">Pressed</Button>
+        <Button type="default" disabled>Disabled</Button>
       </div>
       <div className="story-row">
-        <Button type="primary" size="small">Small</Button>
-        <Button type="primary">Default</Button>
-        <Button type="primary" size="large">Large</Button>
-        <Button type="outline" theme="secondary">Secondary outline</Button>
-        <Button type="primary" theme="danger">Danger</Button>
-        <Button type="ghost" theme="secondary">Ghost secondary</Button>
+        <Button type="default" size="small">Small</Button>
+        <Button type="default">Default</Button>
+        <Button type="default" size="large">Large</Button>
+        <Button type="outline" theme="black">Black outline</Button>
+        <Button type="ghost" theme="danger">Ghost danger</Button>
+        <Button type="default" loading>Loading fallback</Button>
       </div>
       <div className="story-row">
-        <Button type="primary" iconLeft="←">Button</Button>
+        <Button type="default" iconLeft="←">Button</Button>
         <Button type="outline" iconRight="→">Continue</Button>
-        <Button type="primary" iconLeft="★" iconOnly />
+        <Button type="default" iconLeft="★" iconOnly />
         <Button type="outline" shape="round">Round</Button>
       </div>
     </div>

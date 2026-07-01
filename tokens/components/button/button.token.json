@@ -1,0 +1,99 @@
+{
+  "$description": "AgentOS Button token mapping and geometry aligned to the local Figma *Button* set.",
+  "$source": {
+    "compiledSpec": "../button.json"
+  },
+  "component": "Button",
+  "layout": {
+    "lineWidth": { "ref": "Border/border-width", "value": 1 },
+    "iconTextGap": { "ref": "margin/marginXs8", "value": 8 },
+    "contentAlign": { "value": "center", "mapped": false, "reason": "layout enum, not a token" }
+  },
+  "sizes": {
+    "small": {
+      "controlHeight": { "ref": "controlHeight/controlHeightSm24", "value": 24 },
+      "paddingInline": { "ref": "padding/padding6", "value": 6, "mapping": "nearest" },
+      "borderRadius": { "ref": "radius/roundedSm4", "value": 4 },
+      "typography": { "ref": "EN/Paragraph 14_h20_Regular" },
+      "basicMinWidth": { "value": 72, "mapped": false, "reason": "observed sample width in live Figma" },
+      "iconOnlySize": { "value": 24, "mapped": false, "reason": "legacy preview compatibility; derived from control height" }
+    },
+    "default": {
+      "controlHeight": { "ref": "controlHeight/controlHeightMd32", "value": 32 },
+      "paddingInline": { "ref": "padding/paddingXs8", "value": 8, "mapping": "nearest" },
+      "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
+      "typography": { "ref": "EN/Paragraph 14_h20_Regular" },
+      "basicMinWidth": { "value": 80, "mapped": false, "reason": "observed sample width in live Figma" },
+      "iconOnlySize": { "value": 32, "mapped": false, "reason": "legacy preview compatibility; derived from control height" }
+    },
+    "large": {
+      "controlHeight": { "ref": "controlHeight/controlHeightLg40", "value": 40 },
+      "paddingInline": { "ref": "padding/paddingSm12", "value": 12, "mapping": "nearest" },
+      "borderRadius": { "ref": "radius/roundedLg8", "value": 8 },
+      "typography": { "ref": "EN/H6 16_h24_Regular" },
+      "basicMinWidth": { "value": 97, "mapped": false, "reason": "observed sample width in live Figma" },
+      "iconOnlySize": { "value": 40, "mapped": false, "reason": "legacy preview compatibility; derived from control height" }
+    }
+  },
+  "shape": {
+    "default": {
+      "mode": "size-driven radius"
+    },
+    "round": {
+      "borderRadius": { "ref": "radius/roundedFull999", "value": 999 },
+      "status": "legacy preview compatibility only; not present as a live Figma axis"
+    }
+  },
+  "effects": {
+    "primaryShadow": {
+      "ref": "Component/Button/primaryShadow",
+      "type": "DROP_SHADOW",
+      "appliesTo": ["primary/default"]
+    },
+    "secondaryShadow": {
+      "ref": "Component/Button/secondaryShadow",
+      "type": "DROP_SHADOW",
+      "appliesTo": ["secondary/default", "black/default"]
+    },
+    "defaultShadow": {
+      "ref": "Component/Button/defaultShadow",
+      "type": "DROP_SHADOW",
+      "appliesTo": ["primary/outline", "black/outline", "danger/outline"]
+    },
+    "dangerShadow": {
+      "ref": "Component/Button/dangerShadow",
+      "type": "DROP_SHADOW",
+      "appliesTo": ["danger/default"]
+    }
+  },
+  "mappingCoverage": {
+    "mapped": {
+      "colors": "Brand/Primary/*, Brand/Tertiary/*, Brand/Error/*, Neutral/*",
+      "radius": "radius/roundedSm4, radius/roundedLg8, radius/roundedFull999",
+      "padding": "padding/padding6, padding/paddingXs8, padding/paddingSm12",
+      "gap": "margin/marginXs8",
+      "controlHeight": "controlHeight/controlHeightSm24, controlHeight/controlHeightMd32, controlHeight/controlHeightLg40",
+      "borderWidth": "Border/border-width",
+      "typography": "EN/Paragraph 14_h20_Regular, EN/H6 16_h24_Regular",
+      "effects": "Component/Button/primaryShadow, Component/Button/secondaryShadow, Component/Button/defaultShadow, Component/Button/dangerShadow",
+      "transparent": "Neutral/Bg/colorTransparent"
+    },
+    "gaps": [
+      {
+        "name": "shape axis",
+        "reason": "Current Figma set does not expose Shape as a live axis.",
+        "action": "Keep round as preview-only compatibility until Figma adds it."
+      },
+      {
+        "name": "loading state",
+        "reason": "Current Figma set uses Focus instead of Loading.",
+        "action": "Treat loading visuals as preview-only fallback."
+      },
+      {
+        "name": "text and dashed types",
+        "reason": "Current Figma set only implements Default, Outline, and Ghost.",
+        "action": "Keep these as UI preview fallbacks, not source-of-truth variants."
+      }
+    ]
+  }
+}

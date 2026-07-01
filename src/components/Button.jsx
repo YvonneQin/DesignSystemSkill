@@ -2,20 +2,28 @@ import React, { useState } from 'react';
 import buttonSpec from '../../tokens/components/button.json';
 import { resolveColorToken, resolveShadow, resolveTypography } from './ds-theme.js';
 
+function normalizeType(type) {
+  if (type === 'primary') return 'default';
+  if (type === 'dashed') return 'outline';
+  if (type === 'text') return 'ghost';
+  return type;
+}
+
 function resolveButtonStyleKey({ type, danger, theme }) {
+  const normalizedType = normalizeType(type);
+
   if (theme === 'danger' || danger) {
-    if (type === 'primary') return 'primaryDanger';
-    if (type === 'outline') return 'outlineDanger';
-    if (type === 'dashed') return 'dashedDanger';
-    if (type === 'text') return 'textDanger';
+    if (normalizedType === 'default') return 'danger';
+    if (normalizedType === 'outline') return 'dangerOutline';
+    if (normalizedType === 'ghost') return 'dangerGhost';
   }
 
-  if (type === 'ghost' && theme === 'primary') return 'primaryGhost';
-  if (type === 'ghost' && theme === 'secondary') return 'secondaryGhost';
-  if (type === 'dashed') return 'dashed';
-  if (theme === 'secondary' && type === 'primary') return 'secondary';
+  if (theme === 'black' && normalizedType === 'default') return 'black';
+  if (theme === 'black' && normalizedType === 'outline') return 'blackOutline';
+  if (theme === 'black' && normalizedType === 'ghost') return 'blackGhost';
+  if (theme === 'secondary' && normalizedType === 'default') return 'secondary';
 
-  return type;
+  return normalizedType;
 }
 
 function getButtonStyleDefinition(styleKey) {
@@ -63,7 +71,7 @@ function patchButtonTheme(styleTokens, { type, theme, state }) {
 
 export function Button({
   children = 'Button',
-  type = 'primary',
+  type = 'default',
   size = 'default',
   state,
   shape = 'default',
@@ -83,24 +91,28 @@ export function Button({
     : loading
       ? 'loading'
       : state || (pressed ? 'active' : hovered ? 'hover' : 'default');
+  const resolvedState = visualState === 'loading' ? 'hover' : visualState;
   const styleKey = resolveButtonStyleKey({ type, danger, theme });
   const styleDefinition = getButtonStyleDefinition(styleKey);
   const sizeSpec = buttonSpec.sizes[size] || buttonSpec.sizes.default;
-  const typographyRef =
-    size === 'large' ? buttonSpec.typography.lgNormal.ref : 'EN/Paragraph Small 13_h18_Regular';
+  const typographyRef = sizeSpec.typography?.ref || 'EN/Paragraph Small 13_h18_Regular';
   const typography = resolveTypography(typographyRef);
-  const rawTokens = styleDefinition.states?.[visualState] || styleDefinition.states?.default;
-  const styleTokens = patchButtonTheme(rawTokens, { type, theme, state: visualState });
+  const rawTokens = styleDefinition.states?.[resolvedState] || styleDefinition.states?.default;
+  const styleTokens = patchButtonTheme(rawTokens, { type: normalizeType(type), theme, state: resolvedState });
   const borderRadius =
     shape === 'round'
-      ? buttonSpec.shape.round.borderRadius.value
+      ? buttonSpec.shape?.round?.borderRadius?.value ?? 999
       : sizeSpec.borderRadius.value;
-  const borderStyle = styleDefinition.borderStyle || 'solid';
+  const borderStyle = type === 'dashed' ? 'dashed' : styleDefinition.borderStyle || 'solid';
   const showLeft = loading || iconLeft;
+  const minWidth = iconOnly
+    ? sizeSpec.iconOnlySize?.value ?? sizeSpec.controlHeight.value
+    : sizeSpec.basicMinWidth?.value ?? sizeSpec.previewWidth?.value;
+  const contentGap = buttonSpec.layout.iconTextGap?.value ?? buttonSpec.layout.gap?.value ?? 8;
 
   const style = {
     minHeight: sizeSpec.controlHeight.value,
-    minWidth: iconOnly ? sizeSpec.iconOnlySize.value : sizeSpec.basicMinWidth?.value,
+    minWidth,
     paddingInline: iconOnly ? 0 : sizeSpec.paddingInline.value,
     paddingBlock: 0,
     borderRadius,
@@ -135,7 +147,7 @@ export function Button({
       style={style}
       type="button"
     >
-      <span className="ds-button__content" style={{ gap: buttonSpec.layout.iconTextGap.value }}>
+      <span className="ds-button__content" style={{ gap: contentGap }}>
         {showLeft ? (
           <span className={loading ? 'ds-button__icon ds-button__icon--spin' : 'ds-button__icon'}>
             {loading ? '◌' : iconLeft}
